@@ -60,7 +60,7 @@
     "new_items": 111,
     "open_lottery": 1,
     "open_now": 7,
-    "open_preorder": 2,
+    "open_preorder": 3,
     "restocked": 4,
     "total": 111,
     "unknown_status": 42,
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 75
   },
-  "generated_at": "2026-09-21T12:35:05+09:00",
+  "generated_at": "2026-09-21T15:18:37+09:00",
   "schema_version": "1.1.0"
 }

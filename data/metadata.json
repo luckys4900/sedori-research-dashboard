@@ -1,8 +1,10 @@
 {
   "as_of": "2026-09-21",
-  "build": {
+  "audit_metadata": {
     "builder": "build_dashboard.py",
     "contract": "CONTRACT.md",
+    "deliberately_public": true,
+    "purpose": "外部の独立監査が公開値を再計算・突合できるようにするための情報。内部実装の詳細ではなく、監査に必要な最小限だけを意図的に公開している。",
     "read_only": true,
     "status_engine": "market-action-engine/1.1.0"
   },
@@ -48,7 +50,7 @@
     "product_group_parent": 1,
     "superseded_observation": 9
   },
-  "generated_at": "2026-09-21T12:35:05+09:00",
+  "generated_at": "2026-09-21T15:18:37+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかの表示で、順位づけでも推奨でもない。",
     "history": "過去価格は『参照した別商品』の成約実績であり、この商品の利益ではない。",

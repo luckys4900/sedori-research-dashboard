@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-21",
-  "generated_at": "2026-09-21T12:35:05+09:00",
+  "generated_at": "2026-09-21T15:18:37+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -574,7 +574,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": "2026-10-10",
-      "notes_ja": "店頭仕入れ前提。公式SKU・税込価格を商品ページで確認。",
+      "notes_ja": "店頭仕入れ前提。公式の品番と税込価格を商品ページで確認しています。",
       "official_url": "https://www.palcloset.jp/display/item/2622-P30-20-000/?b=3coins",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -673,7 +673,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": "2026-10-10",
-      "notes_ja": "店頭仕入れ前提。公式SKU・税込価格を商品ページで確認。",
+      "notes_ja": "店頭仕入れ前提。公式の品番と税込価格を商品ページで確認しています。",
       "official_url": "https://www.palcloset.jp/display/item/2622-P30-19-000/?b=3coins",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -1197,7 +1197,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": "2026-08-31",
       "lottery_start": null,
-      "notes_ja": "抽選終了日不明。end は仮置き。",
+      "notes_ja": "一次情報では抽選の終了日を確認できていません。",
       "official_url": "https://www.onepiece-cardgame.com/",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -2869,7 +2869,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": null,
-      "notes_ja": "6キャラ別セット（SKU6種、1家族として登録）",
+      "notes_ja": "6キャラクター別のセットです（全6種）。",
       "official_url": "https://hololive-official-cardgame.com/products/post/starter-hsd14-19_debut-set/",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -4711,7 +4711,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": null,
-      "notes_ja": "【再販】表記＝同一商品の再販が確定している。 購入履歴条件はページに記載なし → UNKNOWN（記載なし≠条件なし）。",
+      "notes_ja": "公式ページの「【再販】」表記により、同一商品の再販が確定しています。 購入履歴の条件は公式ページに記載がありません（記載がないことは、条件がないことを意味しません）。",
       "official_url": "https://p-bandai.jp/item/item-1000257010/",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -4805,7 +4805,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": null,
-      "notes_ja": "予約開始日は未表示（仕様は2026年8月現在）。start は仮置き。 購入履歴条件はページに記載なし → UNKNOWN（記載なし≠条件なし）。",
+      "notes_ja": "予約開始日は公式ページに表示されていません（2026年8月時点）。 購入履歴の条件は公式ページに記載がありません（記載がないことは、条件がないことを意味しません）。",
       "official_url": "https://p-bandai.jp/item/item-1000255597/",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -8214,7 +8214,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": null,
-      "notes_ja": "販売方式は bookfan の予約受付表示に基づき reservation（一般流通書籍）。",
+      "notes_ja": "販売方式は取扱書店の予約受付表示にもとづき「予約販売」としています（一般流通の書籍）。",
       "official_url": "https://www.shueisha.co.jp/books/items/contents.html?isbn=978-4-08-779843-2",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
@@ -8628,7 +8628,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": null,
-      "notes_ja": "価格は税抜38,000円（公式表記）。サイズ別SKUは未同定。 会員条件は未確認 → UNKNOWN（「必要」と書いた初版を訂正）。",
+      "notes_ja": "価格は税抜38,000円（公式表記）。サイズ別の品番は特定できていません。 会員条件は確認できていません。",
       "official_url": null,
       "official_url_kind": null,
       "opportunity_signals": [
@@ -9740,7 +9740,7 @@
       "list_price_label_ja": "定価",
       "lottery_end": null,
       "lottery_start": null,
-      "notes_ja": "公式は2027年3月末発売とだけ公表。日付は月末の仮置き。",
+      "notes_ja": "公式は「2027年3月末発売」とだけ公表しています。日付までは確認できていません。",
       "official_url": "https://yu-gi-oh.jp/news/tbohs26ga/",
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
