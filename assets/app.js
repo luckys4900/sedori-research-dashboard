@@ -632,6 +632,27 @@ function initIndex() {
     } catch (e) { /* replaceState can fail on the local file protocol — filtering still works */ }
   }
 
+  function renderMyCheck() {
+    var counts = { CANDIDATE: 0, WATCH: 0, SKIP: 0 };
+    state.products.forEach(function (p) {
+      var mark = getMark(state.marks, p.product_id);
+      if (Object.prototype.hasOwnProperty.call(counts, mark)) { counts[mark]++; }
+    });
+    var ids = {
+      CANDIDATE: 'my-check-candidate',
+      WATCH: 'my-check-watch',
+      SKIP: 'my-check-skip'
+    };
+    Object.keys(ids).forEach(function (key) {
+      var node = $(ids[key]);
+      if (node) { node.textContent = String(counts[key]); }
+    });
+    var buttons = document.querySelectorAll('[data-mark-filter]');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = !marksAvailable;
+    }
+  }
+
   /* ------------------------------------------------------------ card builder */
 
   /**
@@ -741,6 +762,24 @@ function initIndex() {
 
     li.appendChild(a);
 
+    /* Action row: the detail page carries the full evidence, while the external
+       link is only rendered when the published URL passed the HTTPS safety gate. */
+    var actions = el('div', 'card-actions');
+    var detailLink = el('a', 'card-action card-action--detail', '条件・根拠を見る');
+    detailLink.href = 'product.html?id=' + encodeURIComponent(p.product_id);
+    actions.appendChild(detailLink);
+    var outbound = isSafeHttpUrl(p.purchase_url) ? p.purchase_url :
+      (isSafeHttpUrl(p.official_url) ? p.official_url : null);
+    if (outbound) {
+      var ext = el('a', 'card-action card-action--primary',
+        isSafeHttpUrl(p.purchase_url) ? '販売・応募ページ' : '公式情報を確認');
+      ext.href = String(outbound);
+      ext.target = '_blank';
+      ext.rel = 'noopener noreferrer';
+      actions.appendChild(ext);
+    }
+    li.appendChild(actions);
+
     /* Human decision marks — outside the anchor so the buttons are real buttons */
     var box = markControl(p.product_id, getMark(state.marks, p.product_id), onMarkPick);
     li.appendChild(box);
@@ -756,6 +795,7 @@ function initIndex() {
     else { state.marks[id] = markId; }
     writeMarks(state.marks);
     (state.markBoxes[id] || []).forEach(function (b) { syncMarkButtons(b, markId); });
+    renderMyCheck();
     /* Re-filter only when the mark filter is active, so the list stays stable. */
     if (filters.mark) { renderList(); }
   }
@@ -1283,6 +1323,20 @@ function initIndex() {
       writeUrl(); renderList();
     });
 
+    var markJumps = document.querySelectorAll('[data-mark-filter]');
+    for (var j = 0; j < markJumps.length; j++) {
+      markJumps[j].addEventListener('click', function (e) {
+        if (!marksAvailable) { return; }
+        clearFilters();
+        filters.mark = e.currentTarget.dataset.markFilter || '';
+        syncControlsFromFilters();
+        writeUrl();
+        renderList();
+        var target = $('sec-all');
+        if (target) { target.scrollIntoView({ block: 'start' }); }
+      });
+    }
+
     /* KPI tiles act as one-tap filters into the full list. Each one maps to the
        same predicate the KPI counts, so the number and the list always agree. */
     var kpis = document.querySelectorAll('.kpi');
@@ -1316,6 +1370,7 @@ function initIndex() {
         renderHeaderMeta(doc);
         renderKpis();
         renderKpiNote();
+        renderMyCheck();
         renderAllCount();
         buildSelects();
         readUrl();
