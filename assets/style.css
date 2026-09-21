@@ -1325,3 +1325,19 @@ select { cursor: pointer; }
   .toolbar, .card-marks, .kpi-row, .quicknav { display: none; }
   body { background: #fff; color: #000; }
 }
+
+/* Smooth in-page jumps for the quick-nav. Ported from the hand edit made directly on the
+   published repo (2026-09-21). The reduced-motion block above already resets it to auto,
+   so a reader who asked for less motion does not get this. */
+html { scroll-behavior: smooth; }
+
+/* One-line description under the title. Ported from the hand edit made directly on the
+   published repo (2026-09-21) so the intent survives the next publish — a public-repo edit
+   is overwritten, the source of truth is dashboard/. */
+.site-lead {
+  margin: 2px 0 0;
+  font-size: var(--fs-body);
+  color: var(--fg-muted);
+  line-height: 1.5;
+  max-width: 62ch;
+}
