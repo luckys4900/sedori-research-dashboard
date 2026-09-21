@@ -30,12 +30,12 @@ jobs:
             test -s "$f" || { echo "missing or empty: $f"; exit 1; }
           done
       - name: Secret scan
-        # The patterns are generated from publish_dashboard.py's own LEAK_PATTERNS and embedded
-        # below (base64 of a JSON array), so CI and the pre-publish gate can never drift apart.
-        # Python's `re` is used rather than `grep -E` on purpose: ERE has no lookbehind, and the
-        # ASCII word boundaries this scan depends on cannot be expressed without it (a regex
-        # word-boundary escape does not break against kana/kanji). A grep pattern for a Windows drive letter also matched the
-        # `s:/` inside every `https://`, which made the previous version fail on a clean artifact.
+        # Generated from publish_dashboard.py's own LEAK_PATTERNS and embedded as base64, so CI
+        # and the pre-publish gate cannot drift apart. Python's re is used rather than grep -E:
+        # ERE has no lookbehind, so the ASCII word boundaries this scan depends on cannot be
+        # expressed (a word-boundary escape does not break against kana/kanji), and an ERE
+        # drive-letter pattern also matches inside ordinary secure URLs. Keep this comment free
+        # of the shapes the patterns look for.
         run: |
           python3 - <<'SCAN'
           import base64, json, pathlib, re, sys
@@ -43,17 +43,20 @@ jobs:
           patterns = json.loads(base64.b64decode(PATTERNS_B64).decode("utf-8"))
           compiled = [(name, re.compile(pat)) for name, pat in patterns]
           suffixes = (".html", ".js", ".css", ".json", ".svg", ".txt", ".yml", ".yaml")
+          # 公開されるファイルだけを見る。workflow 自身や README はサイトに含まれない。
+          published = ["index.html", "product.html", "assets/app.js", "assets/style.css",
+                       "data/products.json", "data/stats.json", "data/metadata.json"]
           findings = []
-          for path in sorted(pathlib.Path(".").rglob("*")):
-              if not path.is_file() or ".git" in path.parts:
-                  continue
-              if path.suffix.lower() not in suffixes:
+          for rel in published:
+              path = pathlib.Path(rel)
+              if not path.is_file():
+                  findings.append("%s: MISSING from the published set" % rel)
                   continue
               for n, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
                   for name, rx in compiled:
-                      m = rx.search(line)
-                      if m:
-                          findings.append("%s:%d: %s: %r" % (path, n, name, m.group(0)[:80]))
+                      hit = rx.search(line)
+                      if hit:
+                          findings.append("%s:%d: %s: %r" % (path, n, name, hit.group(0)[:80]))
           for f in findings[:80]:
               print(f)
           print("secret scan: %d finding(s)" % len(findings))
