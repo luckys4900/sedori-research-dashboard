@@ -1001,3 +1001,13 @@ select { cursor: pointer; }
   .toolbar, .card-marks, .kpi-row { display: none; }
   body { background: #fff; color: #000; }
 }
+
+/* Where the full signal text lives. Visible (not hover-only) because a touch device cannot
+   reliably open a title tooltip, and a chip may be truncated in the dense list. */
+.c-signals-more {
+  display: block;
+  margin-top: 2px;
+  font-size: .66rem;
+  color: var(--fg-faint);
+}
+.grid.grid--dense .c-signals-more { margin-top: 1px; }

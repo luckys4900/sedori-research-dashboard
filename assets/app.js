@@ -460,25 +460,45 @@ function profitLadder(p, withLabel) {
   return wrap;
 }
 
-/** Signal chips. `max` caps the visible chips and adds a 「+N」 counter. */
+/**
+ * Signal chips. `max` caps the visible chips and adds a 「+N」 counter.
+ *
+ * A chip may be visually truncated in the dense list, so the full label and its basis must be
+ * reachable without hovering: `title` is a convenience for a mouse, never the only fallback
+ * (a touch device cannot open it reliably). Each chip carries its full label + basis as an
+ * accessible name, the group announces where the complete text lives, and the whole card is a
+ * link to the product detail page, which renders every signal unabbreviated.
+ */
 function signalChips(p, max) {
   var sigs = signalsOf(p);
   if (sigs.length === 0) { return null; }
   var box = el('div', 'chips');
+  var full = [];
   var shown = 0;
   for (var i = 0; i < sigs.length; i++) {
-    if (max && shown >= max) { break; }
     var text = signalText(sigs[i]);
     if (text === null) { continue; }
+    var basis = isUnknown(sigs[i].basis_ja) ? null : String(sigs[i].basis_ja);
+    full.push(basis ? (text + '：' + basis) : text);
+    if (max && shown >= max) { continue; }
     var unknown = sigs[i].code === 'UNKNOWN';
     var chip = el('span', 'chip' + (unknown ? ' chip--unknown' : ''), text);
-    if (!isUnknown(sigs[i].basis_ja)) { chip.title = String(sigs[i].basis_ja); }
+    /* The accessible name always carries the whole thing, truncated or not. */
+    chip.setAttribute('aria-label', basis ? (text + '：' + basis) : text);
+    if (basis) { chip.title = basis; }
     box.appendChild(chip);
     shown++;
   }
   if (shown === 0) { return null; }
-  var rest = sigs.length - shown;
-  if (rest > 0) { box.appendChild(el('span', 'chip chip--more', '+' + rest)); }
+  var rest = full.length - shown;
+  if (rest > 0) {
+    var more = el('span', 'chip chip--more', '+' + rest);
+    more.setAttribute('aria-label', 'ほか' + rest + '件の注目理由。全文は詳細ページに表示されます。');
+    box.appendChild(more);
+  }
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label',
+    '注目理由（' + full.length + '件）。' + full.join('／') + ' 全文は商品の詳細ページで確認できます。');
   return box;
 }
 
@@ -686,7 +706,11 @@ function initIndex() {
     /* 9. 注目理由 (opportunity signals — not a score) */
     var sigBox = el('div', 'c-signals');
     var chips = signalChips(p, 3);
-    if (chips) { sigBox.appendChild(chips); }
+    if (chips) {
+      sigBox.appendChild(chips);
+      /* Visible, not hover-only: a truncated chip must announce where its full text is. */
+      sigBox.appendChild(el('span', 'c-signals-more', '注目理由の全文は詳細ページ'));
+    }
     a.appendChild(sigBox);
 
     /* 10. 確認状況 */
