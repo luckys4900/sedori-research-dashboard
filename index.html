@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="公開情報にもとづく商品の受付状況・締切・発売日・確認状況の一覧。購入推奨・利益予測は含みません。">
+<title>Sedori Research Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="index">
+
+<header class="site-header">
+  <div class="wrap">
+    <h1 class="site-title">Sedori Research Dashboard</h1>
+    <p class="site-sub">
+      <span>更新日時: <span id="generated-at">読み込み中…</span></span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>基準日: <span id="as-of">—</span></span>
+    </p>
+
+    <ul class="kpi-row" id="kpi-row">
+      <li>
+        <button type="button" class="kpi kpi--total" data-kpi="total" aria-pressed="false">
+          <span class="kpi-num" id="kpi-total">—</span>
+          <span class="kpi-label">商品総数</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kpi kpi--open" data-kpi="open" aria-pressed="false">
+          <span class="kpi-num" id="kpi-open">—</span>
+          <span class="kpi-label">受付中と確認できた数</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kpi kpi--closing" data-kpi="closing" aria-pressed="false">
+          <span class="kpi-num" id="kpi-closing">—</span>
+          <span class="kpi-label">締切間近</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kpi kpi--new" data-kpi="new" aria-pressed="false">
+          <span class="kpi-num" id="kpi-new">—</span>
+          <span class="kpi-label">新着（14日以内）</span>
+        </button>
+      </li>
+    </ul>
+
+    <p class="kpi-note" id="kpi-note">
+      「新着」は収録開始日が基準日から14日以内の件数です。収録を開始した直後のデータでは
+      ほぼ全件が該当します。「締切間近」は受付中と確認できた行の締切だけを数えます。
+    </p>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <!-- Fetch / parse failure panel -->
+  <div class="panel panel--error" id="error-panel" hidden>
+    <h2>データを読み込めませんでした</h2>
+    <p id="error-detail"></p>
+    <p><code>data/products.json</code> が生成されているか、ページが HTTP 経由で配信されているかを確認してください。</p>
+  </div>
+
+  <p class="loading" id="loading">データを読み込み中…</p>
+
+  <div id="app" hidden>
+
+    <!--
+      Highlight sections. Each one is capped (see SECTION_CAP in app.js) and carries a
+      「すべて見る」 control that applies the identical predicate to 全商品一覧.
+      An empty section is NOT hidden: it shows its own explicit reason line.
+    -->
+    <section class="sec" id="sec-closing" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🔥</span>締切間近</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">受付中・締切間近と<strong>判定できた</strong>行の締切だけを載せています。受付状態が確認できていない商品はここには入りません。</p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>現在、受付中と確認できたうえで締切が7日以内の商品はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-nearterm" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">⏳</span>期日が近い（受付状態は未確認）</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">公開されている期日が7日以内ですが、<strong>いま受け付けているかどうかは確認できていません</strong>。締切間近として扱わないでください。</p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>期日が7日以内で受付状態が未確認の商品はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-lottery" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🎯</span>抽選受付中</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>現在、受付中と確認できた抽選はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-preorder" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">📦</span>予約受付中</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>現在、受付中と確認できた予約・受注生産はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-buyable" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🛒</span>購入可能</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">抽選ではない販売方式で、<strong>いま受付中と判定できた</strong>商品です。販売方式が不明なものも含むため、各カードの「販売方式」を確認してください。</p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>現在、抽選以外の販売方式で受付中と確認できた商品はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-restock" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🔄</span>再販・在庫復活</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">受付状態が<strong>「再販・在庫復活」と判定できた</strong>商品です。再販の記録はあるが現在の状態が確認できていない商品は、カードの「再販」バッジと絞り込みの「再販情報ありのみ」から確認できます。</p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>現在、再販・在庫復活と判定できた商品はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-new" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🆕</span>新着</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note" id="sec-new-note">収録開始日が基準日から14日以内の商品です。</p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>収録開始が14日以内の商品はありません。</p>
+    </section>
+
+    <section class="sec" id="sec-attention" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">⭐</span>注目候補</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">
+        「注目候補」は<strong>裏付けのある材料がそろっている</strong>という印だけです。おすすめ・買い・期待値ではありません。
+        供給が絞られている事実と、過去の成約記録が両方確認できた商品を機械的に集めたもので、買うかどうかの判断は読者が行います。
+      </p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>供給制約と過去の成約記録が両方そろった商品は、現時点ではありません。</p>
+    </section>
+
+    <!-- Full list with toolbar -->
+    <section class="sec" id="sec-all">
+      <div class="sec-head">
+        <h2 class="sec-title">全商品一覧</h2>
+      </div>
+
+      <div class="active-sec" id="active-sec" hidden>
+        <span class="active-sec-label">絞り込み中:</span>
+        <span class="active-sec-name" id="active-sec-name"></span>
+        <button type="button" class="btn btn--tiny" id="active-sec-clear">この絞り込みを解除</button>
+      </div>
+
+      <form class="toolbar" id="toolbar" role="search" aria-label="商品の絞り込み">
+        <div class="field tb-search">
+          <label class="field-label" for="f-q">キーワード検索</label>
+          <input type="search" id="f-q" name="q" autocomplete="off"
+                 placeholder="商品名 / IP / カテゴリ / 販売方式 / 購入先">
+        </div>
+
+        <div class="tb-grid">
+          <div class="field">
+            <label class="field-label" for="f-cat">カテゴリ</label>
+            <select id="f-cat"><option value="">すべて</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-mode">販売方式</label>
+            <select id="f-mode"><option value="">すべて</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-status">現在状態</label>
+            <select id="f-status"><option value="">すべて</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-ev">確認状況</label>
+            <select id="f-ev">
+              <option value="">すべて</option>
+              <option value="VERIFIED">確認済み</option>
+              <option value="PARTIAL">一部確認</option>
+              <option value="UNVERIFIED">未検証</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-profit">利益判定に必要な情報の進み方</label>
+            <select id="f-profit">
+              <option value="">すべて</option>
+              <option value="NOT_EVALUATED">未着手</option>
+              <option value="PARTIAL">一部のみ</option>
+              <option value="ROUTE_EVIDENCE_PARTIAL">取得経路のみ確認</option>
+              <option value="PRICE_EVIDENCE_READY">過去の成約価格を確認</option>
+              <option value="FORMAL_READY">必要な材料がそろう</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-signal">注目理由</label>
+            <select id="f-signal"><option value="">すべて</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-deadline">締切</label>
+            <select id="f-deadline">
+              <option value="">すべて</option>
+              <option value="24h">24時間以内（受付中と確認済み）</option>
+              <option value="3d">3日以内（受付中と確認済み）</option>
+              <option value="7d">7日以内（受付中と確認済み）</option>
+              <option value="near_unconfirmed">期日が7日以内・受付状態は未確認</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-release">発売日</label>
+            <select id="f-release">
+              <option value="">すべて</option>
+              <option value="upcoming">発売前</option>
+              <option value="released">発売済み</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-mark">自分の判断</label>
+            <select id="f-mark">
+              <option value="">すべて</option>
+              <option value="UNDECIDED">未判断</option>
+              <option value="CANDIDATE">購入候補</option>
+              <option value="WATCH">監視</option>
+              <option value="SKIP">見送り</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-sort">並び順</label>
+            <select id="f-sort">
+              <option value="deadline">締切が近い順</option>
+              <option value="new">新着順</option>
+              <option value="release">発売日順</option>
+              <option value="price">定価が安い順</option>
+              <option value="updated">更新順</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tb-toggles">
+          <label class="chk"><input type="checkbox" id="f-new"><span>新着のみ</span></label>
+          <label class="chk"><input type="checkbox" id="f-restock"><span>再販情報ありのみ</span></label>
+          <label class="chk"><input type="checkbox" id="f-attn"><span>注目候補のみ</span></label>
+        </div>
+
+        <div class="tb-foot">
+          <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">該当 — 件</p>
+          <button type="button" class="btn" id="btn-reset">絞り込みをリセット</button>
+        </div>
+      </form>
+
+      <div class="list-head" id="list-head" aria-hidden="true">
+        <span>商品名</span><span>状態</span><span>締切</span><span>定価</span><span>取得原価</span>
+        <span>発売日</span><span>販売方式</span><span>購入先</span><span>注目理由</span><span>確認状況</span>
+      </div>
+
+      <ul class="grid grid--dense" id="list"></ul>
+
+      <p class="empty" id="list-empty" hidden>条件に一致する商品はありません。絞り込みを変更してください。</p>
+
+      <p class="note-line">
+        「未判断 / 購入候補 / 監視 / 見送り」の判断マークは、このブラウザの中だけに保存されます。
+        どこにも送信されません。
+      </p>
+      <p class="note-line">
+        横に並ぶ一覧表示（画面が広いとき）は情報量を絞っています。
+        確認の進み方（5段階）と注目候補の理由の全文は、各商品の詳細ページで確認してください。
+      </p>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <p>公開情報の投影のみを表示します。購入推奨・利益予測・スコア・順位付けは一切含みません。</p>
+    <p>利益の自動評価はまだ利用できません。このページは事実と期日、そして確認がどこまで進んだかだけを示し、最終判断は読者が行います。</p>
+    <p>「定価」は公式に公表された価格で、仕入れ価格ではありません。「取得原価」は経路ごとの価格の裏付けが取れた場合のみ表示し、取れていなければ「未確認」と書きます。</p>
+    <p>不明な値は「不明」と表示します。0 や推測日で埋めることはありません。月精度の発売日は月精度のまま表示します。</p>
+    <p>「未検証」の行は公開情報の一次確認が済んでいない発見候補です。確認済みの商品と同等に扱わないでください。</p>
+  </footer>
+</main>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

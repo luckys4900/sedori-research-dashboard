@@ -1,0 +1,1003 @@
+/* =========================================================================
+   Sedori Research Dashboard — style.css
+   Mobile-first. No external fonts, no CDN, no images.
+
+   Two independent axes must never read as the same thing:
+     * STATE   (受付中 / 締切間近 / 終了 …)  -> FILLED badges, semantic colour.
+     * 確認状況 (確認済み / 一部確認 / 未検証) -> OUTLINE badges, no fill.
+   Flags (新着 / 再販 / 注目候補) use their own hues and are never the state hue.
+
+   Sections:
+     1. Palette tokens / reset
+     2. Layout shell + header + KPI
+     3. Badges + chips + evidence ladder
+     4. Toolbar (filters / sort / search)
+     5. Product card (mobile card -> desktop dense row)
+     6. Mark control
+     7. Detail page
+     8. States (empty / error / loading)
+     9. Media queries + a11y prefs
+   ========================================================================= */
+
+/* ---------- 1. Palette tokens ---------- */
+:root {
+  --bg: #f5f6f8;
+  --bg-elev: #ffffff;
+  --bg-sunken: #eceef2;
+  --fg: #16191f;
+  --fg-muted: #5c6470;
+  /* 4.97:1 on --bg, 5.37:1 on --bg-elev, 4.62:1 on --bg-sunken.
+     This token carries the honesty text (「不明」/ disclaimers / notes), so it
+     must clear 4.5:1 everywhere it is used — it used to be 3.1:1. */
+  --fg-faint: #646b77;
+  --border: #d7dbe2;
+  --border-strong: #b9bfca;
+  --focus: #1f5fd0;
+
+  --open: #0d7a4a;
+  --open-bg: #e3f5ec;
+  --closing: #b14700;
+  --closing-bg: #fdeede;
+  --urgent: #b3261e;
+  --urgent-bg: #fdeceb;
+  --pending: #1b5db3;
+  --pending-bg: #e8f0fc;
+  --closed: #5c6470;
+  --closed-bg: #e7e9ee;
+  --neutral: #6b7280;
+
+  /* 新着 flag — deliberately NOT the --pending blue it used to copy. */
+  --flag: #6b3fa0;
+  --flag-bg: #f1eaf9;
+  /* 再販 flag */
+  --restock: #0b6b7a;
+  --restock-bg: #e2f4f7;
+
+  --unverified: #8a5a00;
+  --unverified-bg: #fdf6e3;
+  --unverified-line: #c79212;
+
+  --ladder-on: #5c6470;
+  --ladder-off: #d7dbe2;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 2px rgba(16, 20, 28, .07), 0 1px 8px rgba(16, 20, 28, .05);
+  --maxw: 1360px;
+  --gap: 12px;
+  --tap: 44px;        /* form controls */
+  --tap-min: 40px;    /* dense in-card buttons */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --bg-elev: #1d2027;
+    --bg-sunken: #0f1114;
+    --fg: #e9ecf1;
+    --fg-muted: #a5adba;
+    /* 5.5:1 on --bg, 4.95:1 on --bg-elev. */
+    --fg-faint: #858ea0;
+    --border: #333844;
+    --border-strong: #4b5260;
+    --focus: #7fb0ff;
+
+    --open: #56d39a;
+    --open-bg: #123527;
+    --closing: #ffb26b;
+    --closing-bg: #3a2512;
+    --urgent: #ff8c82;
+    --urgent-bg: #3d1a17;
+    --pending: #8ab8ff;
+    --pending-bg: #142642;
+    --closed: #a5adba;
+    --closed-bg: #262a33;
+
+    --flag: #c9a8f0;
+    --flag-bg: #2a1f3d;
+    --restock: #6fd3e2;
+    --restock-bg: #10323a;
+
+    --unverified: #ecc25c;
+    --unverified-bg: #2d2513;
+    --unverified-line: #b6903a;
+
+    --ladder-on: #a5adba;
+    --ladder-off: #3a4049;
+
+    --shadow: 0 1px 2px rgba(0, 0, 0, .5);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 0 48px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+h1, h2, h3 { line-height: 1.3; margin: 0; font-weight: 700; }
+
+a { color: var(--focus); }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 2. Layout shell ---------- */
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.site-header {
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0 12px;
+  margin-bottom: 14px;
+}
+
+.site-title { font-size: 1.15rem; letter-spacing: .01em; }
+
+.site-sub {
+  margin: 4px 0 0;
+  color: var(--fg-muted);
+  font-size: .78rem;
+}
+
+.site-sub .sep { padding: 0 .35em; color: var(--fg-faint); }
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 8px 10px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.kpi:hover { border-color: var(--border-strong); }
+
+.kpi[aria-pressed="true"] {
+  border-color: var(--focus);
+  box-shadow: inset 0 0 0 1px var(--focus);
+}
+
+.kpi-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.kpi-label { font-size: .72rem; color: var(--fg-muted); }
+
+.kpi--open .kpi-num { color: var(--open); }
+.kpi--closing .kpi-num { color: var(--urgent); }
+.kpi--new .kpi-num { color: var(--flag); }
+
+.kpi-note {
+  margin: 8px 0 0;
+  font-size: .72rem;
+  line-height: 1.5;
+  color: var(--fg-faint);
+}
+
+/* Sections */
+.sec { margin: 0 0 22px; }
+.sec[hidden] { display: none; }
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin: 0 0 8px;
+  padding: 0 2px;
+}
+
+.sec-title { font-size: 1rem; }
+
+/* Colour-emoji fallback so the section icons never drop to a CJK glyph box.
+   These are OS fonts, not a web font — nothing is downloaded. */
+.sec-emoji {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
+    "Segoe UI Symbol", sans-serif;
+  margin-right: .35em;
+  font-weight: 400;
+}
+
+.sec-count {
+  font-size: .75rem;
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sec-note {
+  margin: 0 2px 8px;
+  font-size: .74rem;
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
+
+.sec-note strong { color: var(--fg); }
+
+/* An empty mandated section is visible and states WHY it is empty. */
+.sec-empty {
+  margin: 0;
+  padding: 12px 13px;
+  font-size: .8rem;
+  color: var(--fg-muted);
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+}
+
+.sec-empty[hidden] { display: none; }
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-line {
+  margin: 10px 2px 0;
+  font-size: .72rem;
+  color: var(--fg-faint);
+}
+
+.active-sec {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  background: var(--flag-bg);
+  border: 1px solid var(--flag);
+  border-radius: var(--radius-sm);
+  font-size: .8rem;
+}
+
+.active-sec[hidden] { display: none; }
+.active-sec-label { color: var(--fg-muted); font-size: .74rem; }
+.active-sec-name { font-weight: 700; color: var(--flag); }
+
+/* ---------- 3. Badges / chips / ladder ---------- */
+.badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+/* STATE — filled. */
+.badge--open     { background: var(--open-bg);     color: var(--open);     border-color: var(--open); }
+.badge--closing  { background: var(--closing-bg);  color: var(--closing);  border-color: var(--closing); }
+.badge--urgent   { background: var(--urgent-bg);   color: var(--urgent);   border-color: var(--urgent); }
+.badge--closed   { background: var(--closed-bg);   color: var(--closed);   border-color: var(--border-strong); }
+.badge--pending  { background: var(--pending-bg);  color: var(--pending);  border-color: var(--pending); }
+.badge--unknown  { background: transparent;        color: var(--fg-muted); border-color: var(--border-strong); border-style: dashed; }
+
+/* 確認状況 — OUTLINE, never filled, so it cannot be read as a state colour.
+   The leading mark is a second, non-colour cue. */
+.badge--ev-verified,
+.badge--ev-partial,
+.badge--ev-none {
+  background: transparent;
+  border-width: 2px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+
+.badge--ev-verified { color: var(--open);       border-color: var(--open); }
+.badge--ev-partial  { color: var(--closing);    border-color: var(--closing); }
+.badge--ev-none     { color: var(--unverified); border-color: var(--unverified-line); border-style: dashed; }
+
+.badge--ev-verified::before { content: "✓ "; }
+.badge--ev-partial::before  { content: "◐ "; }
+.badge--ev-none::before     { content: "? "; }
+
+/* FLAGS — their own hues. */
+.badge--flag {
+  background: var(--flag-bg);
+  color: var(--flag);
+  border-color: var(--flag);
+}
+
+.badge--restock {
+  background: var(--restock-bg);
+  color: var(--restock);
+  border-color: var(--restock);
+}
+
+/* 注目候補 — outline + ★, so it is neither a state nor an evidence badge.
+   It is not a score and not a recommendation. */
+.badge--attention {
+  background: transparent;
+  color: var(--flag);
+  border: 2px solid var(--flag);
+  border-radius: var(--radius-sm);
+}
+
+.badge--attention::before { content: "★ "; }
+
+/* opportunity_signals — compact chips. Flat, uniform, never ranked or scored. */
+.chips { display: flex; flex-wrap: wrap; gap: 4px; min-width: 0; }
+
+.chip {
+  display: inline-block;
+  max-width: 100%;
+  padding: 1px 6px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--fg-muted);
+  font-size: .7rem;
+  line-height: 1.55;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip--unknown { border-style: dashed; color: var(--fg-faint); background: transparent; }
+.chip--more { border-style: dotted; color: var(--fg-faint); }
+
+/* profit_evidence_status — a 5-step progress read-out. Deliberately monochrome:
+   step 1 (未着手) means "not started", not "bad", so no step is ever red. */
+.ladder-wrap { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
+
+.ladder { display: inline-flex; gap: 3px; align-items: center; flex: 0 0 auto; }
+
+.ladder-step {
+  display: block;
+  width: 12px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--ladder-off);
+}
+
+.ladder-step.is-reached { background: var(--ladder-on); }
+
+.ladder-label { font-size: .7rem; color: var(--fg-muted); }
+
+/* ---------- 4. Toolbar ---------- */
+.toolbar {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  margin: 0 0 12px;
+}
+
+.tb-search { display: block; margin: 0 0 8px; }
+
+.tb-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+.field > .field-label {
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--fg-muted);
+}
+
+input[type="search"], input[type="text"], select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 8px 9px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: .86rem;
+}
+
+select { cursor: pointer; }
+
+.tb-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 10px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tap);
+  font-size: .82rem;
+  cursor: pointer;
+}
+
+.chk input { width: 1.25em; height: 1.25em; accent-color: var(--focus); cursor: pointer; }
+
+.tb-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.result-count {
+  font-size: .85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.btn {
+  min-height: var(--tap);
+  padding: 7px 12px;
+  background: var(--bg-sunken);
+  color: var(--fg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+}
+
+.btn:hover { border-color: var(--focus); }
+
+.btn--more { min-height: var(--tap-min); padding: 4px 10px; font-size: .75rem; }
+.btn--tiny { min-height: var(--tap-min); padding: 4px 10px; font-size: .74rem; }
+
+/* ---------- 5. Product card ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Unverified discovery candidate: dashed frame + tint. Correctness signal. */
+.card.is-unverified {
+  border: 2px dashed var(--unverified-line);
+  background: var(--unverified-bg);
+  box-shadow: none;
+}
+
+.card-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3px;
+  padding: 10px 11px;
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.card-main:hover .c-name > span:first-child { text-decoration: underline; }
+
+.c-name {
+  font-size: .97rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 1px;
+  min-width: 0;
+}
+
+/* status_note_ja — the caveat that makes 「不明」 comprehensible. */
+.c-note {
+  display: block;
+  margin-top: 2px;
+  font-size: .72rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--fg-muted);
+}
+
+.c-status { margin-bottom: 2px; display: flex; flex-wrap: wrap; gap: 4px; }
+
+.cell {
+  display: flex;
+  gap: .5em;
+  font-size: .8rem;
+  min-width: 0;
+}
+
+.lbl {
+  flex: 0 0 4.6em;
+  color: var(--fg-muted);
+  font-size: .74rem;
+  padding-top: .1em;
+}
+
+.val { min-width: 0; }
+
+.val.is-unknown { color: var(--fg-faint); font-style: italic; }
+
+.c-deadline .val { font-weight: 700; }
+.c-deadline.is-urgent .val { color: var(--urgent); }
+.c-deadline.is-soon .val { color: var(--closing); }
+
+.c-list-price .val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.c-acq .val { font-variant-numeric: tabular-nums; }
+
+.c-ev { margin-top: 3px; }
+.c-signals:empty { display: none; }
+.c-profit { margin-top: 2px; }
+
+.c-attn { display: flex; gap: .5em; font-size: .74rem; min-width: 0; }
+.c-attn-lbl { flex: 0 0 auto; color: var(--fg-muted); }
+.c-attn-val { color: var(--flag); min-width: 0; }
+
+.mono-num { font-variant-numeric: tabular-nums; }
+
+.deadline-rel {
+  font-weight: 400;
+  font-size: .74rem;
+  color: var(--fg-muted);
+  padding-left: .4em;
+}
+
+/* An unconfirmed acceptance state never borrows the urgency styling. */
+.deadline-rel.is-unconfirmed { color: var(--fg-faint); font-style: italic; }
+
+/* ---------- 6. Mark control ---------- */
+.card-marks {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-sunken);
+}
+
+.card.is-unverified .card-marks { border-top: 1px dashed var(--unverified-line); background: transparent; }
+
+.mark-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: var(--tap-min);      /* >= 40px tap target everywhere */
+  padding: 8px 2px;
+  background: transparent;
+  color: var(--fg-muted);
+  border: 0;
+  border-left: 1px solid var(--border);
+  font: inherit;
+  font-size: .72rem;
+  cursor: pointer;
+}
+
+.mark-btn:first-child { border-left: 0; }
+.mark-btn:hover { color: var(--fg); background: var(--bg); }
+
+.mark-btn[aria-pressed="true"] {
+  font-weight: 700;
+  color: var(--bg-elev);
+  background: var(--fg-muted);
+}
+
+.mark-btn[aria-pressed="true"][data-mark="CANDIDATE"] { background: var(--open);   color: #fff; }
+.mark-btn[aria-pressed="true"][data-mark="WATCH"]     { background: var(--pending); color: #fff; }
+.mark-btn[aria-pressed="true"][data-mark="SKIP"]      { background: var(--closed);  color: #fff; }
+
+/* 未判断 is the default for every row, so it stays quiet: bolder text only.
+   A filled block here would read as a decision the user never made. */
+.mark-btn[aria-pressed="true"][data-mark="UNDECIDED"] {
+  background: transparent;
+  color: var(--fg);
+}
+
+/* ---------- 7. Detail page ---------- */
+.detail { margin: 0 0 20px; }
+
+.back-link {
+  display: inline-block;
+  margin: 0 0 12px;
+  font-size: .85rem;
+}
+
+.detail-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 13px;
+}
+
+.detail-card.is-unverified {
+  border: 2px dashed var(--unverified-line);
+  background: var(--unverified-bg);
+  box-shadow: none;
+}
+
+.detail-title { font-size: 1.1rem; margin: 0 0 8px; }
+
+.detail-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+
+/* 定価 and 取得原価 side by side: they are different quantities and are shown
+   as two separate, separately-labelled figures. */
+.price-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 6px;
+}
+
+.price-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  padding: 8px 10px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.price-lbl { font-size: .72rem; color: var(--fg-muted); font-weight: 700; }
+
+.price-val {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.price-val.is-unknown { font-size: .95rem; color: var(--fg-faint); font-style: italic; }
+
+.price-note { margin: 0 0 12px; font-size: .72rem; line-height: 1.55; color: var(--fg-faint); }
+
+.warn-box {
+  margin: 0 0 12px;
+  padding: 9px 11px;
+  border-left: 4px solid var(--unverified-line);
+  background: var(--unverified-bg);
+  color: var(--unverified);
+  border-radius: var(--radius-sm);
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.warn-inline {
+  display: block;
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--unverified-line);
+  background: var(--unverified-bg);
+  color: var(--unverified);
+  border-radius: var(--radius-sm);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.plain-note { display: block; font-size: .78rem; line-height: 1.55; color: var(--fg-muted); }
+
+.note-box {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: var(--bg-sunken);
+  border-left: 3px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: .82rem;
+  color: var(--fg-muted);
+}
+
+.dl-group { margin: 16px 0 0; }
+
+.dl-group > h2 {
+  font-size: .82rem;
+  color: var(--fg-muted);
+  text-transform: none;
+  padding: 0 0 5px;
+  border-bottom: 1px solid var(--border);
+  margin: 0 0 6px;
+}
+
+.kv { margin: 0; }
+
+.kv > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.kv dt { font-size: .74rem; color: var(--fg-muted); }
+.kv dd { margin: 0; font-size: .88rem; min-width: 0; }
+.kv dd.is-unknown { color: var(--fg-faint); font-style: italic; }
+
+.kv--tight > div { padding: 3px 0; border-bottom: 0; }
+.kv--tight dt { font-size: .7rem; }
+.kv--tight dd { font-size: .8rem; }
+
+.ext-link { display: inline-flex; flex-wrap: wrap; gap: .3em; align-items: baseline; }
+.ext-host { font-size: .72rem; color: var(--fg-muted); }
+
+.src-list { margin: 0; padding-left: 1.1em; font-size: .85rem; }
+.src-list li { margin: 3px 0; }
+
+.src-kind {
+  margin-left: .4em;
+  padding: 0 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: .68rem;
+  color: var(--fg-muted);
+}
+
+/* 供給制約: each signal with the source fact it came from. */
+.sig-list { margin: 0; padding-left: 1.1em; font-size: .85rem; }
+.sig-list li { margin: 4px 0; }
+.sig-name { font-weight: 700; }
+.sig-name.is-unknown { font-weight: 400; color: var(--fg-faint); font-style: italic; }
+
+.sig-basis {
+  display: block;
+  font-size: .74rem;
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
+/* A DIFFERENT product's past observed resale prices. */
+.cmp-box { margin: 0; }
+
+.cmp-item {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.cmp-name { font-size: .82rem; font-weight: 700; margin: 0 0 3px; }
+
+/* route_evidence — shadow model. */
+.route-box { margin: 0; }
+
+.route-item {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.route-owner {
+  font-size: .76rem; font-weight: 700; color: var(--fg);
+  background: var(--bg-sunken); border-left: 3px solid var(--restock);
+  padding: 4px 8px; margin: 0 0 4px; border-radius: 0 4px 4px 0;
+}
+.route-head { font-size: .82rem; font-weight: 700; margin: 0 0 3px; }
+
+.detail-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+}
+
+.detail-marks .mark-btn {
+  flex: 1 1 4.2rem;   /* four buttons stay on one row down to 320px */
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  min-height: var(--tap);
+  padding: 8px 6px;
+  font-size: .8rem;
+}
+
+/* ---------- 8. States ---------- */
+.panel {
+  padding: 16px 14px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 0 0 16px;
+}
+
+.panel--error { border-left: 4px solid var(--urgent); }
+.panel--error h2 { font-size: .95rem; color: var(--urgent); margin-bottom: 6px; }
+.panel p { margin: 4px 0 0; font-size: .85rem; color: var(--fg-muted); }
+
+.panel code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .8em;
+  background: var(--bg-sunken);
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.empty {
+  padding: 22px 14px;
+  text-align: center;
+  color: var(--fg-muted);
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  font-size: .88rem;
+}
+
+.loading { padding: 22px 14px; text-align: center; color: var(--fg-muted); font-size: .9rem; }
+
+.site-footer {
+  margin: 26px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--border);
+  font-size: .72rem;
+  color: var(--fg-faint);
+}
+
+.site-footer p { margin: 3px 0; }
+
+/* Dense-view column header: desktop only, and never when the list is empty. */
+.list-head { display: none; }
+.list-head[hidden] { display: none !important; }
+
+/* ---------- 9. Media queries ---------- */
+@media (min-width: 480px) {
+  .wrap { padding: 0 14px; }
+  .kpi-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .kpi-num { font-size: 1.6rem; }
+  .tb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kv > div { grid-template-columns: 9.5rem minmax(0, 1fr); align-items: baseline; }
+  .kv--tight > div { grid-template-columns: 7.5rem minmax(0, 1fr); }
+}
+
+@media (min-width: 700px) {
+  body { font-size: 16px; }
+  .site-title { font-size: 1.35rem; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); }
+  .tb-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tb-search { max-width: 34rem; }
+}
+
+@media (min-width: 900px) {
+  .tb-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .detail-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 26px; }
+  .detail-wrap > .dl-span { grid-column: 1 / -1; }
+  .price-pair { max-width: 34rem; }
+}
+
+@media (min-width: 1100px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); }
+
+  /* Dense card/table hybrid for 全商品一覧 only. Same markup as the cards
+     above; only the grid template changes. The highlight sections keep the full
+     card layout, which is where the chips / evidence ladder / attention reasons
+     stay readable. */
+  .grid.grid--dense { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+
+  /* Grid (not flex) so .card-main gets a definite width and its own fr tracks
+     resolve; as a flex item its fr columns collapsed to 0. */
+  .grid.grid--dense .card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; }
+
+  .grid.grid--dense .card-main,
+  .list-head {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 2.1fr) 6.4rem minmax(0, 1.1fr) 5.2rem 5.2rem
+      minmax(0, .9fr) minmax(0, .8fr) minmax(0, .9fr) minmax(0, 2fr) 6rem;
+    /* 注目理由の列は 2fr。1fr では 104px に潰れてチップが全部「…」になり、
+       tooltip でしか読めなかった（触ると読めない）。 */
+    align-items: center;
+    gap: 0 8px;
+    min-width: 0;
+  }
+
+  .grid.grid--dense .card-main { padding: 8px 11px; }
+  .grid.grid--dense .c-name { font-size: .9rem; margin: 0; }
+  .grid.grid--dense .c-note { font-size: .68rem; margin-top: 1px; }
+  .grid.grid--dense .c-status { margin: 0; }
+  .grid.grid--dense .cell { display: block; font-size: .76rem; }
+  .grid.grid--dense .lbl { display: none; }
+  .grid.grid--dense .deadline-rel { display: block; padding: 0; }
+  .grid.grid--dense .c-ev { margin: 0; }
+  /* チップは切り詰めずに折り返す。読めない省略記号は情報ではない。 */
+  .grid.grid--dense .chip { font-size: .66rem; max-width: none; }
+  .grid.grid--dense .chips { flex-wrap: wrap; row-gap: 2px; }
+  .grid.grid--dense .card-main { align-items: start; }
+
+  /* The ladder and the attention-reason line have no column in the scan table;
+     they are on the card view and the detail page. */
+  .grid.grid--dense .c-profit,
+  .grid.grid--dense .c-attn { display: none; }
+
+  .grid.grid--dense .card-marks {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+    align-items: stretch;
+  }
+
+  .grid.grid--dense .card.is-unverified .card-marks { border-top: 0; border-left: 1px dashed var(--unverified-line); }
+  .grid.grid--dense .mark-btn { flex: 0 0 3.4rem; padding: 4px 2px; font-size: .68rem; }
+
+  /* The header row must clear the mark-button strip on the right of each card
+     (4 buttons x 3.4rem + 1px divider) so the labels line up with the cells. */
+  .list-head {
+    padding: 4px 11px;
+    padding-right: calc(13.6rem + 10px);
+    margin: 0 0 4px;
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--fg-muted);
+  }
+}
+
+/* Reduced motion / high contrast */
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: border-color .12s ease, box-shadow .12s ease; }
+  .kpi, .btn, .mark-btn { transition: background-color .12s ease, border-color .12s ease; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+@media (forced-colors: active) {
+  .card, .badge, .kpi, .btn, .chip { border: 1px solid CanvasText; }
+  .card.is-unverified { border: 2px dashed CanvasText; }
+  .ladder-step { border: 1px solid CanvasText; }
+  .ladder-step.is-reached { background: CanvasText; }
+}
+
+@media print {
+  .toolbar, .card-marks, .kpi-row { display: none; }
+  body { background: #fff; color: #000; }
+}

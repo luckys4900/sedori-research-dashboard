@@ -1,0 +1,73 @@
+{
+  "as_of": "2026-09-21",
+  "by_category": {
+    "BOOK_MOOK": 5,
+    "CHARACTER_GOODS": 11,
+    "COLLAB": 0,
+    "FIGURE": 3,
+    "ONLINE_LOTTERY": 0,
+    "OTHER": 0,
+    "TCG": 65,
+    "TOY": 9,
+    "UNKNOWN": 18
+  },
+  "by_profit_evidence": {
+    "FORMAL_READY": 0,
+    "NOT_EVALUATED": 80,
+    "PARTIAL": 28,
+    "PRICE_EVIDENCE_READY": 3,
+    "ROUTE_EVIDENCE_PARTIAL": 0
+  },
+  "by_sale_mode": {
+    "EC_LIMITED": 3,
+    "GENERAL_SALE": 47,
+    "LOTTERY": 16,
+    "MADE_TO_ORDER": 5,
+    "OFFICIAL_EC": 0,
+    "PREORDER": 15,
+    "RESTOCK": 3,
+    "STORE_LIMITED": 7,
+    "UNKNOWN": 15
+  },
+  "by_status": {
+    "CLOSED": 12,
+    "CLOSING_SOON": 1,
+    "ENDED": 1,
+    "NOT_STARTED": 15,
+    "OPEN_NOW": 7,
+    "PAYMENT_PENDING": 0,
+    "PICKUP_PENDING": 0,
+    "RELEASED": 27,
+    "RESTOCKED": 4,
+    "RESULT_PENDING": 2,
+    "SHIPPING_PENDING": 0,
+    "UNKNOWN": 42
+  },
+  "by_verification": {
+    "CANONICAL_PARTIAL": 65,
+    "CANONICAL_VERIFIED": 36,
+    "DISCOVERY_UNVERIFIED": 10
+  },
+  "counts": {
+    "accepting_now": 8,
+    "acquisition_cost_verified": 0,
+    "attention": 6,
+    "buyable_now": 7,
+    "closing_soon": 1,
+    "closing_soon_24h": 0,
+    "closing_soon_3d": 1,
+    "closing_soon_7d": 0,
+    "new_items": 111,
+    "open_lottery": 1,
+    "open_now": 7,
+    "open_preorder": 2,
+    "restocked": 4,
+    "total": 111,
+    "unknown_status": 42,
+    "unverified": 10,
+    "verified": 36,
+    "with_signal": 75
+  },
+  "generated_at": "2026-09-21T12:35:05+09:00",
+  "schema_version": "1.1.0"
+}

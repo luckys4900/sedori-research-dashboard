@@ -1,0 +1,83 @@
+name: deploy-dashboard
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate published JSON
+        run: |
+          python3 -m json.tool data/products.json > /dev/null
+          python3 -m json.tool data/stats.json > /dev/null
+          python3 -m json.tool data/metadata.json > /dev/null
+      - name: Required files present
+        run: |
+          for f in index.html product.html assets/app.js assets/style.css; do
+            test -s "$f" || { echo "missing or empty: $f"; exit 1; }
+          done
+      - name: Secret scan
+        # The patterns are generated from publish_dashboard.py's own LEAK_PATTERNS and embedded
+        # below (base64 of a JSON array), so CI and the pre-publish gate can never drift apart.
+        # Python's `re` is used rather than `grep -E` on purpose: ERE has no lookbehind, and the
+        # ASCII word boundaries this scan depends on cannot be expressed without it (a regex
+        # word-boundary escape does not break against kana/kanji). A grep pattern for a Windows drive letter also matched the
+        # `s:/` inside every `https://`, which made the previous version fail on a clean artifact.
+        run: |
+          python3 - <<'SCAN'
+          import base64, json, pathlib, re, sys
+          PATTERNS_B64 = "W1siV0lORE9XU19QQVRIIiwgIig/PCFbQS1aYS16XSlbQS1aYS16XTooPzpcXFxcXFxcXHxcXFxcfC8pIl0sIFsiUE9TSVhfVVNFUl9QQVRIIiwgIi8oPzpjfG1udC9jKS9Vc2Vycy8iXSwgWyJVTkNfUEFUSCIsICJcXFxcXFxcXFtBLVphLXowLTlfLi1dKyg/OlxcXFxcXFxcfFxcXFx8LykiXSwgWyJIT01FX1BBVEgiLCAiKD88IVtcXHcvXSl+L1tcXHcuXSJdLCBbIkZJTEVfVVJMIiwgImZpbGU6Ly9bQS1aYS16MC05L1xcXFwuX346PyNAISQmJygpKissOz0lLV0iXSwgWyJMT0NBTEhPU1QiLCAiKD86Ly98QCkoPzpsb2NhbGhvc3R8MTI3XFwuMFxcLjBcXC4xfDBcXC4wXFwuMFxcLjApfCg/OmxvY2FsaG9zdHwxMjdcXC4wXFwuMFxcLjEpOlxcZCsiXSwgWyJHSVRIVUJfVE9LRU4iLCAiXFxiZ2hbcG91c3JdX1tBLVphLXowLTldezE2LH0iXSwgWyJHSVRIVUJfUEFUIiwgIlxcYmdpdGh1Yl9wYXRfW0EtWmEtejAtOV9dezIwLH0iXSwgWyJPUEVOQUlfS0VZIiwgIlxcYnNrLSg/OnByb2p8c3ZjYWNjdHxhZG1pbnxsaXZlfHRlc3R8Tm9uZSk/LT9bQS1aYS16MC05X1xcLV17MjAsfSJdLCBbIlNMQUNLX1RPS0VOIiwgIlxcYnhveFtiYXByc10tW0EtWmEtejAtOS1dezEwLH0iXSwgWyJHSVRMQUJfVE9LRU4iLCAiXFxiZ2xwYXQtW0EtWmEtejAtOV9cXC1dezIwLH0iXSwgWyJHT09HTEVfS0VZIiwgIlxcYkFJemFbQS1aYS16MC05X1xcLV17MzAsfSJdLCBbIkFXU19LRVkiLCAiXFxiKD86QUtJQXxBU0lBKVswLTlBLVpdezE2fVxcYiJdLCBbIkpXVCIsICJcXGJleUpbQS1aYS16MC05X1xcLV17OCx9XFwuW0EtWmEtejAtOV9cXC1dezgsfVxcLltBLVphLXowLTlfXFwtXSsiXSwgWyJQUklWQVRFX0tFWV9QRU0iLCAiLS0tLS1CRUdJTiAoPzpbQS1aIF0rICk/UFJJVkFURSBLRVktLS0tLSJdLCBbIkJFQVJFUiIsICJCZWFyZXJcXHMrW0EtWmEtejAtOS5fXFwtXXsxMCx9Il0sIFsiQVBJX0tFWSIsICIoP2kpW1xcXCInXT8oPzphcGlbX1xcLSBdP2tleXxhcGlrZXl8c2VjcmV0fHBhc3N3ZHxwYXNzd29yZHxwcml2YXRlW19cXC0gXT9rZXl8YWNjZXNzW19cXC0gXT90b2tlbnxyZWZyZXNoW19cXC0gXT90b2tlbnxzZXNzaW9uW19cXC0gXT90b2tlbnxjbGllbnRbX1xcLSBdP3NlY3JldHxhdXRoKD86b3JpemF0aW9uKT98Y29va2llKVtcXFwiJ10/XFxzKls6PV1cXHMqKD86XFxcXD9bXFxcIiddKT9bQS1aYS16MC05Ll9cXC1dezgsfSJdLCBbIlNFQ1JFVF9KU09OX01FTUJFUiIsICIoP2kpXFxcIlthLXowLTlfXFwtXSooPzphcGlfP2tleXxzZWNyZXR8dG9rZW58cGFzc3dvcmR8cGFzc3dkfGNvb2tpZXxjcmVkZW50aWFsKVxcXCJcXHMqOiJdLCBbIkNPT0tJRV9IRUFERVIiLCAiKD9pKVxcYnNldC1jb29raWVcXHMqOnxcXGJjb29raWVcXHMqOlxccypbQS1aYS16MC05X1xcLV0rPSJdLCBbIkxPTkdfSEVYIiwgIlxcYlswLTlhLWZdezMyLH1cXGIiXSwgWyJQUklWQVRFX1JFUE8iLCAiZ2l0aHViXFwuY29tL2x1Y2t5czQ5MDAiXSwgWyJCUklER0UiLCAiKD9pKXNlZG9yaS1yZXNlYXJjaC1icmlkZ2UiXSwgWyJGT1JNQUxfREVDSVNJT04iLCAiKD88IVtBLVphLXowLTlfXSlmb3JtYWxfZGVjaXNpb24oPyFbQS1aYS16MC05X10pIl0sIFsiRk9STUFMX1ZFUkRJQ1QiLCAiKD88IVtBLVphLXowLTlfXSlJTlNVRkZJQ0lFTlRfREFUQSg/IVtBLVphLXowLTlfXSkiXSwgWyJWRVJESUNUX1BBSVIiLCAiKD86R098V0FUQ0h8UEFTUylcXHMqWy/vvI9dXFxzKig/OkdPfFdBVENIfFBBU1MpIl0sIFsiVkVSRElDVF9KQSIsICIoPzpHT3xXQVRDSHxQQVNTKVxccyooPzrliKTlrpp844Go5Yik5a6afOipleS+oSkiXSwgWyJWRVJESUNUX0pBX1BSRUZJWCIsICIoPzrmnIDntYIpPyg/OuWIpOWumnzliKTmlq1857WQ6KuWKVxccypbOu+8muOBr+OBjF0/XFxzKig/OkdPfFdBVENIfFBBU1MpKD8hW0EtWmEtejAtOV9dKSJdLCBbIlZFUkRJQ1RfSkFfU1VGRklYIiwgIig/OkdPfFdBVENIfFBBU1MpXFxzKig/OuOBqHzjga4pP1xccyooPzrliKTmlq1857WQ6KuWKSJdLCBbIkhBTkRPRkYiLCAiKD88IVtBLVphLXowLTlfXSkoPzpoYW5kb2ZmX2lkfGhhbmRvZmZ8c291cmNlX3BheWxvYWRfanNvbnx3b3JrX2V2YWx1YXRpb258Y3VycmVudF9hbmFseXNpc19zdGF0ZSkoPyFbQS1aYS16MC05X10pIl0sIFsiSU5URVJOQUxfSUQiLCAiKD88IVtBLVphLXowLTlfXSkoPzpjYW5kaWRhdGVfaWR8Y29tcGFyYWJsZV9pZHxkaXNjb3Zlcnlfc2t1X2lkfHN1cHBseV9ldmVudF9pZCkoPyFbQS1aYS16MC05X10pIl0sIFsiQ09XT1JLIiwgIig/PCFbQS1aYS16MC05X10pQ293b3JrKD8hW0EtWmEtejAtOV9dKSJdLCBbIkNBTk9OSUNBTF9XT1JEIiwgIig/PCFbQS1aYS16MC05X10pY2Fub25pY2FsKD8hXyg/OlZFUklGSUVEfFBBUlRJQUwpKSg/IVtBLVphLXowLTldKSJdLCBbIkZPUk1BTF9XT1JEIiwgIig/PCFbQS1aYS16MC05X10pRm9ybWFsKD8hX1JFQURZKSg/IVtBLVphLXowLTldKSJdLCBbIklOVEVSTkFMX01PRFVMRSIsICIoPzwhW0EtWmEtejAtOV9dKSg/OmFuYWx5c2lzfHN0YWdpbmd8ZXhjaGFuZ2V8cXVhcmFudGluZXxpbmNvbWluZ3xyZXN1bHRzKVsuL11bQS1aYS16MC05Xy4vXSsiXSwgWyJJTlRFUk5BTF9FTkdJTkUiLCAiKD88IVtBLVphLXowLTlfXSkoPzpsaXZlX2l0ZW1fYW5hbHlzaXN8YXBwbGljYXRpb25fc3RhdHVzfG9wcG9ydHVuaXR5X2ludGVsbGlnZW5jZXxwcmVfcmVsZWFzZV9pbnRlbGxpZ2VuY2V8ZTJlX2Zyb250aWVyfHJvdXRlX21vZGVsfGV2aWRlbmNlX2V4aGF1c3Rpb24pKD8hW0EtWmEtejAtOV9dKSJdLCBbIklOVEVSTkFMX1RBQkxFIiwgIig/aSkoPzpkYXRhYmFzZS8pPyg/OmNhbmRpZGF0ZV9pZGVudGl0aWVzfGNhbmRpZGF0ZV9mYWN0c3xjYW5kaWRhdGVzfHJvdXRlX2V2aWRlbmNlfGNvc3RfcHJvdmVuYW5jZXxwcmljZV9vYnNlcnZhdGlvbnN8cHJpY2VfYWdncmVnYXRlc3xjYW5kaWRhdGVfY29tcGFyYWJsZXN8ZGlzY292ZXJ5X3NpZ25hbHN8Y29tcGFyYWJsZXMpXFwuY3N2Il0sIFsiUE9MSUNZX1BBUkFNIiwgIig/PCFbQS1aYS16MC05X10pKD86bWF4X3ZlcmlmaWNhdGlvbl9hZ2VfZGF5c3xtaW5fcHJvZml0X3NhbXBsZXxzY29yZV90aHJlc2hvbGR8Z2F0ZV90aHJlc2hvbGR8c2ltaWxhcml0eV90aHJlc2hvbGQpKD8hW0EtWmEtejAtOV9dKSJdLCBbIklOVEVSTkFMX0pBIiwgIuWIhuaekOWvvuixoeWklnzlhoXpg6jnm6Pmn7siXSwgWyJQUk9GSVRfRklHVVJFIiwgIig/OuWIqeebinznspfliKl85Yip44K244OkfOacn+W+heWApClcXHMqKD865LqI5risfOimi+i+vHzmjqjlrpopP1xccypbK++8i1xcLV0/XFxzKlvCpe+/pV0/XFxzKlswLTnvvJAt77yZLO+8jF0rXFxzKuWGhj8iXSwgWyJTQ09SRSIsICLjgrnjgrPjgqJcXHMqWzAtOe+8kC3vvJldK3xbMC0577yQLe+8mV0rXFxzKueCuVxccyooPzroqZXkvqF844K544Kz44KiKXwoP2k6XFxiKD86c2NvcmV8cmFua2luZylcXHMqWzo9XVxccypbMC05XSkiXSwgWyJERUNJU0lPTl9MT0ciLCAiKD88IVtBLVphLXowLTlfXSlELVxcZHszfSg/IVtBLVphLXowLTlfXSkiXSwgWyJFTUFJTCIsICJbXFx3ListXStAW1xcdy1dK1xcLltcXHcuXXsyLH0iXSwgWyJSRVNBTEVfU09VUkNFIiwgIig/aSlhdWN0aW9uc1xcLnlhaG9vXFwuY29cXC5qcHxjbG9zZWRzZWFyY2h8YnV5aW5nX3ByaWNlc3wva2FpdG9yaXzosrflj5bkvqHmoLx8bWVyY2FyaVxcLmNvbXx0b3Jla2EtY2h1c2VuIl0sIFsiTk9OX0hUVFBTX1VSTCIsICIoPzwhW1xcdy5dKWh0dHA6Ly8oPyFsb2NhbGhvc3QpIl1d"
+          patterns = json.loads(base64.b64decode(PATTERNS_B64).decode("utf-8"))
+          compiled = [(name, re.compile(pat)) for name, pat in patterns]
+          suffixes = (".html", ".js", ".css", ".json", ".svg", ".txt", ".yml", ".yaml")
+          findings = []
+          for path in sorted(pathlib.Path(".").rglob("*")):
+              if not path.is_file() or ".git" in path.parts:
+                  continue
+              if path.suffix.lower() not in suffixes:
+                  continue
+              for n, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+                  for name, rx in compiled:
+                      m = rx.search(line)
+                      if m:
+                          findings.append("%s:%d: %s: %r" % (path, n, name, m.group(0)[:80]))
+          for f in findings[:80]:
+              print(f)
+          print("secret scan: %d finding(s)" % len(findings))
+          sys.exit(1 if findings else 0)
+          SCAN
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Stage only the published site
+        # `path: .` would publish .github/workflows/deploy-dashboard.yml under .nojekyll,
+        # handing a reader the exact internal-vocabulary blocklist. Stage the site instead.
+        run: |
+          mkdir -p _site
+          cp index.html product.html .nojekyll _site/
+          cp -r assets data _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

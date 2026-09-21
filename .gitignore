@@ -1,0 +1,8 @@
+# この repo には公開成果物しか置かない
+*.py
+*.csv
+*.jsonl
+__pycache__/
+.env
+*.key
+*.pem

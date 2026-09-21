@@ -1,0 +1,105 @@
+{
+  "as_of": "2026-09-21",
+  "build": {
+    "builder": "build_dashboard.py",
+    "contract": "CONTRACT.md",
+    "read_only": true,
+    "status_engine": "market-action-engine/1.1.0"
+  },
+  "data_notes": [
+    {
+      "field": "is_new",
+      "first_seen_span": {
+        "earliest": "2026-09-15",
+        "latest": "2026-09-18"
+      },
+      "note": "収録開始が 2026-09-15〜18 に集中しているため、現時点ではほぼ全件が 14 日以内の新着に該当する。"
+    },
+    {
+      "field": "payment_deadline",
+      "note": "支払期限は『注文日から4日以内』のような相対表現しか確認できていないため、日付にせず不明のままにしている。"
+    },
+    {
+      "field": "pickup_period",
+      "note": "受取期間を示す一次情報が収録されていないため全件不明。0 や空欄で埋めない。"
+    },
+    {
+      "field": "acquisition_cost_jpy",
+      "note": "経路ごとの取得価格の記録が現時点で 1 件も無いため、取得原価は全件『未確認』。定価で代用していない。"
+    },
+    {
+      "field": "historical_price_evidence",
+      "note": "掲載している中央値は『参照した過去の別商品』が実際に売れた価格の集計であり、この商品の見込み額ではない。商品名を必ず併記している。"
+    },
+    {
+      "field": "release_date_display",
+      "note": "発売日の精度欄に配送時期の記述が入っている行が 1 件ある。配送時期は発売日ではないため、発売日そのものは未確認と明記した文として表示し、日付だけを単独で出していない。"
+    },
+    {
+      "field": "official_url_kind",
+      "note": "メーカー・出版社・公式ショップと確認できたホストだけ公式扱い。判別できないホストは販売ページとして控えめに表示する。"
+    }
+  ],
+  "excluded_rows": {
+    "already_published_as_a_product": 0,
+    "inactive_product_group": 1,
+    "merged_into_one_item": 1,
+    "no_usable_name": 0,
+    "product_group_parent": 1,
+    "superseded_observation": 9
+  },
+  "generated_at": "2026-09-21T12:35:05+09:00",
+  "policy": {
+    "attention": "注目候補は条件を満たしたかどうかの表示で、順位づけでも推奨でもない。",
+    "history": "過去価格は『参照した別商品』の成約実績であり、この商品の利益ではない。",
+    "no_internal_verdict": "内部の最終判定・利益額・スコアは一切公開しない。この画面は事実と期日だけを示す。",
+    "price": "定価と取得原価は別物。取得原価は経路ごとの価格記録がある場合だけ数値を出し、無い場合は『未確認』と書く。定価を取得原価として流用しない。",
+    "read_only": "このビルドは正本データの射影であり、正本テーブルを書き換えない。",
+    "route": "取得経路の情報は参考表示のみで、公開側の利益計算には一切接続していない。",
+    "unknown": "不明な値は null。0・false・空文字・推測日で埋めない。月精度の発売日を日付として出さない。",
+    "verification": "未検証の発見行は DISCOVERY_UNVERIFIED / 未検証 として区別し、確認済みとして描画しない。"
+  },
+  "reconciliation": {
+    "observation_rows_excluded": 10,
+    "observation_rows_in": 20,
+    "product_rows_excluded": 2,
+    "product_rows_in": 103,
+    "published_total": 111
+  },
+  "schema_version": "1.1.0",
+  "source_tables": [
+    {
+      "kind": "product_catalogue",
+      "rows": 103
+    },
+    {
+      "kind": "product_identity_audit",
+      "rows": 103
+    },
+    {
+      "kind": "product_fact_ledger",
+      "rows": 183
+    },
+    {
+      "kind": "discovery_feed",
+      "rows": 20
+    },
+    {
+      "kind": "comparable_catalogue",
+      "rows": 46
+    },
+    {
+      "kind": "comparable_price_history",
+      "rows": 18
+    },
+    {
+      "kind": "comparable_acquisition_routes",
+      "rows": 5
+    }
+  ],
+  "suppressed_fields": {
+    "suppressed_non_https_url": 0,
+    "suppressed_note": 3,
+    "suppressed_resale_url": 8
+  }
+}
