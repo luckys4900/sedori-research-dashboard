@@ -636,9 +636,16 @@ function initIndex() {
 
   /**
    * One product card. The same markup is used for the highlight sections and
-   * for the dense desktop list — only the parent's CSS grid template differs.
-   * The first four fields (商品名 / 状態 / 締切 / 定価) always sit at the top so
-   * they are readable without scrolling the card.
+   * for the dense desktop screener — only the parent's CSS grid template differs
+   * (the dense mode places every cell on an explicit column, so the DOM may stay
+   * in reading-priority order while the table stays in column order).
+   *
+   * The DOM order IS the information priority:
+   *   L1 商品名
+   *   L2 現在状態 / 締切 / 確認状況        <- where the eye must land first
+   *   L3 定価 / 取得原価 / 発売日 / 販売方式 / 購入先
+   *   L4 注目理由 / 確認の進み方 / 注目候補の理由 / 補足
+   *   L5 判断ボタン (outside the anchor)
    */
   function buildCard(p) {
     var li = el('li', 'card' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
@@ -646,15 +653,10 @@ function initIndex() {
     var a = el('a', 'card-main');
     a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
 
-    /* 1. 商品名 (+ the caveat that makes 「不明」 comprehensible) */
-    var name = el('div', 'c-name');
-    name.appendChild(el('span', null, isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
-    if (!isUnknown(p.status_note_ja)) {
-      name.appendChild(el('span', 'c-note', String(p.status_note_ja)));
-    }
-    a.appendChild(name);
+    /* --- L1: 商品名 --- */
+    a.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
 
-    /* 2. 現在状態 (+ flags) */
+    /* --- L2: 現在状態 (+ flags) --- */
     var st = el('div', 'c-status');
     st.appendChild(statusBadge(p));
     if (p.is_new === true && state.showNewBadge) {
@@ -668,7 +670,7 @@ function initIndex() {
     }
     a.appendChild(st);
 
-    /* 3. 締切 — an unconfirmed acceptance state never gets the urgency colour */
+    /* --- L2: 締切 — an unconfirmed acceptance state never gets the urgency colour --- */
     var dText = null;
     if (!isUnknown(p.deadline)) {
       var kind = lbl(DEADLINE_KIND_LABEL, p.deadline_kind);
@@ -687,23 +689,28 @@ function initIndex() {
     }
     a.appendChild(dCell);
 
-    /* 4. 定価 — the published list price. NOT an acquisition price. */
+    /* --- L2: 確認状況 — an OUTLINE badge, never the filled state look --- */
+    var ev = el('div', 'c-ev');
+    ev.appendChild(evidenceBadge(p));
+    a.appendChild(ev);
+
+    /* --- L3: 定価 — the published list price. NOT an acquisition price. --- */
     a.appendChild(cell('c-list-price', '定価', fmtPrice(listPriceOf(p))));
 
-    /* 5. 取得原価 — only when a route price provenance record exists. */
+    /* --- L3: 取得原価 — only when a route price provenance record exists. --- */
     a.appendChild(cell('c-acq', '取得原価', fmtPrice(acquisitionCostOf(p)), UNVERIFIED_COST_TEXT));
 
-    /* 6. 発売日 — precision honest */
+    /* --- L3: 発売日 — precision honest --- */
     a.appendChild(cell('c-release', '発売日', releaseText(p)));
 
-    /* 7. 販売方式 */
+    /* --- L3: 販売方式 --- */
     a.appendChild(cell('c-mode', '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode)));
 
-    /* 8. 購入先 */
+    /* --- L3: 購入先 (no column in the dense screener; card view + detail page) --- */
     a.appendChild(cell('c-channel', '購入先',
       (Array.isArray(p.channel) && p.channel.length) ? p.channel.join('・') : null));
 
-    /* 9. 注目理由 (opportunity signals — not a score) */
+    /* --- L4: 注目理由 (opportunity signals — not a score) --- */
     var sigBox = el('div', 'c-signals');
     var chips = signalChips(p, 3);
     if (chips) {
@@ -713,23 +720,23 @@ function initIndex() {
     }
     a.appendChild(sigBox);
 
-    /* 10. 確認状況 */
-    var ev = el('div', 'c-ev');
-    ev.appendChild(evidenceBadge(p));
-    a.appendChild(ev);
-
-    /* 11. 確認の進み方 (neutral ladder) */
+    /* --- L4: 確認の進み方 (neutral ladder) --- */
     var pe = el('div', 'c-profit');
     pe.appendChild(profitLadder(p, true));
     a.appendChild(pe);
 
-    /* 12. 注目候補の理由 — build-provided only */
+    /* --- L4: 注目候補の理由 — build-provided only --- */
     var reasons = attentionReasonsOf(p);
     if (reasons.length) {
       var attn = el('div', 'c-attn');
       attn.appendChild(el('span', 'c-attn-lbl', '注目候補の理由'));
       attn.appendChild(el('span', 'c-attn-val', reasons.join('／')));
       a.appendChild(attn);
+    }
+
+    /* --- L4: 補足 — the caveat that makes 「不明」 comprehensible --- */
+    if (!isUnknown(p.status_note_ja)) {
+      a.appendChild(el('div', 'c-note', String(p.status_note_ja)));
     }
 
     li.appendChild(a);
@@ -1141,6 +1148,36 @@ function initIndex() {
     $('active-sec-name').textContent = sec ? sec.name : '';
   }
 
+  /**
+   * 詳細な絞り込み group. Presentation only: it reports how many of the grouped
+   * controls are away from their default and opens the group when any of them is,
+   * so a filter can never be active while its control is folded out of sight.
+   * It reads `filters`; it never writes one.
+   */
+  var ADV_KEYS = ['profit', 'signal', 'deadline', 'release', 'mark'];
+  function renderAdvancedState() {
+    var box = $('tb-adv');
+    var label = $('tb-adv-state');
+    if (!box || !label) { return; }
+    var active = 0;
+    ADV_KEYS.forEach(function (k) { if (filters[k]) { active++; } });
+    if (filters.sort !== 'deadline') { active++; }
+    if (filters.onlyNew) { active++; }
+    if (filters.onlyRestock) { active++; }
+    if (filters.onlyAttention) { active++; }
+    label.textContent = active === 0 ? '未設定' : (active + '項目を設定中');
+    if (active === 0) { label.classList.remove('is-active'); }
+    else { label.classList.add('is-active'); box.open = true; }
+  }
+
+  /** The corpus size beside 全商品一覧 — the same published total the KPI shows. */
+  function renderAllCount() {
+    var node = $('all-count');
+    if (!node) { return; }
+    var total = pick(statNum('counts', 'total'), state.products.length);
+    node.textContent = '全' + total + '件';
+  }
+
   /* -------------------------------------------------------------- list render */
   function renderList() {
     var rows = sortRows(applyFilters());
@@ -1157,6 +1194,7 @@ function initIndex() {
     /* Re-index every card now in the document (sections + this list). */
     rebuildMarkRegistry();
     renderActiveSection();
+    renderAdvancedState();
     syncKpiPressed();
   }
 
@@ -1278,6 +1316,7 @@ function initIndex() {
         renderHeaderMeta(doc);
         renderKpis();
         renderKpiNote();
+        renderAllCount();
         buildSelects();
         readUrl();
         syncControlsFromFilters();
@@ -1518,7 +1557,10 @@ function initProduct() {
     var root = $('detail');
     var unverified = isUnverifiedRow(p);
     var card = el('div', 'detail-card' + (unverified ? ' is-unverified' : ''));
-    card.appendChild(el('h1', 'detail-title',
+
+    /* --- HEADER: 商品名 / 現在状態 / 確認状況 / フラグ / 補足 --- */
+    var head = el('div', 'detail-head');
+    head.appendChild(el('h1', 'detail-title',
       isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
     var badges = el('div', 'detail-badges');
     badges.appendChild(statusBadge(p));
@@ -1528,18 +1570,24 @@ function initProduct() {
     if (p.is_attention === true) {
       badges.appendChild(el('span', 'badge badge--attention', '注目候補'));
     }
-    card.appendChild(badges);
+    head.appendChild(badges);
+    if (!isUnknown(p.status_note_ja)) {
+      head.appendChild(el('p', 'note-box', p.status_note_ja));
+    }
+    card.appendChild(head);
     if (unverified) {
       card.appendChild(el('div', 'warn-box',
         '未検証の発見候補です。公開情報の一次確認が済んでいないため、確認済みの商品と同等に扱わないでください。'));
     }
-    card.appendChild(pricePair(p));
-    card.appendChild(el('p', 'price-note',
+
+    /* --- PRICE BLOCK: 定価 と 取得原価 は別の量。ひとつの独立ブロックにする。 --- */
+    var prices = el('div', 'detail-prices');
+    prices.appendChild(pricePair(p));
+    prices.appendChild(el('p', 'price-note',
       '「定価」は公式に公表された価格で、仕入れ価格ではありません。' +
       '「取得原価」は経路ごとの価格の裏付けが取れた場合だけ表示し、取れていなければ「未確認」と書きます。'));
-    if (!isUnknown(p.status_note_ja)) {
-      card.appendChild(el('p', 'note-box', p.status_note_ja));
-    }
+    card.appendChild(prices);
+
     var wrap2 = el('div', 'detail-wrap');
 
     /* --- 基本情報 --- */
@@ -1566,6 +1614,7 @@ function initProduct() {
     row(g2.dl, '購入先', (Array.isArray(p.channel) && p.channel.length) ? p.channel.join('・') : null);
     row(g2.dl, '再販状況', p.restock_status);
     row(g2.dl, '販売終了', fmtDate(p.sales_end));
+    row(g2.dl, '購入制限', p.purchase_limit);
     var urlKind = lbl(URL_KIND_LABEL, p.official_url_kind);
     var urlLabel = (urlKind && urlKind !== UNKNOWN_ENUM_TEXT) ? urlKind : '公式ページ';
     row(g2.dl, urlLabel, null, linkNode(p.official_url, urlLabel + 'を開く'));
@@ -1573,7 +1622,7 @@ function initProduct() {
     wrap2.appendChild(g2.node);
 
     /* --- 予約・抽選・応募情報 --- */
-    var g3 = group('予約・抽選・応募情報');
+    var g3 = group('予約・抽選・応募情報', true);
     var dKind = lbl(DEADLINE_KIND_LABEL, p.deadline_kind);
     var dVal = isUnknown(p.deadline) ? null :
       fmtDate(p.deadline) + (dKind && dKind !== UNKNOWN_ENUM_TEXT ? '（' + dKind + '）' : '') +
@@ -1591,13 +1640,8 @@ function initProduct() {
     row(g3.dl, '発送予定', p.shipping_period);
     wrap2.appendChild(g3.node);
 
-    /* --- 購入制限 --- */
-    var g4 = group('購入制限');
-    row(g4.dl, '購入制限', p.purchase_limit);
-    wrap2.appendChild(g4.node);
-
-    /* --- 確認状況 --- */
-    var g5 = group('確認状況');
+    /* --- 確認状況（出典を含む）。ヘッダーのバッジと同じ事実を、日付と出典まで開いたもの。 --- */
+    var g5 = group('確認状況', true);
     row(g5.dl, '確認の区分', isUnknown(p.evidence_label_ja) ? null : p.evidence_label_ja);
     row(g5.dl, '検証区分', lbl(TIER_LABEL, p.verification_tier));
     row(g5.dl, '最終確認日', fmtDate(p.last_verified_at));
@@ -1619,12 +1663,12 @@ function initProduct() {
       });
       row(g5.dl, '出典（公開一次情報）', null, ul);
     }
-    wrap2.appendChild(g5.node);
 
     /* --- 供給制約 / 過去の成約Evidence / 取得経路の状況 --- */
     wrap2.appendChild(buildSignalsBlock(p));
     wrap2.appendChild(buildProfitBlock(p));
     wrap2.appendChild(buildRouteBlock(p));
+    wrap2.appendChild(g5.node);
 
     /* --- 調査メモ --- */
     var g6 = group('調査メモ', true);
