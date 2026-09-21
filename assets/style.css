@@ -1341,3 +1341,349 @@ html { scroll-behavior: smooth; }
   line-height: 1.5;
   max-width: 62ch;
 }
+
+
+/* === Signal-first homage layer v1 === */
+
+/* Inspired by the information flow of high-velocity lottery/preorder trackers:
+   hero -> today's signals -> deadline feed -> filters -> action-oriented cards.
+   No branding, layout geometry or decorative identity is copied. */
+
+.signal-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 16px 0 16px;
+}
+
+.signal-hero-copy,
+.my-check {
+  min-width: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--bg-elev);
+}
+
+.signal-hero-copy {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 18px 18px;
+  border-left: 5px solid var(--focus);
+}
+
+.hero-kicker,
+.summary-kicker,
+.my-check-kicker {
+  margin: 0 0 5px;
+  color: var(--focus);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+
+.signal-hero-copy h2 {
+  margin: 0;
+  max-width: 18em;
+  font-size: clamp(1.55rem, 4.5vw, 2.35rem);
+  line-height: 1.18;
+  letter-spacing: -.035em;
+}
+
+.hero-text {
+  max-width: 46rem;
+  margin: 11px 0 0;
+  color: var(--fg-muted);
+  font-size: .86rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.hero-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  background: var(--bg-elev);
+  color: var(--fg);
+  font-size: .8rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.hero-action:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+}
+
+.hero-action--primary {
+  border-color: var(--focus);
+  background: var(--focus);
+  color: #fff;
+}
+
+.hero-action--primary:hover {
+  color: #fff;
+  filter: brightness(.96);
+}
+
+.hero-trust {
+  margin: 11px 0 0;
+  color: var(--fg-faint);
+  font-size: .69rem;
+  line-height: 1.55;
+}
+
+.my-check {
+  padding: 16px;
+  background: var(--bg-sunken);
+}
+
+.my-check-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.my-check-head h2 {
+  font-size: .95rem;
+}
+
+.my-check-kicker {
+  margin: 0;
+}
+
+.my-check-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.my-check-item {
+  min-width: 0;
+  min-height: 72px;
+  padding: 9px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  background: var(--bg-elev);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+  text-align: center;
+}
+
+.my-check-item:hover:not(:disabled) {
+  border-color: var(--focus);
+  box-shadow: inset 0 0 0 1px var(--focus);
+}
+
+.my-check-item:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.my-check-item strong,
+.my-check-item span {
+  display: block;
+}
+
+.my-check-item strong {
+  font-size: 1.45rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.my-check-item span {
+  margin-top: 5px;
+  color: var(--fg-muted);
+  font-size: .68rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.my-check-item--candidate strong { color: var(--open); }
+.my-check-item--watch strong { color: var(--pending); }
+.my-check-item--skip strong { color: var(--closed); }
+
+.my-check-note {
+  margin: 9px 1px 0;
+  color: var(--fg-faint);
+  font-size: .67rem;
+  line-height: 1.5;
+}
+
+.signal-summary-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 6px 0 8px;
+}
+
+.signal-summary-head h2 {
+  margin: 0;
+  font-size: .96rem;
+}
+
+.signal-summary-head p:last-child {
+  margin: 0;
+  color: var(--fg-faint);
+  font-size: .68rem;
+}
+
+.summary-kicker {
+  margin-bottom: 1px;
+}
+
+/* Cards become action-oriented without turning the whole site into an affiliate LP.
+   The main card still opens the evidence-rich detail page; these are explicit exits. */
+.card-actions {
+  display: flex;
+  gap: 7px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+
+.card-action {
+  display: inline-flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 40px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 7px;
+  color: var(--fg);
+  background: var(--bg-elev);
+  font-size: .72rem;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.card-action:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+}
+
+.card-action--primary {
+  border-color: var(--focus);
+  background: var(--focus);
+  color: #fff;
+}
+
+.card-action--primary:hover {
+  color: #fff;
+  filter: brightness(.96);
+}
+
+.card.is-unverified .card-actions {
+  border-top-style: dashed;
+  border-top-color: var(--unverified-line);
+  background: transparent;
+}
+
+/* Make the highlight feed feel like "what should I check now?" rather than a report chapter. */
+.sec--closing .sec-title,
+.sec--open .sec-title,
+.sec--restock .sec-title,
+.sec--attention .sec-title {
+  letter-spacing: -.015em;
+}
+
+.sec--closing .sec-count,
+.sec--open .sec-count,
+.sec--restock .sec-count,
+.sec--attention .sec-count {
+  font-weight: 800;
+}
+
+/* CTA rows are valuable in card mode but would destroy the 9-column screener. */
+@media (min-width: 900px) {
+  .signal-hero {
+    grid-template-columns: minmax(0, 1.8fr) minmax(17rem, .8fr);
+    align-items: stretch;
+  }
+
+  .signal-hero-copy {
+    padding: 26px 26px 23px;
+  }
+
+  .my-check {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid.grid--dense .card-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 619px) {
+  .signal-summary-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-break {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .signal-hero-copy {
+    padding: 17px 14px 15px;
+  }
+
+  .my-check {
+    padding: 13px;
+  }
+
+  .my-check-grid {
+    gap: 5px;
+  }
+
+  .my-check-item {
+    min-height: 68px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .my-check-item span {
+    font-size: .64rem;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .card-action {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-action,
+  .my-check-item,
+  .card-action {
+    transition: none !important;
+  }
+}
