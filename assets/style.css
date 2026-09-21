@@ -210,50 +210,54 @@ a { color: var(--focus); }
 .site-sub .sep { padding: 0 .35em; color: var(--fg-faint); }
 
 /* ---- KPI cards ----
-   Emphasis order 締切間近 > 受付中 > 新着 > 総数, expressed three ways at once:
-   number size, accent-rule thickness and the leading glyph. */
+   Emphasis order 締切間近 > 受付中 > 予約・抽選 > 新着, expressed three ways at once:
+   number size, the thickness of the top rule and a leading glyph. The count
+   always dominates its label. Each card is a navigation target, not a statistic. */
 .kpi-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  margin: 12px 0 0;
+  margin: 8px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.kpi {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: stretch;
+.kpi-row > li { display: flex; min-width: 0; }
+
+.kpi-row .kpi,
+.kpi-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
   min-width: 0;
-  min-height: 74px;
-  padding: 0;
-  overflow: hidden;
+  min-height: 88px;
+  padding: 8px 11px 9px;
   background: var(--bg-elev);
   border: 1px solid var(--border-strong);
+  border-top: 4px solid var(--border-strong);
   border-radius: var(--radius);
   color: inherit;
   font: inherit;
   text-align: left;
-  cursor: pointer;
 }
 
-.kpi:hover { background: var(--bg-sunken); }
+.kpi { cursor: pointer; }
+.kpi-row .kpi:hover { background: var(--bg-sunken); border-color: var(--focus); }
+
+/* Pointer affordance without colour: an arrow that says "this takes you there". */
+.kpi-row .kpi::after {
+  content: "一覧へ →";
+  margin-top: auto;
+  padding-top: 3px;
+  font-size: var(--fs-aux);
+  font-weight: 700;
+  color: var(--fg-muted);
+}
 
 .kpi[aria-pressed="true"] {
   border-color: var(--focus);
   box-shadow: inset 0 0 0 2px var(--focus);
-}
-
-.kpi-accent { display: block; width: 5px; background: var(--border-strong); }
-
-.kpi-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  min-width: 0;
-  padding: 8px 10px 9px;
 }
 
 .kpi-num {
@@ -266,7 +270,7 @@ a { color: var(--focus); }
 
 .kpi-label {
   font-size: var(--fs-label);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.35;
   margin-top: 2px;
 }
@@ -275,14 +279,14 @@ a { color: var(--focus); }
   display: flex;
   align-items: baseline;
   gap: .35em;
-  margin-top: 2px;
+  margin-top: 1px;
   font-size: var(--fs-aux);
   color: var(--fg-muted);
 }
 
 .kpi-glyph {
   flex: 0 0 auto;
-  min-width: 1em;
+  min-width: 1.1em;
   text-align: center;
   font-weight: 800;
   border-radius: 3px;
@@ -290,27 +294,66 @@ a { color: var(--focus); }
   color: var(--fg-muted);
 }
 
-/* 1st — 締切間近 */
-.kpi--closing .kpi-accent { width: 10px; background: var(--urgent); }
+/* 1st — 締切間近 (URGENT) */
+.kpi--closing { border-top-width: 7px !important; border-top-color: var(--urgent) !important; }
 .kpi--closing .kpi-num { font-size: calc(var(--fs-kpi) * 1.15); color: var(--urgent); }
 .kpi--closing .kpi-glyph { background: var(--urgent-bg); color: var(--urgent); }
 
-/* 2nd — 受付中 */
-.kpi--open .kpi-accent { width: 8px; background: var(--open); }
+/* 2nd — 受付中 (OPEN) */
+.kpi--open { border-top-width: 5px !important; border-top-color: var(--open) !important; }
 .kpi--open .kpi-num { color: var(--open); }
 .kpi--open .kpi-glyph { background: var(--open-bg); color: var(--open); }
 
-/* 3rd — 新着 */
-.kpi--new .kpi-accent { width: 6px; background: var(--flag); }
+/* 3rd — 予約・抽選 (OPEN, split into two published counters — never summed) */
+.kpi--reserve { border-top-color: var(--open); padding: 6px 8px 9px; }
+.kpi--reserve .kpi-glyph { background: var(--open-bg); color: var(--open); }
+.kpi-split { display: flex; gap: 6px; width: 100%; }
+
+.kpi-split-item {
+  display: flex;
+  align-items: baseline;
+  gap: .3em;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 2px 5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--open);
+  text-decoration: none;
+}
+
+.kpi-split-item:hover { border-color: var(--focus); background: var(--bg-sunken); }
+.kpi-split-item .kpi-num { font-size: calc(var(--fs-kpi) * .9); }
+.kpi-split-lbl { font-size: var(--fs-label); font-weight: 800; color: var(--fg); }
+
+/* 4th — 新着 (flag) */
+.kpi--new { border-top-width: 3px !important; border-top-color: var(--flag) !important; }
 .kpi--new .kpi-num { font-size: calc(var(--fs-kpi) * .86); color: var(--flag); }
 .kpi--new .kpi-glyph { background: var(--flag-bg); color: var(--flag); }
 
-/* 4th — 総数 (context, not a call to action) */
-.kpi--total .kpi-accent { width: 4px; }
-.kpi--total .kpi-num { font-size: calc(var(--fs-kpi) * .78); color: var(--fg); }
+/* 総数 — context, not a call to action: a quiet link-button in the TODAY heading. */
+.kpi--total {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .2em;
+  min-height: var(--tap-min);
+  padding: 4px 11px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--fs-label);
+  font-weight: 700;
+}
+
+.kpi--total:hover { border-color: var(--focus); color: var(--focus); }
+.kpi--total .kpi-num { font-size: var(--fs-body); font-weight: 800; }
+.kpi-total-lbl { color: var(--fg-muted); font-weight: 700; }
 
 .kpi-note {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   font-size: var(--fs-aux);
   line-height: 1.5;
   color: var(--fg-faint);
@@ -372,7 +415,13 @@ a { color: var(--focus); }
 .sec[hidden] { display: none; }
 
 .sec--closing   { border-left-color: var(--urgent); }
-.sec--warn      { border-left-color: var(--unverified-line); }
+.sec--warn {
+  background: transparent;
+  border: 1px dashed var(--unverified-line);
+  border-left: 4px dashed var(--unverified-line);
+  box-shadow: none;
+}
+.sec--warn .sec-title { font-size: var(--fs-body); }
 .sec--open      { border-left-color: var(--open); }
 .sec--restock   { border-left-color: var(--restock); }
 .sec--new       { border-left-color: var(--flag); }
@@ -391,14 +440,39 @@ a { color: var(--focus); }
 
 .sec-title { font-size: var(--fs-head); flex: 1 1 auto; min-width: 0; }
 
-/* Colour-emoji fallback so the section icons never drop to a CJK glyph box.
-   These are OS fonts, not a web font — nothing is downloaded. The emoji is
-   decorative: the title text always carries the meaning. */
-.sec-emoji {
-  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
-    "Segoe UI Symbol", sans-serif;
-  margin-right: .35em;
-  font-weight: 400;
+/* Section glyph: a non-colour cue in the section's semantic colour. */
+.sec-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45em;
+  height: 1.45em;
+  margin-right: .45em;
+  border-radius: 4px;
+  background: var(--bg-sunken);
+  color: var(--fg-muted);
+  font-size: .85em;
+  font-weight: 800;
+  vertical-align: .08em;
+}
+
+.sec--closing .sec-mark   { background: var(--urgent-bg);  color: var(--urgent); }
+.sec--open .sec-mark      { background: var(--open-bg);    color: var(--open); }
+.sec--restock .sec-mark   { background: var(--restock-bg); color: var(--restock); }
+.sec--attention .sec-mark,
+.sec--new .sec-mark       { background: var(--flag-bg);    color: var(--flag); }
+
+/* NEEDS CHECK tag — outline + dashed, the evidence language, never a filled state. */
+.sec-tag {
+  display: inline-block;
+  margin-right: .5em;
+  padding: 0 7px;
+  border: 1px dashed var(--unverified-line);
+  border-radius: var(--radius-sm);
+  color: var(--unverified);
+  font-size: var(--fs-aux);
+  font-weight: 800;
+  vertical-align: .12em;
 }
 
 .sec-count {
@@ -1185,7 +1259,6 @@ select { cursor: pointer; }
 @media (min-width: 700px) {
   body { font-size: 16px; }
   :root { --fs-kpi: 2.2rem; }
-  .site-title { font-size: 1.3rem; }
   .sec { padding: 14px 16px 16px; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); }
   .tb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1207,7 +1280,9 @@ select { cursor: pointer; }
      Same markup as the cards above; only the grid template changes, and every
      cell is placed on an explicit column so the DOM can stay in reading-priority
      order while the table stays in column order.
-     Columns: 商品名 / 状態 / 締切 / 定価 / 取得原価 / 発売日 / 販売方式 / 確認状況 / 注目理由.
+     Columns (7): 商品名 / 状態 / 締切 / 定価 / 発売日 / 確認状況 / 注目理由.
+     A clear 7 beats an unreadable 9: 販売方式 sits on row 2 under 状態 and 取得原価
+     on row 2 under 定価, so both are still in every row without their own column.
      購入先 is dropped here rather than adding a scrollbar — it is on the card
      view below 1100px and on every detail page. */
   .grid.grid--dense { grid-template-columns: minmax(0, 1fr); gap: 3px; }
@@ -1229,41 +1304,40 @@ select { cursor: pointer; }
     display: grid;
     grid-template-columns:
       minmax(0, 2fr)     /* 商品名 */
-      6.2rem             /* 状態 */
-      8.6rem             /* 締切 */
-      5rem               /* 定価 */
-      5.2rem             /* 取得原価 */
-      6.6rem             /* 発売日 */
-      4.6rem             /* 販売方式 */
-      5.4rem             /* 確認状況 */
-      minmax(0, 1.7fr);  /* 注目理由 */
+      6.8rem             /* 状態 / 販売方式 */
+      8.4rem             /* 締切 */
+      6.6rem             /* 定価 / 取得原価 */
+      6.8rem             /* 発売日 */
+      5.8rem             /* 確認状況 */
+      minmax(0, 1.6fr);  /* 注目理由 */
     align-items: start;
-    gap: 0 8px;
+    gap: 0 10px;
     min-width: 0;
   }
 
-  .grid.grid--dense .card-main { padding: 7px 10px; gap: 0 8px; }
+  .grid.grid--dense .card-main { padding: 7px 10px; gap: 0 10px; }
 
-  /* Every cell is pinned to row 1. Without this, sparse auto-placement refuses to
-     move the cursor backwards: .c-ev (column 8) comes before .c-list-price
-     (column 4) in the DOM, so the price / 発売日 / 販売方式 cells were pushed into
-     a second row and stopped lining up with their own column header. */
+  /* Every cell is pinned to an explicit row. Without this, sparse auto-placement
+     refuses to move the cursor backwards and cells drift out of their column. */
   .grid.grid--dense .card-main > * { grid-row: 1; }
 
   .grid.grid--dense .c-name { grid-column: 1; font-size: var(--fs-label); line-height: 1.4; }
   .grid.grid--dense .c-status { grid-column: 2; margin: 0; gap: 2px; }
   .grid.grid--dense .c-deadline { grid-column: 3; }
   .grid.grid--dense .c-list-price { grid-column: 4; }
-  .grid.grid--dense .c-acq { grid-column: 5; }
-  .grid.grid--dense .c-release { grid-column: 6; }
-  .grid.grid--dense .c-mode { grid-column: 7; }
-  .grid.grid--dense .c-ev { grid-column: 8; margin: 0; padding: 0; border-bottom: 0; }
-  .grid.grid--dense .c-signals { grid-column: 9; margin: 0; }
-  /* 補足 belongs to the name, so it sits under it rather than taking a column. */
+  .grid.grid--dense .c-release { grid-column: 5; }
+  .grid.grid--dense .c-ev { grid-column: 6; margin: 0; padding: 0; border-bottom: 0; }
+  .grid.grid--dense .c-signals { grid-column: 7; margin: 0; }
+  /* Row 2: the secondary facts, each under the column it belongs to. */
   .grid.grid--dense .c-note { grid-column: 1; grid-row: 2; margin-top: 1px; line-height: 1.4; }
+  .grid.grid--dense .c-mode { grid-column: 2; grid-row: 2; }
+  .grid.grid--dense .c-acq { grid-column: 4; grid-row: 2; }
 
   .grid.grid--dense .cell { display: block; font-size: var(--fs-aux); line-height: 1.45; }
   .grid.grid--dense .lbl { display: none; }
+  .grid.grid--dense .c-acq .lbl { display: inline; padding: 0 .3em 0 0; font-size: inherit; }
+  .grid.grid--dense .c-acq,
+  .grid.grid--dense .c-mode { color: var(--fg-muted); margin-top: 1px; }
   .grid.grid--dense .c-deadline .val { font-size: var(--fs-aux); }
   .grid.grid--dense .deadline-rel { display: block; padding: 0; }
   /* チップは切り詰めずに折り返す。読めない省略記号は情報ではない。 */
@@ -1316,7 +1390,7 @@ select { cursor: pointer; }
 @media (forced-colors: active) {
   .card, .badge, .kpi, .btn, .chip, .quicknav-list a, .list-head { border: 1px solid CanvasText; }
   .card.is-unverified { border: 2px dashed CanvasText; }
-  .kpi-accent { border-right: 4px solid CanvasText; }
+  .kpi-box, .kpi-split-item, .my-check-item, .card-action, .hero-action { border: 1px solid CanvasText; }
   .ladder-step { border: 1px solid CanvasText; }
   .ladder-step.is-reached { background: CanvasText; }
 }
@@ -1331,182 +1405,159 @@ select { cursor: pointer; }
    so a reader who asked for less motion does not get this. */
 html { scroll-behavior: smooth; }
 
-/* One-line description under the title. Ported from the hand edit made directly on the
-   published repo (2026-09-21) so the intent survives the next publish — a public-repo edit
-   is overwritten, the source of truth is dashboard/. */
-.site-lead {
-  margin: 2px 0 0;
-  font-size: var(--fs-body);
-  color: var(--fg-muted);
-  line-height: 1.5;
-  max-width: 62ch;
-}
+/* === Signal-first layer v2 ===
+   Information flow: hero -> TODAY -> MY CHECK -> deadline-first feed -> screener.
+   Essence only (urgency visible at a glance, deadline before everything, one obvious
+   next action per card, personal tracking always visible). No branding, colour,
+   geometry or copy is taken from any reference site. */
 
+.site-header { padding: 8px 0 12px; margin-bottom: 14px; }
+.site-title { margin: 0; font-size: var(--fs-label); font-weight: 800; color: var(--fg-muted); }
 
-/* === Signal-first homage layer v1 === */
-
-/* Inspired by the information flow of high-velocity lottery/preorder trackers:
-   hero -> today's signals -> deadline feed -> filters -> action-oriented cards.
-   No branding, layout geometry or decorative identity is copied. */
-
-.signal-hero {
+/* ---- Top block: one grid, reading order per width ---- */
+.top {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 12px;
-  margin: 16px 0 16px;
+  grid-template-areas: "hero" "today" "mycheck";
+  gap: 10px;
+  margin: 8px 0 0;
 }
 
-.signal-hero-copy,
+.signal-hero { grid-area: hero; }
+.today { grid-area: today; min-width: 0; }
+.my-check { grid-area: mycheck; }
+
+.signal-hero,
 .my-check {
   min-width: 0;
   border: 1px solid var(--border-strong);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--bg-elev);
 }
 
-.signal-hero-copy {
-  position: relative;
-  overflow: hidden;
-  padding: 20px 18px 18px;
-  border-left: 5px solid var(--focus);
-}
+.signal-hero { padding: 13px 14px 12px; }
 
 .hero-kicker,
 .summary-kicker,
 .my-check-kicker {
-  margin: 0 0 5px;
-  color: var(--focus);
+  margin: 0 0 3px;
+  color: var(--fg-muted);
   font-size: .68rem;
   font-weight: 800;
   letter-spacing: .11em;
 }
 
-.signal-hero-copy h2 {
+.signal-hero h1 {
   margin: 0;
-  max-width: 18em;
-  font-size: clamp(1.55rem, 4.5vw, 2.35rem);
-  line-height: 1.18;
-  letter-spacing: -.035em;
+  font-size: clamp(1.28rem, 4.6vw, 2.05rem);
+  line-height: 1.22;
+  letter-spacing: -.03em;
 }
 
 .hero-text {
-  max-width: 46rem;
-  margin: 11px 0 0;
+  margin: 6px 0 0;
   color: var(--fg-muted);
-  font-size: .86rem;
-  line-height: 1.7;
+  font-size: var(--fs-label);
+  line-height: 1.55;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 11px;
 }
 
 .hero-action {
   display: inline-flex;
+  flex: 1 1 auto;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: var(--tap);
   padding: 8px 14px;
   border: 1px solid var(--border-strong);
   border-radius: 9px;
   background: var(--bg-elev);
   color: var(--fg);
-  font-size: .8rem;
+  font-size: var(--fs-label);
   font-weight: 800;
   text-decoration: none;
 }
 
-.hero-action:hover {
-  border-color: var(--focus);
-  color: var(--focus);
-}
+.hero-action:hover { border-color: var(--focus); color: var(--focus); }
 
 .hero-action--primary {
   border-color: var(--focus);
   background: var(--focus);
-  color: #fff;
+  color: var(--bg-elev);
 }
 
-.hero-action--primary:hover {
-  color: #fff;
-  filter: brightness(.96);
-}
+.hero-action--primary:hover { color: var(--bg-elev); filter: brightness(.95); }
 
 .hero-trust {
-  margin: 11px 0 0;
+  margin: 8px 0 0;
   color: var(--fg-faint);
-  font-size: .69rem;
-  line-height: 1.55;
+  font-size: var(--fs-aux);
+  line-height: 1.5;
 }
 
-.my-check {
-  padding: 16px;
-  background: var(--bg-sunken);
+/* ---- TODAY ---- */
+.today-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 10px;
 }
+
+.today-head .summary-kicker { margin: 0; flex: 0 0 auto; }
+.today-head h2 { margin: 0; font-size: var(--fs-head); flex: 1 1 auto; min-width: 0; }
+
+/* ---- MY CHECK — the reader's own marks. The count dominates its label. ---- */
+.my-check { padding: 11px 12px; background: var(--bg-sunken); }
 
 .my-check-head {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 
-.my-check-head h2 {
-  font-size: .95rem;
-}
-
-.my-check-kicker {
-  margin: 0;
-}
+.my-check-head h2 { font-size: var(--fs-head); }
 
 .my-check-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
+  gap: 6px;
 }
 
 .my-check-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .35em;
   min-width: 0;
-  min-height: 72px;
-  padding: 9px 6px;
+  min-height: var(--tap);
+  padding: 5px 4px;
   border: 1px solid var(--border-strong);
   border-radius: 9px;
   background: var(--bg-elev);
   color: var(--fg);
   font: inherit;
   cursor: pointer;
-  text-align: center;
 }
 
-.my-check-item:hover:not(:disabled) {
-  border-color: var(--focus);
-  box-shadow: inset 0 0 0 1px var(--focus);
-}
-
-.my-check-item:disabled {
-  cursor: not-allowed;
-  opacity: .55;
-}
-
-.my-check-item strong,
-.my-check-item span {
-  display: block;
-}
+.my-check-item:hover:not(:disabled) { border-color: var(--focus); box-shadow: inset 0 0 0 1px var(--focus); }
+.my-check-item:disabled { cursor: not-allowed; opacity: .55; }
 
 .my-check-item strong {
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
 }
 
 .my-check-item span {
-  margin-top: 5px;
   color: var(--fg-muted);
-  font-size: .68rem;
+  font-size: var(--fs-label);
   font-weight: 800;
   white-space: nowrap;
 }
@@ -1516,37 +1567,119 @@ html { scroll-behavior: smooth; }
 .my-check-item--skip strong { color: var(--closed); }
 
 .my-check-note {
-  margin: 9px 1px 0;
+  margin: 7px 1px 0;
   color: var(--fg-faint);
-  font-size: .67rem;
+  font-size: var(--fs-aux);
   line-height: 1.5;
 }
 
-.signal-summary-head {
+.quicknav-list .quicknav-warn { background: transparent; border-style: dashed; border-color: var(--unverified-line); }
+
+/* ---- Feed grid: sized by how many cards it holds ---- */
+.grid[data-count="1"] { grid-template-columns: minmax(0, 38rem); }
+
+/* ---- Feed card ----
+   status -> 商品名 -> 締切 (date | 残りN日) -> 定価 + 発売日 -> 販売方式 + 確認状況
+   -> key signals -> CTAs -> 判断マーク. */
+.card--feed .card-main {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 6px 0 8px;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 12px 11px;
 }
 
-.signal-summary-head h2 {
+.card--feed .c-status { margin: 0; }
+.card--feed .c-name { font-size: 1.02rem; line-height: 1.4; }
+
+.f-deadline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 9px;
+  padding: 6px 10px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.f-lbl { font-size: var(--fs-aux); font-weight: 700; color: var(--fg-muted); }
+
+.f-date {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.f-date.is-unknown { font-size: var(--fs-body); color: var(--fg-faint); font-style: italic; font-weight: 700; }
+
+.f-rel {
+  display: inline-block;
+  padding: 0 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-size: var(--fs-label);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+
+.f-rel.is-passed { color: var(--fg-muted); font-weight: 700; }
+
+/* Urgency — ONLY for a non-null closing_soon_band (set in app.js). */
+.f-deadline.is-urgent { border-left-color: var(--urgent); }
+.f-deadline.is-urgent .f-date { color: var(--urgent); }
+.f-deadline.is-urgent .f-rel { background: var(--urgent-bg); border-color: var(--urgent); color: var(--urgent); }
+.f-deadline.is-urgent .f-rel::before { content: "! "; }
+
+.f-deadline.is-soon { border-left-color: var(--closing); }
+.f-deadline.is-soon .f-date { color: var(--closing); }
+.f-deadline.is-soon .f-rel { background: var(--closing-bg); border-color: var(--closing); color: var(--closing); }
+.f-deadline.is-soon .f-rel::before { content: "! "; }
+
+/* A date whose acceptance state is NOT confirmed: muted, dashed, never urgent. */
+.f-deadline.is-unconfirmed { border-left-style: dashed; border-left-color: var(--unverified-line); }
+.f-deadline.is-unconfirmed .f-date { color: var(--fg-muted); }
+.f-deadline.is-unconfirmed .f-rel { border-style: dashed; color: var(--fg-muted); font-weight: 700; }
+
+.f-caveat {
+  flex-basis: 100%;
+  font-size: var(--fs-aux);
+  font-weight: 700;
+  color: var(--unverified);
+}
+
+.f-caveat::before { content: "? "; }
+
+.f-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 12px;
+}
+
+.card--feed .cell { flex-direction: column; gap: 0; }
+.card--feed .lbl { flex: none; padding: 0; }
+.card--feed .c-release .val,
+.card--feed .c-mode .val { font-weight: 700; }
+.card--feed .c-ev { margin: 0; padding: 0; border: 0; }
+
+.f-sub { font-size: var(--fs-aux); color: var(--fg-muted); }
+.f-sub.is-unknown { color: var(--fg-faint); font-style: italic; }
+
+.card--feed .c-signals { margin: 0; }
+
+/* The caveat that explains an 不明 state: kept, but clamped to two lines here.
+   The full text is on the detail page (補足). */
+.card--feed .c-note {
   margin: 0;
-  font-size: .96rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
-.signal-summary-head p:last-child {
-  margin: 0;
-  color: var(--fg-faint);
-  font-size: .68rem;
-}
-
-.summary-kicker {
-  margin-bottom: 1px;
-}
-
-/* Cards become action-oriented without turning the whole site into an affiliate LP.
-   The main card still opens the evidence-rich detail page; these are explicit exits. */
+/* ---- Card actions: information first, then the outbound exit ---- */
 .card-actions {
   display: flex;
   gap: 7px;
@@ -1560,35 +1693,58 @@ html { scroll-behavior: smooth; }
   flex: 1 1 0;
   align-items: center;
   justify-content: center;
+  gap: .35em;
   min-width: 0;
-  min-height: 40px;
+  min-height: var(--tap);
   padding: 6px 8px;
   border: 1px solid var(--border-strong);
   border-radius: 7px;
   color: var(--fg);
   background: var(--bg-elev);
-  font-size: .72rem;
+  font-size: var(--fs-label);
   font-weight: 800;
   line-height: 1.3;
   text-align: center;
   text-decoration: none;
 }
 
-.card-action:hover {
-  border-color: var(--focus);
-  color: var(--focus);
-}
+.card-action:hover { border-color: var(--focus); color: var(--focus); }
 
-.card-action--primary {
+/* Primary = the internal evidence page. */
+.card-action--detail {
   border-color: var(--focus);
   background: var(--focus);
-  color: #fff;
+  color: var(--bg-elev);
 }
 
-.card-action--primary:hover {
-  color: #fff;
-  filter: brightness(.96);
+.card-action--detail:hover { color: var(--bg-elev); filter: brightness(.95); }
+
+/* External exit: outline + a visible 外部 tag, so it never reads as the page's own content. */
+.card-action--ext::after {
+  content: "外部";
+  flex: 0 0 auto;
+  padding: 0 4px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  font-size: var(--fs-aux);
+  font-weight: 700;
+  color: var(--fg-muted);
 }
+
+/* Dormant monetization hook. Hidden by default; nothing is an ad today. If a
+   sponsored / affiliate link is ever added, it must add .card-action--sponsored
+   AND un-hide .cta-disclosure, so the disclosure is always visible text. */
+.cta-disclosure { display: none; }
+.cta-disclosure:not([hidden]) {
+  display: inline-block;
+  padding: 0 4px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  font-size: var(--fs-aux);
+  font-weight: 700;
+  color: var(--fg-muted);
+}
+.card-action--sponsored { border-style: dashed; }
 
 .card.is-unverified .card-actions {
   border-top-style: dashed;
@@ -1596,94 +1752,96 @@ html { scroll-behavior: smooth; }
   background: transparent;
 }
 
-/* Make the highlight feed feel like "what should I check now?" rather than a report chapter. */
-.sec--closing .sec-title,
-.sec--open .sec-title,
-.sec--restock .sec-title,
-.sec--attention .sec-title {
-  letter-spacing: -.015em;
+/* ---- Detail page TOP ---- */
+.detail-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin: 0 0 10px;
 }
 
-.sec--closing .sec-count,
-.sec--open .sec-count,
-.sec--restock .sec-count,
-.sec--attention .sec-count {
-  font-weight: 800;
+.detail-top .price-pair { margin: 0; max-width: none; }
+
+.detail-deadline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-left: 4px solid var(--border-strong);
+  border-radius: var(--radius-sm);
 }
 
-/* CTA rows are valuable in card mode but would destroy the 9-column screener. */
+.detail-deadline-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.detail-deadline.is-urgent { border-left-color: var(--urgent); }
+.detail-deadline.is-urgent .price-val { color: var(--urgent); }
+.detail-deadline.is-urgent .f-rel { background: var(--urgent-bg); border-color: var(--urgent); color: var(--urgent); }
+.detail-deadline.is-soon { border-left-color: var(--closing); }
+.detail-deadline.is-soon .price-val { color: var(--closing); }
+.detail-deadline.is-soon .f-rel { background: var(--closing-bg); border-color: var(--closing); color: var(--closing); }
+.detail-deadline.is-unconfirmed { border-left-style: dashed; border-left-color: var(--unverified-line); }
+.detail-deadline.is-unconfirmed .price-val { color: var(--fg-muted); }
+
+.detail-cta { display: inline-flex; flex: 0 0 auto; margin: 10px 0 0; padding: 6px 16px; }
+
+/* ---- Wide layouts ---- */
+@media (min-width: 620px) {
+  .hero-action { flex: 0 0 auto; }
+}
+
+@media (min-width: 700px) {
+  .grid[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detail-top { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+}
+
 @media (min-width: 900px) {
-  .signal-hero {
-    grid-template-columns: minmax(0, 1.8fr) minmax(17rem, .8fr);
-    align-items: stretch;
+  .top {
+    grid-template-columns: minmax(0, 1.9fr) minmax(16rem, .9fr);
+    grid-template-areas: "hero mycheck" "today today";
+    gap: 12px;
   }
 
-  .signal-hero-copy {
-    padding: 26px 26px 23px;
-  }
-
-  .my-check {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 18px;
-  }
+  .signal-hero { padding: 16px 20px 14px; }
+  .my-check { display: flex; flex-direction: column; justify-content: center; padding: 14px 16px; }
+  .my-check-item { flex-direction: column; align-items: center; gap: 2px; min-height: 64px; }
+  .my-check-item strong { font-size: 1.75rem; }
 }
 
 @media (min-width: 1100px) {
-  .grid.grid--dense .card-actions {
-    display: none;
-  }
+  .grid[data-count="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid.grid--dense .card-actions { display: none; }
 }
 
 @media (max-width: 619px) {
-  .signal-summary-head {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .hero-break {
-    display: none;
-  }
+  .hero-break { display: none; }
 }
 
 @media (max-width: 380px) {
-  .signal-hero-copy {
-    padding: 17px 14px 15px;
-  }
-
-  .my-check {
-    padding: 13px;
-  }
-
-  .my-check-grid {
-    gap: 5px;
-  }
-
-  .my-check-item {
-    min-height: 68px;
-    padding-left: 3px;
-    padding-right: 3px;
-  }
-
-  .my-check-item span {
-    font-size: .64rem;
-  }
-
-  .card-actions {
-    flex-direction: column;
-  }
-
-  .card-action {
-    width: 100%;
-  }
+  .signal-hero { padding: 12px 12px 11px; }
+  .my-check { padding: 10px; }
+  .kpi-row .kpi, .kpi-box { padding-left: 9px; padding-right: 9px; }
+  .kpi-split-item { padding: 2px 4px; }
+  .card-actions { flex-direction: column; }
+  .card-action { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-action,
   .my-check-item,
-  .card-action {
+  .card-action,
+  .kpi-split-item {
     transition: none !important;
   }
 }
+
+/* ---- Filters: search first and most prominent ---- */
+.tb-search .field-label { font-size: var(--fs-label); color: var(--fg); }
+.tb-search input {
+  min-height: 48px;
+  font-size: var(--fs-body);
+  border-width: 2px;
+  border-color: var(--border-strong);
+}
+.tb-search input:focus-visible { border-color: var(--focus); }

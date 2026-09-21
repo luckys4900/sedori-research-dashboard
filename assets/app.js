@@ -425,6 +425,75 @@ function deadlineRelText(p) {
   return base + '（受付状態は未確認）';
 }
 
+/**
+ * The deadline split into what the eye needs first: a short DATE and a separate
+ * RELATIVE count. Presentation only — urgency still comes from isClosingSoonRow,
+ * i.e. from `closing_soon_band`; `urgent` / `soon` are never set for any other row.
+ * Returns null when there is no deadline (the caller renders 「不明」).
+ */
+function deadlineParts(p, asOf) {
+  if (isUnknown(p.deadline)) { return null; }
+  var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(p.deadline));
+  var shortDate = m ? (Number(m[2]) + '/' + Number(m[3])) : String(p.deadline);
+  if (m && asOf && String(asOf).slice(0, 4) !== m[1]) { shortDate = m[1] + '/' + shortDate; }
+  var kind = lbl(DEADLINE_KIND_LABEL, p.deadline_kind);
+  var d = num(p.days_to_deadline);
+  var rel = null;
+  if (d !== null) {
+    if (d < 0) { rel = '終了済み'; }
+    else if (d === 0) { rel = '本日締切'; }
+    else { rel = '残り' + d + '日'; }
+  }
+  var confirmed = isClosingSoonRow(p);
+  var open = isOpenStatus(p);
+  return {
+    date: shortDate,
+    fullDate: fmtDate(p.deadline),
+    kind: (kind && kind !== UNKNOWN_ENUM_TEXT) ? kind : null,
+    rel: rel,
+    confirmed: confirmed,
+    /* acceptance NOT confirmed open: muted + dashed, never urgent */
+    muted: !open,
+    /* the wording 受付状態は未確認 only where the state itself is unknown */
+    caveat: !open && (isUnknown(p.status) || p.status === 'UNKNOWN') && !(d !== null && d < 0),
+    urgent: confirmed && p.closing_soon_band === 'WITHIN_24H',
+    soon: confirmed && p.closing_soon_band !== 'WITHIN_24H',
+    passed: d !== null && d < 0
+  };
+}
+
+/**
+ * The outbound call to action, or null. Only an https URL that passed isSafeHttpUrl
+ * becomes an href, and the two URLs are never conflated: a purchase_url is labelled
+ * 「販売・応募ページ」, an official_url alone 「公式情報を確認」.
+ *
+ * `.cta-disclosure` is a dormant hook for a future sponsored / affiliate disclosure.
+ * It is hidden and carries no link or tracking; nothing on the page is an ad today.
+ */
+function outboundCta(p, className) {
+  var isPurchase = isSafeHttpUrl(p.purchase_url);
+  var url = isPurchase ? p.purchase_url : (isSafeHttpUrl(p.official_url) ? p.official_url : null);
+  if (!url) { return null; }
+  var label = isPurchase ? '販売・応募ページ' : '公式情報を確認';
+  var a = el('a', className);
+  a.appendChild(el('span', 'cta-text', label));
+  /* The hook is EMPTY on purpose. 「PR」 is an advertising disclosure in Japan, so a
+     non-sponsored link must not carry that text anywhere in its DOM — hidden text still
+     surfaces in copy/paste, reader modes, CSS-off views and textContent scrapes, where it
+     would label an ordinary official link as an ad. The text is written only for a link
+     that is genuinely sponsored, which no link is today. */
+  var disclosure = el('span', 'cta-disclosure');
+  disclosure.hidden = true;
+  a.appendChild(disclosure);
+  a.href = String(url);
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.dataset.monetization = 'none';
+  var host = hostOf(url);
+  a.setAttribute('aria-label', label + '（外部サイト' + (host ? '・' + host : '') + '、新しいタブで開きます）');
+  return a;
+}
+
 /** One labelled cell. Renders「不明」muted when the value is unknown. */
 function cell(extraClass, label, value, unknownText) {
   var wrap = el('div', 'cell ' + extraClass);
@@ -762,25 +831,120 @@ function initIndex() {
 
     li.appendChild(a);
 
-    /* Action row: the detail page carries the full evidence, while the external
-       link is only rendered when the published URL passed the HTTPS safety gate. */
+    li.appendChild(cardActions(p));
+
+    /* Human decision marks — outside the anchor so the buttons are real buttons */
+    var box = markControl(p.product_id, getMark(state.marks, p.product_id), onMarkPick);
+    li.appendChild(box);
+    if (!state.markBoxes[p.product_id]) { state.markBoxes[p.product_id] = []; }
+    state.markBoxes[p.product_id].push(box);
+    return li;
+  }
+
+  /* Action row: the detail page carries the full evidence (information first), while the
+     external link is only rendered when the published URL passed the HTTPS safety gate. */
+  function cardActions(p) {
     var actions = el('div', 'card-actions');
     var detailLink = el('a', 'card-action card-action--detail', '条件・根拠を見る');
     detailLink.href = 'product.html?id=' + encodeURIComponent(p.product_id);
     actions.appendChild(detailLink);
-    var outbound = isSafeHttpUrl(p.purchase_url) ? p.purchase_url :
-      (isSafeHttpUrl(p.official_url) ? p.official_url : null);
-    if (outbound) {
-      var ext = el('a', 'card-action card-action--primary',
-        isSafeHttpUrl(p.purchase_url) ? '販売・応募ページ' : '公式情報を確認');
-      ext.href = String(outbound);
-      ext.target = '_blank';
-      ext.rel = 'noopener noreferrer';
-      actions.appendChild(ext);
-    }
-    li.appendChild(actions);
+    var ext = outboundCta(p, 'card-action card-action--ext');
+    if (ext) { actions.appendChild(ext); }
+    return actions;
+  }
 
-    /* Human decision marks — outside the anchor so the buttons are real buttons */
+  /**
+   * Feed card (highlight sections only). Reading order is the scan order:
+   *   status + flags -> 商品名 -> 締切 (date | 残りN日) -> 定価 + 発売日
+   *   -> 販売方式 + 確認状況 -> key signals -> CTAs -> 判断マーク
+   * What a feed card leaves out lives on the detail page (and in 全商品一覧):
+   * 購入先, the 5-step evidence ladder, 注目候補の理由, route evidence, notes.
+   * 取得原価 stays, as a quiet secondary line under 定価.
+   */
+  function buildFeedCard(p) {
+    var li = el('li', 'card card--feed' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
+    li.dataset.id = p.product_id;
+    var a = el('a', 'card-main');
+    a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
+
+    /* 1. status + flags */
+    var st = el('div', 'c-status');
+    st.appendChild(statusBadge(p));
+    if (p.is_new === true && state.showNewBadge) {
+      st.appendChild(el('span', 'badge badge--flag', '新着'));
+    }
+    if (p.status !== 'RESTOCKED' && isRestockRow(p)) {
+      st.appendChild(el('span', 'badge badge--restock', '再販'));
+    }
+    if (p.is_attention === true) {
+      st.appendChild(el('span', 'badge badge--attention', '注目候補'));
+    }
+    a.appendChild(st);
+
+    /* 2. 商品名 */
+    a.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+
+    /* 3. 締切 — DATE and RELATIVE as two pieces. Urgent styling only for a
+          non-null closing_soon_band (isClosingSoonRow). */
+    var parts = deadlineParts(p, state.doc && state.doc.as_of);
+    var dl = el('div', 'f-deadline');
+    dl.appendChild(el('span', 'f-lbl', parts && parts.kind ? parts.kind : '締切'));
+    if (!parts) {
+      dl.appendChild(el('span', 'f-date is-unknown', UNKNOWN_TEXT));
+    } else {
+      if (parts.urgent) { dl.classList.add('is-urgent'); }
+      else if (parts.soon) { dl.classList.add('is-soon'); }
+      else if (parts.muted) { dl.classList.add('is-unconfirmed'); }
+      var dateNode = el('span', 'f-date', parts.date);
+      dateNode.setAttribute('aria-label', parts.fullDate || parts.date);
+      dl.appendChild(dateNode);
+      if (parts.rel) {
+        dl.appendChild(el('span', 'f-rel' + (parts.passed ? ' is-passed' : ''), parts.rel));
+      }
+      if (parts.caveat) {
+        dl.appendChild(el('span', 'f-caveat', '受付状態は未確認'));
+      }
+    }
+    a.appendChild(dl);
+
+    /* 4. 定価 + 発売日 (取得原価 as a secondary line — never the list price) */
+    var row1 = el('div', 'f-row');
+    var price = cell('c-list-price', '定価', fmtPrice(listPriceOf(p)));
+    var acq = fmtPrice(acquisitionCostOf(p));
+    price.appendChild(el('span', 'f-sub' + (acq === null ? ' is-unknown' : ''),
+      '取得原価 ' + (acq === null ? UNVERIFIED_COST_TEXT : acq)));
+    row1.appendChild(price);
+    row1.appendChild(cell('c-release', '発売日', releaseText(p)));
+    a.appendChild(row1);
+
+    /* 5. 販売方式 + 確認状況 */
+    var row2 = el('div', 'f-row');
+    row2.appendChild(cell('c-mode', '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode)));
+    var ev = el('div', 'cell c-ev');
+    ev.appendChild(el('span', 'lbl', '確認状況'));
+    var evVal = el('span', 'val');
+    evVal.appendChild(evidenceBadge(p));
+    ev.appendChild(evVal);
+    row2.appendChild(ev);
+    a.appendChild(row2);
+
+    /* 6. key signals — two chips, full text in aria-label and on the detail page */
+    var chips = signalChips(p, 2);
+    if (chips) {
+      var sigBox = el('div', 'c-signals');
+      sigBox.appendChild(chips);
+      sigBox.appendChild(el('span', 'c-signals-more', '注目理由の全文は詳細ページ'));
+      a.appendChild(sigBox);
+    }
+
+    /* status_note_ja explains an 不明 state; kept, clamped, full text on the detail page */
+    if (!isUnknown(p.status_note_ja)) {
+      a.appendChild(el('div', 'c-note', String(p.status_note_ja)));
+    }
+
+    li.appendChild(a);
+    li.appendChild(cardActions(p));
+
     var box = markControl(p.product_id, getMark(state.marks, p.product_id), onMarkPick);
     li.appendChild(box);
     if (!state.markBoxes[p.product_id]) { state.markBoxes[p.product_id] = []; }
@@ -1010,6 +1174,22 @@ function initIndex() {
     syncKpiPressed();
   }
 
+  /**
+   * 予約・抽選 card: two published counters shown side by side, never summed.
+   * Each links to the section that owns the identical predicate; the local fallback
+   * is that section's own pick, so the number and the section can never differ.
+   */
+  function renderReserveKpi() {
+    var pre = sectionById('sec-preorder');
+    var lot = sectionById('sec-lottery');
+    var preorder = pick(statNum('counts', 'open_preorder'), pre ? derived(pre.pick) : null);
+    var lottery = pick(statNum('counts', 'open_lottery'), lot ? derived(lot.pick) : null);
+    var a = $('kpi-preorder');
+    if (a) { a.textContent = String(preorder); }
+    var b = $('kpi-lottery');
+    if (b) { b.textContent = String(lottery); }
+  }
+
   /** The collection-window caveat behind 新着, straight from metadata when present. */
   function renderKpiNote() {
     var notes = state.metadata && Array.isArray(state.metadata.data_notes)
@@ -1153,8 +1333,11 @@ function initIndex() {
       }
       if (rows.length === 0) { return; }
       var shown = rows.slice(0, SECTION_CAP);
+      /* 1 / 2 / many — the grid sizes itself to what it holds (style.css), so a
+         one-item section is a readable card, not a third of an empty row. */
+      list.dataset.count = shown.length > 3 ? 'many' : String(shown.length);
       var frag = document.createDocumentFragment();
-      shown.forEach(function (p) { frag.appendChild(buildCard(p)); });
+      shown.forEach(function (p) { frag.appendChild(buildFeedCard(p)); });
       list.appendChild(frag);
       if (rows.length > SECTION_CAP && count) {
         count.textContent = '全' + rows.length + '件中 ' + shown.length + '件を表示';
@@ -1369,6 +1552,7 @@ function initIndex() {
         state.metadata = side[1];
         renderHeaderMeta(doc);
         renderKpis();
+        renderReserveKpi();
         renderKpiNote();
         renderMyCheck();
         renderAllCount();
@@ -1626,24 +1810,69 @@ function initProduct() {
       badges.appendChild(el('span', 'badge badge--attention', '注目候補'));
     }
     head.appendChild(badges);
-    if (!isUnknown(p.status_note_ja)) {
-      head.appendChild(el('p', 'note-box', p.status_note_ja));
-    }
     card.appendChild(head);
     if (unverified) {
       card.appendChild(el('div', 'warn-box',
         '未検証の発見候補です。公開情報の一次確認が済んでいないため、確認済みの商品と同等に扱わないでください。'));
     }
 
-    /* --- PRICE BLOCK: 定価 と 取得原価 は別の量。ひとつの独立ブロックにする。 --- */
+    /* --- TOP: 締切 と 価格。締切は日付と残り日数を分けて出す。緊急の見た目は
+           closing_soon_band がある行だけ（deadlineParts -> isClosingSoonRow）。 --- */
+    var top = el('div', 'detail-top');
+    var dBox = el('div', 'detail-deadline');
+    var parts = deadlineParts(p, doc && doc.as_of);
+    dBox.appendChild(el('span', 'price-lbl', parts && parts.kind ? parts.kind : '締切'));
+    if (!parts) {
+      dBox.appendChild(el('span', 'price-val is-unknown', UNKNOWN_TEXT));
+    } else {
+      if (parts.urgent) { dBox.classList.add('is-urgent'); }
+      else if (parts.soon) { dBox.classList.add('is-soon'); }
+      else if (parts.muted) { dBox.classList.add('is-unconfirmed'); }
+      var dLine = el('span', 'detail-deadline-line');
+      dLine.appendChild(el('span', 'price-val', parts.fullDate || parts.date));
+      if (parts.rel) { dLine.appendChild(el('span', 'f-rel' + (parts.passed ? ' is-passed' : ''), parts.rel)); }
+      dBox.appendChild(dLine);
+      if (parts.caveat) {
+        dBox.appendChild(el('span', 'f-caveat', '受付状態は未確認'));
+      }
+    }
+    top.appendChild(dBox);
+    /* PRICE: 定価 と 取得原価 は別の量。ひとつの独立ブロックにする。 */
+    top.appendChild(pricePair(p));
+    card.appendChild(top);
     var prices = el('div', 'detail-prices');
-    prices.appendChild(pricePair(p));
     prices.appendChild(el('p', 'price-note',
       '「定価」は公式に公表された価格で、仕入れ価格ではありません。' +
       '「取得原価」は経路ごとの価格の裏付けが取れた場合だけ表示し、取れていなければ「未確認」と書きます。'));
+    var cta = outboundCta(p, 'card-action card-action--ext detail-cta');
+    if (cta) { prices.appendChild(cta); }
+    if (!isUnknown(p.status_note_ja)) {
+      prices.appendChild(el('p', 'note-box', p.status_note_ja));
+    }
     card.appendChild(prices);
 
     var wrap2 = el('div', 'detail-wrap');
+
+    /* --- 主要販売情報 --- */
+    var g2 = group('主要販売情報');
+    row(g2.dl, '現在状態', isUnknown(p.status_label_ja) ? null : p.status_label_ja);
+    /* v1.1.0 supplies the Japanese label; a raw token is never printed. */
+    row(g2.dl, '判定の根拠', isUnknown(p.status_basis_label_ja) ? null : String(p.status_basis_label_ja));
+    row(g2.dl, '補足', p.status_note_ja);
+    row(g2.dl, isUnknown(p.list_price_label_ja) ? '定価' : String(p.list_price_label_ja),
+      fmtPrice(listPriceOf(p)));
+    row(g2.dl, '取得原価', fmtPrice(acquisitionCostOf(p)), null, UNVERIFIED_COST_TEXT);
+    row(g2.dl, '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode));
+    row(g2.dl, '販売方式（原文）', p.sale_mode_raw);
+    row(g2.dl, '購入先', (Array.isArray(p.channel) && p.channel.length) ? p.channel.join('・') : null);
+    row(g2.dl, '購入制限', p.purchase_limit);
+    row(g2.dl, '再販状況', p.restock_status);
+    row(g2.dl, '販売終了', fmtDate(p.sales_end));
+    var urlKind = lbl(URL_KIND_LABEL, p.official_url_kind);
+    var urlLabel = (urlKind && urlKind !== UNKNOWN_ENUM_TEXT) ? urlKind : '公式ページ';
+    row(g2.dl, urlLabel, null, linkNode(p.official_url, urlLabel + 'を開く'));
+    row(g2.dl, '購入ページ', null, linkNode(p.purchase_url, '購入ページを開く'));
+    wrap2.appendChild(g2.node);
 
     /* --- 基本情報 --- */
     var g1 = group('基本情報');
@@ -1655,29 +1884,8 @@ function initProduct() {
     row(g1.dl, '発売日', releaseText(p));
     wrap2.appendChild(g1.node);
 
-    /* --- 販売情報 --- */
-    var g2 = group('販売情報');
-    row(g2.dl, isUnknown(p.list_price_label_ja) ? '定価' : String(p.list_price_label_ja),
-      fmtPrice(listPriceOf(p)));
-    row(g2.dl, '取得原価', fmtPrice(acquisitionCostOf(p)), null, UNVERIFIED_COST_TEXT);
-    row(g2.dl, '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode));
-    row(g2.dl, '販売方式（原文）', p.sale_mode_raw);
-    row(g2.dl, '現在状態', isUnknown(p.status_label_ja) ? null : p.status_label_ja);
-    /* v1.1.0 supplies the Japanese label; a raw token is never printed. */
-    row(g2.dl, '判定の根拠', isUnknown(p.status_basis_label_ja) ? null : String(p.status_basis_label_ja));
-    row(g2.dl, '補足', p.status_note_ja);
-    row(g2.dl, '購入先', (Array.isArray(p.channel) && p.channel.length) ? p.channel.join('・') : null);
-    row(g2.dl, '再販状況', p.restock_status);
-    row(g2.dl, '販売終了', fmtDate(p.sales_end));
-    row(g2.dl, '購入制限', p.purchase_limit);
-    var urlKind = lbl(URL_KIND_LABEL, p.official_url_kind);
-    var urlLabel = (urlKind && urlKind !== UNKNOWN_ENUM_TEXT) ? urlKind : '公式ページ';
-    row(g2.dl, urlLabel, null, linkNode(p.official_url, urlLabel + 'を開く'));
-    row(g2.dl, '購入ページ', null, linkNode(p.purchase_url, '購入ページを開く'));
-    wrap2.appendChild(g2.node);
-
-    /* --- 予約・抽選・応募情報 --- */
-    var g3 = group('予約・抽選・応募情報', true);
+    /* --- 応募・予約情報 --- */
+    var g3 = group('応募・予約・抽選情報', true);
     var dKind = lbl(DEADLINE_KIND_LABEL, p.deadline_kind);
     var dVal = isUnknown(p.deadline) ? null :
       fmtDate(p.deadline) + (dKind && dKind !== UNKNOWN_ENUM_TEXT ? '（' + dKind + '）' : '') +
@@ -1696,7 +1904,7 @@ function initProduct() {
     wrap2.appendChild(g3.node);
 
     /* --- 確認状況（出典を含む）。ヘッダーのバッジと同じ事実を、日付と出典まで開いたもの。 --- */
-    var g5 = group('確認状況', true);
+    var g5 = group('確認状況と出典', true);
     row(g5.dl, '確認の区分', isUnknown(p.evidence_label_ja) ? null : p.evidence_label_ja);
     row(g5.dl, '検証区分', lbl(TIER_LABEL, p.verification_tier));
     row(g5.dl, '最終確認日', fmtDate(p.last_verified_at));
@@ -1719,11 +1927,11 @@ function initProduct() {
       row(g5.dl, '出典（公開一次情報）', null, ul);
     }
 
-    /* --- 供給制約 / 過去の成約Evidence / 取得経路の状況 --- */
+    /* --- 供給制約 -> Evidence（成約 + 確認状況） -> Route --- */
     wrap2.appendChild(buildSignalsBlock(p));
     wrap2.appendChild(buildProfitBlock(p));
-    wrap2.appendChild(buildRouteBlock(p));
     wrap2.appendChild(g5.node);
+    wrap2.appendChild(buildRouteBlock(p));
 
     /* --- 調査メモ --- */
     var g6 = group('調査メモ', true);

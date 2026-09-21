@@ -1,5 +1,16 @@
 # Sedori Research Dashboard
 
+> **GENERATED PUBLIC ARTIFACT — do not edit these files directly.**
+>
+> Everything in this repository is generated from the source of truth, `dashboard/` in the
+> private research repository, by `publish_dashboard.py`. A change made here is overwritten by
+> the next publish. To change the site, change `dashboard/` and publish again.
+>
+> If this repository ever holds commits that the source does not (for example an edit made in
+> the GitHub web editor), the publisher stops instead of overwriting them. Those commits are
+> inspected, classified, and any intentional UI change is ported into `dashboard/` first.
+> This repository is never force-pushed.
+
 公開用の静的ダッシュボードです。商品データは調査基盤側で生成された
 サニタイズ済み JSON（`data/products.json`）のみを読み込みます。
 

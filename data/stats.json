@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-21",
+  "as_of": "2026-09-22",
   "by_category": {
     "BOOK_MOOK": 5,
     "CHARACTER_GOODS": 11,
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 75
   },
-  "generated_at": "2026-09-21T15:45:51+09:00",
+  "generated_at": "2026-09-22T06:38:19+09:00",
   "schema_version": "1.1.0"
 }

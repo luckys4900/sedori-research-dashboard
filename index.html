@@ -15,8 +15,7 @@
 <header class="site-header">
   <div class="wrap">
     <div class="site-bar">
-      <h1 class="site-title">Sedori Research Dashboard</h1>
-    <p class="site-lead">受付状況・締切・発売日・確認状況を、重要なものから素早く追える公開ダッシュボード。</p>
+      <p class="site-title">Sedori Research Dashboard</p>
       <p class="site-sub">
         <span class="site-meta"><span class="site-meta-lbl">更新日時</span><span id="generated-at">読み込み中…</span></span>
         <span class="sep" aria-hidden="true">/</span>
@@ -24,25 +23,87 @@
       </p>
     </div>
 
-    <section class="signal-hero" aria-labelledby="signal-hero-title">
-      <div class="signal-hero-copy">
+    <!--
+      Top block. One grid, three areas, so the reading order can differ per width
+      without duplicating markup:
+        wide   : hero | MY CHECK  /  TODAY (full width)
+        narrow : hero / TODAY / MY CHECK
+      The DOM order (hero -> TODAY -> MY CHECK) is the narrow reading order.
+    -->
+    <div class="top">
+      <section class="signal-hero" aria-labelledby="signal-hero-title">
         <p class="hero-kicker">DAILY RESEARCH SIGNALS</p>
-        <h2 id="signal-hero-title">抽選・予約・再販を、<br class="hero-break">今日見る順に整理。</h2>
-        <p class="hero-text">
-          公開情報から受付状況・締切・発売日・確認状況を整理しています。
-          「いま動ける情報」と「まだ確認が必要な情報」を混ぜずに表示します。
-        </p>
+        <h1 id="signal-hero-title">抽選・予約・再販を、<br class="hero-break">今日見る順に整理。</h1>
+        <p class="hero-text">受付状況・締切・発売日・確認状況を公開情報から整理。</p>
         <div class="hero-actions">
           <a class="hero-action hero-action--primary" href="#sec-closing">締切が近い商品を見る</a>
           <a class="hero-action" href="#sec-all">全商品から探す</a>
         </div>
         <p class="hero-trust">購入推奨・利益予測ではありません。最終判断は利用者が行います。</p>
-      </div>
+      </section>
+
+      <!--
+        TODAY. Emphasis order 締切間近 > 受付中 > 予約・抽選 > 新着, and the reading order
+        follows it. Colour is never the only signal: every card carries its number, its
+        label and a glyph cue. Each button applies the SAME predicate it counts; the
+        予約・抽選 card is two plain in-page links to the two sections that own those counts.
+      -->
+      <section class="today" aria-labelledby="today-title">
+        <div class="today-head">
+          <p class="summary-kicker">TODAY</p>
+          <h2 id="today-title">今日確認したい情報</h2>
+          <button type="button" class="kpi kpi--total" data-kpi="total" aria-pressed="false">
+            <span class="kpi-total-lbl">収録</span><span class="kpi-num" id="kpi-total">—</span><span class="kpi-total-lbl">件をすべて表示</span>
+          </button>
+        </div>
+
+        <ul class="kpi-row" id="kpi-row">
+          <li>
+            <button type="button" class="kpi kpi--closing" data-kpi="closing" aria-pressed="false">
+              <span class="kpi-num" id="kpi-closing">—</span>
+              <span class="kpi-label">締切間近</span>
+              <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">!</span>受付中・7日以内</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="kpi kpi--open" data-kpi="open" aria-pressed="false">
+              <span class="kpi-num" id="kpi-open">—</span>
+              <span class="kpi-label">受付中</span>
+              <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">◉</span>受付中と確認済み</span>
+            </button>
+          </li>
+          <li>
+            <div class="kpi-box kpi--reserve" role="group" aria-labelledby="kpi-reserve-lbl">
+              <div class="kpi-split">
+                <a class="kpi-split-item" href="#sec-preorder" aria-label="予約受付中の商品へ移動">
+                  <span class="kpi-num" id="kpi-preorder">—</span><span class="kpi-split-lbl">予約</span>
+                </a>
+                <a class="kpi-split-item" href="#sec-lottery" aria-label="抽選受付中の商品へ移動">
+                  <span class="kpi-num" id="kpi-lottery">—</span><span class="kpi-split-lbl">抽選</span>
+                </a>
+              </div>
+              <span class="kpi-label" id="kpi-reserve-lbl">予約・抽選</span>
+              <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">→</span>受付中の内訳</span>
+            </div>
+          </li>
+          <li>
+            <button type="button" class="kpi kpi--new" data-kpi="new" aria-pressed="false">
+              <span class="kpi-num" id="kpi-new">—</span>
+              <span class="kpi-label">新着</span>
+              <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">＋</span>収録14日以内</span>
+            </button>
+          </li>
+        </ul>
+
+        <p class="kpi-note" id="kpi-note">
+          「新着」は収録開始日が基準日から14日以内の件数です。「締切間近」は受付中と確認できた行の締切だけを数えます。
+        </p>
+      </section>
 
       <aside class="my-check" aria-labelledby="my-check-title">
         <div class="my-check-head">
           <p class="my-check-kicker">MY CHECK</p>
-          <h2 id="my-check-title">自分の判断をすぐ確認</h2>
+          <h2 id="my-check-title">あなたの判断</h2>
         </div>
         <div class="my-check-grid">
           <button type="button" class="my-check-item my-check-item--candidate" data-mark-filter="CANDIDATE">
@@ -55,86 +116,21 @@
             <strong id="my-check-skip">0</strong><span>見送り</span>
           </button>
         </div>
-        <p class="my-check-note">判断マークはこのブラウザ内だけに保存され、外部には送信されません。</p>
+        <p class="my-check-note">あなたが付けたマークです。このブラウザ内だけに保存され、外部には送信されません。</p>
       </aside>
-    </section>
-
-    <div class="signal-summary-head">
-      <div>
-        <p class="summary-kicker">TODAY</p>
-        <h2>今日確認したい情報</h2>
-      </div>
-      <p>数字を選ぶと全商品一覧を同じ条件で絞り込みます。</p>
     </div>
 
-    <!--
-      KPI cards. The emphasis order is 締切間近 > 受付中 > 新着 > 総数, and the reading
-      order follows it: on a screener the thing that expires first is read first.
-      Colour is never the only signal — each card carries its number, its label and a
-      non-colour cue (a leading glyph plus the thickness of its accent rule).
-    -->
-    <ul class="kpi-row" id="kpi-row">
-      <li>
-        <button type="button" class="kpi kpi--closing" data-kpi="closing" aria-pressed="false">
-          <span class="kpi-accent" aria-hidden="true"></span>
-          <span class="kpi-body">
-            <span class="kpi-num" id="kpi-closing">—</span>
-            <span class="kpi-label">締切間近</span>
-            <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">!</span>最優先で確認</span>
-          </span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="kpi kpi--open" data-kpi="open" aria-pressed="false">
-          <span class="kpi-accent" aria-hidden="true"></span>
-          <span class="kpi-body">
-            <span class="kpi-num" id="kpi-open">—</span>
-            <span class="kpi-label">受付中と確認できた数</span>
-            <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">◉</span>いま動ける</span>
-          </span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="kpi kpi--new" data-kpi="new" aria-pressed="false">
-          <span class="kpi-accent" aria-hidden="true"></span>
-          <span class="kpi-body">
-            <span class="kpi-num" id="kpi-new">—</span>
-            <span class="kpi-label">新着（14日以内）</span>
-            <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">＋</span>収録が新しい</span>
-          </span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="kpi kpi--total" data-kpi="total" aria-pressed="false">
-          <span class="kpi-accent" aria-hidden="true"></span>
-          <span class="kpi-body">
-            <span class="kpi-num" id="kpi-total">—</span>
-            <span class="kpi-label">商品総数</span>
-            <span class="kpi-cue"><span class="kpi-glyph" aria-hidden="true">Σ</span>収録の全体</span>
-          </span>
-        </button>
-      </li>
-    </ul>
-
-    <p class="kpi-note" id="kpi-note">
-      「新着」は収録開始日が基準日から14日以内の件数です。収録を開始した直後のデータでは
-      ほぼ全件が該当します。「締切間近」は受付中と確認できた行の締切だけを数えます。
-    </p>
-
-    <!--
-      Quick navigation. Plain in-page anchors, so no filter and no URL query is touched.
-      It wraps instead of scrolling sideways: a strip that scrolls hides its own tail.
-    -->
+    <!-- Quick navigation. Plain in-page anchors; wraps instead of scrolling sideways. -->
     <nav class="quicknav" aria-label="セクションへ移動">
       <ul class="quicknav-list">
         <li><a href="#sec-closing">締切間近</a></li>
-        <li><a href="#sec-nearterm">期日が近い</a></li>
         <li><a href="#sec-lottery">抽選受付中</a></li>
         <li><a href="#sec-preorder">予約受付中</a></li>
         <li><a href="#sec-buyable">購入可能</a></li>
+        <li><a class="quicknav-warn" href="#sec-nearterm">期日が近い（要確認）</a></li>
         <li><a href="#sec-restock">再販</a></li>
-        <li><a href="#sec-new">新着</a></li>
         <li><a href="#sec-attention">注目候補</a></li>
+        <li><a href="#sec-new">新着</a></li>
         <li><a class="quicknav-all" href="#sec-all">全商品</a></li>
       </ul>
     </nav>
@@ -155,80 +151,94 @@
   <div id="app" hidden>
 
     <!--
-      Highlight sections. Each one reads title -> count -> one-line explanation -> cards,
-      is capped (see SECTION_CAP in app.js) and carries a 「すべて見る」 control that applies
-      the identical predicate to 全商品一覧.
-      An empty section is NOT hidden: it shows its own explicit reason line.
+      Today's feed. Confirmed-open items first (締切間近 -> 抽選 -> 予約 -> 購入可能),
+      then the NEEDS-CHECK strip, then 再販 / 注目候補 / 新着. Each section is capped
+      (SECTION_CAP in app.js) and its 「すべて見る」 applies the identical predicate to
+      全商品一覧. An empty section is NOT hidden: it shows its own explicit reason line.
     -->
     <section class="sec sec--closing" id="sec-closing" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🔥</span>締切間近</h2>
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">!</span>締切間近</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
-      <p class="sec-note">受付中・締切間近と<strong>判定できた</strong>行の締切だけを載せています。受付状態が確認できていない商品はここには入りません。</p>
+      <p class="sec-note">受付中と<strong>確認できた</strong>商品のうち、締切が7日以内のもの。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>現在、受付中と確認できたうえで締切が7日以内の商品はありません。</p>
     </section>
 
-    <section class="sec sec--warn" id="sec-nearterm" data-sec>
-      <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">⏳</span>期日が近い（受付状態は未確認）</h2>
-        <span class="sec-count" data-sec-count></span>
-        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
-      </div>
-      <p class="sec-note">公開されている期日が7日以内ですが、<strong>いま受け付けているかどうかは確認できていません</strong>。締切間近として扱わないでください。</p>
-      <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>期日が7日以内で受付状態が未確認の商品はありません。</p>
-    </section>
-
     <section class="sec sec--open" id="sec-lottery" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🎯</span>抽選受付中</h2>
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">◉</span>抽選受付中</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
-      <p class="sec-note">販売方式が抽選で、<strong>いま受付中と判定できた</strong>商品です。申し込み期限は各カードの「締切」を見てください。</p>
+      <p class="sec-note">抽選で、いま受付中と<strong>確認できた</strong>商品。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>現在、受付中と確認できた抽選はありません。</p>
     </section>
 
     <section class="sec sec--open" id="sec-preorder" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">📦</span>予約受付中</h2>
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">◉</span>予約受付中</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
-      <p class="sec-note">予約または受注生産で、<strong>いま受付中と判定できた</strong>商品です。受注生産も読者にとっては予約なので同じ枠に入れています。</p>
+      <p class="sec-note">予約・受注生産で、いま受付中と<strong>確認できた</strong>商品。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>現在、受付中と確認できた予約・受注生産はありません。</p>
     </section>
 
     <section class="sec sec--open" id="sec-buyable" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🛒</span>購入可能</h2>
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">◉</span>購入可能</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
-      <p class="sec-note">抽選ではない販売方式で、<strong>いま受付中と判定できた</strong>商品です。販売方式が不明なものも含むため、各カードの「販売方式」を確認してください。</p>
+      <p class="sec-note">抽選以外で、いま受付中と<strong>確認できた</strong>商品（販売方式が不明なものを含む）。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>現在、抽選以外の販売方式で受付中と確認できた商品はありません。</p>
     </section>
 
-    <section class="sec sec--restock" id="sec-restock" data-sec>
+    <!-- NEEDS CHECK — a deliberately weaker surface. Never styled like confirmed-open items. -->
+    <section class="sec sec--warn" id="sec-nearterm" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🔄</span>再販・在庫復活</h2>
+        <h2 class="sec-title"><span class="sec-tag">要確認</span>期日が近い（受付状態は未確認）</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
-      <p class="sec-note">受付状態が<strong>「再販・在庫復活」と判定できた</strong>商品です。再販の記録はあるが現在の状態が確認できていない商品は、カードの「再販」バッジと絞り込みの「再販情報ありのみ」から確認できます。</p>
+      <p class="sec-note">期日は7日以内ですが、<strong>いま受け付けているかは確認できていません</strong>。締切間近としては扱いません。</p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>期日が7日以内で受付状態が未確認の商品はありません。</p>
+    </section>
+
+    <section class="sec sec--restock" id="sec-restock" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">↻</span>再販・在庫復活</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">状態が「再販・在庫復活」と<strong>確認できた</strong>商品。再販の記録だけがある商品は「再販」バッジで示します。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>現在、再販・在庫復活と判定できた商品はありません。</p>
     </section>
 
+    <section class="sec sec--attention" id="sec-attention" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">★</span>注目候補</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">
+        供給の制約と過去の成約記録が<strong>両方確認できた</strong>という印です。おすすめ・買い・期待値ではありません。判断は読者が行います。
+      </p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>供給制約と過去の成約記録が両方そろった商品は、現時点ではありません。</p>
+    </section>
+
     <section class="sec sec--new" id="sec-new" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">🆕</span>新着</h2>
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">＋</span>新着</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
@@ -237,27 +247,12 @@
       <p class="sec-empty" data-sec-empty hidden>収録開始が14日以内の商品はありません。</p>
     </section>
 
-    <section class="sec sec--attention" id="sec-attention" data-sec>
-      <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-emoji" aria-hidden="true">⭐</span>注目候補</h2>
-        <span class="sec-count" data-sec-count></span>
-        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
-      </div>
-      <p class="sec-note">
-        「注目候補」は<strong>裏付けのある材料がそろっている</strong>という印だけです。おすすめ・買い・期待値ではありません。
-        供給が絞られている事実と、過去の成約記録が両方確認できた商品を機械的に集めたもので、買うかどうかの判断は読者が行います。
-      </p>
-      <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>供給制約と過去の成約記録が両方そろった商品は、現時点ではありません。</p>
-    </section>
-
     <!-- Full list with toolbar -->
     <section class="sec sec--all" id="sec-all">
       <div class="sec-head">
         <h2 class="sec-title">全商品一覧</h2>
         <span class="sec-count" id="all-count"></span>
       </div>
-      <p class="sec-note">収録されている全商品を絞り込み・並べ替えできます。画面が広いときは表形式、狭いときはカード形式で表示します。</p>
 
       <div class="active-sec" id="active-sec" hidden>
         <span class="active-sec-label">絞り込み中:</span>
@@ -268,7 +263,7 @@
       <form class="toolbar" id="toolbar" role="search" aria-label="商品の絞り込み">
         <div class="tb-primary">
           <div class="field tb-search">
-            <label class="field-label" for="f-q">キーワード検索</label>
+            <label class="field-label" for="f-q">キーワードで探す</label>
             <input type="search" id="f-q" name="q" autocomplete="off"
                    placeholder="商品名 / IP / カテゴリ / 販売方式 / 購入先">
           </div>
@@ -298,9 +293,8 @@
           </div>
         </div>
 
-        <!-- 詳細: same filters, same behaviour — grouped so the basic four stay readable.
-             The summary is a real <summary>, so it is reachable and toggleable by keyboard,
-             and app.js opens it automatically whenever one of these filters is active. -->
+        <!-- 詳細: same filters, same behaviour. A real <summary>, reachable by keyboard;
+             app.js opens it whenever one of these filters is active. -->
         <details class="tb-adv" id="tb-adv">
           <summary class="tb-adv-sum">
             <span class="tb-adv-title">詳細な絞り込み・並び順</span>
@@ -308,21 +302,6 @@
           </summary>
 
           <div class="tb-grid tb-grid--adv">
-            <div class="field">
-              <label class="field-label" for="f-profit">利益判定に必要な情報の進み方</label>
-              <select id="f-profit">
-                <option value="">すべて</option>
-                <option value="NOT_EVALUATED">未着手</option>
-                <option value="PARTIAL">一部のみ</option>
-                <option value="ROUTE_EVIDENCE_PARTIAL">取得経路のみ確認</option>
-                <option value="PRICE_EVIDENCE_READY">過去の成約価格を確認</option>
-                <option value="FORMAL_READY">必要な材料がそろう</option>
-              </select>
-            </div>
-            <div class="field">
-              <label class="field-label" for="f-signal">注目理由</label>
-              <select id="f-signal"><option value="">すべて</option></select>
-            </div>
             <div class="field">
               <label class="field-label" for="f-deadline">締切</label>
               <select id="f-deadline">
@@ -339,6 +318,21 @@
                 <option value="">すべて</option>
                 <option value="upcoming">発売前</option>
                 <option value="released">発売済み</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-signal">注目理由</label>
+              <select id="f-signal"><option value="">すべて</option></select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-profit">利益判定に必要な情報の進み方</label>
+              <select id="f-profit">
+                <option value="">すべて</option>
+                <option value="NOT_EVALUATED">未着手</option>
+                <option value="PARTIAL">一部のみ</option>
+                <option value="ROUTE_EVIDENCE_PARTIAL">取得経路のみ確認</option>
+                <option value="PRICE_EVIDENCE_READY">過去の成約価格を確認</option>
+                <option value="FORMAL_READY">必要な材料がそろう</option>
               </select>
             </div>
             <div class="field">
@@ -376,10 +370,11 @@
         </div>
       </form>
 
-      <!-- Desktop screener column header. Sticky, so a column's meaning survives scrolling. -->
+      <!-- Desktop screener column header. Sticky, so a column's meaning survives scrolling.
+           7 columns: 販売方式 sits under 状態, 取得原価 under 定価 — both stay in every row. -->
       <div class="list-head" id="list-head" aria-hidden="true">
-        <span>商品名</span><span>状態</span><span>締切</span><span>定価</span><span>取得原価</span>
-        <span>発売日</span><span>販売方式</span><span>確認状況</span><span>注目理由</span>
+        <span>商品名</span><span>状態 / 販売方式</span><span>締切</span><span>定価 / 取得原価</span>
+        <span>発売日</span><span>確認状況</span><span>注目理由</span>
       </div>
 
       <ul class="grid grid--dense" id="list"></ul>
@@ -387,14 +382,11 @@
       <p class="empty" id="list-empty" hidden>条件に一致する商品はありません。絞り込みを変更してください。</p>
 
       <p class="note-line">
-        「未判断 / 購入候補 / 監視 / 見送り」の判断マークは、このブラウザの中だけに保存されます。
-        どこにも送信されません。
+        判断マーク（未判断 / 購入候補 / 監視 / 見送り）はこのブラウザの中だけに保存され、どこにも送信されません。
       </p>
       <p class="note-line">
-        表形式では「購入先」の列を省いています。購入先は画面が狭いときのカード表示と詳細ページに必ず出ます。
-        一覧では注目理由を省略して表示することがあります。
-        注目理由の全文（理由とその根拠）・確認の進み方（5段階）・注目候補の理由は、
-        商品名をタップ／クリックして開く<strong>詳細ページ</strong>にすべて省略なしで表示されます。
+        表形式では購入先と確認の進み方を省いています。注目理由の全文（理由と根拠）・確認の進み方・注目候補の理由・購入先は、
+        商品名から開く<strong>詳細ページ</strong>に省略なしで表示されます。
       </p>
     </section>
   </div>
