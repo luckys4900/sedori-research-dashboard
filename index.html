@@ -24,6 +24,49 @@
       </p>
     </div>
 
+    <section class="signal-hero" aria-labelledby="signal-hero-title">
+      <div class="signal-hero-copy">
+        <p class="hero-kicker">DAILY RESEARCH SIGNALS</p>
+        <h2 id="signal-hero-title">抽選・予約・再販を、<br class="hero-break">今日見る順に整理。</h2>
+        <p class="hero-text">
+          公開情報から受付状況・締切・発売日・確認状況を整理しています。
+          「いま動ける情報」と「まだ確認が必要な情報」を混ぜずに表示します。
+        </p>
+        <div class="hero-actions">
+          <a class="hero-action hero-action--primary" href="#sec-closing">締切が近い商品を見る</a>
+          <a class="hero-action" href="#sec-all">全商品から探す</a>
+        </div>
+        <p class="hero-trust">購入推奨・利益予測ではありません。最終判断は利用者が行います。</p>
+      </div>
+
+      <aside class="my-check" aria-labelledby="my-check-title">
+        <div class="my-check-head">
+          <p class="my-check-kicker">MY CHECK</p>
+          <h2 id="my-check-title">自分の判断をすぐ確認</h2>
+        </div>
+        <div class="my-check-grid">
+          <button type="button" class="my-check-item my-check-item--candidate" data-mark-filter="CANDIDATE">
+            <strong id="my-check-candidate">0</strong><span>購入候補</span>
+          </button>
+          <button type="button" class="my-check-item my-check-item--watch" data-mark-filter="WATCH">
+            <strong id="my-check-watch">0</strong><span>監視</span>
+          </button>
+          <button type="button" class="my-check-item my-check-item--skip" data-mark-filter="SKIP">
+            <strong id="my-check-skip">0</strong><span>見送り</span>
+          </button>
+        </div>
+        <p class="my-check-note">判断マークはこのブラウザ内だけに保存され、外部には送信されません。</p>
+      </aside>
+    </section>
+
+    <div class="signal-summary-head">
+      <div>
+        <p class="summary-kicker">TODAY</p>
+        <h2>今日確認したい情報</h2>
+      </div>
+      <p>数字を選ぶと全商品一覧を同じ条件で絞り込みます。</p>
+    </div>
+
     <!--
       KPI cards. The emphasis order is 締切間近 > 受付中 > 新着 > 総数, and the reading
       order follows it: on a screener the thing that expires first is read first.
