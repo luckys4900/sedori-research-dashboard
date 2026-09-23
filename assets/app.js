@@ -1943,7 +1943,8 @@ function initProduct() {
     row(g3.dl, '抽選終了', fmtDate(p.lottery_end));
     row(g3.dl, '応募開始', fmtDate(p.application_start));
     row(g3.dl, '応募終了', fmtDate(p.application_end));
-    row(g3.dl, '結果発表', fmtDate(p.result_date));
+    /* Same word as the card's 応募条件 row: two names for one date reads as two dates. */
+    row(g3.dl, '当選発表', fmtDate(p.result_date));
     row(g3.dl, '支払期限', fmtDate(p.payment_deadline));
     row(g3.dl, '受取期間', p.pickup_period);
     row(g3.dl, '発送予定', p.shipping_period);
