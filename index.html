@@ -32,14 +32,20 @@
     -->
     <div class="top">
       <section class="signal-hero" aria-labelledby="signal-hero-title">
-        <p class="hero-kicker">DAILY RESEARCH SIGNALS</p>
-        <h1 id="signal-hero-title">抽選・予約・再販を、<br class="hero-break">今日見る順に整理。</h1>
-        <p class="hero-text">受付状況・締切・発売日・確認状況を公開情報から整理。</p>
-        <div class="hero-actions">
-          <a class="hero-action hero-action--primary" href="#sec-closing">締切が近い商品を見る</a>
-          <a class="hero-action" href="#sec-all">全商品から探す</a>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-kicker">DAILY RESEARCH SIGNALS</p>
+            <h1 id="signal-hero-title">抽選・予約・再販を、<br class="hero-break">今日見る順に整理。</h1>
+            <p class="hero-text">受付状況・締切・発売日・確認状況を公開情報から整理。</p>
+            <div class="hero-actions">
+              <a class="hero-action hero-action--primary" href="#sec-closing">締切が近い商品を見る</a>
+              <a class="hero-action" href="#sec-all">全商品から探す</a>
+            </div>
+            <p class="hero-trust">購入推奨・利益予測ではありません。最終判断は利用者が行います。</p>
+          </div>
+          <!-- Decorative: real product photos picked from the data at runtime (app.js). -->
+          <div class="hero-collage" id="hero-collage" aria-hidden="true" hidden></div>
         </div>
-        <p class="hero-trust">購入推奨・利益予測ではありません。最終判断は利用者が行います。</p>
       </section>
 
       <!--
@@ -328,7 +334,7 @@
     <!-- Full list with toolbar -->
     <section class="sec sec--all" id="sec-all">
       <div class="sec-head">
-        <h2 class="sec-title">全商品一覧</h2>
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">≡</span>全商品一覧</h2>
         <span class="sec-count" id="all-count"></span>
       </div>
 

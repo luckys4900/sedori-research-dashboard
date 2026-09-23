@@ -696,6 +696,113 @@ function productThumb(p, variant) {
   return box;
 }
 
+/* ------------------------------------------------------------ product photo
+   Product images: same-origin, square WebP, already cropped to the product by the build.
+   Only a path that matches IMG_SRC_RE ever becomes a src — anything else (a URL, a
+   protocol, a traversal, an upper-case name) is refused and the drawn tile is used. */
+
+var IMG_SRC_RE = /^assets\/img\/[a-z0-9-]+\.webp$/;
+
+/** The published image object when its src is a same-origin asset path, else null. */
+function productImageOf(p) {
+  var im = p && p.image;
+  if (!im || typeof im !== 'object') { return null; }
+  if (typeof im.src !== 'string' || !IMG_SRC_RE.test(im.src)) { return null; }
+  return im;
+}
+
+/** Short source host for a card caption (「www.」 dropped; the detail page shows it whole). */
+function imageHostShort(im) {
+  if (isUnknown(im.source_host)) { return null; }
+  return String(im.source_host).replace(/^www\./, '');
+}
+
+/** Full credit line for the detail page. Falls back to the host when credit_ja is missing. */
+function imageCreditText(im) {
+  if (!isUnknown(im.credit_ja)) { return String(im.credit_ja); }
+  return isUnknown(im.source_host) ? null : '画像: ' + String(im.source_host);
+}
+
+function imgPx(v) {
+  var n = num(v);
+  return (n !== null && n > 0 && n <= 4096) ? Math.round(n) : 480;
+}
+
+/** One <img>. `decorative` gives alt="" (the collage and the blurred backdrop). */
+function photoEl(p, im, className, decorative, eager) {
+  var img = document.createElement('img');
+  img.className = className;
+  img.width = imgPx(im.width);
+  img.height = imgPx(im.height);
+  img.decoding = 'async';
+  img.loading = eager ? 'eager' : 'lazy';
+  if (decorative) {
+    img.alt = '';
+    img.setAttribute('aria-hidden', 'true');
+  } else {
+    img.alt = !isUnknown(im.alt_ja) ? String(im.alt_ja)
+      : ((isUnknown(p.product_name) ? '' : String(p.product_name)) + 'の商品画像');
+  }
+  img.src = im.src;                         /* validated against IMG_SRC_RE above */
+  return img;
+}
+
+/** The drawn tile inside a media frame, tinted with the tile's own hue. */
+function fillWithTile(frame, p, note) {
+  /* Only the photo parts go; anything overlaid on the frame (status badges) stays. */
+  var gone = frame.querySelectorAll('.pmedia-img, .pmedia-backdrop, .pmedia-credit');
+  for (var i = 0; i < gone.length; i++) { frame.removeChild(gone[i]); }
+  frame.classList.remove('is-photo');
+  frame.classList.add('is-tile');
+  frame.style.setProperty('--tile-h', String(THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length]));
+  frame.insertBefore(productThumb(p, 'fill'), frame.firstChild);
+  if (note) { frame.appendChild(el('span', 'pmedia-note', note)); }
+}
+
+/**
+ * The product's picture in a frame. variant:
+ *   'feed' — the image-led top of a highlight card (4:3, blurred backdrop, credit overlay)
+ *   'card' — the square at the left of a list card / screener row
+ *   'hero' — the large square on the detail page
+ * A product without an image — or whose image fails to load — gets the drawn tile instead,
+ * so every card still shows the same picture as its detail page.
+ */
+function productMedia(p, variant, opts) {
+  opts = opts || {};
+  var frame = el('span', 'pmedia pmedia--' + variant);
+  var im = productImageOf(p);
+  if (!im) {
+    fillWithTile(frame, p, opts.tileNote || null);
+    return frame;
+  }
+  frame.classList.add('is-photo');
+  if (variant === 'feed') { frame.appendChild(photoEl(p, im, 'pmedia-backdrop', true, opts.eager)); }
+  var img = photoEl(p, im, 'pmedia-img', false, opts.eager);
+  img.addEventListener('error', function () {
+    fillWithTile(frame, p, opts.tileNote || null);
+    if (typeof opts.onFail === 'function') { opts.onFail(); }
+  });
+  frame.appendChild(img);
+  if (opts.overlayCredit) {
+    var host = imageHostShort(im);
+    if (host) { frame.appendChild(el('span', 'pmedia-credit', shortCreditText(im, host))); }
+  }
+  return frame;
+}
+
+/** 「画像: host」 as a plain text line, for the card view where the photo is small. */
+function creditLine(p, className) {
+  var im = productImageOf(p);
+  if (!im) { return null; }
+  var host = imageHostShort(im);
+  return host ? el('span', className, shortCreditText(im, host)) : null;
+}
+
+/** The compact credit a card can carry. Title art says so, on the card, not only on the detail page. */
+function shortCreditText(im, host) {
+  return im.kind === 'key_visual' ? ('タイトル画像（写真ではありません）・' + host) : ('画像: ' + host);
+}
+
 /** One labelled cell. Renders「不明」muted when the value is unknown. */
 function cell(extraClass, label, value, unknownText) {
   var wrap = el('div', 'cell ' + extraClass);
@@ -947,11 +1054,17 @@ function initIndex() {
 
     /* --- L1: タイル + 商品名。タイルは詳細ページの先頭と同じ絵で、同じ商品だと見て分かる --- */
     var idRow = el('div', 'c-ident');
-    idRow.appendChild(productThumb(p, 'sm'));
     var nameBox = el('div', 'c-ident-text');
+    var credit = creditLine(p, 'c-credit');
+    idRow.appendChild(productMedia(p, 'card', {
+      onFail: function () { if (credit && credit.parentNode) { credit.parentNode.removeChild(credit); } }
+    }));
     nameBox.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
     var cardMeta = identityMeta(p);
     if (cardMeta.length) { nameBox.appendChild(el('div', 'c-cat', cardMeta.join('・'))); }
+    if (credit) { nameBox.appendChild(credit); }
+    /* A drawn tile sits in the same column as real photos here, so it says what it is (audit F3). */
+    if (!productImageOf(p)) { nameBox.appendChild(el('span', 'c-tile-note', '写真未掲載（図はカテゴリのイラスト）')); }
     idRow.appendChild(nameBox);
     a.appendChild(idRow);
 
@@ -1088,6 +1201,11 @@ function initIndex() {
     var a = el('a', 'card-main');
     a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
 
+    /* 0. the product itself, first: an image-led card is recognised before it is read.
+          The status badges sit on the image's corner; the source host sits on its foot. */
+    var media = productMedia(p, 'feed', { overlayCredit: true, tileNote: '写真未掲載' });
+    a.appendChild(media);
+
     /* 1. status + flags */
     var st = el('div', 'c-status');
     st.appendChild(statusBadge(p));
@@ -1100,11 +1218,10 @@ function initIndex() {
     if (p.is_attention === true) {
       st.appendChild(el('span', 'badge badge--attention', '注目候補'));
     }
-    a.appendChild(st);
+    media.appendChild(st);
 
-    /* 2. タイル + 商品名 + カテゴリ（詳細ページの先頭と同じタイル） */
+    /* 2. 商品名 + カテゴリ（写真／タイルは詳細ページの先頭と同じ） */
     var fIdent = el('div', 'c-ident');
-    fIdent.appendChild(productThumb(p, 'md'));
     var fText = el('div', 'c-ident-text');
     fText.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
     var feedMeta = identityMeta(p);
@@ -1584,6 +1701,61 @@ function initIndex() {
     });
   }
 
+  /**
+   * Hero collage: real product photos from the data, purely decorative (aria-hidden, alt="").
+   * Accepting / closing rows first, then rows with a backtest, then 注目候補, then upcoming —
+   * an ORDER OF RELEVANCE TO TODAY, not a ranking: nothing here is labelled or counted.
+   * One photo per source site on the first pass so the strip is not six colour variants
+   * of one keychain.
+   */
+  var COLLAGE_MAX = 7;
+  function collageTier(p) {
+    if (isOpenStatus(p)) { return 0; }
+    if (hasEvaluableBacktest(p)) { return 1; }
+    if (p.is_attention === true) { return 2; }
+    if (p.status === 'RESULT_PENDING' || p.status === 'NOT_STARTED') { return 3; }
+    return 4;
+  }
+  function renderHeroCollage() {
+    var box = $('hero-collage');
+    if (!box) { return; }
+    box.textContent = '';
+    var pool = state.products.filter(function (p) { return productImageOf(p) !== null; })
+      .sort(function (a, b) {
+        var d = collageTier(a) - collageTier(b);
+        if (d) { return d; }
+        return a.product_id < b.product_id ? -1 : 1;
+      });
+    var picked = [];
+    var seenHost = {};
+    var seenIp = {};
+    pool.forEach(function (p) {
+      if (picked.length >= COLLAGE_MAX) { return; }
+      var host = String(productImageOf(p).source_host || '');
+      var ip = String(p.ip || '');
+      if (seenHost[host] || (ip && seenIp[ip])) { return; }
+      seenHost[host] = true;
+      if (ip) { seenIp[ip] = true; }
+      picked.push(p);
+    });
+    pool.forEach(function (p) {
+      if (picked.length >= COLLAGE_MAX || picked.indexOf(p) !== -1) { return; }
+      picked.push(p);
+    });
+    if (picked.length < 3) { box.hidden = true; return; }
+    box.dataset.count = String(picked.length);
+    picked.forEach(function (p, i) {
+      var tile = el('span', 'hc-tile hc-tile--' + (i + 1));
+      var img = photoEl(p, productImageOf(p), 'hc-img', true, i < 3);
+      img.addEventListener('error', function () {
+        if (tile.parentNode) { tile.parentNode.removeChild(tile); }
+      });
+      tile.appendChild(img);
+      box.appendChild(tile);
+    });
+    box.hidden = false;
+  }
+
   function wireSectionMoreButtons() {
     SECTIONS.forEach(function (sec) {
       var root = $(sec.id);
@@ -1800,6 +1972,7 @@ function initIndex() {
         syncControlsFromFilters();
         wireControls();
         wireSectionMoreButtons();
+        renderHeroCollage();
         renderSections();
         renderList();
         if (!marksAvailable) {
@@ -2108,11 +2281,32 @@ function initProduct() {
     var unverified = isUnverifiedRow(p);
     var card = el('div', 'detail-card' + (unverified ? ' is-unverified' : ''));
 
+    /* --- HERO: 写真（なければ図） | 商品名・バッジ・締切・価格 ---
+       The same picture the card showed: the cheapest possible answer to
+       「押したカードのページで合っているのか」. The credit is visible text under it. */
+    var hero = el('div', 'detail-hero');
+    var fig = el('figure', 'detail-media');
+    var im = productImageOf(p);
+    var caption = el('figcaption', 'detail-credit');
+    var TILE_CAPTION = '公式の商品画像は未掲載です。図はカテゴリを表すイラストで、商品の写真ではありません。';
+    fig.appendChild(productMedia(p, 'hero', {
+      eager: true,
+      onFail: function () { caption.textContent = TILE_CAPTION; caption.classList.add('is-tile'); }
+    }));
+    var creditText = im ? imageCreditText(im) : null;
+    if (creditText) {
+      caption.textContent = creditText;
+    } else {
+      caption.textContent = TILE_CAPTION;
+      caption.classList.add('is-tile');
+    }
+    fig.appendChild(caption);
+    hero.appendChild(fig);
+    var heroBody = el('div', 'detail-hero-body');
+    hero.appendChild(heroBody);
+
     /* --- HEADER: 商品名 / 現在状態 / 確認状況 / フラグ / 補足 --- */
     var head = el('div', 'detail-head');
-    /* The same drawn tile the card showed. It is the cheapest possible answer to
-       「押したカードのページで合っているのか」 — the picture either matches or it does not. */
-    head.appendChild(productThumb(p, 'lg'));
     var headText = el('div', 'detail-head-text');
     headText.appendChild(el('h1', 'detail-title',
       isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
@@ -2130,9 +2324,10 @@ function initProduct() {
     }
     headText.appendChild(badges);
     head.appendChild(headText);
-    card.appendChild(head);
+    heroBody.appendChild(head);
+    card.appendChild(hero);
     if (unverified) {
-      card.appendChild(el('div', 'warn-box',
+      heroBody.appendChild(el('div', 'warn-box',
         '未検証の発見候補です。公開情報の一次確認が済んでいないため、確認済みの商品と同等に扱わないでください。'));
     }
 
@@ -2159,7 +2354,7 @@ function initProduct() {
     top.appendChild(dBox);
     /* PRICE: 定価 と 取得原価 は別の量。ひとつの独立ブロックにする。 */
     top.appendChild(pricePair(p));
-    card.appendChild(top);
+    heroBody.appendChild(top);
     var prices = el('div', 'detail-prices');
     prices.appendChild(el('p', 'price-note',
       '「定価」は公式に公表された価格で、仕入れ価格ではありません。' +
@@ -2169,7 +2364,7 @@ function initProduct() {
     if (!isUnknown(p.status_note_ja)) {
       prices.appendChild(el('p', 'note-box', p.status_note_ja));
     }
-    card.appendChild(prices);
+    heroBody.appendChild(prices);
 
     var wrap2 = el('div', 'detail-wrap');
 
