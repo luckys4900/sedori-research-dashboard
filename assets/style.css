@@ -2155,3 +2155,115 @@ body { background-image: linear-gradient(180deg, var(--wash) 0, transparent 560p
 .f-lottery-item { display: inline-flex; align-items: baseline; min-width: 0; }
 .detail-nav { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
 .detail-nav .back-link { white-space: nowrap; }
+
+
+/* =========================================================================
+   11. Identity tile + destination clarity
+   -------------------------------------------------------------------------
+   The tile is drawn from published data (category -> glyph, id -> hue), not a
+   photograph: nothing here shows a maker's or a retailer's image. It carries no
+   fact of its own — category, name and state are written beside it — and it is
+   aria-hidden. Its whole job is that the card and the product page show the same
+   picture, so a reader can see they landed on the thing they clicked.
+   ========================================================================= */
+
+.thumb {
+  flex: 0 0 auto;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-sunken);
+  line-height: 0;
+}
+.thumb svg { display: block; width: 100%; height: 100%; }
+.thumb--sm { width: 38px; height: 38px; }
+.thumb--md { width: 54px; height: 54px; }
+.thumb--lg { width: 72px; height: 72px; border-radius: var(--radius); }
+
+/* name + tile as one identity row */
+.c-ident {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+.c-ident-text { min-width: 0; flex: 1 1 auto; }
+.c-cat {
+  margin-top: 2px;
+  font-size: var(--fs-aux);
+  color: var(--fg-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The dense screener is a table: one small tile, no second line. */
+.grid.grid--dense .c-ident { gap: 7px; align-items: center; }
+.grid.grid--dense .thumb { width: 24px; height: 24px; border-radius: 4px; }
+.grid.grid--dense .c-cat { display: none; }
+
+/* Where an outbound link goes, visible on the button itself. */
+.cta-host {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--fs-aux);
+  font-weight: 600;
+  color: var(--fg-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.card-action--ext { flex-direction: column; line-height: 1.25; }
+
+/* Detail page header: the same tile, the name, what kind of thing it is, then the badges. */
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.detail-head-text { min-width: 0; flex: 1 1 auto; }
+.detail-sub {
+  margin: 3px 0 0;
+  font-size: var(--fs-label);
+  color: var(--fg-muted);
+}
+
+/* Contents of the detail page. */
+.detail-toc {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.detail-toc-lbl {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--fs-aux);
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--fg-muted);
+}
+.detail-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.detail-toc-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 11px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  color: var(--fg);
+  font-size: var(--fs-label);
+  text-decoration: none;
+}
+.detail-toc-list a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }

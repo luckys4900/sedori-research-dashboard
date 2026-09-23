@@ -477,6 +477,10 @@ function outboundCta(p, className) {
   var label = isPurchase ? '販売・応募ページ' : '公式情報を確認';
   var a = el('a', className);
   a.appendChild(el('span', 'cta-text', label));
+  /* Where the link actually goes, visible rather than only in the accessible name: a reader
+     deciding whether to leave the page should not have to hover a link to find out. */
+  var ctaHost = hostOf(url);
+  if (ctaHost) { a.appendChild(el('span', 'cta-host', ctaHost)); }
   /* The hook is EMPTY on purpose. 「PR」 is an advertising disclosure in Japan, so a
      non-sponsored link must not carry that text anywhere in its DOM — hidden text still
      surfaces in copy/paste, reader modes, CSS-off views and textContent scrapes, where it
@@ -525,6 +529,115 @@ function entryFacts(p) {
     item.appendChild(el('span', 'f-lottery-val', pair[1]));
     box.appendChild(item);
   });
+  return box;
+}
+
+/* ---------------------------------------------------------------- thumbnail */
+
+/** Stable non-negative hash of a string. Same id -> same tile, every render, every page. */
+function idHash(text) {
+  var h = 0;
+  var str = String(text || '');
+  for (var i = 0; i < str.length; i++) {
+    h = ((h * 31) + str.charCodeAt(i)) | 0;
+  }
+  return Math.abs(h);
+}
+
+/* Eight muted hues. Deliberately NOT the state hues (open green / urgent red / flag purple):
+   a tile must never look like it is reporting a status. */
+var THUMB_HUES = [12, 40, 86, 150, 190, 222, 268, 320];
+
+/** The glyph per category, as plain SVG primitives in a 64x64 box. */
+var THUMB_GLYPH = {
+  TCG: [['rect', { x: 14, y: 12, width: 26, height: 38, rx: 3 }],
+        ['rect', { x: 26, y: 18, width: 26, height: 38, rx: 3 }],
+        ['line', { x1: 31, y1: 27, x2: 47, y2: 27 }],
+        ['line', { x1: 31, y1: 35, x2: 47, y2: 35 }]],
+  FIGURE: [['circle', { cx: 32, cy: 19, r: 7 }],
+           ['path', { d: 'M20 52 Q32 28 44 52 Z' }],
+           ['line', { x1: 24, y1: 52, x2: 40, y2: 52 }]],
+  TOY: [['rect', { x: 14, y: 24, width: 36, height: 26, rx: 3 }],
+        ['path', { d: 'M14 24 L22 14 L50 14 L50 24' }],
+        ['line', { x1: 32, y1: 24, x2: 32, y2: 50 }]],
+  CHARACTER_GOODS: [['circle', { cx: 32, cy: 18, r: 6 }],
+                    ['path', { d: 'M32 24 L32 30' }],
+                    ['rect', { x: 20, y: 30, width: 24, height: 22, rx: 6 }]],
+  BOOK_MOOK: [['path', { d: 'M12 16 Q32 24 32 24 L32 50 Q32 50 12 42 Z' }],
+              ['path', { d: 'M52 16 Q32 24 32 24 L32 50 Q32 50 52 42 Z' }]],
+  ONLINE_LOTTERY: [['rect', { x: 12, y: 22, width: 40, height: 22, rx: 4 }],
+                   ['line', { x1: 26, y1: 22, x2: 26, y2: 44 }],
+                   ['line', { x1: 34, y1: 26, x2: 46, y2: 26 }],
+                   ['line', { x1: 34, y1: 34, x2: 46, y2: 34 }]],
+  COLLAB: [['circle', { cx: 25, cy: 32, r: 11 }],
+           ['circle', { cx: 39, cy: 32, r: 11 }]],
+  OTHER: [['rect', { x: 14, y: 22, width: 36, height: 28, rx: 3 }],
+          ['line', { x1: 14, y1: 32, x2: 50, y2: 32 }],
+          ['line', { x1: 32, y1: 22, x2: 32, y2: 50 }]]
+};
+var THUMB_GLYPH_FALLBACK = 'OTHER';
+
+/**
+ * 「何の商品か」の一行: IP・カテゴリ（・詳細では販売方式）。
+ * 値が無いときは行そのものを出さない。CATEGORY_LABEL.UNKNOWN は「不明」なので、
+ * そのまま出すとタイルの下に意味のない「不明」だけが並ぶ。
+ */
+function identityMeta(p, withMode) {
+  var out = [];
+  if (!isUnknown(p.ip)) { out.push(String(p.ip)); }
+  var cat = lbl(CATEGORY_LABEL, p.category);
+  if (cat && cat !== UNKNOWN_ENUM_TEXT && cat !== UNKNOWN_TEXT) { out.push(cat); }
+  if (withMode) {
+    var mode = lbl(SALE_MODE_LABEL, p.sale_mode);
+    if (mode && mode !== UNKNOWN_ENUM_TEXT && mode !== UNKNOWN_TEXT) { out.push(mode); }
+  }
+  return out;
+}
+
+function svgEl(name, attrs) {
+  var node = document.createElementNS('http://www.w3.org/2000/svg', name);
+  for (var key in attrs) {
+    if (Object.prototype.hasOwnProperty.call(attrs, key)) {
+      node.setAttribute(key, String(attrs[key]));
+    }
+  }
+  return node;
+}
+
+/**
+ * The product's drawn tile. Decorative: the category and the name sit beside it as text, and
+ * the tile is aria-hidden so a screen reader is not told about a picture that carries nothing.
+ *
+ * `variant` only changes the size class; the drawing is identical, because the point of the
+ * tile is that the card and the detail page show the SAME one.
+ */
+function productThumb(p, variant) {
+  var key = own(THUMB_GLYPH, p.category) !== undefined ? String(p.category) : THUMB_GLYPH_FALLBACK;
+  var hue = THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length];
+  var box = el('span', 'thumb' + (variant ? ' thumb--' + variant : ''));
+  box.setAttribute('aria-hidden', 'true');
+  var svg = svgEl('svg', { viewBox: '0 0 64 64', focusable: 'false', role: 'presentation' });
+  svg.appendChild(svgEl('rect', {
+    x: 0, y: 0, width: 64, height: 64, rx: 10,
+    fill: 'hsl(' + hue + ', 44%, 90%)'
+  }));
+  /* A second, slightly rotated plane behind the glyph: it reads as a cropped photo would,
+     without pretending to be one. */
+  svg.appendChild(svgEl('path', {
+    d: 'M0 46 L64 26 L64 64 L0 64 Z',
+    fill: 'hsl(' + hue + ', 40%, 84%)'
+  }));
+  var strokes = own(THUMB_GLYPH, key);
+  for (var i = 0; i < strokes.length; i++) {
+    var node = svgEl(strokes[i][0], strokes[i][1]);
+    node.setAttribute('fill', strokes[i][0] === 'line' ? 'none' : 'hsl(' + hue + ', 34%, 97%)');
+    node.setAttribute('stroke', 'hsl(' + hue + ', 38%, 34%)');
+    node.setAttribute('stroke-width', '2.6');
+    node.setAttribute('stroke-linejoin', 'round');
+    node.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(node);
+  }
+  box.appendChild(svg);
   return box;
 }
 
@@ -777,8 +890,15 @@ function initIndex() {
     var a = el('a', 'card-main');
     a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
 
-    /* --- L1: 商品名 --- */
-    a.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    /* --- L1: タイル + 商品名。タイルは詳細ページの先頭と同じ絵で、同じ商品だと見て分かる --- */
+    var idRow = el('div', 'c-ident');
+    idRow.appendChild(productThumb(p, 'sm'));
+    var nameBox = el('div', 'c-ident-text');
+    nameBox.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    var cardMeta = identityMeta(p);
+    if (cardMeta.length) { nameBox.appendChild(el('div', 'c-cat', cardMeta.join('・'))); }
+    idRow.appendChild(nameBox);
+    a.appendChild(idRow);
 
     /* --- L2: 現在状態 (+ flags) --- */
     var st = el('div', 'c-status');
@@ -923,8 +1043,15 @@ function initIndex() {
     }
     a.appendChild(st);
 
-    /* 2. 商品名 */
-    a.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    /* 2. タイル + 商品名 + カテゴリ（詳細ページの先頭と同じタイル） */
+    var fIdent = el('div', 'c-ident');
+    fIdent.appendChild(productThumb(p, 'md'));
+    var fText = el('div', 'c-ident-text');
+    fText.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    var feedMeta = identityMeta(p);
+    if (feedMeta.length) { fText.appendChild(el('div', 'c-cat', feedMeta.join('・'))); }
+    fIdent.appendChild(fText);
+    a.appendChild(fIdent);
 
     /* 3. 締切 — DATE and RELATIVE as two pieces. Urgent styling only for a
           non-null closing_soon_band (isClosingSoonRow). */
@@ -1845,8 +1972,16 @@ function initProduct() {
 
     /* --- HEADER: 商品名 / 現在状態 / 確認状況 / フラグ / 補足 --- */
     var head = el('div', 'detail-head');
-    head.appendChild(el('h1', 'detail-title',
+    /* The same drawn tile the card showed. It is the cheapest possible answer to
+       「押したカードのページで合っているのか」 — the picture either matches or it does not. */
+    head.appendChild(productThumb(p, 'lg'));
+    var headText = el('div', 'detail-head-text');
+    headText.appendChild(el('h1', 'detail-title',
       isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    var detailMeta = identityMeta(p, true);
+    if (detailMeta.length) {
+      headText.appendChild(el('p', 'detail-sub', detailMeta.join('・')));
+    }
     var badges = el('div', 'detail-badges');
     badges.appendChild(statusBadge(p));
     badges.appendChild(evidenceBadge(p));
@@ -1855,7 +1990,8 @@ function initProduct() {
     if (p.is_attention === true) {
       badges.appendChild(el('span', 'badge badge--attention', '注目候補'));
     }
-    head.appendChild(badges);
+    headText.appendChild(badges);
+    head.appendChild(headText);
     card.appendChild(head);
     if (unverified) {
       card.appendChild(el('div', 'warn-box',
@@ -1984,6 +2120,27 @@ function initProduct() {
     var g6 = group('調査メモ', true);
     row(g6.dl, '備考', p.notes_ja);
     wrap2.appendChild(g6.node);
+
+    /* Contents. Generated from the blocks that were actually appended above — never a fixed
+       list, so a page with no route evidence does not claim to have a route section. */
+    var toc = el('nav', 'detail-toc');
+    toc.setAttribute('aria-label', 'このページの内容');
+    toc.appendChild(el('span', 'detail-toc-lbl', 'このページに載っていること'));
+    var tocList = el('ul', 'detail-toc-list');
+    var groups = wrap2.querySelectorAll('.dl-group');
+    for (var gi = 0; gi < groups.length; gi++) {
+      var heading = groups[gi].querySelector('h2');
+      if (!heading || !heading.textContent) { continue; }
+      var anchorId = 'sec-detail-' + gi;
+      groups[gi].id = anchorId;
+      var item = el('li');
+      var link = el('a', null, heading.textContent);
+      link.href = '#' + anchorId;
+      item.appendChild(link);
+      tocList.appendChild(item);
+    }
+    toc.appendChild(tocList);
+    if (tocList.children.length) { card.appendChild(toc); }
 
     card.appendChild(wrap2);
 
