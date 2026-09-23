@@ -2267,3 +2267,72 @@ body { background-image: linear-gradient(180deg, var(--wash) 0, transparent 560p
   text-decoration: none;
 }
 .detail-toc-list a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+
+/* =========================================================================
+   12. 類似品バックテスト（参考）
+   A reference measure, drawn in the accent family and never in a state hue:
+   it is not a status and not a recommendation. A thin loser is drawn with a
+   warning edge so it is seen, not hidden.
+   ========================================================================= */
+.sec--backtest { border-left-color: var(--accent); }
+.sec--backtest .sec-mark { background: var(--accent-bg); color: var(--accent); }
+
+.bt-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  margin: 6px 0 0;
+  padding: 6px 8px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+  font-size: var(--fs-aux);
+}
+.bt-line.has-counter { border-left: 3px solid var(--closing); }
+.bt-line-lbl { font-weight: 800; color: var(--accent); }
+.bt-line-val { color: var(--fg); font-variant-numeric: tabular-nums; }
+.bt-line-warn { flex-basis: 100%; color: var(--closing); font-weight: 700; }
+.grid.grid--dense .bt-line { display: none; }
+
+.bt-block { border: 1px solid var(--accent-line); border-radius: var(--radius); padding: 12px; background: var(--bg-elev); }
+.bt-head { display: grid; gap: 8px; margin: 8px 0; }
+.bt-result { margin: 0; font-weight: 800; font-size: var(--fs-body); }
+.bt-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+@media (min-width: 760px) { .bt-kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.bt-kpi { padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); }
+.bt-kpi-lbl { display: block; font-size: var(--fs-aux); color: var(--fg-muted); font-weight: 700; }
+.bt-kpi-val { font-size: 1.15rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.bt-def { margin: 0 0 10px; font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.7; }
+.bt-analogs { display: grid; gap: 6px; }
+.bt-analog {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+}
+.bt-analog.is-clear { border-left-color: var(--accent); }
+.bt-analog.is-thin { border-left-color: var(--closing); border-style: dashed; border-left-style: solid; }
+.bt-analog.is-none { opacity: .8; }
+.bt-analog-head { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+.bt-analog-name { font-weight: 700; font-size: var(--fs-label); }
+.bt-analog-strength { font-size: var(--fs-aux); color: var(--fg-muted); border: 1px solid var(--border); border-radius: 999px; padding: 0 7px; }
+.bt-analog-result { font-size: var(--fs-label); font-weight: 700; }
+.bt-analog.is-thin .bt-analog-result { color: var(--closing); }
+.bt-analog-facts { font-size: var(--fs-aux); color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.bt-notes { margin: 10px 0 0; padding-left: 1.2em; font-size: var(--fs-aux); color: var(--fg-muted); line-height: 1.7; }
+.bt-note-warn { color: var(--closing); font-weight: 700; }
+.bt-unit {
+  margin: 0;
+  padding: 7px 10px;
+  border: 1px dashed var(--closing);
+  border-radius: var(--radius-sm);
+  background: var(--closing-bg);
+  color: var(--fg);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  line-height: 1.6;
+}

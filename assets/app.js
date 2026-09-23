@@ -532,6 +532,61 @@ function entryFacts(p) {
   return box;
 }
 
+/* ------------------------------------------------------------ analog backtest */
+
+/** The published backtest when at least one analog could be evaluated, else null. */
+function backtestOf(p) {
+  var bt = p && p.analog_backtest;
+  if (!bt || typeof bt !== 'object') { return null; }
+  return bt;
+}
+function hasEvaluableBacktest(p) {
+  var bt = backtestOf(p);
+  return !!(bt && num(bt.analogs_evaluable) !== null && bt.analogs_evaluable > 0);
+}
+
+/** Signed yen: a negative headroom is written −¥1,083, never ¥-1,083. */
+function fmtSignedYen(v) {
+  var n = num(v);
+  if (n === null) { return null; }
+  var abs = Math.abs(Math.round(n)).toLocaleString('ja-JP');
+  return (n < 0 ? '−¥' : '¥') + abs;
+}
+
+/** Median of the evaluable analogs' price-to-list ratios, for the one-line summary. */
+function backtestMedianRatio(bt) {
+  var r = (bt.analogs || []).filter(function (a) {
+    return a && num(a.price_to_list_ratio) !== null && a.strict_sales >= 3 && a.list_price_jpy !== null &&
+      a.result !== 'INSUFFICIENT_SAMPLE';
+  }).map(function (a) { return a.price_to_list_ratio; }).sort(function (x, y) { return x - y; });
+  if (!r.length) { return null; }
+  var mid = Math.floor(r.length / 2);
+  return r.length % 2 ? r[mid] : (r[mid - 1] + r[mid]) / 2;
+}
+
+/**
+ * One line on a card. Always says 参考 and always names what the number is: the most the
+ * still-unknown costs could absorb, not a profit.
+ */
+function backtestLine(p) {
+  if (!hasEvaluableBacktest(p)) { return null; }
+  var bt = backtestOf(p);
+  var box = el('div', 'bt-line' + ((bt.counter_signal_names || []).length ? ' has-counter' : ''));
+  box.appendChild(el('span', 'bt-line-lbl', '類似品バックテスト（参考）'));
+  var ratio = backtestMedianRatio(bt);
+  var parts = [];
+  parts.push('類似品' + bt.analogs_evaluable + '件');
+  if (ratio !== null) { parts.push('定価比 中央 ' + ratio.toFixed(2) + '倍'); }
+  /* No yen here: a card has no room for the unit caveat, and a ¥250 pack must not be read
+     against a box-sized amount. The yen amounts, labelled with their unit, are on the detail page. */
+  if ((bt.analog_units || []).length) { parts.push('類似品は' + bt.analog_units.join('・') + '単位'); }
+  box.appendChild(el('span', 'bt-line-val', parts.join('・')));
+  if ((bt.counter_signal_names || []).length) {
+    box.appendChild(el('span', 'bt-line-warn', '成約数不足の類似品に定価割れの兆候あり'));
+  }
+  return box;
+}
+
 /* ---------------------------------------------------------------- thumbnail */
 
 /** Stable non-negative hash of a string. Same id -> same tile, every render, every page. */
@@ -972,6 +1027,10 @@ function initIndex() {
     }
     a.appendChild(sigBox);
 
+    /* --- L4: 類似品バックテスト（参考） --- */
+    var cardBt = backtestLine(p);
+    if (cardBt) { a.appendChild(cardBt); }
+
     /* --- L4: 確認の進み方 (neutral ladder) --- */
     var pe = el('div', 'c-profit');
     pe.appendChild(profitLadder(p, true));
@@ -1100,6 +1159,10 @@ function initIndex() {
     /* 5b. 応募条件 — published dates and limits only, never a chance of winning */
     var facts = entryFacts(p);
     if (facts) { a.appendChild(facts); }
+
+    /* 5c. 類似品バックテスト（参考） — only when an analog could be evaluated */
+    var btl = backtestLine(p);
+    if (btl) { a.appendChild(btl); }
 
     /* 6. key signals — two chips, full text in aria-label and on the detail page */
     var chips = signalChips(p, 2);
@@ -1474,7 +1537,10 @@ function initIndex() {
     { id: 'sec-new', name: '新着（14日以内）', sort: byFirstSeenDesc,
       pick: function (p) { return p.is_new === true; } },
     { id: 'sec-attention', name: '注目候補', sort: cmpDeadline,
-      pick: function (p) { return p.is_attention === true; } }
+      pick: function (p) { return p.is_attention === true; } },
+    /* Sorted by deadline like every other section — deliberately NOT by headroom, which
+       would turn a reference measure into a ranking. */
+    { id: 'sec-backtest', name: '類似品バックテストあり', sort: cmpDeadline, pick: hasEvaluableBacktest }
   ];
   function sectionById(id) {
     for (var i = 0; i < SECTIONS.length; i++) {
@@ -1965,6 +2031,78 @@ function initProduct() {
     return box;
   }
 
+  /**
+   * 類似品バックテスト（参考）. Shows every analog, including the ones that could not be
+   * evaluated, so that a thin loser is visible next to the winners rather than dropped.
+   */
+  function buildBacktestBlock(p) {
+    var bt = backtestOf(p);
+    if (!bt) { return null; }
+    var g = group('類似品バックテスト（参考）', true);
+    g.node.classList.add('bt-block');
+    var head = el('div', 'bt-head');
+    head.appendChild(el('p', 'bt-result', isUnknown(bt.result_label_ja) ? '評価できる類似品がない' : String(bt.result_label_ja)));
+    var kpis = el('div', 'bt-kpis');
+    function kpi(label, value) {
+      var k = el('div', 'bt-kpi');
+      k.appendChild(el('span', 'bt-kpi-lbl', label));
+      k.appendChild(el('span', 'bt-kpi-val' + (value === null ? ' is-unknown' : ''), value === null ? '—' : value));
+      kpis.appendChild(k);
+    }
+    var unitTxt = (bt.analog_units || []).length ? bt.analog_units.join('・') : null;
+    kpi('評価できた類似品', String(bt.analogs_evaluable) + ' / ' + String(bt.analogs_linked) + '件');
+    var ratio = backtestMedianRatio(bt);
+    kpi('定価比（中央）', ratio === null ? null : ratio.toFixed(2) + '倍');
+    kpi('ヘッドルーム中央' + (unitTxt ? '（類似品 ' + unitTxt + ' あたり）' : ''), fmtSignedYen(bt.median_headroom_jpy));
+    kpi('ヘッドルーム最悪' + (unitTxt ? '（類似品 ' + unitTxt + ' あたり）' : ''), fmtSignedYen(bt.worst_headroom_jpy));
+    head.appendChild(kpis);
+    if (!isUnknown(bt.unit_note_ja)) { head.appendChild(el('p', 'bt-unit', String(bt.unit_note_ja))); }
+    g.node.insertBefore(head, g.dl);
+
+    var fee = num(bt.fee_rate);
+    g.node.insertBefore(el('p', 'bt-def',
+      'ヘッドルーム = 類似品の成約価格 ×（1 − 手数料' + (fee === null ? '' : Math.round(fee * 100) + '%') +
+      '）− 類似品の定価。送料・梱包などの費用がまだ確認できていないため、利益ではありません。' +
+      'この額を費用が超えれば赤字、という上限です。定価で買えた前提で、抽選品は当選が前提です。' +
+      '基準は' + (isUnknown(bt.horizon_label_ja) ? '' : String(bt.horizon_label_ja)) + 'の成約です。'), g.dl);
+
+    var list = el('div', 'bt-analogs');
+    (bt.analogs || []).forEach(function (a) {
+      var row = el('div', 'bt-analog' + (a.result === 'HEADROOM_ALL_SALES' ? ' is-clear' :
+        (a.result === 'INSUFFICIENT_SAMPLE' ? ' is-thin' : (a.result ? ' is-other' : ' is-none'))));
+      var top = el('div', 'bt-analog-head');
+      top.appendChild(el('span', 'bt-analog-name', String(a.comparable_name)));
+      if (!isUnknown(a.strength_label_ja)) { top.appendChild(el('span', 'bt-analog-strength', String(a.strength_label_ja))); }
+      row.appendChild(top);
+      row.appendChild(el('span', 'bt-analog-result', isUnknown(a.result_label_ja) ? '成約データなし' : String(a.result_label_ja)));
+      var facts = [];
+      facts.push('成約 ' + (num(a.strict_sales) === null ? 0 : a.strict_sales) + '件');
+      if (num(a.median_sale_jpy) !== null) { facts.push('成約中央 ' + fmtSignedYen(a.median_sale_jpy)); }
+      if (num(a.list_price_jpy) !== null) {
+        facts.push('定価 ' + fmtSignedYen(a.list_price_jpy) + (isUnknown(a.sale_unit) ? '' : '（' + a.sale_unit + '）'));
+      }
+      if (num(a.price_to_list_ratio) !== null) { facts.push('定価比 ' + a.price_to_list_ratio.toFixed(2) + '倍'); }
+      if (num(a.median_headroom_jpy) !== null) { facts.push('ヘッドルーム中央 ' + fmtSignedYen(a.median_headroom_jpy)); }
+      if (num(a.worst_headroom_jpy) !== null) { facts.push('最悪 ' + fmtSignedYen(a.worst_headroom_jpy)); }
+      row.appendChild(el('span', 'bt-analog-facts', facts.join('・')));
+      list.appendChild(row);
+    });
+    g.node.insertBefore(list, g.dl);
+
+    var notes = el('ul', 'bt-notes');
+    if ((bt.counter_signal_names || []).length) {
+      notes.appendChild(el('li', 'bt-note-warn',
+        '成約数が最低件数（3件）に届かず判定から外れた類似品のうち、' + bt.counter_signal_names.join('、') +
+        ' は定価＋手数料を下回っています。売れない商品は取引が少なく判定から外れやすいため、上の結果は良く見えやすい点に注意してください。'));
+    }
+    notes.appendChild(el('li', null, '類似品は過去に発売された別の商品です。この商品が同じ値段で売れるという意味ではありません。'));
+    notes.appendChild(el('li', null, '成約はオークション等の終了済み取引のうち、未開封・単品・完品のものだけを数えています。出品中の価格は含みません。'));
+    notes.appendChild(el('li', null, '買うかどうかの判断材料の一つです。購入を勧めるものではありません。'));
+    g.node.insertBefore(notes, g.dl);
+    g.dl.remove();
+    return g.node;
+  }
+
   function render(doc, p) {
     var root = $('detail');
     var unverified = isUnverifiedRow(p);
@@ -2034,6 +2172,12 @@ function initProduct() {
     card.appendChild(prices);
 
     var wrap2 = el('div', 'detail-wrap');
+
+    /* 類似品バックテスト（参考）: first when an analog could be evaluated — it is what the reader
+       came for, and it carries its own caveats. With nothing evaluable it still appears, lower down,
+       so 「評価できる類似品がない」 is stated rather than implied by absence. */
+    var btBlock = buildBacktestBlock(p);
+    if (btBlock && hasEvaluableBacktest(p)) { wrap2.appendChild(btBlock); }
 
     /* --- 主要販売情報 --- */
     var g2 = group('主要販売情報');
@@ -2115,6 +2259,7 @@ function initProduct() {
     wrap2.appendChild(buildProfitBlock(p));
     wrap2.appendChild(g5.node);
     wrap2.appendChild(buildRouteBlock(p));
+    if (btBlock && !hasEvaluableBacktest(p)) { wrap2.appendChild(btBlock); }
 
     /* --- 調査メモ --- */
     var g6 = group('調査メモ', true);

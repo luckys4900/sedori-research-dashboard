@@ -1,10 +1,41 @@
 {
   "as_of": "2026-09-23",
-  "generated_at": "2026-09-23T10:33:28+09:00",
+  "generated_at": "2026-09-23T18:47:04+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -95,6 +126,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -185,6 +247,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -275,6 +368,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -365,6 +489,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -455,6 +610,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -545,6 +731,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター PVCポーチ",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [
@@ -644,6 +861,51 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "3COINS ポケットモンスター トートBAG",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "3COINS ポケピース モチーフエコバッグ",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 2,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [
@@ -743,6 +1005,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -827,6 +1090,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -910,6 +1174,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -999,6 +1264,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1089,6 +1355,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1173,6 +1440,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1256,6 +1524,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1341,6 +1610,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-08-06",
       "application_start": "2026-07-06",
       "attention_reasons": [],
@@ -1428,6 +1698,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1510,6 +1781,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-05-07",
       "application_start": "2026-04-03",
       "attention_reasons": [],
@@ -1592,6 +1864,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1674,6 +1947,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-11-23",
       "application_start": "2026-10-09",
       "attention_reasons": [],
@@ -1761,6 +2035,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-09-06",
       "application_start": "2026-09-04",
       "attention_reasons": [],
@@ -1858,6 +2133,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -1945,6 +2221,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-09-06",
       "application_start": "2026-09-04",
       "attention_reasons": [],
@@ -2042,6 +2319,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-11-01",
       "application_start": "2026-10-31",
       "attention_reasons": [],
@@ -2134,6 +2412,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2226,6 +2505,83 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [
+          "BOX"
+        ],
+        "analogs": [
+          {
+            "comparable_name": "GUNDAM CARD GAME ブースターパック Freedom Ascension【GD05】",
+            "list_price_jpy": 6000,
+            "median_headroom_jpy": 1650,
+            "median_sale_jpy": 8500,
+            "price_to_list_ratio": 1.417,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 36,
+            "worst_headroom_jpy": 1199
+          },
+          {
+            "comparable_name": "GUNDAM CARD GAME ブースターパック Phantom Aria【GD04】",
+            "list_price_jpy": 5808,
+            "median_headroom_jpy": -1083,
+            "median_sale_jpy": 5250,
+            "price_to_list_ratio": 0.904,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1083
+          },
+          {
+            "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック CROSS FORCE【FB10】",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": 7005,
+            "median_sale_jpy": 13650,
+            "price_to_list_ratio": 2.585,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 8,
+            "worst_headroom_jpy": 5970
+          },
+          {
+            "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": 3900,
+            "median_sale_jpy": 10200,
+            "price_to_list_ratio": 1.932,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 5,
+            "worst_headroom_jpy": 3000
+          }
+        ],
+        "analogs_evaluable": 3,
+        "analogs_linked": 4,
+        "counter_signal_names": [
+          "GUNDAM CARD GAME ブースターパック Phantom Aria【GD04】"
+        ],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": 3900,
+        "result": "ANALOGS_CLEARED_LIST_PRICE",
+        "result_label_ja": "類似品はすべて定価＋手数料を上回った（参考）。ただし成約数不足の類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 1,
+        "unit_note_ja": "この商品の販売単位（パック / BOX など）はまだ確定していません。類似品の金額は BOX 単位なので、この商品にそのまま当てはめず、定価比として読んでください。",
+        "worst_headroom_jpy": 1199
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2431,6 +2787,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2509,6 +2866,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2587,6 +2945,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2665,6 +3024,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2743,6 +3103,67 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": -285,
+            "median_sale_jpy": 5550,
+            "price_to_list_ratio": 1.051,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 2,
+            "worst_headroom_jpy": -510
+          },
+          {
+            "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック ディーヴァフィーバー",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 3,
+        "counter_signal_names": [
+          "hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド"
+        ],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2844,6 +3265,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -2929,6 +3351,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3007,6 +3430,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3085,6 +3509,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3163,6 +3588,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3241,6 +3667,123 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [
+          "BOX"
+        ],
+        "analogs": [
+          {
+            "comparable_name": "ONE PIECE CARD GAME ブースターパック 世界最強の戦士【OP-17】",
+            "list_price_jpy": 5760,
+            "median_headroom_jpy": 5040,
+            "median_sale_jpy": 12000,
+            "price_to_list_ratio": 2.083,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 38,
+            "worst_headroom_jpy": 4140
+          },
+          {
+            "comparable_name": "ONE PIECE CARD GAME ブースターパック 決戦の刻【OP-16】",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": 6870,
+            "median_sale_jpy": 13500,
+            "price_to_list_ratio": 2.557,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 30,
+            "worst_headroom_jpy": 2190
+          },
+          {
+            "comparable_name": "ONE PIECE CARD GAME ブースターパック 神の島の冒険【OP-15】",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": 2572,
+            "median_sale_jpy": 8725,
+            "price_to_list_ratio": 1.652,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 20,
+            "worst_headroom_jpy": 1020
+          },
+          {
+            "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック CROSS FORCE【FB10】",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": 7005,
+            "median_sale_jpy": 13650,
+            "price_to_list_ratio": 2.585,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 8,
+            "worst_headroom_jpy": 5970
+          },
+          {
+            "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": 3900,
+            "median_sale_jpy": 10200,
+            "price_to_list_ratio": 1.932,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 5,
+            "worst_headroom_jpy": 3000
+          },
+          {
+            "comparable_name": "ONE PIECE CARD GAME エクストラブースター ONE PIECE Heroines Edition【EB-03】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "ONE PIECE CARD GAME エクストラブースター メモリアルコレクション【EB-01】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 5,
+        "analogs_linked": 7,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": 5040,
+        "result": "ANALOGS_CLEARED_LIST_PRICE",
+        "result_label_ja": "類似品はすべて定価＋手数料を上回った（参考）",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": "この商品の販売単位（パック / BOX など）はまだ確定していません。類似品の金額は BOX 単位なので、この商品にそのまま当てはめず、定価比として読んでください。",
+        "worst_headroom_jpy": 1020
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3495,6 +4038,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3573,6 +4117,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3657,6 +4202,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3735,6 +4281,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3813,6 +4360,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3891,6 +4439,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -3969,6 +4518,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4047,6 +4597,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4136,6 +4687,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4214,6 +4766,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4292,6 +4845,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4370,6 +4924,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4448,6 +5003,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4526,6 +5082,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4604,6 +5161,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4687,6 +5245,93 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "MG 1/100 スタークジェガン【再販】（プレミアムバンダイ）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "MG 1/100 ドワッジ【再販】（プレミアムバンダイ）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "MG 1/100 アナベル・ガトー専用ゲルググ Ver.2.0【再販】（プレミアムバンダイ）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "MG 1/100 強化型ダブルゼータガンダム Ver.Ka【再販】【2次：2026年4月発送】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "MG 1/100 ガンダムF90 Nタイプ【再販】【2次：2026年6月発送】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 5,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4781,6 +5426,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4870,6 +5516,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4948,6 +5595,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5026,6 +5674,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5114,6 +5763,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5202,6 +5852,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5280,6 +5931,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5368,6 +6020,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5446,6 +6099,65 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "スペシャルBOX ポケモンセンターフクオカ",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "スペシャルBOX ポケモンセンタートウホク",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": 26000,
+            "price_to_list_ratio": null,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 1,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "スペシャルBOX ポケモンセンターヒロシマ",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 3,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [
@@ -5567,6 +6279,81 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [
+          "BOX"
+        ],
+        "analogs": [
+          {
+            "comparable_name": "ポケモンカードゲーム 25th ANNIVERSARY COLLECTION 1BOX",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "ポケモンカードゲーム 拡張パック 20th Anniversary 1BOX",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX",
+            "list_price_jpy": 6000,
+            "median_headroom_jpy": 4620,
+            "median_sale_jpy": 11800,
+            "price_to_list_ratio": 1.967,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 33,
+            "worst_headroom_jpy": 4080
+          },
+          {
+            "comparable_name": "ポケモンカードゲーム MEGA 拡張パック ストームエメラルダ BOX",
+            "list_price_jpy": 6000,
+            "median_headroom_jpy": 5520,
+            "median_sale_jpy": 12800,
+            "price_to_list_ratio": 2.133,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "全成約が定価＋手数料を上回った",
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 30,
+            "worst_headroom_jpy": 3000
+          }
+        ],
+        "analogs_evaluable": 2,
+        "analogs_linked": 4,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": 5070,
+        "result": "ANALOGS_CLEARED_LIST_PRICE",
+        "result_label_ja": "類似品はすべて定価＋手数料を上回った（参考）",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": "類似品の金額は BOX 単位の成約です。この商品の販売単位と同じかを確かめてから金額を読んでください。",
+        "worst_headroom_jpy": 3000
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [
@@ -5710,6 +6497,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5789,6 +6577,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5868,6 +6657,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -5947,6 +6737,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6026,6 +6817,51 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ポケモンカードゲーム 25th ANNIVERSARY GOLDEN BOX",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "ポケモンカードゲーム Classic",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 2,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [
@@ -6169,6 +7005,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6248,6 +7085,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6327,6 +7165,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6406,6 +7245,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6482,6 +7322,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6561,6 +7402,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6640,6 +7482,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6719,6 +7562,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6798,6 +7642,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6877,6 +7722,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -6956,6 +7802,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7035,6 +7882,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7111,6 +7959,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7205,6 +8054,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7304,6 +8154,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7382,6 +8263,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7460,6 +8372,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7538,6 +8451,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7616,6 +8530,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7710,6 +8625,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7788,6 +8704,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7882,6 +8799,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -7960,6 +8878,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8038,6 +8987,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8116,6 +9096,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8192,6 +9173,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8284,6 +9266,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8360,6 +9343,65 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "KADOKAWA PLASTIC MODEL SERIES 【推しの子】 アイ DX ver.",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "KADOKAWA PLASTIC MODEL SERIES 【推しの子】 有馬かな DX ver.",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "KADOKAWA PLASTIC MODEL SERIES 【推しの子】 有馬かな（通常版）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 3,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8442,6 +9484,93 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "リボルテック ミルコ（2026年再販、直営特典「変顔」）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "リボルテック 微笑のテレサ（直営特典「10％妖力解放顔」）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "リボルテック アメイジング・ヤマグチ シンビオート・スパイダーマン",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "リボルテック アメイジング・ヤマグチ シンビオート・スパイダーマン（パープル Ver.）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "リボルテック エステル・ブライト「英雄伝説 空の軌跡SC」Ver.（直営特典「ウィンク顔」）",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 5,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8524,6 +9653,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8606,6 +9736,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8698,6 +9829,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8793,6 +9955,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8888,6 +10081,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -8983,6 +10207,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9078,6 +10333,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9173,6 +10459,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9251,6 +10538,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9329,6 +10617,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9430,6 +10749,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9531,6 +10881,37 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 1,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9632,6 +11013,7 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -9710,6 +11092,51 @@
     {
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": {
+        "analog_units": [],
+        "analogs": [
+          {
+            "comparable_name": "遊戯王OCG COMPLETE FILE－白の物語－",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          },
+          {
+            "comparable_name": "遊戯王OCG No. COMPLETE FILE -PIECE OF MEMORIES-",
+            "list_price_jpy": null,
+            "median_headroom_jpy": null,
+            "median_sale_jpy": null,
+            "price_to_list_ratio": null,
+            "result": null,
+            "result_label_ja": "成約データなし",
+            "sale_unit": null,
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 0,
+            "worst_headroom_jpy": null
+          }
+        ],
+        "analogs_evaluable": 0,
+        "analogs_linked": 2,
+        "counter_signal_names": [],
+        "fee_rate": 0.1,
+        "horizon": "d30",
+        "horizon_label_ja": "発売後1か月",
+        "median_headroom_jpy": null,
+        "result": "NO_PRICED_ANALOG",
+        "result_label_ja": "評価できる類似品がない",
+        "strong_analogs_evaluable": 0,
+        "unit_note_ja": null,
+        "worst_headroom_jpy": null
+      },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [

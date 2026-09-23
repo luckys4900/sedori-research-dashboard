@@ -130,6 +130,7 @@
         <li><a class="quicknav-warn" href="#sec-nearterm">期日が近い（要確認）</a></li>
         <li><a href="#sec-restock">再販</a></li>
         <li><a href="#sec-attention">注目候補</a></li>
+        <li><a href="#sec-backtest">類似品バックテスト</a></li>
         <li><a href="#sec-new">新着</a></li>
         <li><a class="quicknav-all" href="#sec-all">全商品</a></li>
       </ul>
@@ -295,6 +296,22 @@
       </p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>供給制約と過去の成約記録が両方そろった商品は、現時点ではありません。</p>
+    </section>
+
+    <!-- 類似品バックテスト（参考）. Same shape as every other feed section; sorted by deadline,
+         never by headroom, so it cannot read as a ranking. -->
+    <section class="sec sec--backtest" id="sec-backtest" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">≒</span>類似品バックテスト（参考）</h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="sec-note">
+        過去に発売された<strong>よく似た商品</strong>が、発売後1か月に定価＋手数料をどれだけ上回って売れたか（ヘッドルーム）。
+        送料などの費用が未確認のため<strong>利益ではありません</strong>。定価で買えた前提で、抽選品は当選が前提です。
+      </p>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>評価できる類似品が付いている商品は、現時点ではありません。</p>
     </section>
 
     <section class="sec sec--new" id="sec-new" data-sec>
@@ -472,7 +489,9 @@
       <div>
         <dt>どのくらい儲かるかは載りますか？</dt>
         <dd>
-          金額・見込み・点数・順位は表示しません。示すのは、事実と期日、そして確認がどこまで進んだかだけです。
+          利益額・見込み・点数・順位は表示しません。代わりに、よく似た過去の商品が定価＋手数料をどれだけ上回って
+          売れたか（ヘッドルーム）を「類似品バックテスト（参考）」として載せています。送料・梱包などの費用がまだ
+          確認できていないので、これは利益ではなく、費用がこの額を超えたら赤字になるという上限です。
           買うかどうかの判断は読んだ方が行います。
         </dd>
       </div>
