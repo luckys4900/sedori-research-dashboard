@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-09-22",
-  "generated_at": "2026-09-22T06:38:19+09:00",
+  "as_of": "2026-09-23",
+  "generated_at": "2026-09-23T10:33:28+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -836,7 +836,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -22,
+      "days_to_deadline": -23,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -1182,7 +1182,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -22,
+      "days_to_deadline": -23,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -1348,7 +1348,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -47,
+      "days_to_deadline": -48,
       "deadline": "2026-08-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -1517,7 +1517,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -138,
+      "days_to_deadline": -139,
       "deadline": "2026-05-07",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -1681,7 +1681,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 62,
+      "days_to_deadline": 61,
       "deadline": "2026-11-23",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -1768,7 +1768,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -16,
+      "days_to_deadline": -17,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -1865,7 +1865,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -127,
+      "days_to_deadline": -128,
       "deadline": "2026-05-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -1952,7 +1952,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -16,
+      "days_to_deadline": -17,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2049,7 +2049,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 40,
+      "days_to_deadline": 39,
       "deadline": "2026-11-01",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2141,7 +2141,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -8,
+      "days_to_deadline": -9,
       "deadline": "2026-09-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -3504,7 +3504,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": 10,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -3582,7 +3582,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": 10,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "確認済み",
@@ -3666,7 +3666,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": 10,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -3744,7 +3744,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": 10,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -3822,7 +3822,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": 10,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -3900,7 +3900,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 5,
+      "days_to_deadline": 4,
       "deadline": "2026-09-27",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -4301,7 +4301,7 @@
         "プレミアムバンダイ サンライズストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 12,
+      "days_to_deadline": 11,
       "deadline": "2026-10-04",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -4613,7 +4613,7 @@
         "プレミアムバンダイ A-on STORE"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 13,
+      "days_to_deadline": 12,
       "deadline": "2026-10-05",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -4879,7 +4879,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 66,
+      "days_to_deadline": 65,
       "deadline": "2026-11-27",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -4957,7 +4957,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 34,
+      "days_to_deadline": 33,
       "deadline": "2026-10-26",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -5211,7 +5211,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -5,
+      "days_to_deadline": -6,
       "deadline": "2026-09-17",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -5289,7 +5289,7 @@
         "プレミアムバンダイ 魂ウェブ商店"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 26,
+      "days_to_deadline": 25,
       "deadline": "2026-10-18",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -5461,7 +5461,7 @@
         "pokemon_center_online"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -22,
+      "days_to_deadline": -23,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -5582,7 +5582,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -6,
+      "days_to_deadline": -7,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -6042,7 +6042,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -6,
+      "days_to_deadline": -7,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -7213,8 +7213,8 @@
       "channel": [
         "コナミスタイル"
       ],
-      "closing_soon_band": "WITHIN_3D",
-      "days_to_deadline": 2,
+      "closing_soon_band": null,
+      "days_to_deadline": 1,
       "deadline": "2026-09-24",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -7293,11 +7293,11 @@
           "url": "https://www.konami.com/yugioh/worldchampionship/2026/watching/"
         }
       ],
-      "status": "CLOSING_SOON",
+      "status": "RESTOCKED",
       "status_basis": "FACT_ADDITIONAL_LOTTERY",
       "status_basis_label_ja": "公式が告知した追加抽選の期間から判定",
-      "status_label_ja": "締切間近",
-      "status_note_ja": null,
+      "status_label_ja": "再販/在庫復活",
+      "status_note_ja": "受付中の根拠が古い/URLなし（確認日 2026-09-15）。受付中と書ける根拠（新しい確認日と公式URL）が揃っていないため、受付状態は不明として扱う。",
       "updated_at": "2026-09-15",
       "verification_tier": "CANONICAL_VERIFIED"
     },
@@ -7625,7 +7625,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -35,
+      "days_to_deadline": -36,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -7797,7 +7797,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -35,
+      "days_to_deadline": -36,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -8367,7 +8367,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 36,
+      "days_to_deadline": 35,
       "deadline": "2026-10-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -8449,7 +8449,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 52,
+      "days_to_deadline": 51,
       "deadline": "2026-11-13",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -9725,7 +9725,7 @@
         "サテライトショップ（各店要確認）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 27,
+      "days_to_deadline": 26,
       "deadline": "2026-10-19",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",

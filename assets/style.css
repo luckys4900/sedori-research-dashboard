@@ -25,18 +25,29 @@
 
 /* ---------- 1. Palette tokens ---------- */
 :root {
-  --bg: #f5f6f8;
+  /* Paper, not screen grey: a warm off-white reads as a page and keeps the
+     coloured state badges as the only saturated thing on it. */
+  --bg: #f6f5f1;
   --bg-elev: #ffffff;
-  --bg-sunken: #eceef2;
-  --fg: #16191f;
-  --fg-muted: #5c6470;
+  --bg-sunken: #ecebe5;
+  --fg: #171a1e;
+  --fg-muted: #585f6a;
+
+  /* The single accent. It means "act here" — the primary hero button, a hovered
+     card edge, a section rule. It is never a state and never a judgement. */
+  --accent: #27458f;
+  --accent-ink: #1b3170;
+  --accent-bg: #e9eef9;
+  --accent-line: #c2cfeb;
+  /* A very light wash behind the top of the page, so the header reads as one block. */
+  --wash: rgba(39, 69, 143, .05);
   /* 4.97:1 on --bg, 5.37:1 on --bg-elev, 4.62:1 on --bg-sunken.
      This token carries the honesty text (「不明」/ disclaimers / notes), so it
      must clear 4.5:1 everywhere it is used — it used to be 3.1:1.
      No surface darker than --bg-sunken may carry it. */
   --fg-faint: #646b77;
-  --border: #d7dbe2;
-  --border-strong: #b9bfca;
+  --border: #dddad2;
+  --border-strong: #bcb8ae;
   --focus: #1f5fd0;
 
   --open: #0d7a4a;
@@ -74,9 +85,12 @@
   --fs-label: .78rem;
   --fs-aux: .72rem;
 
-  --radius: 10px;
-  --radius-sm: 6px;
-  --shadow: 0 1px 2px rgba(16, 20, 28, .07), 0 1px 8px rgba(16, 20, 28, .05);
+  --radius: 12px;
+  --radius-sm: 7px;
+  --radius-lg: 18px;
+  --shadow: 0 1px 2px rgba(16, 20, 28, .05), 0 2px 10px rgba(16, 20, 28, .045);
+  /* Used on hover / on the blocks that invite a click. Depth, not decoration. */
+  --shadow-lift: 0 2px 4px rgba(16, 20, 28, .07), 0 10px 26px rgba(16, 20, 28, .09);
   --maxw: 1360px;
   --gap: 12px;
   --tap: 44px;        /* primary controls */
@@ -86,11 +100,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #14161a;
-    --bg-elev: #1d2027;
-    --bg-sunken: #0f1114;
-    --fg: #e9ecf1;
-    --fg-muted: #a5adba;
+    --bg: #15161a;
+    --bg-elev: #1e2026;
+    --bg-sunken: #101114;
+    --fg: #eceef2;
+    --fg-muted: #a7aeba;
+
+    --accent: #9cbaff;
+    --accent-ink: #cfdcff;
+    --accent-bg: #1a2338;
+    --accent-line: #2f3d5c;
+    --wash: rgba(156, 186, 255, .06);
     /* 5.5:1 on --bg, 4.95:1 on --bg-elev, 5.9:1 on --bg-sunken. */
     --fg-faint: #858ea0;
     --border: #333844;
@@ -121,6 +141,7 @@
     --ladder-off: #3a4049;
 
     --shadow: 0 1px 2px rgba(0, 0, 0, .5);
+    --shadow-lift: 0 2px 6px rgba(0, 0, 0, .55), 0 12px 28px rgba(0, 0, 0, .45);
   }
 }
 
@@ -136,7 +157,9 @@ body {
   font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
   font-size: 15px;
-  line-height: 1.55;
+  /* Japanese body copy at 1.55 reads tight; 1.7 is what makes a note line
+     scannable rather than a wall. Dense screener rows override it locally. */
+  line-height: 1.7;
   overflow-wrap: anywhere;
   word-break: normal;
 }
@@ -1845,3 +1868,290 @@ html { scroll-behavior: smooth; }
   border-color: var(--border-strong);
 }
 .tb-search input:focus-visible { border-color: var(--focus); }
+
+
+/* =========================================================================
+   10. Taste layer — the page as something a person wants to read
+   -------------------------------------------------------------------------
+   Nothing here changes what the page MEANS. The two-axis rule still holds
+   (filled = state, outline = 確認状況), colour is still never the only signal,
+   and no element added here carries a recommendation, a figure or a ranking.
+   What it adds: one accent for "act here", paper-like surfaces, softer card
+   geometry, and the three plain-language blocks.
+   ========================================================================= */
+
+/* A single wash behind the header block, so hero + TODAY + MY CHECK read as
+   one introduction instead of three floating boxes. */
+body { background-image: linear-gradient(180deg, var(--wash) 0, transparent 560px); background-repeat: no-repeat; }
+
+.site-header {
+  background:
+    linear-gradient(180deg, var(--bg-elev) 0, var(--bg-elev) 70%, var(--bg-sunken) 100%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(16, 20, 28, .03);
+}
+
+.site-title { letter-spacing: .02em; }
+.site-title::before {
+  content: "";
+  display: inline-block;
+  width: .62em; height: .62em;
+  margin-right: .5em;
+  border-radius: 3px;
+  background: var(--accent);
+  vertical-align: baseline;
+}
+
+/* ---- hero ---- */
+.signal-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border-color: var(--accent-line);
+  background:
+    radial-gradient(120% 140% at 100% 0%, var(--accent-bg) 0, transparent 62%),
+    var(--bg-elev);
+}
+.signal-hero::after {          /* a quiet accent rule along the top edge */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0, var(--accent-line) 100%);
+}
+.hero-kicker { color: var(--accent); letter-spacing: .16em; }
+.signal-hero h1 { letter-spacing: -.01em; }
+.hero-text { color: var(--fg-muted); }
+
+.hero-action {
+  border-radius: 999px;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+}
+.hero-action--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-lift);
+}
+.hero-action--primary:hover { transform: translateY(-1px); background: var(--accent-ink); }
+.hero-action:not(.hero-action--primary):hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+.hero-trust { color: var(--fg-faint); }
+
+@media (prefers-color-scheme: dark) {
+  .hero-action--primary { color: #10131a; }
+  .hero-action--primary:hover { background: var(--accent-ink); color: #10131a; }
+}
+
+/* ---- TODAY / MY CHECK ---- */
+.today, .my-check { border-radius: var(--radius-lg); }
+.summary-kicker, .my-check-kicker { letter-spacing: .14em; }
+.kpi-num { font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.kpi-row .kpi, .kpi-box, .kpi--total, .my-check-item, .kpi-split-item {
+  border-radius: var(--radius);
+  transition: transform .12s ease, box-shadow .12s ease,
+              background-color .12s ease, border-color .12s ease;
+}
+.kpi-row .kpi:hover, .kpi-split-item:hover, .my-check-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}
+.kpi-glyph { box-shadow: inset 0 0 0 1px currentColor; }
+
+/* ---- quick navigation: pills ---- */
+.quicknav-list a {
+  border-radius: 999px;
+  transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+.quicknav-list a:hover { background: var(--accent-bg); border-color: var(--accent); }
+
+/* ---- sections ---- */
+.sec { border-radius: var(--radius-lg); }
+.sec-title { letter-spacing: .005em; }
+.sec-mark { box-shadow: inset 0 0 0 1px currentColor; }
+.sec-count { font-variant-numeric: tabular-nums; }
+
+/* ---- cards ---- */
+.card {
+  border-radius: var(--radius);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.grid:not(.grid--dense) .card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-lift);
+}
+.c-name { letter-spacing: .005em; }
+.card-main:hover .c-name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.card-action, .btn { border-radius: 999px; }
+.card-action--ext { border-color: var(--accent-line); color: var(--accent); }
+.card-action--ext:hover { background: var(--accent-bg); border-color: var(--accent); }
+.badge, .chip { border-radius: 999px; }
+.mark-btn { transition: background-color .1s ease, color .1s ease; }
+
+/* 抽選の事実行（当選発表 / 購入上限）。確率でも予測でもなく、公表された日付と上限だけ。 */
+.f-lottery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 6px 0 0;
+  padding: 6px 8px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  font-size: var(--fs-aux);
+  color: var(--fg-muted);
+}
+.f-lottery .f-lottery-lbl { font-weight: 800; color: var(--fg); padding-right: .35em; }
+.f-lottery .f-lottery-val { font-variant-numeric: tabular-nums; color: var(--fg); }
+
+/* ---- 使い方 / 表示の読み方 ---- */
+.howto {
+  margin: 0 0 18px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 160% at 0% 0%, var(--accent-bg) 0, transparent 60%),
+    var(--bg-elev);
+  box-shadow: var(--shadow);
+}
+.howto-kicker {
+  margin: 0 0 2px;
+  font-size: var(--fs-aux);
+  font-weight: 800;
+  letter-spacing: .14em;
+  color: var(--accent);
+}
+.howto h2 { font-size: var(--fs-head); margin: 0 0 10px; }
+.howto-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.howto-steps > li {
+  display: grid;
+  grid-template-columns: 1.7rem minmax(0, 1fr);
+  align-items: start;
+  gap: 2px 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.howto-num {
+  grid-row: span 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem; height: 1.7rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: var(--fs-label);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.howto-steps strong { font-size: var(--fs-body); }
+.howto-steps span:not(.howto-num) { font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.6; }
+
+@media (prefers-color-scheme: dark) { .howto-num { color: #10131a; } }
+
+.legend { margin-top: 10px; }
+.legend-sum {
+  cursor: pointer;
+  /* A pill the width of its own label: stretched across 1360px it stopped
+     reading as a control and started reading as a divider. */
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tap-min);
+  padding: 6px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  font-size: var(--fs-label);
+  font-weight: 800;
+}
+.legend-sum:hover { border-color: var(--accent); color: var(--accent); }
+.legend[open] .legend-sum { border-radius: var(--radius) var(--radius) 0 0; border-bottom-color: var(--border); }
+.legend-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--bg-elev);
+  display: grid;
+  gap: 8px;
+  font-size: var(--fs-label);
+  color: var(--fg-muted);
+}
+.legend-list > li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: center; }
+.legend-list .legend-sample { display: flex; flex-wrap: wrap; gap: 4px; }
+.legend-list strong { color: var(--fg); }
+.legend-ladder { display: inline-flex; gap: 3px; align-items: center; }
+.legend-ladder i {
+  display: inline-block;
+  width: 10px; height: 6px;
+  border-radius: 2px;
+  background: var(--ladder-off);
+}
+.legend-ladder i.is-on { background: var(--ladder-on); }
+
+/* ---- よくある質問 ---- */
+.faq {
+  margin: 18px 0 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow);
+}
+.faq h2 { font-size: var(--fs-head); margin: 0 0 4px; }
+.faq-lead { margin: 0 0 10px; font-size: var(--fs-label); color: var(--fg-muted); }
+.faq-list { margin: 0; display: grid; gap: 10px; }
+.faq-list > div {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+.faq-list dt { margin: 0 0 3px; font-size: var(--fs-body); font-weight: 800; }
+.faq-list dd { margin: 0; font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.7; }
+
+/* Wider screens: the three steps sit side by side, the FAQ in two columns. */
+@media (min-width: 760px) {
+  .howto-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .faq-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .legend-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Motion is decoration: anyone who asked for less gets none of it. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-action, .kpi-row .kpi, .kpi-box, .kpi--total, .my-check-item,
+  .kpi-split-item, .quicknav-list a, .card, .mark-btn { transition: none; }
+  .hero-action--primary:hover, .kpi-row .kpi:hover, .kpi-split-item:hover,
+  .my-check-item:hover, .grid:not(.grid--dense) .card:hover { transform: none; }
+}
+
+/* The dense screener stays dense: no lift, no extra leading, no lottery row. */
+.grid.grid--dense .card { transition: none; }
+.grid.grid--dense .f-lottery,
+.grid.grid--dense .c-limit,
+.grid.grid--dense .c-result { display: none; }
+.grid.grid--dense .card-main { line-height: 1.45; }
+
+/* The pair rows inside 応募条件, and the detail page's two-link nav. */
+.f-lottery-item { display: inline-flex; align-items: baseline; min-width: 0; }
+.detail-nav { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+.detail-nav .back-link { white-space: nowrap; }

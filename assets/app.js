@@ -494,6 +494,40 @@ function outboundCta(p, className) {
   return a;
 }
 
+/**
+ * The published entry conditions: when applications open, when the result is announced,
+ * and how many units one person may buy or apply for. Returns null when none of the three
+ * is known — an empty row would read as "nothing applies", which is not the same thing.
+ *
+ * Deliberately NOT a chance of winning. Applicant counts and winner counts are never
+ * published, so a probability cannot be derived, and an approximation here would be a
+ * guess dressed as a fact. Dates and limits are what the sources actually state.
+ */
+function entryFacts(p) {
+  var items = [];
+  var opens = null;
+  if (!isUnknown(p.lottery_start)) { opens = ['応募開始', fmtDate(p.lottery_start)]; }
+  else if (!isUnknown(p.application_start)) { opens = ['応募開始', fmtDate(p.application_start)]; }
+  else if (!isUnknown(p.reservation_start)) { opens = ['予約開始', fmtDate(p.reservation_start)]; }
+  if (opens && opens[1]) { items.push(opens); }
+  if (!isUnknown(p.result_date)) {
+    var announced = fmtDate(p.result_date);
+    if (announced) { items.push(['当選発表', announced]); }
+  }
+  if (!isUnknown(p.purchase_limit)) { items.push(['購入・応募上限', String(p.purchase_limit)]); }
+  if (items.length === 0) { return null; }
+  var box = el('div', 'f-lottery');
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label', '公表されている応募条件');
+  items.forEach(function (pair) {
+    var item = el('span', 'f-lottery-item');
+    item.appendChild(el('span', 'f-lottery-lbl', pair[0]));
+    item.appendChild(el('span', 'f-lottery-val', pair[1]));
+    box.appendChild(item);
+  });
+  return box;
+}
+
 /** One labelled cell. Renders「不明」muted when the value is unknown. */
 function cell(extraClass, label, value, unknownText) {
   var wrap = el('div', 'cell ' + extraClass);
@@ -796,6 +830,14 @@ function initIndex() {
     /* --- L3: 販売方式 --- */
     a.appendChild(cell('c-mode', '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode)));
 
+    /* --- L3: 当選発表 / 購入・応募上限 — published conditions, card view only --- */
+    if (!isUnknown(p.result_date)) {
+      a.appendChild(cell('c-result', '当選発表', fmtDate(p.result_date)));
+    }
+    if (!isUnknown(p.purchase_limit)) {
+      a.appendChild(cell('c-limit', '購入・応募上限', String(p.purchase_limit)));
+    }
+
     /* --- L3: 購入先 (no column in the dense screener; card view + detail page) --- */
     a.appendChild(cell('c-channel', '購入先',
       (Array.isArray(p.channel) && p.channel.length) ? p.channel.join('・') : null));
@@ -927,6 +969,10 @@ function initIndex() {
     ev.appendChild(evVal);
     row2.appendChild(ev);
     a.appendChild(row2);
+
+    /* 5b. 応募条件 — published dates and limits only, never a chance of winning */
+    var facts = entryFacts(p);
+    if (facts) { a.appendChild(facts); }
 
     /* 6. key signals — two chips, full text in aria-label and on the detail page */
     var chips = signalChips(p, 2);

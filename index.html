@@ -151,6 +151,67 @@
   <div id="app" hidden>
 
     <!--
+      使い方. A reader arriving cold needs three things: where to look, what to do with
+      what they found, and where the evidence is. Nothing here is advice; step 1 points at
+      dates, step 2 at their own mark, step 3 at the sources.
+    -->
+    <section class="howto" aria-labelledby="howto-title">
+      <p class="howto-kicker">HOW TO USE</p>
+      <h2 id="howto-title">はじめての方へ：見る順番は3つだけ</h2>
+      <ol class="howto-steps">
+        <li>
+          <span class="howto-num" aria-hidden="true">1</span>
+          <strong>今日の締切を見る</strong>
+          <span>「締切間近」と「受付中」は、受付中だと確認できた商品です。ここだけ先に見れば取りこぼしが減ります。</span>
+        </li>
+        <li>
+          <span class="howto-num" aria-hidden="true">2</span>
+          <strong>気になった商品に印を付ける</strong>
+          <span>各カードの 購入候補 / 監視 / 見送り を押すと、上の「あなたの判断」に集まります。保存先はこのブラウザだけです。</span>
+        </li>
+        <li>
+          <span class="howto-num" aria-hidden="true">3</span>
+          <strong>詳細ページで根拠を確かめる</strong>
+          <span>商品名を押すと、期間・出典・確認がどこまで進んだかを省略なしで表示します。買うかどうかはご自身で判断してください。</span>
+        </li>
+      </ol>
+
+      <details class="legend" id="legend">
+        <summary class="legend-sum">表示の読み方（バッジと印の意味）</summary>
+        <ul class="legend-list">
+          <li>
+            <span class="legend-sample">
+              <span class="badge badge--open">受付中</span><span class="badge badge--urgent">締切間近</span>
+            </span>
+            <span><strong>色で塗ったバッジ</strong>は「いまどうなっているか」。受付中・締切間近・終了などの状態です。</span>
+          </li>
+          <li>
+            <span class="legend-sample">
+              <span class="badge badge--ev-verified">確認済み</span><span class="badge badge--ev-partial">一部確認</span><span class="badge badge--ev-none">未検証</span>
+            </span>
+            <span><strong>枠線だけのバッジ</strong>は「どこまで裏が取れたか」。未検証は一次情報の確認がまだの候補です。</span>
+          </li>
+          <li>
+            <span class="legend-sample">
+              <span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span><span class="badge badge--attention">注目候補</span>
+            </span>
+            <span><strong>補足の印</strong>です。おすすめ・買い時という意味ではありません。</span>
+          </li>
+          <li>
+            <span class="legend-sample legend-ladder" aria-hidden="true">
+              <i class="is-on"></i><i class="is-on"></i><i></i><i></i><i></i>
+            </span>
+            <span><strong>5つの目印</strong>は、利益を判定するための情報がどこまで集まったかの段階です。金額でも点数でもありません。</span>
+          </li>
+          <li>
+            <span class="legend-sample"><span class="badge badge--unknown">不明</span></span>
+            <span><strong>「不明」「未確認」</strong>は、確認できていないという意味です。0 や推測した日付で埋めることはしません。</span>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <!--
       Today's feed. Confirmed-open items first (締切間近 -> 抽選 -> 予約 -> 購入可能),
       then the NEEDS-CHECK strip, then 再販 / 注目候補 / 新着. Each section is capped
       (SECTION_CAP in app.js) and its 「すべて見る」 applies the identical predicate to
@@ -390,6 +451,55 @@
       </p>
     </section>
   </div>
+
+
+  <!--
+    よくある質問. The first two answers are the ones that keep getting asked: 当選確率 and
+    利益. Both are refusals, and both say WHY and WHAT IS SHOWN INSTEAD, because an
+    unexplained absence reads as an oversight.
+  -->
+  <section class="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">よくある質問</h2>
+    <p class="faq-lead">出していない情報については、理由と、代わりに載せているものを書いています。</p>
+    <dl class="faq-list">
+      <div>
+        <dt>当選しやすさや当選確率は分かりますか？</dt>
+        <dd>
+          確率としては出せません。応募した人数と当選本数が公表されないため、割り算の材料がそろいません。
+          代わりに、抽選かどうか・応募期間・当選発表日・購入や応募の上限といった、公表されている事実を載せています。
+        </dd>
+      </div>
+      <div>
+        <dt>どのくらい儲かるかは載りますか？</dt>
+        <dd>
+          金額・見込み・点数・順位は表示しません。示すのは、事実と期日、そして確認がどこまで進んだかだけです。
+          買うかどうかの判断は読んだ方が行います。
+        </dd>
+      </div>
+      <div>
+        <dt>「取得原価」が未確認ばかりなのはなぜですか？</dt>
+        <dd>
+          どこで幾らで買えたのかが出典付きで確認できた経路だけ、金額を表示します。
+          どこかに書かれていた金額をそのまま原価として扱うことはしません。確認できていなければ「未確認」と書きます。
+        </dd>
+      </div>
+      <div>
+        <dt>「定価」は仕入れ値ですか？</dt>
+        <dd>公式に公表された価格です。仕入れ値ではありません。両者は別の行に分けて表示しています。</dd>
+      </div>
+      <div>
+        <dt>いつの情報ですか？</dt>
+        <dd>
+          ページ上部の「更新日時」と「基準日」が、そのまま数字の時点です。
+          「あと何日」は基準日から数えているので、日付が変わったら基準日もご確認ください。
+        </dd>
+      </div>
+      <div>
+        <dt>付けた印は他の人に見えますか？</dt>
+        <dd>見えません。購入候補 / 監視 / 見送りはお使いのブラウザの中だけに保存され、どこにも送信されません。</dd>
+      </div>
+    </dl>
+  </section>
 
   <footer class="site-footer">
     <p>公開情報の投影のみを表示します。購入推奨・利益予測・スコア・順位付けは一切含みません。</p>
