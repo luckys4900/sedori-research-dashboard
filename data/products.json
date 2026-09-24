@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-24",
-  "generated_at": "2026-09-24T02:28:48+09:00",
+  "generated_at": "2026-09-24T09:44:49+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -2682,22 +2682,22 @@
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 36,
+            "strict_sales": 41,
             "worst_headroom_jpy": 1199
           },
           {
             "comparable_name": "GUNDAM CARD GAME ブースターパック Phantom Aria【GD04】",
             "list_price_jpy": 5808,
-            "median_headroom_jpy": -1083,
-            "median_sale_jpy": 5250,
-            "price_to_list_ratio": 0.904,
-            "result": "INSUFFICIENT_SAMPLE",
-            "result_label_ja": "成約数が最低件数に届かない",
+            "median_headroom_jpy": -1487,
+            "median_sale_jpy": 4801,
+            "price_to_list_ratio": 0.827,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "定価＋手数料を上回った成約なし",
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 1,
-            "worst_headroom_jpy": -1083
+            "strict_sales": 3,
+            "worst_headroom_jpy": -1757
           },
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック CROSS FORCE【FB10】",
@@ -2716,32 +2716,30 @@
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
             "list_price_jpy": 5280,
-            "median_headroom_jpy": 3900,
-            "median_sale_jpy": 10200,
-            "price_to_list_ratio": 1.932,
+            "median_headroom_jpy": 4035,
+            "median_sale_jpy": 10350,
+            "price_to_list_ratio": 1.96,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "全成約が定価＋手数料を上回った",
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": 5,
+            "strict_sales": 6,
             "worst_headroom_jpy": 3000
           }
         ],
-        "analogs_evaluable": 3,
+        "analogs_evaluable": 4,
         "analogs_linked": 4,
-        "counter_signal_names": [
-          "GUNDAM CARD GAME ブースターパック Phantom Aria【GD04】"
-        ],
+        "counter_signal_names": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
-        "median_headroom_jpy": 3900,
-        "result": "ANALOGS_CLEARED_LIST_PRICE",
-        "result_label_ja": "類似品はすべて定価＋手数料を上回った（参考）。ただし成約数不足の類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 1,
+        "median_headroom_jpy": 2842,
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品の結果が割れている（参考）",
+        "strong_analogs_evaluable": 2,
         "unit_note_ja": "この商品の販売単位（パック / BOX など）はまだ確定していません。類似品の金額は BOX 単位なので、この商品にそのまま当てはめず、定価比として読んでください。",
-        "worst_headroom_jpy": 1199
+        "worst_headroom_jpy": -1757
       },
       "application_end": null,
       "application_start": null,
@@ -2766,7 +2764,29 @@
           "maximum_price_jpy": 10500,
           "median_price_jpy": 8500,
           "minimum_price_jpy": 7999,
-          "sample_count": 36,
+          "sample_count": 41,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "GUNDAM CARD GAME ブースターパック Freedom Ascension【GD05】",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 10000,
+          "median_price_jpy": 9375,
+          "minimum_price_jpy": 9180,
+          "sample_count": 4,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "GUNDAM CARD GAME ブースターパック Freedom Ascension【GD05】",
+          "horizon": "release_market",
+          "horizon_label_ja": "発売時点の市場",
+          "maximum_price_jpy": 11500,
+          "median_price_jpy": 9800,
+          "minimum_price_jpy": 8000,
+          "sample_count": 7,
           "sample_status": "READY",
           "sample_status_label_ja": "十分な標本数"
         },
@@ -2775,8 +2795,19 @@
           "horizon": "d30",
           "horizon_label_ja": "発売30日後まで",
           "maximum_price_jpy": 5250,
-          "median_price_jpy": 5250,
-          "minimum_price_jpy": 5250,
+          "median_price_jpy": 4801,
+          "minimum_price_jpy": 4501,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "GUNDAM CARD GAME ブースターパック Phantom Aria【GD04】",
+          "horizon": "release_market",
+          "horizon_label_ja": "発売時点の市場",
+          "maximum_price_jpy": 5750,
+          "median_price_jpy": 5750,
+          "minimum_price_jpy": 5750,
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "標本が少ない（参考値）"
@@ -2816,12 +2847,34 @@
         },
         {
           "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+          "horizon": "d180",
+          "horizon_label_ja": null,
+          "maximum_price_jpy": 13800,
+          "median_price_jpy": 11850,
+          "minimum_price_jpy": 9800,
+          "sample_count": 16,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
           "horizon": "d30",
           "horizon_label_ja": "発売30日後まで",
           "maximum_price_jpy": 11999,
-          "median_price_jpy": 10200,
+          "median_price_jpy": 10350,
           "minimum_price_jpy": 9200,
-          "sample_count": 5,
+          "sample_count": 6,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+          "horizon": "d90",
+          "horizon_label_ja": "発売90日後まで",
+          "maximum_price_jpy": 13000,
+          "median_price_jpy": 10800,
+          "minimum_price_jpy": 9980,
+          "sample_count": 25,
           "sample_status": "READY",
           "sample_status_label_ja": "十分な標本数"
         }
@@ -2848,12 +2901,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『GUNDAM CARD GAME ブースターパック Freedom Ascension【GD05】』ほか3件に、成約価格の集計が6期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『GUNDAM CARD GAME ブースターパック Freedom Ascension【GD05】』ほか3件に、成約価格の集計が11期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが96件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが235件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -2863,12 +2916,12 @@
       "product_id": "gcg-gd06-stardust-trails",
       "product_name": "GUNDAM CARD GAME ブースターパック Stardust Trails【GD06】",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 3,
+        "comparables_with_price_evidence": 4,
         "comparables_with_verified_route": 0,
         "linked_comparables": 4,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 96
+        "strict_completed_sales": 235
       },
       "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -3278,35 +3331,37 @@
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
       "analog_backtest": {
-        "analog_units": [],
+        "analog_units": [
+          "BOX"
+        ],
         "analogs": [
           {
             "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド",
             "list_price_jpy": 5280,
-            "median_headroom_jpy": -285,
-            "median_sale_jpy": 5550,
-            "price_to_list_ratio": 1.051,
+            "median_headroom_jpy": -510,
+            "median_sale_jpy": 5300,
+            "price_to_list_ratio": 1.004,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "定価＋手数料を上回った成約なし",
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている",
+            "strict_sales": 3,
+            "worst_headroom_jpy": -780
+          },
+          {
+            "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
+            "list_price_jpy": 5280,
+            "median_headroom_jpy": -1950,
+            "median_sale_jpy": 3700,
+            "price_to_list_ratio": 0.701,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "成約数が最低件数に届かない",
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 2,
-            "worst_headroom_jpy": -510
-          },
-          {
-            "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
-            "strength": "STRONG",
-            "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1950
           },
           {
             "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック ディーヴァフィーバー",
@@ -3323,20 +3378,20 @@
             "worst_headroom_jpy": null
           }
         ],
-        "analogs_evaluable": 0,
+        "analogs_evaluable": 1,
         "analogs_linked": 3,
         "counter_signal_names": [
-          "hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド"
+          "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram"
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
-        "median_headroom_jpy": null,
-        "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 0,
-        "unit_note_ja": null,
-        "worst_headroom_jpy": null
+        "median_headroom_jpy": -510,
+        "result": "ANALOGS_BELOW_LIST_PRICE",
+        "result_label_ja": "類似品は定価＋手数料を上回れなかった（参考）。ただし成約数不足の類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 1,
+        "unit_note_ja": "この商品の販売単位（パック / BOX など）はまだ確定していません。類似品の金額は BOX 単位なので、この商品にそのまま当てはめず、定価比として読んでください。",
+        "worst_headroom_jpy": -780
       },
       "application_end": null,
       "application_start": null,
@@ -3355,15 +3410,48 @@
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
         {
+          "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3700,
+          "median_price_jpy": 3700,
+          "minimum_price_jpy": 3700,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック ディーヴァフィーバー",
+          "horizon": "d180",
+          "horizon_label_ja": null,
+          "maximum_price_jpy": 4600,
+          "median_price_jpy": 4600,
+          "minimum_price_jpy": 4600,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック ディーヴァフィーバー",
+          "horizon": "d90",
+          "horizon_label_ja": "発売90日後まで",
+          "maximum_price_jpy": 4000,
+          "median_price_jpy": 4000,
+          "minimum_price_jpy": 4000,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
           "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド",
           "horizon": "d30",
           "horizon_label_ja": "発売30日後まで",
           "maximum_price_jpy": 5800,
-          "median_price_jpy": 5550,
-          "minimum_price_jpy": 5300,
-          "sample_count": 2,
-          "sample_status": "LOW_SAMPLE",
-          "sample_status_label_ja": "標本が少ない（参考値）"
+          "median_price_jpy": 5300,
+          "minimum_price_jpy": 5000,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
         }
       ],
       "image": {
@@ -3388,12 +3476,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram』ほか2件に、成約価格の集計が4期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが17件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -3403,15 +3491,15 @@
       "product_id": "hocg-bp-volume-vortex",
       "product_name": "hololive OFFICIAL CARD GAME ブースターパック ボリュームヴォルテックス",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 2,
         "comparables_with_verified_route": 0,
         "linked_comparables": 3,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 17
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-09-19",
@@ -3959,15 +4047,15 @@
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
             "list_price_jpy": 5280,
-            "median_headroom_jpy": 3900,
-            "median_sale_jpy": 10200,
-            "price_to_list_ratio": 1.932,
+            "median_headroom_jpy": 4035,
+            "median_sale_jpy": 10350,
+            "price_to_list_ratio": 1.96,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "全成約が定価＋手数料を上回った",
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": 5,
+            "strict_sales": 6,
             "worst_headroom_jpy": 3000
           },
           {
@@ -4140,12 +4228,34 @@
         },
         {
           "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+          "horizon": "d180",
+          "horizon_label_ja": null,
+          "maximum_price_jpy": 13800,
+          "median_price_jpy": 11850,
+          "minimum_price_jpy": 9800,
+          "sample_count": 16,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
           "horizon": "d30",
           "horizon_label_ja": "発売30日後まで",
           "maximum_price_jpy": 11999,
-          "median_price_jpy": 10200,
+          "median_price_jpy": 10350,
           "minimum_price_jpy": 9200,
-          "sample_count": 5,
+          "sample_count": 6,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+          "horizon": "d90",
+          "horizon_label_ja": "発売90日後まで",
+          "maximum_price_jpy": 13000,
+          "median_price_jpy": 10800,
+          "minimum_price_jpy": 9980,
+          "sample_count": 25,
           "sample_status": "READY",
           "sample_status_label_ja": "十分な標本数"
         }
@@ -4164,12 +4274,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ONE PIECE CARD GAME ブースターパック 世界最強の戦士【OP-17】』ほか4件に、成約価格の集計が11期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ONE PIECE CARD GAME ブースターパック 世界最強の戦士【OP-17】』ほか4件に、成約価格の集計が13期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが237件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが327件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -4184,7 +4294,7 @@
         "linked_comparables": 7,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 237
+        "strict_completed_sales": 327
       },
       "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -6647,8 +6757,8 @@
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": 30,
-            "worst_headroom_jpy": 3000
+            "strict_sales": 122,
+            "worst_headroom_jpy": 2640
           }
         ],
         "analogs_evaluable": 2,
@@ -6662,7 +6772,7 @@
         "result_label_ja": "類似品はすべて定価＋手数料を上回った（参考）",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": "類似品の金額は BOX 単位の成約です。この商品の販売単位と同じかを確かめてから金額を読んでください。",
-        "worst_headroom_jpy": 3000
+        "worst_headroom_jpy": 2640
       },
       "application_end": null,
       "application_start": null,
@@ -6698,13 +6808,68 @@
           "sample_status_label_ja": "十分な標本数"
         },
         {
+          "comparable_name": "ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 17000,
+          "median_price_jpy": 14600,
+          "minimum_price_jpy": 9000,
+          "sample_count": 817,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX",
+          "horizon": "d90",
+          "horizon_label_ja": "発売90日後まで",
+          "maximum_price_jpy": 12200,
+          "median_price_jpy": 8800,
+          "minimum_price_jpy": 6021,
+          "sample_count": 309,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX",
+          "horizon": "release_market",
+          "horizon_label_ja": "発売時点の市場",
+          "maximum_price_jpy": 18080,
+          "median_price_jpy": 14000,
+          "minimum_price_jpy": 8900,
+          "sample_count": 2125,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
           "comparable_name": "ポケモンカードゲーム MEGA 拡張パック ストームエメラルダ BOX",
           "horizon": "d30",
           "horizon_label_ja": "発売30日後まで",
-          "maximum_price_jpy": 13400,
+          "maximum_price_jpy": 15000,
           "median_price_jpy": 12800,
-          "minimum_price_jpy": 10000,
-          "sample_count": 30,
+          "minimum_price_jpy": 9600,
+          "sample_count": 122,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ポケモンカードゲーム MEGA 拡張パック ストームエメラルダ BOX",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 29000,
+          "median_price_jpy": 19300,
+          "minimum_price_jpy": 13111,
+          "sample_count": 1044,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
+        {
+          "comparable_name": "ポケモンカードゲーム MEGA 拡張パック ストームエメラルダ BOX",
+          "horizon": "release_market",
+          "horizon_label_ja": "発売時点の市場",
+          "maximum_price_jpy": 35000,
+          "median_price_jpy": 22050,
+          "minimum_price_jpy": 13000,
+          "sample_count": 3003,
           "sample_status": "READY",
           "sample_status_label_ja": "十分な標本数"
         }
@@ -6756,12 +6921,12 @@
           "label_ja": "受付・販売はすでに終了"
         },
         {
-          "basis_ja": "参照した過去商品『ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX』ほか1件に、成約価格の集計が2期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX』ほか1件に、成約価格の集計が7期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが64件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが8795件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -6776,7 +6941,7 @@
         "linked_comparables": 4,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 64
+        "strict_completed_sales": 8795
       },
       "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -10413,28 +10578,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -10455,6 +10622,28 @@
       "evidence_state": "PARTIAL",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -10489,12 +10678,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -10504,15 +10693,15 @@
       "product_id": "ws-anemoi-bp",
       "product_name": "ブースターパック anemoi",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-10-02",
@@ -10548,28 +10737,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -10590,6 +10781,28 @@
       "evidence_state": "PARTIAL",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -10624,12 +10837,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -10639,15 +10852,15 @@
       "product_id": "ws-azurlane-vol3-bp",
       "product_name": "ブースターパック アズールレーン Vol.3",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-12-25",
@@ -10683,28 +10896,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -10725,6 +10940,28 @@
       "evidence_state": "PARTIAL",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -10751,12 +10988,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -10766,15 +11003,15 @@
       "product_id": "ws-bangdream-mujingai-bp",
       "product_name": "ブースターパック BanG Dream! [夢限大みゅーたいぷ]",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-11-13",
@@ -10810,28 +11047,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -10852,6 +11091,28 @@
       "evidence_state": "PARTIAL",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -10886,12 +11147,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -10901,15 +11162,15 @@
       "product_id": "ws-chokaguyahime-pb",
       "product_name": "プレミアムブースター 超かぐや姫！",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-12-18",
@@ -10945,28 +11206,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -10987,6 +11250,28 @@
       "evidence_state": "PARTIAL",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -11021,12 +11306,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -11036,15 +11321,15 @@
       "product_id": "ws-gup-bp",
       "product_name": "ブースターパック ガールズ＆パンツァー",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-10-30",
@@ -11256,28 +11541,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -11298,6 +11585,28 @@
       "evidence_state": "VERIFIED",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -11332,12 +11641,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -11347,15 +11656,15 @@
       "product_id": "ws-nikke-vol2-bp",
       "product_name": "ブースターパック 勝利の女神：NIKKE Vol.2",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-09-19",
@@ -11397,28 +11706,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -11439,6 +11750,28 @@
       "evidence_state": "VERIFIED",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -11473,12 +11806,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -11488,15 +11821,15 @@
       "product_id": "ws-persona30-bp",
       "product_name": "ブースターパック Persona 30th Anniversary",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-11-27",
@@ -11538,28 +11871,30 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "成約データなし",
-            "sale_unit": null,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -1249,
+            "median_sale_jpy": 3501,
+            "price_to_list_ratio": 0.796,
+            "result": "INSUFFICIENT_SAMPLE",
+            "result_label_ja": "成約数が最低件数に届かない",
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 0,
-            "worst_headroom_jpy": null
+            "strict_sales": 1,
+            "worst_headroom_jpy": -1249
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
-        "counter_signal_names": [],
+        "counter_signal_names": [
+          "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月",
         "median_headroom_jpy": null,
         "result": "NO_PRICED_ANALOG",
-        "result_label_ja": "評価できる類似品がない",
+        "result_label_ja": "評価できる類似品がない。ただし成約数不足の類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "unit_note_ja": null,
         "worst_headroom_jpy": null
@@ -11580,6 +11915,28 @@
       "evidence_state": "VERIFIED",
       "first_seen_at": "2026-09-16",
       "historical_price_evidence": [
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d30",
+          "horizon_label_ja": "発売30日後まで",
+          "maximum_price_jpy": 3501,
+          "median_price_jpy": 3501,
+          "minimum_price_jpy": 3501,
+          "sample_count": 1,
+          "sample_status": "LOW_SAMPLE",
+          "sample_status_label_ja": "標本が少ない（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+          "horizon": "d7",
+          "horizon_label_ja": "発売7日後まで",
+          "maximum_price_jpy": 3401,
+          "median_price_jpy": 3000,
+          "minimum_price_jpy": 2700,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "十分な標本数"
+        },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
           "horizon": "release_market",
@@ -11614,12 +11971,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が1期間分ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品『ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2』に、成約価格の集計が3期間分ある（この商品の実績ではない）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "参照した過去商品の価格データあり"
         },
         {
-          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが2件ある（この商品の実績ではない）",
+          "basis_ja": "参照した過去商品に、条件を満たす成約サンプルが9件ある（この商品の実績ではない）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "参照した過去商品の成約実績あり"
         }
@@ -11629,15 +11986,15 @@
       "product_id": "ws-stellasola-bp",
       "product_name": "ブースターパック ステラソラ",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
+        "comparables_with_price_evidence": 1,
         "comparables_with_verified_route": 0,
         "linked_comparables": 1,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 9
       },
-      "profit_evidence_label_ja": "一部の価格情報のみ確認",
-      "profit_evidence_status": "PARTIAL",
+      "profit_evidence_label_ja": "価格情報の証拠あり（利益は未判定）",
+      "profit_evidence_status": "PRICE_EVIDENCE_READY",
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": "2026-10-16",

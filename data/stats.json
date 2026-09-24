@@ -14,8 +14,8 @@
   "by_profit_evidence": {
     "FORMAL_READY": 0,
     "NOT_EVALUATED": 80,
-    "PARTIAL": 28,
-    "PRICE_EVIDENCE_READY": 3,
+    "PARTIAL": 19,
+    "PRICE_EVIDENCE_READY": 12,
     "ROUTE_EVIDENCE_PARTIAL": 0
   },
   "by_sale_mode": {
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 75
   },
-  "generated_at": "2026-09-24T02:28:48+09:00",
+  "generated_at": "2026-09-24T09:44:49+09:00",
   "schema_version": "1.1.0"
 }
