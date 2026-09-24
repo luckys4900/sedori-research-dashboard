@@ -2262,6 +2262,45 @@ function initProduct() {
     });
     g.node.insertBefore(list, g.dl);
 
+    /* 価格見通し（定価比のみ、参考）. Ratios only by the owner's decision: no yen. The low end is
+       shown first and in bold, because the method's own check over-predicted every product that
+       ended below list price; the measured error sits on every row. */
+    var outlook = (bt.outlook || []).filter(function (o) { return o && num(o.analogs_used) !== null; });
+    if (outlook.length) {
+      var ob = el('div', 'bt-outlook');
+      ob.appendChild(el('p', 'bt-outlook-title', '価格見通し（定価に対する倍率・参考）'));
+      ob.appendChild(el('p', 'bt-outlook-def',
+        '似た過去の商品が、定価の何倍で売れたかの分布です。金額ではなく倍率だけを示します。' +
+        '過去の商品で試すと、定価割れした商品を大きく高く見積もったため、範囲の下限を目安にしてください。'));
+      outlook.forEach(function (o) {
+        var row = el('div', 'bt-outlook-row');
+        row.appendChild(el('span', 'bt-outlook-h', isUnknown(o.horizon_label_ja) ? '' : String(o.horizon_label_ja)));
+        if (num(o.ratio_median) === null) {
+          row.appendChild(el('span', 'bt-outlook-none',
+            '類似品が' + o.analogs_used + '件のため数値を出しません（3件以上で表示）'));
+          ob.appendChild(row);
+          return;
+        }
+        var body = el('span', 'bt-outlook-body');
+        body.appendChild(el('strong', 'bt-outlook-low', '下限 ' + o.ratio_min.toFixed(2) + '倍'));
+        body.appendChild(el('span', 'bt-outlook-mid',
+          '・中央 ' + o.ratio_median.toFixed(2) + '倍・上限 ' + o.ratio_max.toFixed(2) + '倍' +
+          (num(o.ratio_p25) !== null && num(o.ratio_p75) !== null
+            ? '（中央50%: ' + o.ratio_p25.toFixed(2) + '〜' + o.ratio_p75.toFixed(2) + '倍）' : '') +
+          '・類似品' + o.analogs_used + '件'));
+        row.appendChild(body);
+        var meta = [];
+        if (o.tier === 'HYPOTHESIS') { meta.push('仮説: この商品の販売単位が未確定'); }
+        if (num(o.check_median_error) !== null) {
+          meta.push('過去の商品での誤差 中央' + Math.round(o.check_median_error * 100) + '%・最大' +
+            Math.round(o.check_max_error * 100) + '%');
+        }
+        if (meta.length) { row.appendChild(el('span', 'bt-outlook-meta', meta.join('／'))); }
+        ob.appendChild(row);
+      });
+      g.node.insertBefore(ob, g.dl);
+    }
+
     var notes = el('ul', 'bt-notes');
     if ((bt.counter_signal_names || []).length) {
       notes.appendChild(el('li', 'bt-note-warn',

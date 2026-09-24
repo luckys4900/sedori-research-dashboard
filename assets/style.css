@@ -2767,3 +2767,13 @@ body { background-image: linear-gradient(180deg, var(--wash) 0, transparent 560p
   .hero-collage, .pmedia-backdrop { display: none; }
 }
 .c-tile-note { display: block; margin-top: 2px; font-size: var(--fs-aux); color: var(--fg-muted); font-style: italic; }
+
+/* 価格見通し（倍率のみ）. The low end leads: the method over-predicts products that end below list. */
+.bt-outlook { margin: 12px 0 0; padding: 10px 12px; border: 1px solid var(--accent-line); border-radius: var(--radius); background: var(--accent-bg); }
+.bt-outlook-title { margin: 0; font-weight: 800; font-size: var(--fs-body); }
+.bt-outlook-def { margin: 2px 0 8px; font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.6; }
+.bt-outlook-row { display: grid; gap: 1px; padding: 7px 0; border-top: 1px solid var(--accent-line); }
+.bt-outlook-h { font-size: var(--fs-aux); font-weight: 800; color: var(--accent); }
+.bt-outlook-body { font-size: var(--fs-label); font-variant-numeric: tabular-nums; }
+.bt-outlook-low { font-size: 1.02rem; }
+.bt-outlook-none, .bt-outlook-meta { font-size: var(--fs-aux); color: var(--fg-muted); }
