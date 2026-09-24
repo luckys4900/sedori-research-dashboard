@@ -15,9 +15,9 @@
 <header class="site-header">
   <div class="wrap">
     <div class="site-bar">
-      <h1 class="site-title"><a href="index.html">Sedori Research Dashboard</a></h1>
+      <p class="site-title"><a href="index.html">Sedori Research Dashboard</a></p>
       <p class="site-sub">
-        <span class="site-meta"><span class="site-meta-lbl">更新日時</span><span id="generated-at">読み込み中…</span></span>
+        <span class="site-meta"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
         <span class="sep" aria-hidden="true">/</span>
         <span class="site-meta"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
       </p>
@@ -26,17 +26,17 @@
 </header>
 
 <main class="wrap" id="main">
-  <p class="detail-nav"><a class="back-link" href="index.html">← 一覧に戻る</a><a class="back-link" href="index.html#legend">表示の読み方</a></p>
+  <nav class="detail-nav" aria-label="ページの移動"><a class="back-link" href="index.html">← 一覧に戻る</a><a class="back-link" href="index.html#legend">表示の読み方</a></nav>
 
-  <div class="panel panel--error" id="error-panel" hidden>
+  <div class="panel panel--error" id="error-panel" role="alert" hidden>
     <h2>データを読み込めませんでした</h2>
     <p id="error-detail"></p>
-    <p>通信環境をご確認のうえ、しばらくしてからページを再読み込みしてください。</p>
+    <p>通信環境をご確認のうえ、しばらくしてからページを再読み込みしてください。<a href="index.html">一覧に戻る</a>こともできます。</p>
   </div>
 
-  <p class="loading" id="loading">データを読み込み中…</p>
+  <p class="loading" id="loading" role="status">商品の情報を読み込んでいます…</p>
 
-  <div class="panel" id="notfound-panel" hidden>
+  <div class="panel" id="notfound-panel" role="alert" hidden>
     <h2>お探しの商品が見つかりませんでした</h2>
     <p id="notfound-detail">この URL の商品は、現在掲載していません。一覧からお探しください。</p>
     <p><a href="index.html">一覧に戻る</a></p>
@@ -48,7 +48,7 @@
     <p>当サイトは、公式サイトなどの公開情報をもとに作成しています。購入のおすすめ、利益の予測、点数やランキングは含みません。</p>
     <p>利益の自動評価は行っていません。</p>
     <p>「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。「取得原価」は購入経路ごとに金額の裏付けが取れた場合のみ表示しています。</p>
-    <p>確認できていない項目は「未確認」と表示しています。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
+    <p>確認が取れていない項目は表示していません（「なし」や「0」という意味ではありません）。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
   </footer>
 </main>
 

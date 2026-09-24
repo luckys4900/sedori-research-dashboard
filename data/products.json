@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-24",
-  "generated_at": "2026-09-24T12:22:17+09:00",
+  "generated_at": "2026-09-24T14:51:14+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -10,22 +10,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -142,22 +147,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -274,22 +284,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -406,22 +421,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -538,22 +558,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -670,22 +695,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター リフレクターキーホルダー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -802,22 +832,27 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター PVCポーチ",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -943,36 +978,45 @@
         "analogs": [
           {
             "comparable_name": "3COINS ポケットモンスター トートBAG",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "3COINS ポケピース モチーフエコバッグ",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 2,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -2689,64 +2733,117 @@
         "analogs": [
           {
             "comparable_name": "GUNDAM CARD GAME ブースターパック Freedom Ascension【GD05】",
+            "interval_high_jpy": 8600,
+            "interval_low_jpy": 8400,
             "list_price_jpy": 6000,
             "median_headroom_jpy": 1650,
             "median_sale_jpy": 8500,
             "price_to_list_ratio": 1.417,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 13,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 41,
+            "window_complete": true,
             "worst_headroom_jpy": 1199
           },
           {
             "comparable_name": "GUNDAM CARD GAME ブースターパック Phantom Aria【GD04】",
+            "interval_high_jpy": 5250,
+            "interval_low_jpy": 4501,
             "list_price_jpy": 5808,
             "median_headroom_jpy": -1487,
             "median_sale_jpy": 4801,
             "price_to_list_ratio": 0.827,
             "result": "NO_HEADROOM",
             "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 3,
+            "window_complete": true,
             "worst_headroom_jpy": -1757
           },
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック CROSS FORCE【FB10】",
+            "interval_high_jpy": 13990,
+            "interval_low_jpy": 13000,
             "list_price_jpy": 5280,
             "median_headroom_jpy": 7005,
             "median_sale_jpy": 13650,
             "price_to_list_ratio": 2.585,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 7,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 8,
+            "window_complete": false,
             "worst_headroom_jpy": 5970
           },
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+            "interval_high_jpy": 11500,
+            "interval_low_jpy": 9600,
             "list_price_jpy": 5280,
             "median_headroom_jpy": 4035,
             "median_sale_jpy": 10350,
             "price_to_list_ratio": 1.96,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 5,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 6,
+            "window_complete": true,
             "worst_headroom_jpy": 3000
           }
         ],
         "analogs_evaluable": 4,
         "analogs_linked": 4,
         "counter_signal_names": [],
+        "evidence_notes": [
+          {
+            "cleared": 2,
+            "evaluable": 2,
+            "horizon": "release_market",
+            "horizon_label_ja": "発売直後（0〜3日）",
+            "text_ja": "似た商品2件のうち、発売直後（0〜3日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が1件あります。"
+          },
+          {
+            "cleared": 2,
+            "evaluable": 2,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。件数が2件と少ないため、傾向とは言えません。"
+          },
+          {
+            "cleared": 3,
+            "evaluable": 4,
+            "horizon": "d30",
+            "horizon_label_ja": "発売後1か月（23〜37日）",
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは3件でした。"
+          },
+          {
+            "cleared": 1,
+            "evaluable": 1,
+            "horizon": "d90",
+            "horizon_label_ja": "発売後3か月（75〜105日）",
+            "text_ja": "似た商品1件のうち、発売3か月後（75〜105日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。"
+          },
+          {
+            "cleared": 1,
+            "evaluable": 1,
+            "horizon": "d180",
+            "horizon_label_ja": "発売後半年（159〜201日）",
+            "text_ja": "似た商品1件のうち、発売半年後（159〜201日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -2754,8 +2851,9 @@
         "outlook": [
           {
             "analogs_used": 2,
-            "check_max_error": 0.556,
-            "check_median_error": 0.245,
+            "check_max_error": 0.4286,
+            "check_median_error": 0.3811,
+            "check_n": 3,
             "horizon": "release_market",
             "horizon_label_ja": "発売直後（0〜3日）",
             "ratio_max": null,
@@ -2767,8 +2865,9 @@
           },
           {
             "analogs_used": 2,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -2780,8 +2879,9 @@
           },
           {
             "analogs_used": 4,
-            "check_max_error": 1.379,
-            "check_median_error": 0.212,
+            "check_max_error": 0.956,
+            "check_median_error": 0.2418,
+            "check_n": 7,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": 2.585,
@@ -3772,44 +3872,56 @@
         "analogs": [
           {
             "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック バウンサーバウンド",
+            "interval_high_jpy": 5800,
+            "interval_low_jpy": 5000,
             "list_price_jpy": 5280,
             "median_headroom_jpy": -510,
             "median_sale_jpy": 5300,
             "price_to_list_ratio": 1.004,
             "result": "NO_HEADROOM",
             "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 3,
+            "window_complete": true,
             "worst_headroom_jpy": -780
           },
           {
             "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 5280,
             "median_headroom_jpy": -1950,
             "median_sale_jpy": 3700,
             "price_to_list_ratio": 0.701,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1950
           },
           {
             "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック ディーヴァフィーバー",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
@@ -3818,6 +3930,15 @@
         "counter_signal_names": [
           "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d30",
+            "horizon_label_ja": "発売後1か月（23〜37日）",
+            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が1件あります。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -3825,8 +3946,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 1.379,
-            "check_median_error": 0.212,
+            "check_max_error": 0.956,
+            "check_median_error": 0.2418,
+            "check_n": 7,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": null,
@@ -4549,106 +4671,171 @@
         "analogs": [
           {
             "comparable_name": "ONE PIECE CARD GAME ブースターパック 世界最強の戦士【OP-17】",
+            "interval_high_jpy": 12000,
+            "interval_low_jpy": 11700,
             "list_price_jpy": 5760,
             "median_headroom_jpy": 5040,
             "median_sale_jpy": 12000,
             "price_to_list_ratio": 2.083,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 38,
+            "window_complete": false,
             "worst_headroom_jpy": 4140
           },
           {
             "comparable_name": "ONE PIECE CARD GAME ブースターパック 決戦の刻【OP-16】",
+            "interval_high_jpy": 13700,
+            "interval_low_jpy": 13300,
             "list_price_jpy": 5280,
             "median_headroom_jpy": 6870,
             "median_sale_jpy": 13500,
             "price_to_list_ratio": 2.557,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 6,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 30,
+            "window_complete": true,
             "worst_headroom_jpy": 2190
           },
           {
             "comparable_name": "ONE PIECE CARD GAME ブースターパック 神の島の冒険【OP-15】",
+            "interval_high_jpy": 9100,
+            "interval_low_jpy": 8421,
             "list_price_jpy": 5280,
             "median_headroom_jpy": 2572,
             "median_sale_jpy": 8725,
             "price_to_list_ratio": 1.652,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 10,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 20,
+            "window_complete": false,
             "worst_headroom_jpy": 1020
           },
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック CROSS FORCE【FB10】",
+            "interval_high_jpy": 13990,
+            "interval_low_jpy": 13000,
             "list_price_jpy": 5280,
             "median_headroom_jpy": 7005,
             "median_sale_jpy": 13650,
             "price_to_list_ratio": 2.585,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 7,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 8,
+            "window_complete": false,
             "worst_headroom_jpy": 5970
           },
           {
             "comparable_name": "ドラゴンボールスーパーカードゲーム フュージョンワールド ブースターパック DUAL EVOLUTION【FB09】",
+            "interval_high_jpy": 11500,
+            "interval_low_jpy": 9600,
             "list_price_jpy": 5280,
             "median_headroom_jpy": 4035,
             "median_sale_jpy": 10350,
             "price_to_list_ratio": 1.96,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 5,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 6,
+            "window_complete": true,
             "worst_headroom_jpy": 3000
           },
           {
             "comparable_name": "ONE PIECE CARD GAME エクストラブースター ONE PIECE Heroines Edition【EB-03】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "ONE PIECE CARD GAME エクストラブースター メモリアルコレクション【EB-01】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 5,
         "analogs_linked": 7,
         "counter_signal_names": [],
+        "evidence_notes": [
+          {
+            "cleared": 3,
+            "evaluable": 3,
+            "horizon": "release_market",
+            "horizon_label_ja": "発売直後（0〜3日）",
+            "text_ja": "似た商品3件のうち、発売直後（0〜3日）の取引価格の中央値が手数料を引いても定価を上回ったのは3件でした。"
+          },
+          {
+            "cleared": 3,
+            "evaluable": 3,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品3件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは3件でした。"
+          },
+          {
+            "cleared": 5,
+            "evaluable": 5,
+            "horizon": "d30",
+            "horizon_label_ja": "発売後1か月（23〜37日）",
+            "text_ja": "似た商品5件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは5件でした。"
+          },
+          {
+            "cleared": 1,
+            "evaluable": 1,
+            "horizon": "d90",
+            "horizon_label_ja": "発売後3か月（75〜105日）",
+            "text_ja": "似た商品1件のうち、発売3か月後（75〜105日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。"
+          },
+          {
+            "cleared": 1,
+            "evaluable": 1,
+            "horizon": "d180",
+            "horizon_label_ja": "発売後半年（159〜201日）",
+            "text_ja": "似た商品1件のうち、発売半年後（159〜201日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -4656,8 +4843,9 @@
         "outlook": [
           {
             "analogs_used": 3,
-            "check_max_error": 0.556,
-            "check_median_error": 0.245,
+            "check_max_error": 0.4286,
+            "check_median_error": 0.3811,
+            "check_n": 3,
             "horizon": "release_market",
             "horizon_label_ja": "発売直後（0〜3日）",
             "ratio_max": 3.559,
@@ -4669,8 +4857,9 @@
           },
           {
             "analogs_used": 3,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": 2.746,
@@ -4682,8 +4871,9 @@
           },
           {
             "analogs_used": 5,
-            "check_max_error": 1.379,
-            "check_median_error": 0.212,
+            "check_max_error": 0.956,
+            "check_median_error": 0.2418,
+            "check_n": 7,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": 2.585,
@@ -6559,78 +6749,99 @@
         "analogs": [
           {
             "comparable_name": "MG 1/100 スタークジェガン【再販】（プレミアムバンダイ）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "MG 1/100 ドワッジ【再販】（プレミアムバンダイ）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "MG 1/100 アナベル・ガトー専用ゲルググ Ver.2.0【再販】（プレミアムバンダイ）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "MG 1/100 強化型ダブルゼータガンダム Ver.Ka【再販】【2次：2026年4月発送】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "MG 1/100 ガンダムF90 Nタイプ【再販】【2次：2026年6月発送】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 5,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -7424,50 +7635,63 @@
         "analogs": [
           {
             "comparable_name": "スペシャルBOX ポケモンセンターフクオカ",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "スペシャルBOX ポケモンセンタートウホク",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": 26000,
             "price_to_list_ratio": null,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "スペシャルBOX ポケモンセンターヒロシマ",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 3,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -7617,64 +7841,110 @@
         "analogs": [
           {
             "comparable_name": "ポケモンカードゲーム 25th ANNIVERSARY COLLECTION 1BOX",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "ポケモンカードゲーム 拡張パック 20th Anniversary 1BOX",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "ポケモンカードゲーム MEGA 拡張パック アビスアイ BOX",
+            "interval_high_jpy": 11999,
+            "interval_low_jpy": 11600,
             "list_price_jpy": 6000,
             "median_headroom_jpy": 4620,
             "median_sale_jpy": 11800,
             "price_to_list_ratio": 1.967,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 1,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 33,
+            "window_complete": true,
             "worst_headroom_jpy": 4080
           },
           {
             "comparable_name": "ポケモンカードゲーム MEGA 拡張パック ストームエメラルダ BOX",
+            "interval_high_jpy": 12850,
+            "interval_low_jpy": 12800,
             "list_price_jpy": 6000,
             "median_headroom_jpy": 5520,
             "median_sale_jpy": 12800,
             "price_to_list_ratio": 2.133,
             "result": "HEADROOM_ALL_SALES",
             "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 4,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 122,
+            "window_complete": true,
             "worst_headroom_jpy": 2640
           }
         ],
         "analogs_evaluable": 2,
         "analogs_linked": 4,
         "counter_signal_names": [],
+        "evidence_notes": [
+          {
+            "cleared": 2,
+            "evaluable": 2,
+            "horizon": "release_market",
+            "horizon_label_ja": "発売直後（0〜3日）",
+            "text_ja": "似た商品2件のうち、発売直後（0〜3日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。件数が2件と少ないため、傾向とは言えません。"
+          },
+          {
+            "cleared": 2,
+            "evaluable": 2,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。件数が2件と少ないため、傾向とは言えません。"
+          },
+          {
+            "cleared": 2,
+            "evaluable": 2,
+            "horizon": "d30",
+            "horizon_label_ja": "発売後1か月（23〜37日）",
+            "text_ja": "似た商品2件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。件数が2件と少ないため、傾向とは言えません。"
+          },
+          {
+            "cleared": 1,
+            "evaluable": 1,
+            "horizon": "d90",
+            "horizon_label_ja": "発売後3か月（75〜105日）",
+            "text_ja": "似た商品1件のうち、発売3か月後（75〜105日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -7682,8 +7952,9 @@
         "outlook": [
           {
             "analogs_used": 2,
-            "check_max_error": 0.556,
-            "check_median_error": 0.245,
+            "check_max_error": 0.4286,
+            "check_median_error": 0.3811,
+            "check_n": 3,
             "horizon": "release_market",
             "horizon_label_ja": "発売直後（0〜3日）",
             "ratio_max": null,
@@ -7695,8 +7966,9 @@
           },
           {
             "analogs_used": 2,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -7708,8 +7980,9 @@
           },
           {
             "analogs_used": 2,
-            "check_max_error": 1.379,
-            "check_median_error": 0.212,
+            "check_max_error": 0.956,
+            "check_median_error": 0.2418,
+            "check_n": 7,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": null,
@@ -8524,36 +8797,45 @@
         "analogs": [
           {
             "comparable_name": "ポケモンカードゲーム 25th ANNIVERSARY GOLDEN BOX",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "ポケモンカードゲーム Classic",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 2,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -9974,22 +10256,27 @@
         "analogs": [
           {
             "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -10094,22 +10381,27 @@
         "analogs": [
           {
             "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -10766,22 +11058,27 @@
         "analogs": [
           {
             "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -10878,22 +11175,27 @@
         "analogs": [
           {
             "comparable_name": "カードファイト!! ヴァンガード ブースターパック 幻真覚醒【DZ-BT16】",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 1,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -11256,50 +11558,63 @@
         "analogs": [
           {
             "comparable_name": "KADOKAWA PLASTIC MODEL SERIES 【推しの子】 アイ DX ver.",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "KADOKAWA PLASTIC MODEL SERIES 【推しの子】 有馬かな DX ver.",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "KADOKAWA PLASTIC MODEL SERIES 【推しの子】 有馬かな（通常版）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 3,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -11408,78 +11723,99 @@
         "analogs": [
           {
             "comparable_name": "リボルテック ミルコ（2026年再販、直営特典「変顔」）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "リボルテック 微笑のテレサ（直営特典「10％妖力解放顔」）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "リボルテック アメイジング・ヤマグチ シンビオート・スパイダーマン",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "リボルテック アメイジング・ヤマグチ シンビオート・スパイダーマン（パープル Ver.）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "リボルテック エステル・ブライト「英雄伝説 空の軌跡SC」Ver.（直営特典「ウィンク顔」）",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 5,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -11774,16 +12110,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -11792,6 +12132,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -11799,8 +12148,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -12019,16 +12369,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -12037,6 +12391,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -12044,8 +12407,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -12264,16 +12628,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -12282,6 +12650,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -12289,8 +12666,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -12501,16 +12879,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -12519,6 +12901,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -12526,8 +12917,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -12746,16 +13138,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -12764,6 +13160,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -12771,8 +13176,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -13167,16 +13573,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -13185,6 +13595,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -13192,8 +13611,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -13418,16 +13838,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -13436,6 +13860,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -13443,8 +13876,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -13669,16 +14103,20 @@
         "analogs": [
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": 4400,
             "median_headroom_jpy": -1249,
             "median_sale_jpy": 3501,
             "price_to_list_ratio": 0.796,
             "result": "INSUFFICIENT_SAMPLE",
             "result_label_ja": "取引件数が少なく、比較の対象外",
+            "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": 1,
+            "window_complete": null,
             "worst_headroom_jpy": -1249
           }
         ],
@@ -13687,6 +14125,15 @@
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2"
         ],
+        "evidence_notes": [
+          {
+            "cleared": 0,
+            "evaluable": 1,
+            "horizon": "d7",
+            "horizon_label_ja": "発売後1週（4〜10日）",
+            "text_ja": "似た商品1件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。"
+          }
+        ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
@@ -13694,8 +14141,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 2.694,
-            "check_median_error": 0.126,
+            "check_max_error": 2.6942,
+            "check_median_error": 0.4057,
+            "check_n": 4,
             "horizon": "d7",
             "horizon_label_ja": "発売後1週（4〜10日）",
             "ratio_max": null,
@@ -14008,36 +14456,45 @@
         "analogs": [
           {
             "comparable_name": "遊戯王OCG COMPLETE FILE－白の物語－",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           },
           {
             "comparable_name": "遊戯王OCG No. COMPLETE FILE -PIECE OF MEMORIES-",
+            "interval_high_jpy": null,
+            "interval_low_jpy": null,
             "list_price_jpy": null,
             "median_headroom_jpy": null,
             "median_sale_jpy": null,
             "price_to_list_ratio": null,
             "result": null,
             "result_label_ja": "取引データは未確認",
+            "sale_days": null,
             "sale_unit": null,
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
             "strict_sales": null,
+            "window_complete": null,
             "worst_headroom_jpy": null
           }
         ],
         "analogs_evaluable": 0,
         "analogs_linked": 2,
         "counter_signal_names": [],
+        "evidence_notes": [],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",

@@ -3,11 +3,15 @@
    Shared by index.html (data-page="index") and product.html (data-page="product").
 
    Rendering rules this file enforces:
-     * A null field renders as「未確認」in a muted style. Never 0, never blank,
-       never a guessed date.
+     * An unconfirmed value is NOT RENDERED (owner's rule: 未確認の項目は表示しない).
+       A null field — or a published string that itself says it is unconfirmed —
+       produces no label, no placeholder and no badge. It is never turned into
+       0, なし or a guessed date either: hiding is the only allowed outcome.
+       The one layout exception is the desktop screener, whose 7 columns keep an
+       EMPTY cell so the columns stay aligned.
      * 定価 (list_price_jpy) and 取得原価 (acquisition_cost_jpy) are different
        things. The list price is NEVER shown as an acquisition cost, and an
-       unverified acquisition cost renders「未確認」— never a substituted number.
+       unverified acquisition cost is not shown at all — never a substituted number.
      * `closing_soon_band` is the ONLY authority for 締切間近. A near deadline
        whose acceptance state was not confirmed is shown under its own
        explicitly-labelled section, never as 締切間近.
@@ -22,7 +26,7 @@
      * Every string from JSON goes through textContent. There is no HTML-string
        attribute case). The JSON is treated as untrusted text.
      * Human decision marks live only in localStorage and are never sent.
-     * A field the build has not emitted yet renders as 未確認 / an empty block —
+     * A field the build has not emitted yet is simply not rendered —
        never an exception.
    ========================================================================= */
 'use strict';
@@ -33,9 +37,10 @@ var DATA_PRODUCTS = 'data/products.json';
 var DATA_STATS = 'data/stats.json';
 var DATA_METADATA = 'data/metadata.json';
 var MARKS_KEY = 'sedori_dashboard_marks_v1';
-var UNKNOWN_TEXT = '未確認';
-var UNVERIFIED_COST_TEXT = '未確認';
-var UNKNOWN_ENUM_TEXT = '区分未確認';
+/* A published string that itself declares the value unconfirmed (「受付状況は未確認」,
+   「…（日付の精度は未確認）」, 「不明」) carries no confirmed value: it is handled exactly
+   like null, i.e. not rendered. */
+var UNCONFIRMED_WORDING = /未確認|不明/;
 
 /* A highlight section never repeats the whole catalogue: it shows the top N of
    its own sort and hands the rest to 全商品一覧 through「すべて見る」. */
@@ -70,14 +75,13 @@ var STATUS_ORDER = [
 var CATEGORY_LABEL = {
   TCG: 'トレーディングカード', FIGURE: 'フィギュア', TOY: '玩具・ホビー',
   CHARACTER_GOODS: 'キャラクターグッズ', BOOK_MOOK: '書籍・ムック',
-  ONLINE_LOTTERY: 'オンラインくじ', COLLAB: 'コラボ商品', OTHER: 'その他',
-  UNKNOWN: '未分類'
+  ONLINE_LOTTERY: 'オンラインくじ', COLLAB: 'コラボ商品', OTHER: 'その他'
 };
 
 var SALE_MODE_LABEL = {
   LOTTERY: '抽選', PREORDER: '予約', MADE_TO_ORDER: '受注生産',
   GENERAL_SALE: '一般販売', OFFICIAL_EC: '公式EC', STORE_LIMITED: '店舗限定',
-  EC_LIMITED: 'EC限定', RESTOCK: '再販', UNKNOWN: '未確認'
+  EC_LIMITED: 'EC限定', RESTOCK: '再販'
 };
 
 /* sale_mode_raw values as the source records them. Anything not listed here is not shown. */
@@ -138,31 +142,27 @@ var SIGNAL_LABEL = {
   SHORT_ORDER_WINDOW: '受付期間が短い', RESTOCK: '再販あり', END_OF_SALE: '販売終了が近い',
   HISTORICAL_PRICE_EVIDENCE: '類似品の過去の取引価格あり',
   STRICT_COMPLETED_SALES: '類似品の取引実績あり', SUPPLY_LIMITED: '供給が限られる',
-  REPRINT_RISK: '再録・再版の可能性', UNKNOWN: '注目理由は未確認'
+  REPRINT_RISK: '再録・再版の可能性'
 };
 
 /* route_evidence — shadow model. Labels only; no raw token ever reaches the DOM. */
 var ROUTE_STATUS_LABEL = {
   VERIFIED: '購入経路を公式情報で確認', ENUMERATED_NOT_EVIDENCED: '経路の候補のみ（未検証）',
-  SHADOW_UNVERIFIED: '出品者の申告のみ（未検証）', NONE: '購入経路は未確認'
+  SHADOW_UNVERIFIED: '出品者の申告のみ（未検証）'
 };
 var ROUTE_CLASS_LABEL = {
   STORE_PICKUP: '店頭受取', STORE_PURCHASE: '店頭購入', OFFICIAL_EC: '公式オンラインストア',
   OFFICIAL_EC_LOTTERY: '公式オンラインストアの抽選', RETAILER_EC: '小売店のオンラインストア', OTHER: 'その他の経路'
 };
-/* Routes are grouped by how each row was established, and the groups are never
-   merged: an availability-verified route and a seller's declaration are
-   different claims. A group with no Japanese heading is not invented. */
-var ROUTE_GROUPS = [
-  { status: 'VERIFIED', title: '当時利用できた購入経路（公式情報で日付まで確認）' },
-  { status: 'ENUMERATED_NOT_EVIDENCED', title: '候補として挙がっている経路（裏付けは未確認）' },
-  { status: 'SHADOW_UNVERIFIED', title: '出品者が申告した経路（未検証）' }
-];
-var ROUTE_GROUP_OTHER = 'その他の経路（確認状況は未確認）';
+/* Only a route whose availability was verified is rendered. A candidate without
+   evidence, a seller's declaration or a route of unknown status is an unconfirmed
+   item and is not shown (owner's rule: 未確認の項目は表示しない). */
+var ROUTE_SHOWN_STATUS = 'VERIFIED';
+var ROUTE_SHOWN_TITLE = '当時利用できた購入経路（公式情報で日付まで確認）';
 
 var PRICE_SAMPLE_STATUS_LABEL = {
   STRICT: '条件を満たす取引のみ', REPRESENTATIVE: '件数は十分', INSUFFICIENT: '件数が少ない',
-  PARTIAL: '一部のみ', UNKNOWN: '未確認', NOT_EVALUATED: '未評価'
+  PARTIAL: '一部のみ', NOT_EVALUATED: '未評価'
 };
 
 /* Pseudo value for the status select meaning「受付中（抽選・予約）」. */
@@ -182,11 +182,19 @@ function isUnknown(v) {
     (Array.isArray(v) && v.length === 0);
 }
 
+/** Display text for a published string, or null when it is absent or declares itself
+    unconfirmed. null means: render nothing. */
+function shownText(v) {
+  if (isUnknown(v)) { return null; }
+  var s = String(v);
+  return UNCONFIRMED_WORDING.test(s) ? null : s;
+}
+
 function $(id) { return document.getElementById(id); }
 
 /** Enum -> Japanese label. An unmapped ALL_CAPS token is never printed raw. */
-/** Prefer the label the build published; only then the local map. A value the producer
-    understands must never collapse to 「区分未確認」 in the UI. */
+/** Prefer the label the build published; only then the local map. A label that declares
+    itself unconfirmed counts as no label. */
 function own(map, key) {
   /* A data value like "constructor" or "toString" resolves to an inherited Object.prototype
      member. Left unguarded that promoted a row into 締切間近 — the page must never declare an
@@ -195,19 +203,19 @@ function own(map, key) {
 }
 
 function lblOf(obj, labelKey, map, rawKey) {
-  var given = obj ? obj[labelKey] : null;
-  if (!isUnknown(given)) { return String(given); }
+  var given = obj ? shownText(obj[labelKey]) : null;
+  if (given !== null) { return given; }
   return lbl(map, obj ? obj[rawKey] : null);
 }
 
+/** Enum -> Japanese label, or null. UNKNOWN and any enum we have no wording for render
+    nothing: a raw token is never printed and 「区分が分からない」 is never shown. */
 function lbl(map, v) {
-  if (isUnknown(v)) { return null; }
+  if (isUnknown(v) || v === 'UNKNOWN') { return null; }
   var got = own(map, v);
   if (got !== undefined) { return got; }
-  /* Looks like an internal enum we have no wording for: say so instead of
-     leaking the token. Free-form text (which is not ALL_CAPS) passes through. */
-  if (/^[A-Z][A-Z0-9_]*$/.test(String(v))) { return UNKNOWN_ENUM_TEXT; }
-  return String(v);
+  if (/^[A-Z][A-Z0-9_]*$/.test(String(v))) { return null; }
+  return shownText(v);
 }
 
 /** Minimal element builder. `text` is always applied via textContent. */
@@ -216,6 +224,53 @@ function el(tag, className, text) {
   if (className) { n.className = className; }
   if (text !== undefined && text !== null) { n.textContent = String(text); }
   return n;
+}
+
+/**
+ * Text with the pieces that must not be split kept whole: a signed amount (−¥1,487), a count
+ * or ratio with its unit (類似品4件, 1.42倍, 13日), and a short bracketed period （75〜105日）.
+ * Only text nodes and nowrap spans are created; the textContent is unchanged.
+ */
+var KEEP_RE = /あと\d+日|\d{4}年\d{1,2}月(?:\d{1,2}日)?|\d{1,2}月\d{1,2}日|(?:中央値|最大|上限|下限)\s?\d+(?:\.\d+)?(?:倍|%)|類似品\d+件|[−-]?[¥￥][\d,]+(?:〜[−-]?[¥￥][\d,]+)?|\d+(?:\.\d+)?(?:倍|件|日|%|か月|週)(?:\s*\/\s*\d+件中)?|（[^（）]{1,16}）|【[^【】]{1,12}】/g;
+function keepText(node, text) {
+  var str = String(text);
+  var last = 0;
+  var m;
+  KEEP_RE.lastIndex = 0;
+  while ((m = KEEP_RE.exec(str)) !== null) {
+    if (m.index > last) { node.appendChild(document.createTextNode(str.slice(last, m.index))); }
+    node.appendChild(el('span', 'nb', m[0]));
+    last = m.index + m[0].length;
+  }
+  if (last < str.length) { node.appendChild(document.createTextNode(str.slice(last))); }
+  return node;
+}
+function elKeep(tag, className, text) { return keepText(el(tag, className), text); }
+
+/**
+ * A title that wraps only between words: word boundaries from Intl.Segmenter become <wbr>, and
+ * CSS (.wrap-words: word-break keep-all) stops the browser from breaking inside a word, so a
+ * line never starts with 「ー」 or splits 「ブースター」. Without Segmenter the text is left as is.
+ */
+function wordWrapText(node, text) {
+  var str = String(text);
+  if (typeof Intl === 'undefined' || typeof Intl.Segmenter !== 'function') {
+    node.textContent = str;
+    return node;
+  }
+  var seg = new Intl.Segmenter('ja', { granularity: 'word' });
+  var parts = [];
+  var it = seg.segment(str);
+  var arr = Array.from ? Array.from(it) : [];
+  arr.forEach(function (x) { parts.push(x.segment); });
+  node.classList.add('wrap-words');
+  parts.forEach(function (piece, i) {
+    if (i > 0 && !/^[\s）】」』、。・:：,.!?！？ー]/.test(piece) && !/[（【「『\s]$/.test(parts[i - 1])) {
+      node.appendChild(document.createElement('wbr'));
+    }
+    node.appendChild(document.createTextNode(piece));
+  });
+  return node;
 }
 
 function num(v) { return (typeof v === 'number' && isFinite(v)) ? v : null; }
@@ -255,7 +310,7 @@ function fmtCount(v) {
 
 /**
   * 定価 — the officially published list price, and nothing else. A document that
-  * has not been rebuilt yet simply has no list price, which renders 「未確認」: the
+  * has not been rebuilt yet simply has no list price, which is then not rendered: the
   * removed v1.0.0 field is never read as a stand-in.
   */
 function listPriceOf(p) {
@@ -264,8 +319,8 @@ function listPriceOf(p) {
 
 /**
  * `acquisition_cost_jpy` (取得原価) — a verified route acquisition price, or null.
- * A number without a VERIFIED status is suppressed: an unproven cost is 未確認,
- * not a figure. The list price is never substituted here.
+ * A number without a VERIFIED status is suppressed: an unproven cost is not shown,
+ * and is never replaced by a figure. The list price is never substituted here.
  */
 function acquisitionCostOf(p) {
   if (p.acquisition_cost_status !== 'VERIFIED') { return null; }
@@ -277,9 +332,11 @@ function signalsOf(p) {
   return p.opportunity_signals.filter(function (s) { return s && typeof s === 'object'; });
 }
 
-/** Chip text for one signal: data label first, closed-set fallback second. */
+/** Chip text for one signal: data label first, closed-set fallback second. The UNKNOWN
+    code (「注目理由は未確認」) is not a reason and renders nothing. */
 function signalText(s) {
-  if (!isUnknown(s.label_ja)) { return String(s.label_ja); }
+  if (s.code === 'UNKNOWN') { return null; }
+  if (shownText(s.label_ja) !== null) { return String(s.label_ja); }
   if (!isUnknown(s.code) && Object.prototype.hasOwnProperty.call(SIGNAL_LABEL, s.code)) {
     return SIGNAL_LABEL[s.code];
   }
@@ -373,17 +430,19 @@ function isNearTermUnconfirmed(p) {
   return d !== null && d >= 0 && d <= 7;
 }
 
+/* A restock_status that says the restock information is unconfirmed is not a restock fact:
+   it neither earns the 再販 badge nor matches the 再販情報あり filter. */
 function isRestockRow(p) {
-  return p.status === 'RESTOCKED' || p.sale_mode === 'RESTOCK' || !isUnknown(p.restock_status);
+  return p.status === 'RESTOCKED' || p.sale_mode === 'RESTOCK' || shownText(p.restock_status) !== null;
 }
 
 /**
  * 購入可能 = an acceptance state the engine declared open, with a sale mode that
  * is not a lottery. This is the same predicate `stats.counts.buyable_now` uses,
  * so the section can never disagree with the published counter. A row whose sale
- * mode is UNKNOWN is included by that definition — the card still says
- * 「販売方式 未確認」 and the section caption says so, rather than the page quietly
- * using a different rule than the data document.
+ * mode is UNKNOWN is included by that definition (the card simply shows no sale mode)
+ * and the section caption says so, rather than the page quietly using a different
+ * rule than the data document.
  */
 function isBuyableRow(p) {
   return isOpenStatus(p) && p.sale_mode !== 'LOTTERY';
@@ -391,14 +450,21 @@ function isBuyableRow(p) {
 
 /* ------------------------------------------------------------- shared pieces */
 
-/** Status badge: label text from data, colour from the semantic group. */
+/** true when the acceptance state is confirmed and has a label that can be shown. */
+function hasShownStatus(p) {
+  return !isUnknown(p.status) && p.status !== 'UNKNOWN' && own(STATUS_GROUP, p.status) !== undefined &&
+    shownText(p.status_label_ja) !== null;
+}
+
+/** Status badge: label text from data, colour from the semantic group. null — no badge at
+    all — when the acceptance state is not confirmed. */
 function statusBadge(p) {
-  var group = own(STATUS_GROUP, p.status) || 'unknown';
+  if (!hasShownStatus(p)) { return null; }
+  var group = own(STATUS_GROUP, p.status);
   /* Within 24h is escalated to the urgent colour — only for a row the status
      engine actually declared open. */
   if (isClosingSoonRow(p) && p.closing_soon_band === 'WITHIN_24H') { group = 'urgent'; }
-  var label = isUnknown(p.status_label_ja) ? UNKNOWN_TEXT : p.status_label_ja;
-  return el('span', 'badge badge--' + group, label);
+  return el('span', 'badge badge--' + group, String(p.status_label_ja));
 }
 
 /**
@@ -411,7 +477,9 @@ function evidenceBadge(p) {
   var variant = 'ev-none';
   if (p.evidence_state === 'VERIFIED') { variant = 'ev-verified'; }
   else if (p.evidence_state === 'PARTIAL') { variant = 'ev-partial'; }
-  var label = isUnknown(p.evidence_label_ja) ? UNKNOWN_TEXT : p.evidence_label_ja;
+  var label = shownText(p.evidence_label_ja);
+  /* No label: no badge. A discovery row still says 未検証 — that is its state, not a gap. */
+  if (label === null) { return isUnverifiedRow(p) ? el('span', 'badge badge--ev-none', '未検証') : null; }
   /* Defensive: never show 確認済み for a non-VERIFIED row. */
   if (p.evidence_state !== 'VERIFIED' && label === '確認済み') { label = '未検証'; }
   return el('span', 'badge badge--' + variant, label);
@@ -421,30 +489,31 @@ function isUnverifiedRow(p) {
   return p.verification_tier === 'DISCOVERY_UNVERIFIED' || p.evidence_state === 'UNVERIFIED';
 }
 
-/** Release text, precision-honest: month precision shows the display string. */
+/** Release text, precision-honest: month precision shows the display string. A display
+    string that says the date is unconfirmed hides the release date entirely — the bare
+    date is then NOT used in its place, because that would drop the caveat. */
 function releaseText(p) {
-  if (!isUnknown(p.release_date_display)) { return String(p.release_date_display); }
+  if (!isUnknown(p.release_date_display)) { return shownText(p.release_date_display); }
   if (p.release_date_precision === 'day' && !isUnknown(p.release_date)) {
     return fmtDate(p.release_date);
   }
   return null;                              /* unknown or month without display */
 }
 
-/** Relative wording for a deadline. `confirmed` false adds the caveat. */
+/** Relative wording for a deadline. Urgency is never expressed here: a row that is not a
+    closing_soon_band row is styled muted by the caller, never as 締切間近. */
 function deadlineRelText(p) {
   var d = num(p.days_to_deadline);
   if (d === null) { return null; }
   if (d < 0) { return '終了済み'; }
-  var base = d === 0 ? '本日まで' : 'あと' + d + '日';
-  if (isClosingSoonRow(p)) { return base; }
-  return base + '（受付状況は未確認）';
+  return d === 0 ? '本日まで' : 'あと' + d + '日';
 }
 
 /**
  * The deadline split into what the eye needs first: a short DATE and a separate
  * RELATIVE count. Presentation only — urgency still comes from isClosingSoonRow,
  * i.e. from `closing_soon_band`; `urgent` / `soon` are never set for any other row.
- * Returns null when there is no deadline (the caller renders 「未確認」).
+ * Returns null when there is no deadline (the caller then renders no deadline at all).
  */
 function deadlineParts(p, asOf) {
   if (isUnknown(p.deadline)) { return null; }
@@ -464,13 +533,11 @@ function deadlineParts(p, asOf) {
   return {
     date: shortDate,
     fullDate: fmtDate(p.deadline),
-    kind: (kind && kind !== UNKNOWN_ENUM_TEXT) ? kind : null,
+    kind: kind || null,
     rel: rel,
     confirmed: confirmed,
     /* acceptance NOT confirmed open: muted + dashed, never urgent */
     muted: !open,
-    /* the wording 受付状態は未確認 only where the state itself is unknown */
-    caveat: !open && (isUnknown(p.status) || p.status === 'UNKNOWN') && !(d !== null && d < 0),
     urgent: confirmed && p.closing_soon_band === 'WITHIN_24H',
     soon: confirmed && p.closing_soon_band !== 'WITHIN_24H',
     passed: d !== null && d < 0
@@ -495,7 +562,7 @@ function outboundCta(p, className) {
   /* Where the link actually goes, visible rather than only in the accessible name: a reader
      deciding whether to leave the page should not have to hover a link to find out. */
   var ctaHost = hostOf(url);
-  if (ctaHost) { a.appendChild(el('span', 'cta-host', ctaHost)); }
+  if (ctaHost) { a.appendChild(el('span', 'cta-host', ctaHost.replace(/^www\./, ''))); }
   /* The hook is EMPTY on purpose. 「PR」 is an advertising disclosure in Japan, so a
      non-sponsored link must not carry that text anywhere in its DOM — hidden text still
      surfaces in copy/paste, reader modes, CSS-off views and textContent scrapes, where it
@@ -533,7 +600,8 @@ function entryFacts(p) {
     var announced = fmtDate(p.result_date);
     if (announced) { items.push(['当選発表', announced]); }
   }
-  if (!isUnknown(p.purchase_limit)) { items.push(['購入・応募上限：', String(p.purchase_limit)]); }
+  if (shownText(p.purchase_limit) !== null) { items.push(['購入・応募上限：', String(p.purchase_limit)]); }
+
   if (items.length === 0) { return null; }
   var box = el('div', 'f-lottery');
   box.setAttribute('role', 'group');
@@ -541,7 +609,8 @@ function entryFacts(p) {
   items.forEach(function (pair) {
     var item = el('span', 'f-lottery-item');
     item.appendChild(el('span', 'f-lottery-lbl', pair[0]));
-    item.appendChild(el('span', 'f-lottery-val', pair[1]));
+    item.appendChild(elKeep('span', 'f-lottery-val', pair[1]));
+    item.title = pair[0] + pair[1];   /* a long condition is clamped on feed cards; full text on the detail page */
     box.appendChild(item);
   });
   return box;
@@ -586,8 +655,15 @@ function backtestMedianRatio(bt) {
 function backtestLine(p) {
   if (!hasEvaluableBacktest(p)) { return null; }
   var bt = backtestOf(p);
+  /* Compact: a title row (label + 数え方), one count line, and everything else behind 「詳しく」,
+     so a card with this box is only ~80px taller than one without. The counts stay visible. */
   var box = el('div', 'bt-line' + ((bt.counter_signal_names || []).length ? ' has-counter' : ''));
   box.appendChild(el('span', 'bt-line-lbl', '類似品の過去相場（参考）'));
+  /* one tap to the counting rules on this page (the explainer under 類似品の過去相場) */
+  var how = el('a', 'bt-line-how', '数え方');
+  how.href = '#how-counted';
+  box.appendChild(how);
+
   var ratio = backtestMedianRatio(bt);
   var parts = [];
   parts.push('類似品' + bt.analogs_evaluable + '件');
@@ -595,9 +671,43 @@ function backtestLine(p) {
   /* No yen here: a card has no room for the unit caveat, and a ¥250 pack must not be read
      against a box-sized amount. The yen amounts, labelled with their unit, are on the detail page. */
   if ((bt.analog_units || []).length) { parts.push('類似品は' + bt.analog_units.join('・') + '単位での取引'); }
-  box.appendChild(el('span', 'bt-line-val', parts.join('・')));
+  var valNode = el('span', 'bt-line-val');
+  parts.forEach(function (part, i) {
+    /* each ・ item wraps as a unit (a phrase never splits across two lines) */
+    valNode.appendChild(keepText(el('span', 'phrase-unit'), part + (i < parts.length - 1 ? '・' : '')));
+  });
+
+  /* 何件中何件 for the headline period, counts only */
+  var main = (Array.isArray(bt.evidence_notes) ? bt.evidence_notes : []).filter(function (n) {
+    return n && n.horizon === bt.horizon && num(n.evaluable) !== null && n.evaluable > 0 &&
+      num(n.cleared) !== null && n.cleared <= n.evaluable;
+  })[0];
+  var more = el('details', 'bt-line-more');
+  more.appendChild(el('summary', null, '詳しく'));
+  if (main) {
+    var cnt = el('span', 'bt-line-count');
+    if (main.evaluable <= EV_DOT_MAX) {
+      var dots = el('span', 'ev-dots ev-dots--sm');
+      dots.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < main.evaluable; i++) { dots.appendChild(el('i', i < main.cleared ? 'is-on' : null)); }
+      cnt.appendChild(dots);
+    }
+    var hl = shownText(main.horizon_label_ja);
+    var hShort = hl ? hl.replace(/（.*$/, '').replace(/^発売後/, '') : null;
+    cnt.appendChild(elKeep('span', null, '似た商品' + main.evaluable + '件中' + main.cleared + '件が定価超え' +
+      (hShort ? '（' + hShort + '）' : '') + (main.evaluable < 3 ? '・少数' : '')));
+    box.appendChild(cnt);
+    /* the full sentence (with the fee and the small-sample caveat) and the ratio are one tap away */
+    more.appendChild(elKeep('p', 'bt-line-full', (hl ? hl.replace(/（.*$/, '') + '、' : '') +
+      '手数料を引いても定価を上回ったのは' + main.evaluable + '件中' + main.cleared + '件' +
+      (main.evaluable < 3 ? '（件数が少なく傾向とは言えません）' : '') + '。'));
+    more.appendChild(valNode);
+  } else {
+    box.appendChild(valNode);
+  }
   var spark = buildSparkline(bt);
-  if (spark) { box.appendChild(spark); }
+  if (spark) { more.appendChild(spark); }
+  if (more.children.length > 1) { box.appendChild(more); }
   if ((bt.counter_signal_names || []).length) {
     box.appendChild(el('span', 'bt-line-warn', '取引の少ない類似品に定価割れの兆候あり'));
   }
@@ -674,7 +784,8 @@ function trendSeries(bt) {
         b.day_from <= CHART_DAY_MAX && b.day_to >= b.day_from;
     }).slice().sort(function (a, b) { return a.day_from - b.day_from; });
     if (!bs.length) { return; }
-    var name = isUnknown(t.comparable_name) ? '名称未確認' : String(t.comparable_name);
+    /* An unnamed trend is labelled by its position, never with 「名称未確認」. */
+    var name = shownText(t.comparable_name) || ('類似品' + (i + 1));
     out.push({
       name: name, legend: trendLegendName(name), tag: trendTag(name),
       strength: t.strength, slot: i + 1, buckets: bs
@@ -699,14 +810,46 @@ function textWidth(s, px) {
   return w;
 }
 
-function lineKey(slotClass, dashed, hollow) {
-  var svg = svgEl('svg', { viewBox: '0 0 22 10', width: 22, height: 10, 'aria-hidden': 'true', focusable: 'false',
-    'class': 'pchart-key ' + slotClass });
-  svg.appendChild(svgEl('line', { x1: 1, y1: 5, x2: 21, y2: 5, 'class': 'pchart-seg' + (dashed ? ' is-thin' : '') }));
-  if (hollow !== null) {
-    svg.appendChild(svgEl('circle', { cx: 11, cy: 5, r: 3.5, 'class': 'pchart-dot' + (hollow ? ' is-thin' : '') }));
+var CELL_SHORT = { '期間': '', '取引件数': '件数', '取引価格の中央値': '中央値', '定価に対する倍率': '倍率', '最安〜最高': '範囲' };
+/** Copies each column head onto its cells (data-label), so a narrow screen can stack a row. */
+function labelCells(table) {
+  var heads = [].map.call(table.querySelectorAll('thead th'), function (th) { return th.textContent; });
+  var rows = table.querySelectorAll('tbody tr');
+  for (var i = 0; i < rows.length; i++) {
+    for (var j = 0; j < rows[i].children.length; j++) {
+      var short = own(CELL_SHORT, heads[j]);
+      var lab = short === undefined ? heads[j] : short;
+      if (lab) { rows[i].children[j].setAttribute('data-label', lab); }
+    }
   }
-  return svg;
+}
+
+/** Does a label box touch any drawn segment or marker (other than those of series `own`)? */
+function hitsMarks(b, marks, own) {
+  function inBox(x, y, pad) { return x >= b.x0 - pad && x <= b.x1 + pad && y >= b.y0 - pad && y <= b.y1 + pad; }
+  for (var i = 0; i < marks.length; i++) {
+    var mk = marks[i];
+    if (own !== null && mk.s === own) { continue; }
+    if (mk.dot) { if (inBox(mk.dot[0], mk.dot[1], 5)) { return true; } continue; }
+    var sg = mk.seg;
+    var len = Math.max(Math.abs(sg[2] - sg[0]), Math.abs(sg[3] - sg[1]));
+    var steps = Math.max(1, Math.ceil(len / 2));
+    for (var k = 0; k <= steps; k++) {
+      var t = k / steps;
+      if (inBox(sg[0] + (sg[2] - sg[0]) * t, sg[1] + (sg[3] - sg[1]) * t, 1.5)) { return true; }
+    }
+  }
+  return false;
+}
+
+function lineKey(slotClass, dashed, hollow) {
+  /* A legend / readout key drawn with CSS, not SVG: the chart's plot is the only <svg> in the
+     figure, so "the chart" is never confused with a 22px legend swatch. */
+  var key = el('span', 'pchart-key ' + slotClass);
+  key.setAttribute('aria-hidden', 'true');
+  key.appendChild(el('i', 'pchart-key-line' + (dashed ? ' is-thin' : '')));
+  if (hollow !== null) { key.appendChild(el('b', 'pchart-key-dot' + (hollow ? ' is-thin' : ''))); }
+  return key;
 }
 
 /** Card sparkline: the first STRONG trend (else the first), its ratio path and the 1.0 line. */
@@ -782,9 +925,9 @@ function buildTrendChart(bt) {
   }
   if (ol) {
     var liOl = el('li', 'pchart-legend-item pchart-legend-aux');
-    var k = svgEl('svg', { viewBox: '0 0 22 10', width: 22, height: 10, 'aria-hidden': 'true', focusable: 'false',
-      'class': 'pchart-key' });
-    k.appendChild(svgEl('rect', { x: 7, y: 0, width: 8, height: 10, rx: 2, 'class': 'pchart-ol-band' }));
+    var k = el('span', 'pchart-key');
+    k.setAttribute('aria-hidden', 'true');
+    k.appendChild(el('i', 'pchart-key-band'));
     liOl.appendChild(k);
     liOl.appendChild(el('span', 'pchart-legend-name', '見通し（倍率）は発売1か月時点の範囲'));
     legend.appendChild(liOl);
@@ -824,13 +967,15 @@ function buildTrendChart(bt) {
       if (bi === 0) { th.title = s.name; } else { th.className = 'is-repeat'; th.appendChild(el('span', 'visually-hidden', s.legend)); }
       tr.appendChild(th);
       tr.appendChild(el('td', null, dayRangeText(b)));
-      tr.appendChild(el('td', 'num', (num(b.n) === null ? UNKNOWN_TEXT : b.n + '件') + (b.thin === true ? '・少なめ' : '')));
-      tr.appendChild(el('td', 'num', num(b.median_jpy) === null ? UNKNOWN_TEXT : fmtPrice(b.median_jpy)));
+      /* An unknown count or median leaves its table cell EMPTY (the column stays), never 0. */
+      tr.appendChild(el('td', 'num', num(b.n) === null ? '' : (b.n + '件' + (b.thin === true ? '・少なめ' : ''))));
+      tr.appendChild(el('td', 'num', num(b.median_jpy) === null ? '' : fmtPrice(b.median_jpy)));
       tr.appendChild(el('td', 'num', fmtRatio(b.ratio)));
       tbody.appendChild(tr);
     });
   });
   table.appendChild(tbody);
+  labelCells(table);
   scroll.appendChild(table);
   det.appendChild(scroll);
   fig.appendChild(det);
@@ -865,7 +1010,7 @@ function buildTrendChart(bt) {
     stage.classList.toggle('is-narrow', narrow);
     var useTags = shown.length <= 4 && !noTags;
     var tagW = 0;
-    if (useTags) { shown.forEach(function (s) { tagW = Math.max(tagW, textWidth(s.tag, 11)); }); }
+    if (useTags) { shown.forEach(function (s) { tagW = Math.max(tagW, textWidth(s.tag, 12)); }); }
     var m = { l: 42, r: useTags ? Math.min(72, Math.ceil(tagW) + 14) : 14, t: 22, b: 30 };
     var pw = Math.max(40, width - m.l - m.r);
     var ph = H - m.t - m.b;
@@ -897,23 +1042,15 @@ function buildTrendChart(bt) {
       tx.textContent = tk.t;
       svg.appendChild(tx);
     });
-    if (y1 < m.t + ph - 16) {
-      var uLbl = svgEl('text', { x: m.l + 6, y: m.t + ph - 6, 'class': 'pchart-note pchart-halo' });
-      uLbl.textContent = '定価割れ';
-      svg.appendChild(uLbl);
-    }
 
     /* 見通し: a secondary range at the 1-month position, behind the lines */
-    var olLabel = null;
     if (ol) {
       var ox = X(dayPos(30));
       svg.appendChild(svgEl('rect', { x: ox - 5, y: Y(ol.ratio_max), width: 10,
         height: Math.max(2, Y(ol.ratio_min) - Y(ol.ratio_max)), rx: 3, 'class': 'pchart-ol-band' }));
       svg.appendChild(svgEl('line', { x1: ox - 8, y1: Y(ol.ratio_median), x2: ox + 8, y2: Y(ol.ratio_median),
         'class': 'pchart-ol-mid' }));
-      var oy = Math.max(m.t - 8, Y(ol.ratio_max) - 6);
-      var ow = textWidth('見通し（倍率）', 11);
-      olLabel = { x: ox, y: oy, x0: ox - ow / 2, x1: ox + ow / 2 };
+      /* no in-plot label: on a crowded chart it lands on the lines. The legend row names the band. */
     }
 
     /* the 定価 reference line, labelled */
@@ -922,9 +1059,15 @@ function buildTrendChart(bt) {
     y1l.textContent = '定価';
     svg.appendChild(y1l);
 
-    /* lines + markers */
+    /* lines + markers; every drawn segment and marker is kept for the label collision test */
     var dotsByKey = {};
     var tags = [];
+    var marks = [];
+    if (ol) {
+      var olx = X(dayPos(30));
+      marks.push({ s: -1, seg: [olx - 8, Y(ol.ratio_median), olx + 8, Y(ol.ratio_median)] });
+      marks.push({ s: -1, seg: [olx, Y(ol.ratio_max), olx, Y(ol.ratio_min)] });
+    }
     shown.forEach(function (s) {
       var g = svgEl('g', { 'class': 'pchart-series s' + s.slot });
       for (var k3 = 1; k3 < s.buckets.length; k3++) {
@@ -932,11 +1075,13 @@ function buildTrendChart(bt) {
         var b = s.buckets[k3];
         g.appendChild(svgEl('line', { x1: X(bucketPos(a)), y1: Y(a.ratio), x2: X(bucketPos(b)), y2: Y(b.ratio),
           'class': 'pchart-seg' + (a.thin === true || b.thin === true ? ' is-thin' : '') }));
+        marks.push({ s: s.slot, seg: [X(bucketPos(a)), Y(a.ratio), X(bucketPos(b)), Y(b.ratio)] });
       }
       s.buckets.forEach(function (b) {
         var c = svgEl('circle', { cx: X(bucketPos(b)), cy: Y(b.ratio), r: 4,
           'class': 'pchart-dot' + (b.thin === true ? ' is-thin' : '') });
         var key = bucketKey(b);
+        marks.push({ s: s.slot, dot: [X(bucketPos(b)), Y(b.ratio)] });
         (dotsByKey[key] = dotsByKey[key] || []).push(c);
         g.appendChild(c);
       });
@@ -950,7 +1095,7 @@ function buildTrendChart(bt) {
     /* direct end-labels (<= 4 series); if any two would collide, the legend carries identity alone */
     if (tags.length) {
       var boxes = tags.map(function (tg) {
-        var w = textWidth(tg.s.tag, 11);
+        var w = textWidth(tg.s.tag, 12);
         var right = tg.x + 7 + w <= width - 2;
         return { tg: tg, x0: right ? tg.x + 7 : tg.x - 7 - w, x1: right ? tg.x + 7 + w : tg.x - 7,
           y: right ? tg.y + 4 : tg.y - 8, anchor: right ? 'start' : 'end' };
@@ -959,6 +1104,9 @@ function buildTrendChart(bt) {
         return boxes.some(function (q, j) {
           return j > i && Math.abs(p.y - q.y) < 13 && p.x0 < q.x1 && q.x0 < p.x1;
         });
+      }) || boxes.some(function (bx) {
+        /* a name may touch its own line's end, never another series' line or marker */
+        return hitsMarks({ x0: bx.x0 - 1, x1: bx.x1 + 1, y0: bx.y - 10, y1: bx.y + 3 }, marks, bx.tg.s.slot);
       });
       if (clash) { draw(width, true); return; }
       boxes.forEach(function (bx) {
@@ -966,16 +1114,17 @@ function buildTrendChart(bt) {
           'class': 'pchart-tag pchart-halo' });
         tt.textContent = bx.tg.s.tag;
         svg.appendChild(tt);
-        /* the outlook's in-plot label yields to a line's name; the legend still names it */
-        if (olLabel && Math.abs(bx.y - olLabel.y) < 13 && bx.x0 < olLabel.x1 + 4 && olLabel.x0 - 4 < bx.x1) {
-          olLabel = null;
-        }
       });
     }
-    if (olLabel) {
-      var oLbl = svgEl('text', { x: olLabel.x, y: olLabel.y, 'text-anchor': 'middle', 'class': 'pchart-note pchart-halo' });
-      oLbl.textContent = '見通し（倍率）';
-      svg.appendChild(oLbl);
+    /* 定価割れ: only where it touches no line or marker */
+    if (y1 < m.t + ph - 16) {
+      var uw = textWidth('定価割れ', 12);
+      var ub = { x0: m.l + 5, x1: m.l + 7 + uw, y0: m.t + ph - 17, y1: m.t + ph - 2 };
+      if (!hitsMarks(ub, marks, null)) {
+        var uLbl = svgEl('text', { x: m.l + 6, y: m.t + ph - 6, 'class': 'pchart-note pchart-halo' });
+        uLbl.textContent = '定価割れ';
+        svg.appendChild(uLbl);
+      }
     }
 
     /* crosshair + hit layer (the whole plot, bigger than any mark) */
@@ -1035,8 +1184,10 @@ function buildTrendChart(bt) {
       if (num(b.median_jpy) !== null) { val.appendChild(el('span', null, ' 中央値 ' + fmtPrice(b.median_jpy))); }
       body.appendChild(val);
       body.appendChild(el('div', 'pchart-tip-name', s.legend));
-      body.appendChild(el('div', 'pchart-tip-n' + (b.thin === true ? ' is-thin' : ''),
-        (num(b.n) === null ? '件数は未確認' : '取引' + b.n + '件') + (b.thin === true ? '・件数が少なめ' : '')));
+      if (num(b.n) !== null) {
+        body.appendChild(el('div', 'pchart-tip-n' + (b.thin === true ? ' is-thin' : ''),
+          '取引' + b.n + '件' + (b.thin === true ? '・件数が少なめ' : '')));
+      }
       row.appendChild(body);
       tip.appendChild(row);
     });
@@ -1098,10 +1249,101 @@ function buildTrendChart(bt) {
 }
 
 /**
+ * 「何件中何件」: for each period, how many similar products could be compared and in how many
+ * of them the median sale cleared list price after the fee. A row of dots (filled = cleared)
+ * plus the published sentence. Counts only: no rate, no probability, no score.
+ */
+var EV_DOT_MAX = 12;
+function evidenceLead(bt) {
+  var notes = (bt && Array.isArray(bt.evidence_notes)) ? bt.evidence_notes : [];
+  notes = notes.filter(function (n) {
+    return n && num(n.evaluable) !== null && n.evaluable > 0 && num(n.cleared) !== null &&
+      n.cleared >= 0 && n.cleared <= n.evaluable && shownText(n.horizon_label_ja) !== null;
+  });
+  if (!notes.length) { return null; }
+  var box = el('div', 'ev-lead');
+  box.appendChild(el('p', 'ev-lead-title', '手数料を引いても定価を上回った似た商品'));
+  /* The headline period (bt.horizon) leads with its sentence; the other periods are one
+     compact row each, and their sentences sit one tap away. */
+  var mainIdx = 0;
+  notes.forEach(function (n, i) { if (n.horizon === bt.horizon) { mainIdx = i; } });
+  var ol = el('ol', 'ev-notes');
+  var more = [];
+  notes.forEach(function (n, i) {
+    var isMain = i === mainIdx;
+    var li = el('li', 'ev-note' + (isMain ? ' is-main' : '') + (n.evaluable < 3 ? ' is-small' : ''));
+    li.appendChild(elKeep('span', 'ev-h', String(n.horizon_label_ja)));
+    var vis = el('span', 'ev-dots');
+    vis.setAttribute('aria-hidden', 'true');
+    if (n.evaluable <= EV_DOT_MAX) {
+      for (var k = 0; k < n.evaluable; k++) { vis.appendChild(el('i', k < n.cleared ? 'is-on' : null)); }
+    } else {
+      vis.classList.add('is-bar');
+      var fill = el('i', 'is-on');
+      fill.style.setProperty('width', (n.cleared / n.evaluable * 100).toFixed(1) + '%');
+      vis.appendChild(fill);
+    }
+    li.appendChild(vis);
+    var cnt = el('span', 'ev-count');
+    cnt.appendChild(el('strong', null, String(n.cleared)));
+    cnt.appendChild(document.createTextNode('件 / ' + n.evaluable + '件中' + (n.evaluable < 3 ? '・少数' : '')));
+    li.appendChild(cnt);
+    var text = shownText(n.text_ja);
+    if (text !== null) {
+      if (isMain) { li.appendChild(elKeep('p', 'ev-text', text)); }
+      else { more.push(text); }
+    }
+    if (isMain) { ol.insertBefore(li, ol.firstChild); } else { ol.appendChild(li); }
+  });
+  box.appendChild(ol);
+  if (more.length) {
+    var det = el('details', 'ev-more');
+    det.appendChild(el('summary', null, 'ほかの期間の説明を読む'));
+    var ul = el('ul', 'ev-more-list');
+    more.forEach(function (t) { ul.appendChild(elKeep('li', null, t)); });
+    det.appendChild(ul);
+    box.appendChild(det);
+  }
+  return box;
+}
+
+/**
+ * 「数え方」: one short, plain explanation of every counting rule behind the numbers above.
+ * A real <details>, so it is keyboard-reachable and costs no space until opened.
+ */
+function howCounted(bt, id) {
+  var d = el('details', 'howcount');
+  if (id) { d.id = id; }
+  d.appendChild(el('summary', 'howcount-sum', '数え方（取引・手数料・範囲の意味）'));
+  var fee = bt ? num(bt.fee_rate) : null;
+  var units = (bt && Array.isArray(bt.analog_units) && bt.analog_units.length) ? bt.analog_units.join('・') : null;
+  var ul = el('ul', 'howcount-list');
+  [
+    ['取引', 'オークションなどで実際に取引が成立したもののうち、未開封・単品・欠品なしのものだけを数えています。出品中の価格は含みません。'],
+    ['手数料', '取引価格から販売手数料' + (fee === null ? '' : '（' + Math.round(fee * 100) + '%）') +
+      'を引いてから定価と比べています。送料や梱包の費用はまだ確認できていないため、引いていません。'],
+    ['定価', '比べる相手は、それぞれの類似品の定価です。この商品の定価ではありません。'],
+    ['単位', units ? '類似品の価格は' + units + '単位の取引です。パックとBOXのように単位が違うものは、金額ではなく定価に対する倍率で比べています。'
+      : 'パックとBOXのように単位が違うものは、金額ではなく定価に対する倍率で比べています。'],
+    ['発売後1か月', '発売から23〜37日の間に成立した取引です。ほかの期間も、表示している日数の範囲で数えています。'],
+    ['90%範囲', '集まった取引を何度も抜き出し直して中央値を計算し直したとき、10回のうち9回ほどが入る範囲です。取引が少ないときは表示していません。'],
+    ['取引日数', '取引があった日の数です。多くの取引が1日に集中しているときは、その日だけの事情に左右されている可能性があります。'],
+    ['見通しの誤差', '各商品を、それより前に発売された商品だけを使って見積もり、実際の取引と比べた差です。後から分かった情報は使っていません。']
+  ].forEach(function (pair) {
+    var li = el('li');
+    li.appendChild(el('strong', null, pair[0]));
+    li.appendChild(el('span', null, pair[1]));
+    ul.appendChild(li);
+  });
+  d.appendChild(ul);
+  return d;
+}
+
+/**
  * A strip under each analog: where its ratio sits against the 1.0 (定価) mark, on one shared
  * scale for the whole list. Decorative twin of the 定価比 text beside it, so aria-hidden.
  */
-function ratioStrip(ratio, scaleMax) {
+function ratioStrip(ratio, scaleMax, lo, hi) {
   var r = num(ratio);
   if (r === null || !(scaleMax > 0)) { return null; }
   function pct(v) { return (Math.max(0, Math.min(scaleMax, v)) / scaleMax * 100).toFixed(2) + '%'; }
@@ -1111,6 +1353,13 @@ function ratioStrip(ratio, scaleMax) {
   bar.style.setProperty('left', pct(Math.min(1, r)));
   bar.style.setProperty('width', ((Math.abs(r - 1) / scaleMax) * 100).toFixed(2) + '%');
   track.appendChild(bar);
+  /* 90% range of the 1-month median, as an error bar around the dot (only when published) */
+  if (num(lo) !== null && num(hi) !== null && hi >= lo) {
+    var ci = el('span', 'bt-strip-ci');
+    ci.style.setProperty('left', pct(lo));
+    ci.style.setProperty('width', ((Math.min(scaleMax, hi) - Math.min(scaleMax, lo)) / scaleMax * 100).toFixed(2) + '%');
+    track.appendChild(ci);
+  }
   var one = el('span', 'bt-strip-one');
   one.style.setProperty('left', pct(1));
   track.appendChild(one);
@@ -1167,17 +1416,16 @@ var THUMB_GLYPH_FALLBACK = 'OTHER';
 
 /**
  * 「何の商品か」の一行: IP・カテゴリ（・詳細では販売方式）。
- * 値が無いときは行そのものを出さない。CATEGORY_LABEL.UNKNOWN は「未分類」なので、
- * そのまま出すとタイルの下に意味のない「未分類」だけが並ぶ。
+ * 値が無いときは行そのものを出さない（UNKNOWN のカテゴリ・販売方式は lbl が null を返す）。
  */
 function identityMeta(p, withMode) {
   var out = [];
   if (!isUnknown(p.ip)) { out.push(String(p.ip)); }
   var cat = lbl(CATEGORY_LABEL, p.category);
-  if (cat && cat !== UNKNOWN_ENUM_TEXT && cat !== UNKNOWN_TEXT) { out.push(cat); }
+  if (cat) { out.push(cat); }
   if (withMode) {
     var mode = lbl(SALE_MODE_LABEL, p.sale_mode);
-    if (mode && mode !== UNKNOWN_ENUM_TEXT && mode !== UNKNOWN_TEXT) { out.push(mode); }
+    if (mode) { out.push(mode); }
   }
   return out;
 }
@@ -1336,29 +1584,47 @@ function shortCreditText(im, host) {
   return im.kind === 'key_visual' ? ('タイトル画像（商品写真ではありません）・' + host) : ('画像: ' + host);
 }
 
-/** One labelled cell. Renders「未確認」muted when the value is unknown. */
-function cell(extraClass, label, value, unknownText) {
+/**
+ * One labelled cell. An unconfirmed value renders NOTHING: the cell comes back as an empty
+ * `.cell.is-empty` slot with no label and no text. Card views hide the slot (style.css);
+ * the desktop screener keeps it as an empty grid cell so its 7 columns stay aligned.
+ */
+function cell(extraClass, label, value) {
+  var shown = shownText(value);
+  if (shown === null) {
+    var slot = el('div', 'cell is-empty ' + extraClass);
+    slot.setAttribute('aria-hidden', 'true');
+    return slot;
+  }
   var wrap = el('div', 'cell ' + extraClass);
   wrap.appendChild(el('span', 'lbl', label));
-  if (isUnknown(value)) {
-    wrap.appendChild(el('span', 'val is-unknown', unknownText || UNKNOWN_TEXT));
-  } else {
-    wrap.appendChild(el('span', 'val', value));
-  }
+  /* dates, 「あと32日」 and short （…） stay whole; lines break only between terms */
+  wrap.appendChild(elKeep('span', 'val', shown));
   return wrap;
 }
 
-/** The neutral 5-step evidence ladder. Never coloured as good or bad. */
+/** Same as cell(), but null instead of an empty slot — for layouts without columns. */
+function cellIf(extraClass, label, value) {
+  return shownText(value) === null ? null : cell(extraClass, label, value);
+}
+
+/** appendChild that ignores null, so an unrendered item leaves no trace. */
+function put(parent, child) {
+  if (child) { parent.appendChild(child); }
+  return child;
+}
+
+/** The neutral 5-step evidence ladder. Never coloured as good or bad. null (nothing is
+    rendered) when the step is not known — an empty ladder would read as 「0/5」. */
 function profitLadder(p, withLabel) {
   var status = isUnknown(p.profit_evidence_status) ? null : String(p.profit_evidence_status);
   var idx = status === null ? -1 : PROFIT_LADDER.indexOf(status);
+  if (idx < 0) { return null; }
   var box = el('div', 'ladder');
-  var reached = idx < 0 ? 0 : idx + 1;
+  var reached = idx + 1;
   box.setAttribute('role', 'img');
-  var text = !isUnknown(p.profit_evidence_label_ja) ? String(p.profit_evidence_label_ja)
-    : (idx >= 0 ? PROFIT_STEP_LABEL[status] : UNKNOWN_TEXT);
-  box.setAttribute('aria-label', '材料の集まり具合 ' + (idx < 0 ? UNKNOWN_TEXT : (reached + '/5')) +
-    '：' + text);
+  var text = shownText(p.profit_evidence_label_ja) || PROFIT_STEP_LABEL[status];
+  box.setAttribute('aria-label', '材料の集まり具合 ' + reached + '/5：' + String(text).replace(/（[^（）]*未[^（）]*）\s*$/, ''));
   for (var i = 0; i < PROFIT_LADDER.length; i++) {
     var step = el('span', 'ladder-step' + (i < reached ? ' is-reached' : ''));
     step.title = PROFIT_STEP_LABEL[PROFIT_LADDER[i]];
@@ -1367,7 +1633,8 @@ function profitLadder(p, withLabel) {
   if (!withLabel) { return box; }
   var wrap = el('div', 'ladder-wrap');
   wrap.appendChild(box);
-  wrap.appendChild(el('span', 'ladder-label', text));
+  /* the step's own name only; a trailing 「（…未…）」 aside is not repeated here */
+  wrap.appendChild(el('span', 'ladder-label', String(text).replace(/（[^（）]*未[^（）]*）\s*$/, '')));
   return wrap;
 }
 
@@ -1389,11 +1656,10 @@ function signalChips(p, max) {
   for (var i = 0; i < sigs.length; i++) {
     var text = signalText(sigs[i]);
     if (text === null) { continue; }
-    var basis = isUnknown(sigs[i].basis_ja) ? null : String(sigs[i].basis_ja);
+    var basis = shownText(sigs[i].basis_ja);
     full.push(basis ? (text + '：' + basis) : text);
     if (max && shown >= max) { continue; }
-    var unknown = sigs[i].code === 'UNKNOWN';
-    var chip = el('span', 'chip' + (unknown ? ' chip--unknown' : ''), text);
+    var chip = el('span', 'chip', text);
     /* The accessible name always carries the whole thing, truncated or not. */
     chip.setAttribute('aria-label', basis ? (text + '：' + basis) : text);
     if (basis) { chip.title = basis; }
@@ -1409,7 +1675,7 @@ function signalChips(p, max) {
   }
   box.setAttribute('role', 'group');
   box.setAttribute('aria-label',
-    '注目理由（' + full.length + '件）。' + full.join('／') + ' 全文は商品の詳細ページで確認できます。');
+    '注目理由（' + full.length + '件）。' + full.join('／') + ' 注目理由の全文は詳細ページでご覧いただけます。');
   return box;
 }
 
@@ -1438,6 +1704,10 @@ function syncMarkButtons(box, current) {
 }
 
 function showError(message) {
+  /* Only Japanese, reader-facing text is shown; anything else (a browser's own wording) is replaced. */
+  if (!/[぀-ヿ一-鿿]/.test(String(message || ''))) {
+    message = 'データを読み込めませんでした。時間をおいて再度お試しください。';
+  }
   var panel = $('error-panel');
   var detail = $('error-detail');
   if (detail) { detail.textContent = message; }
@@ -1451,9 +1721,14 @@ function loadProducts() {
   return fetch(DATA_PRODUCTS, { cache: 'no-cache' })
     .then(function (res) {
       if (!res.ok) {
-        throw new Error('データを読み込めませんでした（HTTP ' + res.status + '）。時間をおいて再度お試しください。');
+        throw new Error(res.status === 404
+          ? 'データのファイルが見つかりませんでした。時間をおいて再度お試しください。'
+          : 'データを読み込めませんでした。時間をおいて再度お試しください。');
       }
       return res.text();
+    }, function () {
+      /* fetch itself failed (offline, blocked, server down): the browser's English text stays out */
+      throw new Error('通信ができなかったため、データを受け取れませんでした。');
     })
     .then(function (text) {
       var doc;
@@ -1479,11 +1754,17 @@ function loadOptionalJson(url) {
 }
 
 function renderHeaderMeta(doc) {
-  var g = $('generated-at');
-  if (g) { g.textContent = fmtGeneratedAt(doc.generated_at) || UNKNOWN_TEXT; }
-  var a = $('as-of');
-  if (a) { a.textContent = fmtDate(doc.as_of) || UNKNOWN_TEXT; }
+  /* A timestamp the document does not carry: the whole 更新日時 / 基準日 item is hidden. */
+  [['generated-at', fmtGeneratedAt(doc.generated_at)], ['as-of', fmtDate(doc.as_of)]].forEach(function (pair) {
+    var node = $(pair[0]);
+    if (!node) { return; }
+    var item = node.closest('.site-meta') || node;
+    if (pair[1] === null) { item.hidden = true; return; }
+    node.textContent = pair[1];
+    item.hidden = false;
+  });
 }
+
 
 /* ========================================================================= */
 /*  INDEX PAGE                                                               */
@@ -1592,7 +1873,7 @@ function initIndex() {
     idRow.appendChild(productMedia(p, 'card', {
       onFail: function () { if (credit && credit.parentNode) { credit.parentNode.removeChild(credit); } }
     }));
-    nameBox.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    if (!isUnknown(p.product_name)) { nameBox.appendChild(wordWrapText(el('div', 'c-name'), String(p.product_name))); }
     var cardMeta = identityMeta(p);
     if (cardMeta.length) { nameBox.appendChild(el('div', 'c-cat', cardMeta.join('・'))); }
     if (credit) { nameBox.appendChild(credit); }
@@ -1601,9 +1882,9 @@ function initIndex() {
     idRow.appendChild(nameBox);
     a.appendChild(idRow);
 
-    /* --- L2: 現在状態 (+ flags) --- */
+    /* --- L2: 現在状態 (+ flags). An unconfirmed acceptance state has no badge at all. --- */
     var st = el('div', 'c-status');
-    st.appendChild(statusBadge(p));
+    put(st, statusBadge(p));
     if (p.is_new === true && state.showNewBadge) {
       st.appendChild(el('span', 'badge badge--flag', '新着'));
     }
@@ -1615,11 +1896,12 @@ function initIndex() {
     }
     a.appendChild(st);
 
-    /* --- L2: 締切 — an unconfirmed acceptance state never gets the urgency colour --- */
+    /* --- L2: 締切 — an unconfirmed acceptance state never gets the urgency colour.
+           No deadline: an empty slot (screener column) / nothing (card). --- */
     var dText = null;
     if (!isUnknown(p.deadline)) {
       var kind = lbl(DEADLINE_KIND_LABEL, p.deadline_kind);
-      dText = fmtDate(p.deadline) + (kind && kind !== UNKNOWN_ENUM_TEXT ? '（' + kind + '）' : '');
+      dText = fmtDate(p.deadline) + (kind ? '（' + kind + '）' : '');
     }
     var dCell = cell('c-deadline', '締切', dText);
     if (dText !== null) {
@@ -1636,14 +1918,14 @@ function initIndex() {
 
     /* --- L2: 確認状況 — an OUTLINE badge, never the filled state look --- */
     var ev = el('div', 'c-ev');
-    ev.appendChild(evidenceBadge(p));
+    put(ev, evidenceBadge(p));
     a.appendChild(ev);
 
     /* --- L3: 定価 — the published list price. NOT an acquisition price. --- */
     a.appendChild(cell('c-list-price', '定価', fmtPrice(listPriceOf(p))));
 
-    /* --- L3: 取得原価 — only when a route price provenance record exists. --- */
-    a.appendChild(cell('c-acq', '取得原価', fmtPrice(acquisitionCostOf(p)), UNVERIFIED_COST_TEXT));
+    /* --- L3: 取得原価 — only when a verified route price exists; otherwise not shown. --- */
+    a.appendChild(cell('c-acq', '取得原価', fmtPrice(acquisitionCostOf(p))));
 
     /* --- L3: 発売日 — precision honest --- */
     a.appendChild(cell('c-release', '発売日', releaseText(p)));
@@ -1655,9 +1937,7 @@ function initIndex() {
     if (!isUnknown(p.result_date)) {
       a.appendChild(cell('c-result', '当選発表', fmtDate(p.result_date)));
     }
-    if (!isUnknown(p.purchase_limit)) {
-      a.appendChild(cell('c-limit', '購入・応募上限：', String(p.purchase_limit)));
-    }
+    put(a, cellIf('c-limit', '購入・応募上限：', p.purchase_limit));
 
     /* --- L3: 購入先 (no column in the dense screener; card view + detail page) --- */
     a.appendChild(cell('c-channel', '購入先',
@@ -1669,18 +1949,15 @@ function initIndex() {
     if (chips) {
       sigBox.appendChild(chips);
       /* Visible, not hover-only: a truncated chip must announce where its full text is. */
-      sigBox.appendChild(el('span', 'c-signals-more', '注目理由の全文は詳細ページでご覧いただけます'));
     }
     a.appendChild(sigBox);
 
     /* --- L4: 類似品バックテスト（参考） --- */
+    /* (placed after the link below: it carries its own 「数え方」 link) */
     var cardBt = backtestLine(p);
-    if (cardBt) { a.appendChild(cardBt); }
 
-    /* --- L4: 確認の進み方 (neutral ladder) --- */
-    var pe = el('div', 'c-profit');
-    pe.appendChild(profitLadder(p, true));
-    a.appendChild(pe);
+    /* The 5-step 材料 ladder is NOT on cards: a meter on every card reads as a rating, and its
+       first step only says that nothing has been collected yet. It lives on the detail page. */
 
     /* --- L4: 注目候補の理由 — build-provided only --- */
     var reasons = attentionReasonsOf(p);
@@ -1691,12 +1968,12 @@ function initIndex() {
       a.appendChild(attn);
     }
 
-    /* --- L4: 補足 — the caveat that makes 「未確認」 comprehensible --- */
-    if (!isUnknown(p.status_note_ja)) {
-      a.appendChild(el('div', 'c-note', String(p.status_note_ja)));
-    }
+    /* --- L4: 補足 — a note that only explains an unconfirmed state is not rendered --- */
+    var note = shownText(p.status_note_ja);
+    if (note !== null) { a.appendChild(el('div', 'c-note', note)); }
 
     li.appendChild(a);
+    if (cardBt) { li.appendChild(cardBt); }
 
     li.appendChild(cardActions(p));
 
@@ -1739,9 +2016,9 @@ function initIndex() {
     var media = productMedia(p, 'feed', { overlayCredit: true, tileNote: '写真未掲載（カテゴリのイメージ図です）' });
     a.appendChild(media);
 
-    /* 1. status + flags */
-    var st = el('div', 'c-status');
-    st.appendChild(statusBadge(p));
+    /* 1. flags on the image corner (新着 / 再販 / 注目候補); the acceptance state is read
+          with the name, in the 「今どうなっているか」 row below */
+    var st = el('div', 'c-status c-flags');
     if (p.is_new === true && state.showNewBadge) {
       st.appendChild(el('span', 'badge badge--flag', '新着'));
     }
@@ -1751,25 +2028,37 @@ function initIndex() {
     if (p.is_attention === true) {
       st.appendChild(el('span', 'badge badge--attention', '注目候補'));
     }
-    media.appendChild(st);
+    if (st.children.length) { media.appendChild(st); }
 
-    /* 2. 商品名 + カテゴリ（写真／タイルは詳細ページの先頭と同じ） */
+    /* 2. 何か: 商品名 + カテゴリ（写真／タイルは詳細ページの先頭と同じ） */
     var fIdent = el('div', 'c-ident');
     var fText = el('div', 'c-ident-text');
-    fText.appendChild(el('div', 'c-name', isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    if (!isUnknown(p.product_name)) {
+      var fName = wordWrapText(el('div', 'c-name'), String(p.product_name));
+      fName.title = String(p.product_name);   /* clamped to two lines on feed cards */
+      fText.appendChild(fName);
+    }
     var feedMeta = identityMeta(p);
     if (feedMeta.length) { fText.appendChild(el('div', 'c-cat', feedMeta.join('・'))); }
     fIdent.appendChild(fText);
     a.appendChild(fIdent);
 
-    /* 3. 締切 — DATE and RELATIVE as two pieces. Urgent styling only for a
-          non-null closing_soon_band (isClosingSoonRow). */
+    /* 3. 今買えるか: state badge (only when confirmed) + 販売方式 + 確認状況, one line */
+    var now = el('div', 'f-now');
+    var stBadge = statusBadge(p);
+    if (stBadge) { now.appendChild(stBadge); }
+    var modeTxt = lbl(SALE_MODE_LABEL, p.sale_mode);
+    if (modeTxt) { now.appendChild(el('span', 'f-mode', modeTxt)); }
+    var evBadge = evidenceBadge(p);
+    if (evBadge) { evBadge.classList.add('f-ev'); now.appendChild(evBadge); }
+    if (now.children.length) { a.appendChild(now); }
+
+    /* 4. いつまで: DATE and RELATIVE as two pieces. Urgent styling only for a
+          non-null closing_soon_band (isClosingSoonRow). No deadline: no box. */
     var parts = deadlineParts(p, state.doc && state.doc.as_of);
-    var dl = el('div', 'f-deadline');
-    dl.appendChild(el('span', 'f-lbl', parts && parts.kind ? parts.kind : '締切'));
-    if (!parts) {
-      dl.appendChild(el('span', 'f-date is-unknown', UNKNOWN_TEXT));
-    } else {
+    if (parts) {
+      var dl = el('div', 'f-deadline');
+      dl.appendChild(el('span', 'f-lbl', parts.kind ? parts.kind : '締切'));
       if (parts.urgent) { dl.classList.add('is-urgent'); }
       else if (parts.soon) { dl.classList.add('is-soon'); }
       else if (parts.muted) { dl.classList.add('is-unconfirmed'); }
@@ -1779,56 +2068,48 @@ function initIndex() {
       if (parts.rel) {
         dl.appendChild(el('span', 'f-rel' + (parts.passed ? ' is-passed' : ''), parts.rel));
       }
-      if (parts.caveat) {
-        dl.appendChild(el('span', 'f-caveat', '受付状況は未確認'));
-      }
+      a.appendChild(dl);
     }
-    a.appendChild(dl);
 
-    /* 4. 定価 + 発売日 (取得原価 as a secondary line — never the list price) */
+    /* 5. 定価 + 発売日 (取得原価 as a secondary line — never the list price, and only when
+          a verified amount exists) */
     var row1 = el('div', 'f-row');
-    var price = cell('c-list-price', '定価', fmtPrice(listPriceOf(p)));
+    var listP = fmtPrice(listPriceOf(p));
     var acq = fmtPrice(acquisitionCostOf(p));
-    price.appendChild(el('span', 'f-sub' + (acq === null ? ' is-unknown' : ''),
-      '取得原価 ' + (acq === null ? UNVERIFIED_COST_TEXT : acq)));
-    row1.appendChild(price);
-    row1.appendChild(cell('c-release', '発売日', releaseText(p)));
-    a.appendChild(row1);
-
-    /* 5. 販売方式 + 確認状況 */
-    var row2 = el('div', 'f-row');
-    row2.appendChild(cell('c-mode', '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode)));
-    var ev = el('div', 'cell c-ev');
-    ev.appendChild(el('span', 'lbl', '確認状況'));
-    var evVal = el('span', 'val');
-    evVal.appendChild(evidenceBadge(p));
-    ev.appendChild(evVal);
-    row2.appendChild(ev);
-    a.appendChild(row2);
+    if (listP !== null) {
+      var price = cell('c-list-price', '定価', listP);
+      if (acq !== null) { price.appendChild(el('span', 'f-sub', '取得原価 ' + acq)); }
+      row1.appendChild(price);
+    } else if (acq !== null) {
+      row1.appendChild(cell('c-acq', '取得原価', acq));
+    }
+    put(row1, cellIf('c-release', '発売日', releaseText(p)));
+    if (row1.children.length) { a.appendChild(row1); }
 
     /* 5b. 応募条件 — published dates and limits only, never a chance of winning */
     var facts = entryFacts(p);
     if (facts) { a.appendChild(facts); }
 
-    /* 5c. 類似品バックテスト（参考） — only when an analog could be evaluated */
-    var btl = backtestLine(p);
-    if (btl) { a.appendChild(btl); }
-
-    /* 6. key signals — two chips, full text in aria-label and on the detail page */
+    /* 5c. key signals — two chips, full text in aria-label and on the detail page */
     var chips = signalChips(p, 2);
     if (chips) {
       var sigBox = el('div', 'c-signals');
       sigBox.appendChild(chips);
-      sigBox.appendChild(el('span', 'c-signals-more', '注目理由の全文は詳細ページでご覧いただけます'));
       a.appendChild(sigBox);
     }
 
-    /* status_note_ja explains an unknown state; kept, clamped, full text on the detail page */
-    if (!isUnknown(p.status_note_ja)) {
-      a.appendChild(el('div', 'c-note', String(p.status_note_ja)));
-    }
+    /* 6. 似た商品の結果（参考） — last, and only when an analog could be evaluated. Outside the
+          card link, because it carries its own 「数え方」 link. */
+    var btl = backtestLine(p);
+
+    /* status_note_ja: clamped, full text on the detail page; a note that only says the
+       state is unconfirmed is not rendered */
+    var fNote = shownText(p.status_note_ja);
+    if (fNote !== null) { a.appendChild(el('div', 'c-note', fNote)); }
+
 
     li.appendChild(a);
+    if (btl) { li.appendChild(btl); }
     li.appendChild(cardActions(p));
 
     var box = markControl(p.product_id, getMark(state.marks, p.product_id), onMarkPick);
@@ -2057,6 +2338,13 @@ function initIndex() {
     $('kpi-open').textContent = String(open);
     $('kpi-closing').textContent = String(closing);
     $('kpi-new').textContent = String(newCount);
+    [['kpi-total', total], ['kpi-open', open], ['kpi-closing', closing], ['kpi-new', newCount]].forEach(function (kv) {
+      var btn = $(kv[0]) && $(kv[0]).closest('.kpi');
+      if (!btn) { return; }
+      btn.classList.toggle('is-zero', kv[1] === 0);
+      /* a count equal to the whole list (e.g. 新着 while every item is new) carries no signal */
+      btn.classList.toggle('is-all', kv[0] !== 'kpi-total' && kv[1] === total && total > 0);
+    });
     syncKpiPressed();
   }
 
@@ -2074,6 +2362,8 @@ function initIndex() {
     if (a) { a.textContent = String(preorder); }
     var b = $('kpi-lottery');
     if (b) { b.textContent = String(lottery); }
+    if (a) { a.closest('.kpi-split-item').classList.toggle('is-zero', preorder === 0); }
+    if (b) { b.closest('.kpi-split-item').classList.toggle('is-zero', lottery === 0); }
   }
 
   /** The collection-window caveat behind 新着, straight from metadata when present. */
@@ -2087,11 +2377,7 @@ function initIndex() {
     if (!hit) { return; }
     var span = $('sec-new-note');
     if (span) { span.textContent = String(hit.note); }
-    var kpiNote = $('kpi-note');
-    if (kpiNote) {
-      kpiNote.textContent = String(hit.note) +
-        '「締切間近」には、受付中であることを確認できた商品だけを数えています。';
-    }
+
   }
 
   function syncKpiPressed() {
@@ -2123,11 +2409,13 @@ function initIndex() {
   function buildSelects() {
     var cats = [], modes = [], statuses = [], statusLabels = {}, signals = [], sigLabels = {};
     state.products.forEach(function (p) {
-      if (!isUnknown(p.category) && cats.indexOf(p.category) === -1) { cats.push(p.category); }
-      if (!isUnknown(p.sale_mode) && modes.indexOf(p.sale_mode) === -1) { modes.push(p.sale_mode); }
-      if (!isUnknown(p.status) && statuses.indexOf(p.status) === -1) {
+      /* An option is offered only for a value that has a displayable label: UNKNOWN (and a
+         status whose label says it is unconfirmed) is not a choice on the page. */
+      if (lbl(CATEGORY_LABEL, p.category) && cats.indexOf(p.category) === -1) { cats.push(p.category); }
+      if (lbl(SALE_MODE_LABEL, p.sale_mode) && modes.indexOf(p.sale_mode) === -1) { modes.push(p.sale_mode); }
+      if (hasShownStatus(p) && statuses.indexOf(p.status) === -1) {
         statuses.push(p.status);
-        statusLabels[p.status] = isUnknown(p.status_label_ja) ? UNKNOWN_ENUM_TEXT : p.status_label_ja;
+        statusLabels[p.status] = String(p.status_label_ja);
       }
       signalsOf(p).forEach(function (s) {
         if (isUnknown(s.code) || signals.indexOf(s.code) !== -1) { return; }
@@ -2155,7 +2443,7 @@ function initIndex() {
     grp.value = GROUP_OPEN;
     grp.textContent = '受付中（抽選・予約）';
     statusSel.appendChild(grp);
-    fillSelect(statusSel, statuses, function (v) { return statusLabels[v] || UNKNOWN_ENUM_TEXT; });
+    fillSelect(statusSel, statuses, function (v) { return statusLabels[v]; });
     fillSelect($('f-signal'), signals, function (v) { return sigLabels[v]; });
   }
 
@@ -2169,7 +2457,8 @@ function initIndex() {
 
   var SECTIONS = [
     { id: 'sec-closing', name: '締切間近', sort: cmpDeadline, pick: isClosingSoonRow },
-    { id: 'sec-nearterm', name: '期日が近い（受付状況は未確認）', sort: cmpDeadline,
+    { id: 'sec-nearterm', name: '期日が7日以内（締切間近以外）', sort: cmpDeadline,
+
       pick: isNearTermUnconfirmed },
     { id: 'sec-lottery', name: '抽選受付中', sort: cmpDeadline,
       pick: function (p) { return p.sale_mode === 'LOTTERY' && isOpenStatus(p); } },
@@ -2216,6 +2505,7 @@ function initIndex() {
       list.textContent = '';
       if (count) { count.textContent = rows.length === 0 ? '0件' : ('全' + rows.length + '件'); }
       if (emptyNode) { emptyNode.hidden = rows.length !== 0; }
+      root.classList.toggle('is-empty', rows.length === 0);
       if (moreBtn) {
         moreBtn.hidden = rows.length <= SECTION_CAP;
         moreBtn.textContent = 'すべて見る（' + rows.length + '件）';
@@ -2287,6 +2577,71 @@ function initIndex() {
       box.appendChild(tile);
     });
     box.hidden = false;
+  }
+
+  /**
+   * The hero's one primary action points at the first confirmed-open section that actually
+   * has items (same order as the feed), so it never leads to an empty box. With none, it
+   * leads to the full list and the secondary link is dropped.
+   */
+  var PRIMARY_TARGETS = [
+    ['sec-closing', '締切が近い商品を見る'], ['sec-lottery', '受付中の抽選を見る'],
+    ['sec-preorder', '受付中の予約を見る'], ['sec-buyable', 'いま購入できる商品を見る']
+  ];
+  function renderPrimaryAction() {
+    var btn = $('hero-primary');
+    var alt = $('hero-secondary');
+    if (!btn) { return; }
+    for (var i = 0; i < PRIMARY_TARGETS.length; i++) {
+      var sec = sectionById(PRIMARY_TARGETS[i][0]);
+      var n = sec ? state.products.filter(sec.pick).length : 0;
+      if (n > 0) {
+        btn.href = '#' + PRIMARY_TARGETS[i][0];
+        btn.textContent = PRIMARY_TARGETS[i][1] + '（' + n + '件）';
+        return;
+      }
+    }
+    btn.href = '#sec-all';
+    btn.textContent = '全商品から探す';
+    if (alt) { alt.hidden = true; }
+  }
+
+  /** 「数え方」 under the 類似品 section note, the same text as on every detail page. */
+  function mountHowCounted() {
+    var root = $('sec-backtest');
+    var note = root && root.querySelector('.sec-note');
+    if (!note || root.querySelector('.howcount')) { return; }
+    var first = null;
+    state.products.forEach(function (p) { if (!first && hasEvaluableBacktest(p)) { first = backtestOf(p); } });
+    note.parentNode.insertBefore(howCounted(first ? { fee_rate: first.fee_rate } : null, 'how-counted'), note.nextSibling);
+  }
+
+  /**
+   * A swipe row (phones) is a scroll container: it gets a tab stop and a name so it can be
+   * scrolled with the arrow keys. On wide screens the same list is a plain grid: no tab stop.
+   */
+  function syncRails() {
+    var lists = document.querySelectorAll('.sec [data-sec-list]');
+    for (var i = 0; i < lists.length; i++) {
+      var ul = lists[i];
+      var sec = ul.closest('.sec');
+      var title = sec ? sec.querySelector('.sec-title') : null;
+      if (ul.children.length && ul.scrollWidth > ul.clientWidth + 4) {
+        ul.setAttribute('tabindex', '0');
+        var name = '';
+        if (title) {
+          for (var c = 0; c < title.childNodes.length; c++) {
+            if (title.childNodes[c].nodeType === 3) { name += title.childNodes[c].textContent; }
+          }
+        }
+        ul.setAttribute('aria-label', (name.trim() || '商品') + '（横にスクロールできます）');
+        ul.classList.add('is-rail');
+      } else {
+        ul.removeAttribute('tabindex');
+        ul.removeAttribute('aria-label');
+        ul.classList.remove('is-rail');
+      }
+    }
   }
 
   function wireSectionMoreButtons() {
@@ -2470,6 +2825,13 @@ function initIndex() {
     for (var i = 0; i < kpis.length; i++) {
       kpis[i].addEventListener('click', function (e) {
         var kind = e.currentTarget.dataset.kpi;
+        /* A zero leads to the section that explains the zero (and links onward), never to a
+           filtered list with nothing in it; a count equal to the whole list leads to its section. */
+        if (e.currentTarget.classList.contains('is-zero') || e.currentTarget.classList.contains('is-all')) {
+          var why = $(kind === 'closing' ? 'sec-closing' : (kind === 'open' ? 'sec-buyable' : 'sec-new'));
+          if (why) { why.scrollIntoView({ block: 'start' }); }
+          return;
+        }
         clearFilters();
         if (kind === 'open') { filters.status = GROUP_OPEN; }
         else if (kind === 'closing') { filters.deadline = '7d'; }
@@ -2507,6 +2869,8 @@ function initIndex() {
         wireSectionMoreButtons();
         renderHeroCollage();
         renderSections();
+        renderPrimaryAction();
+        mountHowCounted();
         renderList();
         if (!marksAvailable) {
           var note = document.querySelector('#sec-all .note-line');
@@ -2516,6 +2880,9 @@ function initIndex() {
         }
         $('loading').hidden = true;
         $('app').hidden = false;
+        /* measured only once the list is laid out (a hidden list has no scroll width) */
+        syncRails();
+        window.addEventListener('resize', syncRails);
       });
   }).catch(function (err) {
     showError(err && err.message ? err.message : 'データを読み込めませんでした。時間をおいて再度お試しください。');
@@ -2529,16 +2896,26 @@ function initIndex() {
 function initProduct() {
   var marks = readMarks();
 
-  /** Definition-list row. `valueNode` overrides the plain-text rendering. */
-  function row(dl, label, value, valueNode, unknownText) {
+  /**
+   * Definition-list row. `valueNode` overrides the plain-text rendering. An unconfirmed
+   * value (null, or text that declares itself unconfirmed) renders NO row: no label, no
+   * placeholder. Returns true when a row was rendered.
+   */
+  function row(dl, label, value, valueNode) {
+    var dd;
+    if (valueNode) {
+      dd = el('dd');
+      dd.appendChild(valueNode);
+    } else {
+      var shown = shownText(value);
+      if (shown === null) { return false; }
+      dd = elKeep('dd', null, shown);
+    }
     var wrap = document.createElement('div');
     wrap.appendChild(el('dt', null, label));
-    var dd;
-    if (valueNode) { dd = el('dd'); dd.appendChild(valueNode); }
-    else if (isUnknown(value)) { dd = el('dd', 'is-unknown', unknownText || UNKNOWN_TEXT); }
-    else { dd = el('dd', null, value); }
     wrap.appendChild(dd);
     dl.appendChild(wrap);
+    return true;
   }
 
   /** External link node with the hostname shown, or null when unusable. */
@@ -2561,114 +2938,185 @@ function initProduct() {
     g.appendChild(dl);
     return { node: g, dl: dl };
   }
+  /** The group's node when at least one row was rendered, else null: a group whose every
+      item was unconfirmed is omitted whole (and so never reaches the contents list). */
+  function groupIfAny(g) {
+    return g.dl.children.length ? g.node : null;
+  }
 
-  /** A price the reader can act on, with its meaning spelled out. */
+  /** A price the reader can act on, with its meaning spelled out. Only confirmed prices are
+      rendered; with neither 定価 nor a verified 取得原価 there is no price block. */
   function pricePair(p) {
-    var box = el('div', 'price-pair');
+    var items = [];
     var listPrice = fmtPrice(listPriceOf(p));
     var acq = fmtPrice(acquisitionCostOf(p));
-    [[isUnknown(p.list_price_label_ja) ? '定価' : String(p.list_price_label_ja),
-      listPrice, UNKNOWN_TEXT],
-      ['取得原価', acq, UNVERIFIED_COST_TEXT]].forEach(function (pair) {
+    if (listPrice !== null) { items.push([shownText(p.list_price_label_ja) || '定価', listPrice]); }
+    if (acq !== null) { items.push(['取得原価', acq]); }
+    if (!items.length) { return null; }
+    var box = el('div', 'price-pair');
+    items.forEach(function (pair) {
       var item = el('div', 'price-item');
       item.appendChild(el('span', 'price-lbl', pair[0]));
-      item.appendChild(el('span', 'price-val' + (pair[1] === null ? ' is-unknown' : ''),
-        pair[1] === null ? pair[2] : pair[1]));
+      item.appendChild(el('span', 'price-val', pair[1]));
       box.appendChild(item);
     });
     return box;
   }
 
-  /* Fallback only: the build sends horizon_label_ja. A code with no wording is shown as 未確認. */
+  /** The note under the prices. It explains only the prices that are actually on the page. */
+  function priceNoteText(p) {
+    var hasList = listPriceOf(p) !== null;
+    var hasAcq = acquisitionCostOf(p) !== null;
+    if (hasList && hasAcq) {
+      return '「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。' +
+        '「取得原価」は、購入経路ごとに金額の裏付けが取れた金額です。';
+    }
+    if (hasList) { return '「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。'; }
+    if (hasAcq) { return '「取得原価」は、購入経路ごとに金額の裏付けが取れた金額です。定価とは別のものです。'; }
+    return null;
+  }
+
+  /* Fallback only: the build sends horizon_label_ja. A code with no wording renders nothing. */
   function horizonText(v) {
     if (isUnknown(v)) { return null; }
     var got = own(HORIZON_LABEL, v);
     return got === undefined ? null : got;
   }
+  function horizonOf(o) {
+    return shownText(o.horizon_label_ja) || horizonText(o.horizon);
+  }
 
-  /** 供給制約: the signals, each with its basis in plain Japanese. */
+  /** 供給制約: the signals, each with its basis in plain Japanese. null when no signal can be
+      shown — 「注目理由は未確認」 is not a reason, so the whole group is left out. */
   function buildSignalsBlock(p) {
     var g = group('注目理由（販売方法・取引実績）', true);
-    var sigs = signalsOf(p);
-    if (sigs.length === 0) {
-      row(g.dl, '注目理由', null, null, '注目理由は未確認');
-      return g.node;
-    }
     var ul = el('ul', 'sig-list');
-    var rendered = 0;
+    var sigs = signalsOf(p);
     sigs.forEach(function (s) {
       var text = signalText(s);
       if (text === null) { return; }
       var li = el('li');
-      li.appendChild(el('span', 'sig-name' + (s.code === 'UNKNOWN' ? ' is-unknown' : ''), text));
-      if (!isUnknown(s.basis_ja)) {
-        li.appendChild(el('span', 'sig-basis', String(s.basis_ja)));
-      }
+      li.appendChild(el('span', 'sig-name', text));
+      var basis = shownText(s.basis_ja);
+      if (basis !== null) { li.appendChild(el('span', 'sig-basis', basis)); }
       ul.appendChild(li);
-      rendered++;
     });
-    if (rendered === 0) { row(g.dl, '注目理由', null, null, '注目理由は未確認'); return g.node; }
+    if (ul.children.length === 0) { return null; }
     row(g.dl, '注目理由', null, ul);
     if (p.is_attention === true) {
       var reasons = attentionReasonsOf(p);
-      row(g.dl, '注目候補', reasons.length ? reasons.join('／') : null);
-      row(g.dl, '注目候補の意味', null,
-        el('span', 'plain-note',
-          '裏付けのある情報がそろった商品に付けている印です。おすすめや期待値を示すものではありません。'));
+      if (row(g.dl, '注目候補', reasons.length ? reasons.join('／') : null)) {
+        row(g.dl, '注目候補の意味', null,
+          el('span', 'plain-note',
+            '裏付けのある情報がそろった商品に付けている印です。おすすめや期待値を示すものではありません。'));
+      }
     }
     return g.node;
   }
 
-  /** 過去の成約Evidence: the ladder, its counters, and a DIFFERENT product's prices. */
-  function buildProfitBlock(p) {
+  /** 過去の成約Evidence: the ladder, its counters, and a DIFFERENT product's prices. null when
+      none of them is known (the explanatory note alone is not a section). */
+  function buildProfitBlock(p, btNode) {
     var g = group('利益を考えるための材料', true);
-    row(g.dl, '材料の集まり具合', null, profitLadder(p, true));
-    row(g.dl, '補足', null, el('span', 'plain-note', PROFIT_NOTE_JA));
+    /* The ladder is shown only once it has moved past its first step: 「まだ集めていません」 is
+       not information, and a meter at step one reads like a low rating. */
+    var any = false;
+    if (p.profit_evidence_status && p.profit_evidence_status !== PROFIT_LADDER[0]) {
+      any = row(g.dl, '材料の集まり具合', null, profitLadder(p, true));
+    }
+    var noteRow = document.createElement('div');
+    noteRow.appendChild(el('dt', null, '補足'));
+    var noteDd = el('dd');
+    noteDd.appendChild(el('span', 'plain-note', PROFIT_NOTE_JA));
+    noteRow.appendChild(noteDd);
+    g.dl.appendChild(noteRow);
     var d = (p.profit_evidence_detail && typeof p.profit_evidence_detail === 'object')
       ? p.profit_evidence_detail : null;
     if (d) {
       PROFIT_DETAIL_ORDER.forEach(function (k) {
         if (!(k in d)) { return; }
-        row(g.dl, PROFIT_DETAIL_LABEL[k], fmtCount(d[k]));
+        if (row(g.dl, PROFIT_DETAIL_LABEL[k], fmtCount(d[k]))) { any = true; }
       });
     }
     var refs = Array.isArray(p.historical_price_evidence) ? p.historical_price_evidence : [];
     refs = refs.filter(function (r) { return r && typeof r === 'object'; });
-    if (refs.length === 0) {
-      row(g.dl, '類似品の取引価格', null, null, '比較できる取引記録は、まだ確認できていません');
-      return g.node;
+    if (refs.length) {
+      /* One compact table instead of a card per record: same numbers, a fraction of the height.
+         An unknown cell stays EMPTY (the column stays), never 0 or a placeholder. */
+      var box = el('div', 'cmp-box');
+      box.appendChild(el('p', 'warn-inline',
+        '以下は、比較のために選んだ' +
+        '別の商品（類似品）が過去に取引された価格で、この商品の価格ではありません。' +
+        '利益や販売価格の見込みを示すものでもありません。'));
+      var tbl = el('table', 'cmp-table');
+      var thr = el('tr');
+      ['類似品', '期間', '取引件数', '中央値', '最安〜最高'].forEach(function (h) {
+        var th = el('th', null, h);
+        th.setAttribute('scope', 'col');
+        thr.appendChild(th);
+      });
+      var thd = el('thead');
+      thd.appendChild(thr);
+      tbl.appendChild(thd);
+      var tb = el('tbody');
+      var lastName = null;
+      refs.forEach(function (r) {
+        var cname = shownText(r.comparable_name);
+        var period = horizonOf(r);
+        var cnt = fmtCount(r.sample_count);
+        var med = fmtPrice(r.median_price_jpy);
+        var lo = fmtPrice(r.minimum_price_jpy), hi = fmtPrice(r.maximum_price_jpy);
+        if (period === null && cnt === null && med === null && lo === null && hi === null) { return; }
+        var status = lblOf(r, 'sample_status_label_ja', PRICE_SAMPLE_STATUS_LABEL, 'sample_status');
+        var thin = r.sample_status === 'LOW_SAMPLE' || r.sample_status === 'INSUFFICIENT';
+        var tr = el('tr', thin ? 'is-thin' : null);
+        var th = el('th', cname === lastName ? 'is-repeat' : null, cname === lastName ? '' : (cname || ''));
+        if (cname === lastName && cname) { th.appendChild(el('span', 'visually-hidden', cname)); }
+        th.setAttribute('scope', 'row');
+        lastName = cname;
+        tr.appendChild(th);
+        tr.appendChild(el('td', null, period || ''));
+        tr.appendChild(el('td', 'num', cnt === null ? '' : cnt + (thin && status ? '・' + status : '')));
+        tr.appendChild(el('td', 'num', med || ''));
+        tr.appendChild(el('td', 'num', (lo && hi) ? (lo === hi ? lo : lo + '〜' + hi) : (lo || hi || '')));
+        tb.appendChild(tr);
+      });
+      tbl.appendChild(tb);
+      labelCells(tbl);
+      if (tb.children.length) {
+        var det = el('details', 'cmp-details');
+        det.appendChild(el('summary', null, '類似品の取引価格の記録（' + tb.children.length + '件）を開く'));
+        var sc = el('div', 'pchart-scroll');
+        sc.appendChild(tbl);
+        det.appendChild(sc);
+        box.appendChild(det);
+        row(g.dl, '類似品の過去の取引価格', null, box);
+        any = true;
+      }
     }
-    var box = el('div', 'cmp-box');
-    box.appendChild(el('p', 'warn-inline',
-      '以下は、比較のために選んだ' +
-      '別の商品（類似品）が過去に取引された価格で、この商品の価格ではありません。' +
-      '利益や販売価格の見込みを示すものでもありません。'));
-    refs.forEach(function (r) {
-      var item = el('div', 'cmp-item');
-      item.appendChild(el('div', 'cmp-name',
-        isUnknown(r.comparable_name) ? '類似品の名称は' + UNKNOWN_TEXT : String(r.comparable_name)));
-      var dl = el('dl', 'kv kv--tight');
-      row(dl, '集計期間', isUnknown(r.horizon_label_ja) ? horizonText(r.horizon) : String(r.horizon_label_ja));
-      row(dl, '集計件数', fmtCount(r.sample_count));
-      row(dl, '件数の目安', lblOf(r, 'sample_status_label_ja', PRICE_SAMPLE_STATUS_LABEL, 'sample_status'));
-      row(dl, '中央値', fmtPrice(r.median_price_jpy));
-      row(dl, '最安', fmtPrice(r.minimum_price_jpy));
-      row(dl, '最高', fmtPrice(r.maximum_price_jpy));
-      item.appendChild(dl);
-      box.appendChild(item);
-    });
-    row(g.dl, '類似品の過去の取引価格', null, box);
-    return g.node;
+    if (any) {
+      var hc = btNode ? btNode.querySelector('#how-counted') : null;
+      if (hc) {
+        var lk = el('a', 'howcount-link', '数え方を見る');
+        lk.href = '#how-counted';
+        g.node.insertBefore(lk, g.dl);
+      } else {
+        g.node.appendChild(howCounted(backtestOf(p), 'how-counted'));
+      }
+    }
+    return any ? g.node : null;
   }
 
-  /** 取得経路の状況: a SHADOW model, never connected to a profit calculation. */
+  /** 取得経路の状況: a SHADOW model, never connected to a profit calculation. Only verified
+      routes are shown; with none, the block is left out. */
   function buildRouteBlock(p) {
-    var g = group('類似品の購入経路（参考）', true);
     var re = (p.route_evidence && typeof p.route_evidence === 'object') ? p.route_evidence : null;
-    if (!re) {
-      row(g.dl, '購入経路', null, null, '購入経路は、まだ確認できていません');
-      return g.node;
-    }
+    if (!re) { return null; }
+    var routes = Array.isArray(re.routes) ? re.routes.filter(function (r) {
+      return r && typeof r === 'object' && r.evidence_status === ROUTE_SHOWN_STATUS;
+    }) : [];
+    if (routes.length === 0) { return null; }
+    var g = group('類似品の購入経路（参考）', true);
     row(g.dl, '読み方', null, el('span', 'warn-inline',
       'ここに載せている経路と金額は、比較に使った別の商品（類似品）のものです。' +
       'この商品の取得原価としては使えません。'));
@@ -2677,25 +3125,7 @@ function initProduct() {
         'なお、これは試算用の参考データで、利益の計算には一切' +
         '使っていません。参考としてご覧ください。'));
     }
-    row(g.dl, '経路の確認状況', lbl(ROUTE_STATUS_LABEL, re.status));
-    var routes = Array.isArray(re.routes) ? re.routes.filter(function (r) {
-      return r && typeof r === 'object';
-    }) : [];
-    if (routes.length === 0) {
-      row(g.dl, '購入経路', null, null, '購入経路は、まだ確認できていません');
-      return g.node;
-    }
-    /* Grouped by how each row was established. 「当時利用できた経路」 and
-       「出品者が申告した経路」 are different claims and are never merged. */
-    var used = [];
-    ROUTE_GROUPS.forEach(function (grp) {
-      var rows = routes.filter(function (r) { return r.evidence_status === grp.status; });
-      rows.forEach(function (r) { used.push(r); });
-      if (rows.length === 0) { return; }
-      row(g.dl, grp.title, null, routeList(rows));
-    });
-    var rest = routes.filter(function (r) { return used.indexOf(r) === -1; });
-    if (rest.length) { row(g.dl, ROUTE_GROUP_OTHER, null, routeList(rest)); }
+    row(g.dl, ROUTE_SHOWN_TITLE, null, routeList(routes));
     return g.node;
   }
 
@@ -2705,29 +3135,32 @@ function initProduct() {
       var item = el('div', 'route-item');
       /* A route belongs to a COMPARABLE product, not to the product on this page. Naming it
          first is a correctness requirement: without it a 240 yen pack appears to have a
-         5,280 yen acquisition route of its own. */
-      var cname = isUnknown(r.comparable_name) ? null : String(r.comparable_name);
-      item.appendChild(el('div', 'route-owner',
-        cname ? ('類似品: ' + cname) : '類似品: 名称未確認'));
-      item.appendChild(el('div', 'route-head',
-        lblOf(r, 'route_class_label_ja', ROUTE_CLASS_LABEL, 'route_class') || UNKNOWN_ENUM_TEXT));
+         5,280 yen acquisition route of its own. Without a name it still says 類似品. */
+      var cname = shownText(r.comparable_name);
+      item.appendChild(el('div', 'route-owner', cname ? ('類似品: ' + cname) : '類似品'));
+      var head = lblOf(r, 'route_class_label_ja', ROUTE_CLASS_LABEL, 'route_class');
+      if (head) { item.appendChild(el('div', 'route-head', head)); }
       var dl = el('dl', 'kv kv--tight');
       row(dl, '販売店', r.retailer);
       row(dl, '購入方法', r.purchase_mechanism);
+      /* Each end of the window only when it is known; an open end is never printed as a gap. */
       var from = fmtDate(r.available_from), until = fmtDate(r.available_until);
-      row(dl, '入手できた期間',
-        (from || until) ? ((from || UNKNOWN_TEXT) + ' 〜 ' + (until || UNKNOWN_TEXT)) : null);
+      if (from && until) { row(dl, '入手できた期間', from + ' 〜 ' + until); }
+      else {
+        row(dl, '入手できるようになった日', from);
+        row(dl, '入手できた最後の日', until);
+      }
       /* Never substitute the list price here. A claim printed on the source page and an
          amount backed by a provenance record are two different things, so they get
          two rows and the claim is always named as a claim. */
-      row(dl, '取得価格（確認できた金額）', fmtPrice(num(r.acquisition_price_jpy)), null, '未確認');
+      row(dl, '取得価格（確認できた金額）', fmtPrice(num(r.acquisition_price_jpy)));
       var claim = num(r.acquisition_price_claim_jpy);
       if (claim !== null) {
         row(dl, '取得価格（出典の記載値）', fmtPrice(claim) + '（出典に載っていた金額で、未検証です）');
       }
-      row(dl, '送料', fmtPrice(num(r.acquisition_shipping_jpy)), null, '未確認');
-      if (num(r.acquisition_shipping_jpy) !== null && !isUnknown(r.acquisition_shipping_note_ja)) {
-        row(dl, '送料の適用範囲', String(r.acquisition_shipping_note_ja));
+      row(dl, '送料', fmtPrice(num(r.acquisition_shipping_jpy)));
+      if (num(r.acquisition_shipping_jpy) !== null) {
+        row(dl, '送料の適用範囲', r.acquisition_shipping_note_ja);
       }
       row(dl, '確認状況', lblOf(r, 'evidence_status_label_ja', ROUTE_STATUS_LABEL, 'evidence_status'));
       item.appendChild(dl);
@@ -2737,113 +3170,155 @@ function initProduct() {
   }
 
   /**
-   * 類似品バックテスト（参考）. Shows every analog, including the ones that could not be
-   * evaluated, so that a thin loser is visible next to the winners rather than dropped.
+   * 類似品バックテスト（参考）. Shows every analog with collected sales, including the ones
+   * too thin to evaluate, so that a thin loser is visible next to the winners rather than
+   * dropped. An analog whose sales were never collected has no confirmed figure and is not
+   * listed; a backtest left with nothing to show is not rendered at all.
    */
   function buildBacktestBlock(p) {
     var bt = backtestOf(p);
     if (!bt) { return null; }
+    var analogs = (bt.analogs || []).filter(function (a) {
+      return a && typeof a === 'object' && num(a.strict_sales) !== null;
+    });
+    if (!hasEvaluableBacktest(p) && analogs.length === 0) { return null; }
     var g = group('類似品の過去相場（参考）', true);
     g.node.classList.add('bt-block');
+    /* Lead: 「何件中何件」 per period, counts only, then how the counting works. */
+    var lead = evidenceLead(bt);
+    if (lead) { g.node.insertBefore(lead, g.dl); }
+    g.node.insertBefore(howCounted(bt, 'how-counted'), g.dl);
     var head = el('div', 'bt-head');
-    head.appendChild(el('p', 'bt-result', isUnknown(bt.result_label_ja) ? '比べられる類似品のデータは、まだありません' : String(bt.result_label_ja)));
+    var result = shownText(bt.result_label_ja);
+    if (result !== null) { head.appendChild(el('p', 'bt-result', result)); }
     var kpis = el('div', 'bt-kpis');
     function kpi(label, value) {
+      if (value === null) { return; }
       var k = el('div', 'bt-kpi');
       k.appendChild(el('span', 'bt-kpi-lbl', label));
-      k.appendChild(el('span', 'bt-kpi-val' + (value === null ? ' is-unknown' : ''), value === null ? UNKNOWN_TEXT : value));
+      k.appendChild(elKeep('span', 'bt-kpi-val', value));
       kpis.appendChild(k);
     }
     var unitTxt = (bt.analog_units || []).length ? bt.analog_units.join('・') : null;
-    kpi('比べられた類似品', String(bt.analogs_evaluable) + ' / ' + String(bt.analogs_linked) + '件');
+    /* evaluable / linked: both are published counts; the denominator counts every linked
+       analog, including the ones without collected sales that are not listed below. */
+    kpi('比べられた類似品', (num(bt.analogs_evaluable) === null || num(bt.analogs_linked) === null) ? null :
+      String(bt.analogs_evaluable) + ' / ' + String(bt.analogs_linked) + '件');
     var ratio = backtestMedianRatio(bt);
     kpi('定価に対する倍率（中央値）', ratio === null ? null : ratio.toFixed(2) + '倍');
     kpi('定価との差額（中央値' + (unitTxt ? '・類似品の' + unitTxt + 'あたり' : '') + '）', fmtSignedYen(bt.median_headroom_jpy));
     kpi('定価との差額（最も低い例' + (unitTxt ? '・類似品の' + unitTxt + 'あたり' : '') + '）', fmtSignedYen(bt.worst_headroom_jpy));
-    head.appendChild(kpis);
-    if (!isUnknown(bt.unit_note_ja)) { head.appendChild(el('p', 'bt-unit', String(bt.unit_note_ja))); }
-    g.node.insertBefore(head, g.dl);
+    if (kpis.children.length) { head.appendChild(kpis); }
+    var unitNote = shownText(bt.unit_note_ja);
+    if (unitNote !== null) { head.appendChild(el('p', 'bt-unit', unitNote)); }
+    if (head.children.length) { g.node.insertBefore(head, g.dl); }
 
     var chart = buildTrendChart(bt);
     if (chart) { g.node.insertBefore(chart, g.dl); }
 
     var fee = num(bt.fee_rate);
+    var btHorizon = horizonOf(bt);
     g.node.insertBefore(el('p', 'bt-def',
       '定価との差額は、類似品の取引価格から販売手数料' + (fee === null ? '' : '（' + Math.round(fee * 100) + '%）') +
       'を引き、さらに類似品の定価を差し引いた金額です。送料や梱包などの費用はまだ確認できていないため、利益ではありません。' +
       '費用がこの額を超えると赤字になる、という上限の目安です。定価で購入できた場合の数字で、抽選品は当選が前提です。' +
-      (isUnknown(bt.horizon_label_ja) && !horizonText(bt.horizon) ? '' :
-        '対象は' + (isUnknown(bt.horizon_label_ja) ? horizonText(bt.horizon) : String(bt.horizon_label_ja)) + 'の取引です。')), g.dl);
+      (btHorizon ? '対象は' + btHorizon + 'の取引です。' : '')), g.dl);
 
     var list = el('div', 'bt-analogs');
     var stripMax = 2;
     var anyStrip = false;
-    (bt.analogs || []).forEach(function (a) {
-      if (a && num(a.price_to_list_ratio) !== null) {
+    analogs.forEach(function (a) {
+      if (num(a.price_to_list_ratio) !== null) {
         anyStrip = true;
         stripMax = Math.max(stripMax, a.price_to_list_ratio * 1.05);
       }
     });
-    if (anyStrip) { list.appendChild(el('p', 'bt-strip-cap', '横棒は、定価（縦線）に対する倍率を表しています')); }
-    (bt.analogs || []).forEach(function (a) {
+    if (anyStrip) {
+      list.appendChild(el('p', 'bt-strip-cap', '横棒は定価（縦線）に対する倍率です。点の左右の太い帯は、中央値の90%範囲です。'));
+    }
+    analogs.forEach(function (a) {
       var row = el('div', 'bt-analog' + (a.result === 'HEADROOM_ALL_SALES' ? ' is-clear' :
         (a.result === 'INSUFFICIENT_SAMPLE' ? ' is-thin' : (a.result ? ' is-other' : ' is-none'))));
       var top = el('div', 'bt-analog-head');
-      top.appendChild(el('span', 'bt-analog-name', String(a.comparable_name)));
-      if (!isUnknown(a.strength_label_ja)) { top.appendChild(el('span', 'bt-analog-strength', String(a.strength_label_ja))); }
-      row.appendChild(top);
-      row.appendChild(el('span', 'bt-analog-result', isUnknown(a.result_label_ja) ? '取引データは未確認' : String(a.result_label_ja)));
-      var facts = [];
-      facts.push(num(a.strict_sales) === null ? '取引件数は未確認' : ('取引 ' + a.strict_sales + '件'));
-      if (num(a.median_sale_jpy) !== null) { facts.push('取引価格（中央値） ' + fmtSignedYen(a.median_sale_jpy)); }
-      if (num(a.list_price_jpy) !== null) {
-        facts.push('定価 ' + fmtSignedYen(a.list_price_jpy) + (isUnknown(a.sale_unit) ? '' : '（' + a.sale_unit + '）'));
+      var aname = shownText(a.comparable_name);
+      if (aname !== null) { top.appendChild(wordWrapText(el('span', 'bt-analog-name'), aname)); }
+      var strength = shownText(a.strength_label_ja);
+      if (strength !== null) { top.appendChild(el('span', 'bt-analog-strength', strength)); }
+      if (top.children.length) { row.appendChild(top); }
+      var aResult = shownText(a.result_label_ja);
+      if (aResult !== null) { row.appendChild(el('span', 'bt-analog-result', aResult)); }
+      /* Four short key–value rows grouped by meaning (取引 / 価格 / 定価 / 差額) instead of one
+         run-on chain. Each value is only what is published; a missing piece is left out. */
+      var kv = el('dl', 'bt-analog-facts');
+      function kvRow(k, v) {
+        if (!v) { return; }
+        var d = el('div');
+        d.appendChild(el('dt', null, k));
+        d.appendChild(elKeep('dd', null, v));
+        kv.appendChild(d);
       }
-      if (num(a.price_to_list_ratio) !== null) { facts.push('定価の' + a.price_to_list_ratio.toFixed(2) + '倍'); }
-      if (num(a.median_headroom_jpy) !== null) { facts.push('定価との差額（中央値） ' + fmtSignedYen(a.median_headroom_jpy)); }
-      if (num(a.worst_headroom_jpy) !== null) { facts.push('定価との差額（最も低い例） ' + fmtSignedYen(a.worst_headroom_jpy)); }
-      row.appendChild(el('span', 'bt-analog-facts', facts.join('・')));
-      var strip = ratioStrip(a.price_to_list_ratio, stripMax);
+      var ivLo = num(a.interval_low_jpy), ivHi = num(a.interval_high_jpy), aList = num(a.list_price_jpy);
+      var trade = a.strict_sales + '件';
+      if (num(a.sale_days) !== null) {
+        trade += '（取引日数 ' + a.sale_days + '日' +
+          (num(a.strict_sales) !== null && a.sale_days <= 2 && a.strict_sales >= 6 ? '・短い期間に集中' : '') + '）';
+      }
+      if (a.window_complete === false) { trade += '・集計期間はまだ続いています'; }
+      kvRow('取引', trade);
+      if (num(a.median_sale_jpy) !== null) {
+        kvRow('取引価格', '中央値 ' + fmtSignedYen(a.median_sale_jpy) +
+          (ivLo !== null && ivHi !== null ? '（中央値の90%範囲 ' + fmtSignedYen(ivLo) + '〜' + fmtSignedYen(ivHi) + '）' : ''));
+      }
+      if (aList !== null) {
+        var unit = shownText(a.sale_unit);
+        kvRow('定価', fmtSignedYen(aList) + (unit === null ? '' : '（' + unit + '）') +
+          (num(a.price_to_list_ratio) !== null ? '・取引価格は定価の' + a.price_to_list_ratio.toFixed(2) + '倍' : ''));
+      }
+      var diffs = [];
+      if (num(a.median_headroom_jpy) !== null) { diffs.push('中央値 ' + fmtSignedYen(a.median_headroom_jpy)); }
+      if (num(a.worst_headroom_jpy) !== null) { diffs.push('最も低い例 ' + fmtSignedYen(a.worst_headroom_jpy)); }
+      kvRow('定価との差額', diffs.join('・'));
+      row.appendChild(kv);
+      var strip = ratioStrip(a.price_to_list_ratio, stripMax,
+        (ivLo !== null && aList) ? ivLo / aList : null, (ivHi !== null && aList) ? ivHi / aList : null);
       if (strip) { row.appendChild(strip); }
       list.appendChild(row);
     });
-    g.node.insertBefore(list, g.dl);
+    if (analogs.length) { g.node.insertBefore(list, g.dl); }
 
     /* 価格見通し（定価比のみ、参考）. Ratios only by the owner's decision: no yen. The low end is
        shown first and in bold, because the method's own check over-predicted every product that
-       ended below list price; the measured error sits on every row. */
-    var outlook = (bt.outlook || []).filter(function (o) { return o && num(o.analogs_used) !== null; });
+       ended below list price; the measured error sits on every row. A period without a number
+       (too few analogs) or without a known horizon is not listed. */
+    var outlook = (bt.outlook || []).filter(function (o) {
+      return o && num(o.analogs_used) !== null && num(o.ratio_median) !== null &&
+        num(o.ratio_min) !== null && num(o.ratio_max) !== null && horizonOf(o) !== null;
+    });
     if (outlook.length) {
       var ob = el('div', 'bt-outlook');
       ob.appendChild(el('p', 'bt-outlook-title', '価格見通し（定価に対する倍率・参考）'));
       ob.appendChild(el('p', 'bt-outlook-def',
         '過去の類似品が、定価の何倍で取引されたかをまとめたものです。金額ではなく倍率で表示しています。' +
-        'この方法を過去の商品で検証したところ、定価を下回った商品を高めに見積もる傾向がありました。範囲の下限を目安にしてください。' +
+        '同じ方法を、各商品をそれより前に発売された商品だけで見積もって試したところ、定価を下回った商品を高めに見積もる傾向がありました。そのため、範囲の下限を先に表示しています。' +
         '倍率は利益ではありません。定価で購入できた場合の目安です。'));
       outlook.forEach(function (o) {
         var row = el('div', 'bt-outlook-row');
-        row.appendChild(el('span', 'bt-outlook-h', isUnknown(o.horizon_label_ja) ? (horizonText(o.horizon) || UNKNOWN_TEXT) : String(o.horizon_label_ja)));
-        if (num(o.ratio_median) === null) {
-          row.appendChild(el('span', 'bt-outlook-none',
-            '類似品が' + o.analogs_used + '件のため、数値は表示していません（3件以上で表示します）'));
-          ob.appendChild(row);
-          return;
-        }
+        row.appendChild(elKeep('span', 'bt-outlook-h', horizonOf(o)));
         var body = el('span', 'bt-outlook-body');
         body.appendChild(el('strong', 'bt-outlook-low', '下限 ' + o.ratio_min.toFixed(2) + '倍'));
-        body.appendChild(el('span', 'bt-outlook-mid',
+        body.appendChild(elKeep('span', 'bt-outlook-mid',
           '・中央値 ' + o.ratio_median.toFixed(2) + '倍・上限 ' + o.ratio_max.toFixed(2) + '倍' +
           (num(o.ratio_p25) !== null && num(o.ratio_p75) !== null
             ? '（中ほどの半数は' + o.ratio_p25.toFixed(2) + '〜' + o.ratio_p75.toFixed(2) + '倍）' : '') +
           '・類似品' + o.analogs_used + '件'));
         row.appendChild(body);
         var meta = [];
-        if (o.tier === 'HYPOTHESIS') { meta.push('仮の値（この商品の販売単位が未確認のため）'); }
-        if (num(o.check_median_error) !== null) {
-          meta.push('過去の商品での誤差は中央値' + Math.round(o.check_median_error * 100) + '%、最大' +
-            Math.round(o.check_max_error * 100) + '%');
+        if (o.tier === 'HYPOTHESIS') { meta.push('この商品の販売単位（パック・BOX）を確認できていないため、参考の値です'); }
+        if (num(o.check_median_error) !== null && num(o.check_max_error) !== null) {
+          meta.push('発売が早い商品だけで試した誤差 中央値' + Math.round(o.check_median_error * 100) + '%・最大' +
+            Math.round(o.check_max_error * 100) + '%' + (num(o.check_n) !== null ? '（' + o.check_n + '件で試算）' : ''));
         }
-        if (meta.length) { row.appendChild(el('span', 'bt-outlook-meta', meta.join('／'))); }
+        if (meta.length) { row.appendChild(elKeep('span', 'bt-outlook-meta', meta.join('／'))); }
         ob.appendChild(row);
       });
       g.node.insertBefore(ob, g.dl);
@@ -2895,21 +3370,21 @@ function initProduct() {
     /* --- HEADER: 商品名 / 現在状態 / 確認状況 / フラグ / 補足 --- */
     var head = el('div', 'detail-head');
     var headText = el('div', 'detail-head-text');
-    headText.appendChild(el('h1', 'detail-title',
-      isUnknown(p.product_name) ? UNKNOWN_TEXT : p.product_name));
+    headText.appendChild(wordWrapText(el('h1', 'detail-title'),
+      isUnknown(p.product_name) ? '商品の詳細' : String(p.product_name)));
     var detailMeta = identityMeta(p, true);
     if (detailMeta.length) {
       headText.appendChild(el('p', 'detail-sub', detailMeta.join('・')));
     }
     var badges = el('div', 'detail-badges');
-    badges.appendChild(statusBadge(p));
-    badges.appendChild(evidenceBadge(p));
+    put(badges, statusBadge(p));
+    put(badges, evidenceBadge(p));
     if (p.is_new === true) { badges.appendChild(el('span', 'badge badge--flag', '新着')); }
     if (isRestockRow(p)) { badges.appendChild(el('span', 'badge badge--restock', '再販')); }
     if (p.is_attention === true) {
       badges.appendChild(el('span', 'badge badge--attention', '注目候補'));
     }
-    headText.appendChild(badges);
+    if (badges.children.length) { headText.appendChild(badges); }
     head.appendChild(headText);
     heroBody.appendChild(head);
     card.appendChild(hero);
@@ -2919,14 +3394,13 @@ function initProduct() {
     }
 
     /* --- TOP: 締切 と 価格。締切は日付と残り日数を分けて出す。緊急の見た目は
-           closing_soon_band がある行だけ（deadlineParts -> isClosingSoonRow）。 --- */
+           closing_soon_band がある行だけ（deadlineParts -> isClosingSoonRow）。
+           締切の無い商品に締切の箱は出さない。 --- */
     var top = el('div', 'detail-top');
-    var dBox = el('div', 'detail-deadline');
     var parts = deadlineParts(p, doc && doc.as_of);
-    dBox.appendChild(el('span', 'price-lbl', parts && parts.kind ? parts.kind : '締切'));
-    if (!parts) {
-      dBox.appendChild(el('span', 'price-val is-unknown', UNKNOWN_TEXT));
-    } else {
+    if (parts) {
+      var dBox = el('div', 'detail-deadline');
+      dBox.appendChild(el('span', 'price-lbl', parts.kind ? parts.kind : '締切'));
       if (parts.urgent) { dBox.classList.add('is-urgent'); }
       else if (parts.soon) { dBox.classList.add('is-soon'); }
       else if (parts.muted) { dBox.classList.add('is-unconfirmed'); }
@@ -2934,42 +3408,46 @@ function initProduct() {
       dLine.appendChild(el('span', 'price-val', parts.fullDate || parts.date));
       if (parts.rel) { dLine.appendChild(el('span', 'f-rel' + (parts.passed ? ' is-passed' : ''), parts.rel)); }
       dBox.appendChild(dLine);
-      if (parts.caveat) {
-        dBox.appendChild(el('span', 'f-caveat', '受付状況は未確認'));
-      }
+      top.appendChild(dBox);
     }
-    top.appendChild(dBox);
-    /* PRICE: 定価 と 取得原価 は別の量。ひとつの独立ブロックにする。 */
-    top.appendChild(pricePair(p));
-    heroBody.appendChild(top);
+    /* PRICE: 定価 と 取得原価 は別の量。ひとつの独立ブロックにする。確認できた方だけ。 */
+    put(top, pricePair(p));
+    /* Key facts next to the price: how it is sold and when it comes out. Confirmed values only. */
+    var keyFacts = el('div', 'detail-keyfacts');
+    [['販売方式', lbl(SALE_MODE_LABEL, p.sale_mode)], ['発売日', releaseText(p)]].forEach(function (kf) {
+      var v = shownText(kf[1]);
+      if (v === null) { return; }
+      var it = el('div', 'keyfact');
+      it.appendChild(el('span', 'price-lbl', kf[0]));
+      it.appendChild(elKeep('span', 'keyfact-val', v));
+      keyFacts.appendChild(it);
+    });
+    if (keyFacts.children.length) { top.appendChild(keyFacts); }
+    if (top.children.length) { heroBody.appendChild(top); }
     var prices = el('div', 'detail-prices');
-    prices.appendChild(el('p', 'price-note',
-      '「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。' +
-      '「取得原価」は購入経路ごとに金額の裏付けが取れた場合のみ表示し、それ以外は「未確認」としています。'));
-    var cta = outboundCta(p, 'card-action card-action--ext detail-cta');
-    if (cta) { prices.appendChild(cta); }
-    if (!isUnknown(p.status_note_ja)) {
-      prices.appendChild(el('p', 'note-box', p.status_note_ja));
-    }
-    heroBody.appendChild(prices);
+    var priceNote = priceNoteText(p);
+    if (priceNote !== null) { prices.appendChild(el('p', 'price-note', priceNote)); }
+    put(prices, outboundCta(p, 'card-action card-action--ext detail-cta'));
+    var statusNote = shownText(p.status_note_ja);
+    if (statusNote !== null) { prices.appendChild(el('p', 'note-box', statusNote)); }
+    if (prices.children.length) { heroBody.appendChild(prices); }
 
     var wrap2 = el('div', 'detail-wrap');
 
     /* 類似品バックテスト（参考）: first when an analog could be evaluated — it is what the reader
-       came for, and it carries its own caveats. With nothing evaluable it still appears, lower down,
-       so 「評価できる類似品がない」 is stated rather than implied by absence. */
+       came for, and it carries its own caveats. With nothing evaluable but thin analogs to show,
+       it appears lower down; with nothing at all to show, it is not rendered. */
     var btBlock = buildBacktestBlock(p);
     if (btBlock && hasEvaluableBacktest(p)) { wrap2.appendChild(btBlock); }
 
     /* --- 主要販売情報 --- */
     var g2 = group('販売情報');
-    row(g2.dl, '現在の状況', isUnknown(p.status_label_ja) ? null : p.status_label_ja);
+    row(g2.dl, '現在の状況', hasShownStatus(p) ? p.status_label_ja : null);
     /* v1.1.0 supplies the Japanese label; a raw token is never printed. */
-    row(g2.dl, '状況の根拠', isUnknown(p.status_basis_label_ja) ? null : String(p.status_basis_label_ja));
-    if (!isUnknown(p.status_note_ja)) { row(g2.dl, '補足', p.status_note_ja); }
-    row(g2.dl, isUnknown(p.list_price_label_ja) ? '定価' : String(p.list_price_label_ja),
-      fmtPrice(listPriceOf(p)));
-    row(g2.dl, '取得原価', fmtPrice(acquisitionCostOf(p)), null, UNVERIFIED_COST_TEXT);
+    row(g2.dl, '状況の根拠', p.status_basis_label_ja);
+    row(g2.dl, '補足', p.status_note_ja);
+    row(g2.dl, shownText(p.list_price_label_ja) || '定価', fmtPrice(listPriceOf(p)));
+    row(g2.dl, '取得原価', fmtPrice(acquisitionCostOf(p)));
     row(g2.dl, '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode));
     /* sale_mode_raw is a source code (retail, lottery …): shown only through a Japanese label,
        and the row is left out when there is no wording for it. */
@@ -2979,27 +3457,26 @@ function initProduct() {
     row(g2.dl, '購入制限', p.purchase_limit);
     row(g2.dl, '再販状況', p.restock_status);
     row(g2.dl, '販売終了', fmtDate(p.sales_end));
-    var urlKind = lbl(URL_KIND_LABEL, p.official_url_kind);
-    var urlLabel = (urlKind && urlKind !== UNKNOWN_ENUM_TEXT) ? urlKind : '公式ページ';
+    var urlLabel = lbl(URL_KIND_LABEL, p.official_url_kind) || '公式ページ';
     row(g2.dl, urlLabel, null, linkNode(p.official_url, urlLabel + 'を開く'));
     row(g2.dl, '購入ページ', null, linkNode(p.purchase_url, '購入ページを開く'));
-    wrap2.appendChild(g2.node);
+    put(wrap2, groupIfAny(g2));
 
     /* --- 基本情報 --- */
     var g1 = group('基本情報');
-    row(g1.dl, '商品名', isUnknown(p.product_name) ? null : p.product_name);
+    if (!isUnknown(p.product_name)) { row(g1.dl, '商品名', null, el('span', null, String(p.product_name))); }
     row(g1.dl, 'カテゴリ', lbl(CATEGORY_LABEL, p.category));
     row(g1.dl, '作品名', p.ip);
     /* Precision-honest: the display string is used verbatim. */
     row(g1.dl, '発売日', releaseText(p));
-    wrap2.appendChild(g1.node);
+    put(wrap2, groupIfAny(g1));
 
     /* --- 応募・予約情報 --- */
     var g3 = group('応募・予約・抽選情報', true);
     var dKind = lbl(DEADLINE_KIND_LABEL, p.deadline_kind);
+    var dRel = deadlineRelText(p);
     var dVal = isUnknown(p.deadline) ? null :
-      fmtDate(p.deadline) + (dKind && dKind !== UNKNOWN_ENUM_TEXT ? '（' + dKind + '）' : '') +
-      (deadlineRelText(p) ? ' / ' + deadlineRelText(p) : '');
+      fmtDate(p.deadline) + (dKind ? '（' + dKind + '）' : '') + (dRel ? ' / ' + dRel : '');
     row(g3.dl, '直近の期日', dVal);
     row(g3.dl, '予約開始', fmtDate(p.reservation_start));
     row(g3.dl, '予約終了', fmtDate(p.reservation_end));
@@ -3012,45 +3489,42 @@ function initProduct() {
     row(g3.dl, '支払期限', fmtDate(p.payment_deadline));
     row(g3.dl, '受取期間', p.pickup_period);
     row(g3.dl, '発送予定', p.shipping_period);
-    wrap2.appendChild(g3.node);
+    put(wrap2, groupIfAny(g3));
 
     /* --- 確認状況（出典を含む）。ヘッダーのバッジと同じ事実を、日付と出典まで開いたもの。 --- */
     var g5 = group('確認状況と出典', true);
-    row(g5.dl, '確認状況', isUnknown(p.evidence_label_ja) ? null : p.evidence_label_ja);
+    row(g5.dl, '確認状況', p.evidence_label_ja);
     row(g5.dl, '確認の方法', lbl(TIER_LABEL, p.verification_tier));
     row(g5.dl, '最終確認日', fmtDate(p.last_verified_at));
     row(g5.dl, '初回確認日', fmtDate(p.first_seen_at));
     row(g5.dl, '更新日', fmtDate(p.updated_at));
     var refs = Array.isArray(p.source_references) ? p.source_references : [];
     var usable = refs.filter(function (r) { return r && isSafeHttpUrl(r.url); });
-    if (usable.length === 0) {
-      row(g5.dl, '出典（公式情報など）', null);
-    } else {
+    if (usable.length) {
       var ul = el('ul', 'src-list');
       usable.forEach(function (r) {
         var li = el('li');
-        var node = linkNode(r.url, isUnknown(r.name) ? String(hostOf(r.url) || 'リンク') : String(r.name));
+        var node = linkNode(r.url, shownText(r.name) || String(hostOf(r.url) || 'リンク'));
         if (node) { li.appendChild(node); }
         var kind = lbl(URL_KIND_LABEL, r.kind);
-        if (kind && kind !== UNKNOWN_ENUM_TEXT) { li.appendChild(el('span', 'src-kind', kind)); }
+        if (kind) { li.appendChild(el('span', 'src-kind', kind)); }
         ul.appendChild(li);
       });
       row(g5.dl, '出典（公式情報など）', null, ul);
     }
 
-    /* --- 供給制約 -> Evidence（成約 + 確認状況） -> Route --- */
-    wrap2.appendChild(buildSignalsBlock(p));
-    wrap2.appendChild(buildProfitBlock(p));
-    wrap2.appendChild(g5.node);
-    wrap2.appendChild(buildRouteBlock(p));
+    /* --- 供給制約 -> Evidence（成約 + 確認状況） -> Route. A block with nothing confirmed to
+           show returns null and is left out (so it is not in the contents list either). --- */
+    put(wrap2, buildSignalsBlock(p));
+    put(wrap2, buildProfitBlock(p, btBlock));
+    put(wrap2, groupIfAny(g5));
+    put(wrap2, buildRouteBlock(p));
     if (btBlock && !hasEvaluableBacktest(p)) { wrap2.appendChild(btBlock); }
 
     /* --- 調査メモ --- */
-    if (!isUnknown(p.notes_ja)) {
-      var g6 = group('補足情報', true);
-      row(g6.dl, '備考', p.notes_ja);
-      wrap2.appendChild(g6.node);
-    }
+    var g6 = group('補足情報', true);
+    row(g6.dl, '備考', p.notes_ja);
+    put(wrap2, groupIfAny(g6));
 
     /* Contents. Generated from the blocks that were actually appended above — never a fixed
        list, so a page with no route evidence does not claim to have a route section. */
@@ -3115,13 +3589,23 @@ function initProduct() {
       $('notfound-panel').hidden = false;
       return;
     }
-    var name = isUnknown(found.product_name) ? UNKNOWN_TEXT : String(found.product_name);
-    document.title = name + ' | Sedori Research Dashboard';
+    if (!isUnknown(found.product_name)) {
+      document.title = String(found.product_name) + ' | Sedori Research Dashboard';
+    }
     render(doc, found);
   }).catch(function (err) {
     showError(err && err.message ? err.message : 'データを読み込めませんでした。時間をおいて再度お試しください。');
   });
 }
+
+/** Any link to #how-counted opens the explainer it points at (a closed <details> would hide it). */
+document.addEventListener('click', function (e) {
+  var t = e.target;
+  var a = t && t.closest ? t.closest('a[href="#how-counted"]') : null;
+  if (!a) { return; }
+  var d = document.getElementById('how-counted');
+  if (d) { d.open = true; }
+});
 
 /* ---------------------------------------------------------------- dispatch */
 

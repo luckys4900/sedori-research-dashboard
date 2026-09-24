@@ -17,7 +17,7 @@
     <div class="site-bar">
       <p class="site-title">Sedori Research Dashboard</p>
       <p class="site-sub">
-        <span class="site-meta"><span class="site-meta-lbl">更新日時</span><span id="generated-at">読み込み中…</span></span>
+        <span class="site-meta"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
         <span class="sep" aria-hidden="true">/</span>
         <span class="site-meta"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
       </p>
@@ -34,17 +34,16 @@
       <section class="signal-hero" aria-labelledby="signal-hero-title">
         <div class="hero-inner">
           <div class="hero-copy">
-            <p class="hero-kicker">DAILY RESEARCH SIGNALS</p>
-            <h1 id="signal-hero-title">抽選・予約・再販の情報を、<br class="hero-break">今日チェックしたい順に。</h1>
-            <p class="hero-text">受付状況や締切、発売日を、公式サイトなどの公開情報からまとめています。</p>
+            <h1 id="signal-hero-title"><span class="phrase">抽選・予約・再販の情報を、</span><span class="phrase">今日チェックしたい順に。</span></h1>
+            <p class="hero-text">受付状況・締切・発売日を、公式サイトなどの公開情報からまとめています。</p>
             <div class="hero-actions">
-              <a class="hero-action hero-action--primary" href="#sec-closing">締切が近い商品を見る</a>
-              <a class="hero-action" href="#sec-all">全商品から探す</a>
+              <a class="hero-action hero-action--primary" id="hero-primary" href="#sec-closing">締切が近い商品を見る</a>
+              <a class="hero-action hero-action--link" id="hero-secondary" href="#sec-all">全商品から探す</a>
             </div>
-            <p class="hero-trust">購入をおすすめするサイトではなく、利益の予測も載せていません。購入するかどうかは、ご自身でご判断ください。</p>
+            <p class="hero-trust">購入のおすすめや利益の予測は含みません。購入はご自身でご判断ください。</p>
           </div>
           <!-- Decorative: real product photos picked from the data at runtime (app.js). -->
-          <div class="hero-collage" id="hero-collage" aria-hidden="true" hidden></div>
+          <div class="hero-collage" id="hero-collage" aria-hidden="true"></div>
         </div>
       </section>
 
@@ -56,7 +55,6 @@
       -->
       <section class="today" aria-labelledby="today-title">
         <div class="today-head">
-          <p class="summary-kicker">TODAY</p>
           <h2 id="today-title">今日チェックしておきたいこと</h2>
           <button type="button" class="kpi kpi--total" data-kpi="total" aria-pressed="false">
             <span class="kpi-total-lbl">掲載中の</span><span class="kpi-num" id="kpi-total">—</span><span class="kpi-total-lbl">件をすべて表示</span>
@@ -101,14 +99,11 @@
           </li>
         </ul>
 
-        <p class="kpi-note" id="kpi-note">
-          「新着」は掲載を始めてから14日以内の商品です。「締切間近」には、受付中であることを確認できた商品だけを数えています。
-        </p>
+        <p class="kpi-note" id="kpi-note">「締切間近」「受付中」は、受付中を確認できた商品だけを数えています。「新着」は掲載から14日以内です。</p>
       </section>
 
       <aside class="my-check" aria-labelledby="my-check-title">
         <div class="my-check-head">
-          <p class="my-check-kicker">MY CHECK</p>
           <h2 id="my-check-title">あなたの判断</h2>
         </div>
         <div class="my-check-grid">
@@ -147,13 +142,13 @@
 <main class="wrap" id="main">
 
   <!-- Fetch / parse failure panel -->
-  <div class="panel panel--error" id="error-panel" hidden>
+  <div class="panel panel--error" id="error-panel" role="alert" hidden>
     <h2>データを読み込めませんでした</h2>
     <p id="error-detail"></p>
     <p>通信環境をご確認のうえ、しばらくしてからページを再読み込みしてください。</p>
   </div>
 
-  <p class="loading" id="loading">データを読み込み中…</p>
+  <p class="loading" id="loading" role="status">商品の一覧を読み込んでいます…</p>
 
   <div id="app" hidden>
 
@@ -163,7 +158,6 @@
       dates, step 2 at their own mark, step 3 at the sources.
     -->
     <section class="howto" aria-labelledby="howto-title">
-      <p class="howto-kicker">HOW TO USE</p>
       <h2 id="howto-title">はじめての方へ：3ステップで使えます</h2>
       <ol class="howto-steps">
         <li>
@@ -211,8 +205,7 @@
             <span><strong>5段階の目盛り</strong>は、利益を考えるための材料がどこまで集まったかを表します。金額や評価を示すものではありません。</span>
           </li>
           <li>
-            <span class="legend-sample"><span class="badge badge--unknown">未確認</span></span>
-            <span><strong>「未確認」</strong>は、まだ確認が取れていない項目です。「なし」や「0」という意味ではありません。推測で日付を補うこともしていません。</span>
+            <span><strong>確認が取れていない項目は表示していません。</strong>項目が載っていないことは、「なし」や「0」という意味ではありません。推測で日付を補うこともしていません。</span>
           </li>
         </ul>
       </details>
@@ -232,7 +225,7 @@
       </div>
       <p class="sec-note">受付中であることを<strong>確認できた</strong>商品のうち、締切まで7日以内のものです。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、締切まで7日以内で受付中を確認できた商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、締切まで7日以内で受付中を確認できた商品はありません。<a class="sec-empty-next" href="#sec-nearterm">期日が近い商品（要確認）を見る</a></p>
     </section>
 
     <section class="sec sec--open" id="sec-lottery" data-sec>
@@ -243,7 +236,7 @@
       </div>
       <p class="sec-note">いま応募を受け付けていることを<strong>確認できた</strong>抽選です。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、受付中を確認できた抽選はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、受付中を確認できた抽選はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <section class="sec sec--open" id="sec-preorder" data-sec>
@@ -254,7 +247,7 @@
       </div>
       <p class="sec-note">いま受付中であることを<strong>確認できた</strong>予約・受注生産の商品です。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、受付中を確認できた予約・受注生産の商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、受付中を確認できた予約・受注生産の商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <section class="sec sec--open" id="sec-buyable" data-sec>
@@ -263,21 +256,21 @@
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
-      <p class="sec-note">抽選以外の方法で、いま受付中であることを<strong>確認できた</strong>商品です（販売方式が未確認のものを含みます）。</p>
+      <p class="sec-note">抽選以外の方法で、いま受付中であることを<strong>確認できた</strong>商品です（販売方式が公表されていないものを含みます）。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、抽選以外で受付中を確認できた商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、抽選以外で受付中を確認できた商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <!-- NEEDS CHECK — a deliberately weaker surface. Never styled like confirmed-open items. -->
     <section class="sec sec--warn" id="sec-nearterm" data-sec>
       <div class="sec-head">
-        <h2 class="sec-title"><span class="sec-tag">要確認</span>期日が近い（受付状況は未確認）</h2>
+        <h2 class="sec-title"><span class="sec-tag">要確認</span>期日が7日以内（締切間近以外）</h2>
         <span class="sec-count" data-sec-count></span>
         <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
       </div>
       <p class="sec-note">期日まで7日以内ですが、<strong>受付中かどうかはまだ確認できていません</strong>。そのため「締切間近」には含めていません。応募の前に公式ページをご確認ください。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、期日まで7日以内で受付状況が未確認の商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、「締切間近」以外で期日まで7日以内の商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <section class="sec sec--restock" id="sec-restock" data-sec>
@@ -288,7 +281,7 @@
       </div>
       <p class="sec-note">再販・在庫復活を<strong>確認できた</strong>商品です。再販の情報がある商品には、一覧で「再販」バッジを付けています。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、再販・在庫復活を確認できた商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、再販・在庫復活を確認できた商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <section class="sec sec--attention" id="sec-attention" data-sec>
@@ -301,7 +294,7 @@
         販売数や販売方法の制限と、類似品の過去の取引記録の<strong>両方を確認できた</strong>商品に付けている印です。おすすめや期待値を示すものではありません。
       </p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、両方の条件を満たす商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、両方の条件を満たす商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <!-- 類似品バックテスト（参考）. Same shape as every other feed section; sorted by deadline,
@@ -317,7 +310,7 @@
         送料などの費用はまだ確認できておらず差し引いていないため、<strong>利益ではありません</strong>。定価で購入できた場合の目安で、抽選品は当選が前提です。
       </p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、類似品の取引データと比べられる商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、類似品の取引データと比べられる商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <section class="sec sec--new" id="sec-new" data-sec>
@@ -328,7 +321,7 @@
       </div>
       <p class="sec-note" id="sec-new-note">掲載を始めてから14日以内の商品です。</p>
       <ul class="grid" data-sec-list></ul>
-      <p class="sec-empty" data-sec-empty hidden>いまのところ、掲載から14日以内の商品はありません。</p>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、掲載から14日以内の商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
     </section>
 
     <!-- Full list with toolbar -->
@@ -393,7 +386,7 @@
                 <option value="24h">24時間以内（受付中を確認できたもの）</option>
                 <option value="3d">3日以内（受付中を確認できたもの）</option>
                 <option value="7d">7日以内（受付中を確認できたもの）</option>
-                <option value="near_unconfirmed">7日以内（受付状況は未確認）</option>
+                <option value="near_unconfirmed">7日以内（締切間近以外）</option>
               </select>
             </div>
             <div class="field">
@@ -463,7 +456,7 @@
 
       <ul class="grid grid--dense" id="list"></ul>
 
-      <p class="empty" id="list-empty" hidden>条件に合う商品が見つかりませんでした。条件を変えてお試しください。</p>
+      <p class="empty" id="list-empty" hidden>条件に合う商品が見つかりませんでした。キーワードを短くするか、「絞り込みをリセット」ですべての商品を表示できます。</p>
 
       <p class="note-line">
         「購入候補」「様子見」「見送り」の印は、お使いのブラウザにだけ保存されます。外部に送信されることはありません。
@@ -503,10 +496,10 @@
         </dd>
       </div>
       <div>
-        <dt>「取得原価」の多くが「未確認」なのはなぜですか？</dt>
+        <dt>「取得原価」が載っていない商品が多いのはなぜですか？</dt>
         <dd>
           どこで、いくらで購入できたかを出典つきで確認できた場合に限り、金額を表示しています。
-          出典のはっきりしない金額は原価として扱わず、確認が取れるまでは「未確認」としています。
+          出典のはっきりしない金額は原価として扱わず、確認が取れるまでは表示しません。
         </dd>
       </div>
       <div>
@@ -530,8 +523,8 @@
   <footer class="site-footer">
     <p>当サイトは、公式サイトなどの公開情報をもとに作成しています。購入のおすすめ、利益の予測、点数やランキングは含みません。</p>
     <p>掲載しているのは、公表された事実と期日、情報の確認状況です。利益の自動評価は行っていません。購入の判断はご自身でお願いいたします。</p>
-    <p>「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。「取得原価」は購入経路ごとに金額の裏付けが取れた場合のみ表示し、それ以外は「未確認」としています。</p>
-    <p>確認できていない項目は「未確認」と表示し、0 や推測した日付で補うことはしません。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
+    <p>「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。「取得原価」は購入経路ごとに金額の裏付けが取れた場合のみ表示しています。</p>
+    <p>確認が取れていない項目は表示していません。0 や推測した日付で補うこともしません。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
     <p>「未検証」の商品は、公式情報での確認がまだ済んでいない新しい候補です。確認済みの商品とは区別してご覧ください。</p>
   </footer>
 </main>
