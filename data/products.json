@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-25",
-  "generated_at": "2026-09-25T01:31:34+09:00",
+  "generated_at": "2026-09-25T01:39:50+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -14758,7 +14758,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -15636,7 +15636,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -16514,7 +16514,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -17384,7 +17384,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -18262,7 +18262,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -19348,7 +19348,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -20232,7 +20232,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -21116,7 +21116,7 @@
         "label_ja": "様子見",
         "level": "MIXED_SIGNALS",
         "missing_ja": [],
-        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
+        "reason_ja": "似た商品4件で、定価を上回ったものと下回ったものに分かれました"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
