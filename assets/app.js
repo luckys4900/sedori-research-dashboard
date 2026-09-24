@@ -632,8 +632,21 @@ function buyPill(b, big) {
   var pill = el('span', 'buy-pill buy--' + b.level + (big ? ' buy-pill--big' : ''));
   pill.appendChild(el('span', 'buy-glyph', BUY_GLYPH[b.level]));
   pill.appendChild(el('span', 'buy-lbl', String(b.label_ja)));
+  if (b.basis_ja) { pill.classList.add('buy-pill--inferred'); }
   pill.setAttribute('aria-label', '買いの目安（参考）：' + b.label_ja);
   return pill;
+}
+/** The product's own evidence first; when that is not enough, the inference (推論). */
+function inferenceOf(p) {
+  var b = buySignalOf(p);
+  var i = b && b.level === 'NOT_ENOUGH_EVIDENCE' ? b.inference : null;
+  return (i && BUY_LEVELS.indexOf(i.level) !== -1) ? i : null;
+}
+function effectiveLevel(p) {
+  var b = buySignalOf(p);
+  if (!b) { return null; }
+  var i = inferenceOf(p);
+  return i ? i.level : b.level;
 }
 /** One-line reason: the result when there is one, otherwise the first missing piece. */
 function buyWhy(b) {
@@ -646,12 +659,15 @@ function buyWhy(b) {
 function buyLine(p) {
   var b = buySignalOf(p);
   if (!b) { return null; }
-  var box = el('div', 'c-buy');
+  var inf = inferenceOf(p);
+  var box = el('div', 'c-buy' + (inf ? ' is-inferred' : ''));
   var head = el('span', 'c-buy-head');
   head.appendChild(el('span', 'c-buy-cap', '買いの目安'));
-  head.appendChild(buyPill(b, false));
+  head.appendChild(buyPill(inf || b, false));
   box.appendChild(head);
-  box.appendChild(el('span', 'c-buy-why', buyWhy(b)));
+  box.appendChild(el('span', 'c-buy-why', inf
+    ? '似た種類の過去' + inf.n + '件のうち' + inf.k + '件が定価超え（ほか' + inf.u + '件は結果がまだ出ていない）'
+    : buyWhy(b)));
   return box;
 }
 
@@ -2252,7 +2268,7 @@ function initIndex() {
       if (filters.ev && p.evidence_state !== filters.ev) { return false; }
       if (filters.profit && p.profit_evidence_status !== filters.profit) { return false; }
       if (!matchesSignal(p)) { return false; }
-      if (filters.buy && (buySignalOf(p) || {}).level !== filters.buy) { return false; }
+      if (filters.buy && effectiveLevel(p) !== filters.buy) { return false; }
       if (!matchesDeadline(p, filters.deadline)) { return false; }
       if (!matchesRelease(p, filters.release)) { return false; }
       if (filters.onlyNew && p.is_new !== true) { return false; }
@@ -2320,10 +2336,11 @@ function initIndex() {
   /** 買いの目安順: level order, then (for 判断材料不足) the fewest missing pieces first. */
   function buyRank(p) {
     var b = buySignalOf(p);
-    if (!b) { return [9, 9, 0]; }
+    if (!b) { return [9, 9, 9, 9, 0]; }
     var missing = Array.isArray(b.missing_ja) ? b.missing_ja.length : 0;
     var noData = b.level === 'NOT_ENOUGH_EVIDENCE' && !(num(b.analogs_evaluable) > 0) ? 1 : 0;
-    return [BUY_LEVELS.indexOf(b.level), noData, missing, -(num(b.analogs_evaluable) || 0)];
+    /* evidence before inference at the same level */
+    return [BUY_LEVELS.indexOf(effectiveLevel(p)), inferenceOf(p) ? 1 : 0, noData, missing, -(num(b.analogs_evaluable) || 0)];
   }
   function cmpBuy(a, b) {
     var ra = buyRank(a), rb = buyRank(b);
@@ -2374,12 +2391,17 @@ function initIndex() {
   function renderBuyPanel() {
     var panel = $('buy-panel');
     if (!panel) { return; }
-    var counts = {};
-    BUY_LEVELS.forEach(function (l) { counts[l] = 0; });
-    state.products.forEach(function (p) { var b = buySignalOf(p); if (b) { counts[b.level] += 1; } });
+    var counts = {}, inferred = {};
+    BUY_LEVELS.forEach(function (l) { counts[l] = 0; inferred[l] = 0; });
+    state.products.forEach(function (p) {
+      var l = effectiveLevel(p);
+      if (l) { counts[l] += 1; if (inferenceOf(p)) { inferred[l] += 1; } }
+    });
     BUY_LEVELS.forEach(function (l) {
       var n = $('buy-n-' + l);
       if (n) { n.textContent = String(counts[l]); }
+      var sub = $('buy-inf-' + l);
+      if (sub) { sub.textContent = inferred[l] ? 'うち推論 ' + inferred[l] + '件' : ''; sub.hidden = !inferred[l]; }
       var btn = panel.querySelector('[data-buy="' + l + '"]');
       if (btn) { btn.setAttribute('aria-pressed', filters.buy === l ? 'true' : 'false'); }
     });
@@ -2389,7 +2411,7 @@ function initIndex() {
       head.textContent = counts.LEAN_BUY > 0
         ? '「買い寄り」は ' + counts.LEAN_BUY + ' 件です。条件（定価で買えた場合・送料などは差し引いていない）もあわせてご確認ください。'
         : (decided > 0
-          ? '今の時点で「買い寄り」と言える商品はありません。判定が出ている商品は下のボタンから確認できます。'
+          ? '今の時点で「買い寄り」と言える商品はありません。目安が出ている ' + decided + ' 件は、似た商品の結果が分かれていて様子見です。'
           : '今の時点で、買い・見送りを判定できる商品はまだありません。判定に近い商品と、足りない根拠は下のとおりです。');
     }
     var list = $('buy-near');
@@ -2397,7 +2419,8 @@ function initIndex() {
     while (list.firstChild) { list.removeChild(list.firstChild); }
     var near = state.products.filter(function (p) {
       var b = buySignalOf(p);
-      return b && b.level === 'NOT_ENOUGH_EVIDENCE' && num(b.analogs_evaluable) > 0;
+      return b && effectiveLevel(p) === 'NOT_ENOUGH_EVIDENCE' &&
+        (num(b.analogs_evaluable) > 0 || /BOXの公式定価/.test(String(b.inference_blocked_ja || '')));
     }).sort(cmpBuy).slice(0, 5);
     var wrap = $('buy-near-wrap');
     if (wrap) { wrap.hidden = near.length === 0; }
@@ -2407,7 +2430,9 @@ function initIndex() {
       var a = el('a', 'buy-near-link');
       a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
       a.appendChild(wordWrapText(el('span', 'buy-near-name'), String(p.product_name || '')));
-      a.appendChild(el('span', 'buy-near-miss', (b.missing_ja || []).join('／')));
+      var why = (b.missing_ja || []).slice();
+      if (!why.length && b.inference_blocked_ja) { why.push(String(b.inference_blocked_ja)); }
+      a.appendChild(el('span', 'buy-near-miss', why.join('／')));
       li.appendChild(a);
       list.appendChild(li);
     });
@@ -3512,14 +3537,31 @@ function initProduct() {
       verdict.setAttribute('aria-label', '買いの目安（参考）');
       var vHead = el('div', 'detail-buy-head');
       vHead.appendChild(el('span', 'detail-buy-cap', '買いの目安（参考）'));
-      vHead.appendChild(buyPill(bs, true));
+      var headInf = inferenceOf(p);
+      vHead.appendChild(buyPill(headInf || bs, true));
       verdict.appendChild(vHead);
-      verdict.appendChild(el('p', 'detail-buy-why', String(bs.reason_ja)));
+      verdict.appendChild(el('p', 'detail-buy-why', headInf
+        ? 'この商品自身の取引の根拠はまだ足りないため、似た種類の商品の過去の結果から推論した目安です。'
+        : String(bs.reason_ja)));
       if (Array.isArray(bs.missing_ja) && bs.missing_ja.length) {
-        verdict.appendChild(el('p', 'detail-buy-sub', '判定に足りないもの'));
+        verdict.appendChild(el('p', 'detail-buy-sub', 'この商品自身の根拠に足りないもの'));
         var ml = el('ul', 'detail-buy-list');
         bs.missing_ja.forEach(function (m) { ml.appendChild(el('li', null, String(m))); });
         verdict.appendChild(ml);
+      }
+      var inf = inferenceOf(p);
+      if (inf) {
+        var ib = el('div', 'detail-infer');
+        var ih = el('div', 'detail-buy-head');
+        ih.appendChild(el('span', 'detail-buy-cap', '推論の根拠'));
+        ib.appendChild(ih);
+        ib.appendChild(el('p', 'detail-buy-why', String(inf.basis_ja)));
+        if (inf.closure_ja) { ib.appendChild(el('p', 'detail-infer-line', '目安が変わる条件：' + inf.closure_ja)); }
+        ib.appendChild(el('p', 'detail-infer-line', 'これまでの成績：' + String(inf.record_ja)));
+        ib.appendChild(el('p', 'detail-infer-line', '確からしさ：' + String(inf.confidence_ja) + '（件数が少なく、検証の途中です）'));
+        verdict.appendChild(ib);
+      } else if (bs.level === 'NOT_ENOUGH_EVIDENCE' && bs.inference_blocked_ja) {
+        verdict.appendChild(el('p', 'detail-infer-line', '推論について：' + String(bs.inference_blocked_ja)));
       }
       if (Array.isArray(bs.conditions_ja) && bs.conditions_ja.length) {
         verdict.appendChild(el('p', 'detail-buy-cond', '条件：' + bs.conditions_ja.join('／')));

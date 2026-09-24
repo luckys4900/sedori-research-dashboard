@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-09-24",
-  "generated_at": "2026-09-24T23:26:29+09:00",
+  "as_of": "2026-09-25",
+  "generated_at": "2026-09-25T01:31:34+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -54,6 +54,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -206,6 +208,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -358,6 +362,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -510,6 +516,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -662,6 +670,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -814,6 +824,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -970,6 +982,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1149,6 +1163,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1268,6 +1284,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1369,6 +1387,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1382,7 +1402,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -24,
+      "days_to_deadline": -25,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -1468,6 +1488,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1581,6 +1603,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1695,6 +1719,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1804,6 +1830,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -1817,7 +1845,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -24,
+      "days_to_deadline": -25,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -1903,6 +1931,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2012,6 +2042,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2023,7 +2055,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -49,
+      "days_to_deadline": -50,
       "deadline": "2026-08-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2123,6 +2155,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2229,6 +2263,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2240,7 +2276,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -140,
+      "days_to_deadline": -141,
       "deadline": "2026-05-07",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2335,6 +2371,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2433,6 +2471,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2444,7 +2484,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 60,
+      "days_to_deadline": 59,
       "deadline": "2026-11-23",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2544,6 +2584,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2555,7 +2597,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -18,
+      "days_to_deadline": -19,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2657,6 +2699,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2668,7 +2712,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -129,
+      "days_to_deadline": -130,
       "deadline": "2026-05-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -2760,6 +2804,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2771,7 +2817,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -18,
+      "days_to_deadline": -19,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2873,6 +2919,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -2884,7 +2932,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 38,
+      "days_to_deadline": 37,
       "deadline": "2026-11-01",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -2989,6 +3037,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -3000,7 +3050,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -10,
+      "days_to_deadline": -11,
       "deadline": "2026-09-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -3232,9 +3282,9 @@
           },
           {
             "analogs_used": 4,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": 2.585,
@@ -3639,6 +3689,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "BOXの公式定価が確認できれば、過去の拡張パックBOXの結果から推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -3923,6 +3975,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4017,6 +4071,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4111,6 +4167,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4205,6 +4263,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4316,16 +4376,16 @@
             "interval_high_jpy": null,
             "interval_low_jpy": null,
             "list_price_jpy": 5280,
-            "median_headroom_jpy": -1950,
-            "median_sale_jpy": 3700,
-            "price_to_list_ratio": 0.701,
-            "result": "INSUFFICIENT_SAMPLE",
-            "result_label_ja": "取引件数が少なく、比較の対象外",
+            "median_headroom_jpy": -1838,
+            "median_sale_jpy": 3825,
+            "price_to_list_ratio": 0.724,
+            "result": "WINDOW_INCOMPLETE",
+            "result_label_ja": "期間の途中までしか集計できていない",
             "sale_days": null,
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": 1,
+            "strict_sales": 4,
             "window_complete": null,
             "worst_headroom_jpy": -1950
           },
@@ -4350,16 +4410,14 @@
         ],
         "analogs_evaluable": 1,
         "analogs_linked": 3,
-        "counter_signal_names": [
-          "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram"
-        ],
+        "counter_signal_names": [],
         "evidence_notes": [
           {
             "cleared": 0,
             "evaluable": 1,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が1件あります。"
+            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは0件でした。件数が1件と少ないため、傾向とは言えません。また、期間の終わりまで取引を集められていない似た商品が1件あり、数に含めていません。"
           }
         ],
         "fee_rate": 0.1,
@@ -4369,9 +4427,9 @@
         "outlook": [
           {
             "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": null,
@@ -4383,7 +4441,7 @@
           }
         ],
         "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）",
         "strong_analogs_evaluable": 1,
         "trends": [
           {
@@ -4448,14 +4506,24 @@
                 "thin": true
               },
               {
+                "day_from": 18,
+                "day_to": 24,
+                "median_jpy": 3900,
+                "n": 1,
+                "p25_jpy": 3900,
+                "p75_jpy": 3900,
+                "ratio": 0.739,
+                "thin": true
+              },
+              {
                 "day_from": 25,
                 "day_to": 31,
-                "median_jpy": 3700,
-                "n": 1,
-                "p25_jpy": 3700,
-                "p75_jpy": 3700,
-                "ratio": 0.701,
-                "thin": true
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3750,
+                "p75_jpy": 3825,
+                "ratio": 0.72,
+                "thin": false
               }
             ],
             "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
@@ -4507,6 +4575,18 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": {
+          "basis_ja": "この商品自身の取引ではなく、通常のカードゲーム拡張パックBOXの過去の結果からの推論です。結果が分かっている14件のうち10件が、発売1か月後に手数料を引いても定価を上回りました。ほかに8件は取引が少なく結果が分かっていません（取引が少ない商品ほど定価割れが多いため、勝ちとは数えていません）。",
+          "closure_ja": "結果が分かっていない8件のうち6件以上が定価を上回っていれば買い寄り、1件も上回っていなければ見送り寄りになります。",
+          "confidence_ja": "低",
+          "k": 10,
+          "label_ja": "様子見（推論）",
+          "level": "MIXED_SIGNALS",
+          "n": 14,
+          "record_ja": "この方法を過去の14件（それぞれ発売前に分かっていた結果だけを使用）に当てはめると、買い寄り1件中0件的中、見送り寄り0件中0件的中、様子見10件、判定なし3件でした。",
+          "u": 8
+        },
+        "inference_blocked_ja": null,
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4531,12 +4611,12 @@
           "comparable_name": "hololive OFFICIAL CARD GAME エクストラブースター Summer Hologram",
           "horizon": "d30",
           "horizon_label_ja": "発売後1か月（23〜37日）",
-          "maximum_price_jpy": 3700,
-          "median_price_jpy": 3700,
+          "maximum_price_jpy": 3900,
+          "median_price_jpy": 3825,
           "minimum_price_jpy": 3700,
-          "sample_count": 1,
-          "sample_status": "LOW_SAMPLE",
-          "sample_status_label_ja": "件数が少なめ（参考値）"
+          "sample_count": 4,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "hololive OFFICIAL CARD GAME ブースターパック ディーヴァフィーバー",
@@ -4599,7 +4679,7 @@
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が17件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が20件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -4609,12 +4689,12 @@
       "product_id": "hocg-bp-volume-vortex",
       "product_name": "hololive OFFICIAL CARD GAME ブースターパック ボリュームヴォルテックス",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 1,
+        "comparables_with_price_evidence": 2,
         "comparables_with_verified_route": 0,
         "linked_comparables": 3,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 17
+        "strict_completed_sales": 20
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -4665,6 +4745,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4774,6 +4856,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4876,6 +4960,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -4978,6 +5064,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -5080,6 +5168,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -5371,9 +5461,9 @@
           },
           {
             "analogs_used": 4,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": 2.585,
@@ -5707,6 +5797,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "BOXの公式定価が確認できれば、過去の拡張パックBOXの結果から推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -5999,6 +6091,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6012,7 +6106,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 9,
+      "days_to_deadline": 8,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -6101,6 +6195,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6114,7 +6210,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 9,
+      "days_to_deadline": 8,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "確認済み",
@@ -6209,6 +6305,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6222,7 +6320,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 9,
+      "days_to_deadline": 8,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -6311,6 +6409,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6324,7 +6424,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 9,
+      "days_to_deadline": 8,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -6413,6 +6513,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6426,7 +6528,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 9,
+      "days_to_deadline": 8,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -6515,6 +6617,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6528,7 +6632,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 3,
+      "days_to_deadline": 2,
       "deadline": "2026-09-27",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -6609,6 +6713,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6704,6 +6810,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "BOXの公式定価が確認できれば、過去の拡張パックBOXの結果から推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6817,6 +6925,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -6911,6 +7021,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7005,6 +7117,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7018,7 +7132,7 @@
         "プレミアムバンダイ サンライズストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 10,
+      "days_to_deadline": 9,
       "deadline": "2026-10-04",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -7099,6 +7213,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7193,6 +7309,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7287,6 +7405,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7381,6 +7501,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7394,7 +7516,7 @@
         "プレミアムバンダイ A-on STORE"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": 10,
       "deadline": "2026-10-05",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -7589,6 +7711,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7699,6 +7823,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7782,11 +7908,11 @@
           "url": "https://p-bandai.jp/item/item-1000255597/"
         }
       ],
-      "status": "OPEN_NOW",
-      "status_basis": "DERIVED_FROM_WINDOW",
-      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "受付中",
-      "status_note_ja": null,
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "受付中とした情報が古いか、公式URLを確認できていません（確認日 2026-09-17）。最新の確認日と公式URLがそろうまで、受付状況は「未確認」としています。",
       "updated_at": "2026-09-17",
       "verification_tier": "CANONICAL_VERIFIED"
     },
@@ -7804,6 +7930,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7817,7 +7945,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 64,
+      "days_to_deadline": 63,
       "deadline": "2026-11-27",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -7898,6 +8026,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -7911,7 +8041,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 32,
+      "days_to_deadline": 31,
       "deadline": "2026-10-26",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -7992,6 +8122,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -8096,6 +8228,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -8200,6 +8334,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -8213,7 +8349,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -7,
+      "days_to_deadline": -8,
       "deadline": "2026-09-17",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -8295,6 +8431,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -8308,7 +8446,7 @@
         "プレミアムバンダイ 魂ウェブ商店"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 24,
+      "days_to_deadline": 23,
       "deadline": "2026-10-18",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -8378,10 +8516,10 @@
       "shipping_period": null,
       "source_references": [],
       "status": "RESTOCKED",
-      "status_basis": "DERIVED_FROM_WINDOW",
-      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
+      "status_basis": null,
+      "status_basis_label_ja": null,
       "status_label_ja": "再販・在庫復活",
-      "status_note_ja": null,
+      "status_note_ja": "受付中とした情報が古いか、公式URLを確認できていません（確認日 2026-09-17）。最新の確認日と公式URLがそろうまで、受付状況は「未確認」としています。",
       "updated_at": "2026-09-17",
       "verification_tier": "CANONICAL_PARTIAL"
     },
@@ -8399,6 +8537,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -8573,6 +8713,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -8586,7 +8728,7 @@
         "pokemon_center_online"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -24,
+      "days_to_deadline": -25,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -8847,9 +8989,9 @@
           },
           {
             "analogs_used": 2,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
             "ratio_max": null,
@@ -9113,6 +9255,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "記念版・特別版のBOXは通常版と売れ方が違うため、通常版の結果からは推論しません。同じ特別版の過去の結果が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -9126,7 +9270,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -8,
+      "days_to_deadline": -9,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -9329,6 +9473,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -9432,6 +9578,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -9535,6 +9683,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -9638,6 +9788,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -9804,6 +9956,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -9817,7 +9971,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -8,
+      "days_to_deadline": -9,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -9964,6 +10118,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10067,6 +10223,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10170,6 +10328,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10273,6 +10433,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10373,6 +10535,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10476,6 +10640,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10579,6 +10745,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10682,6 +10850,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10785,6 +10955,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10888,6 +11060,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -10991,6 +11165,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -11094,6 +11270,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -11186,6 +11364,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -11297,6 +11477,8 @@
           "抽選品は当選が前提です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -11310,7 +11492,7 @@
         "コナミスタイル"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 0,
+      "days_to_deadline": -1,
       "deadline": "2026-09-24",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -11349,6 +11531,11 @@
           "basis_ja": "追加抽選の実施を公式ページで確認（入手しやすくなる要素です）",
           "code": "RESTOCK",
           "label_ja": "追加販売・追加抽選あり（公式で確認）"
+        },
+        {
+          "basis_ja": "抽選応募の期限（2026年9月24日）を過ぎています",
+          "code": "END_OF_SALE",
+          "label_ja": "受付・販売は終了"
         }
       ],
       "payment_deadline": null,
@@ -11390,11 +11577,11 @@
           "url": "https://www.konami.com/yugioh/worldchampionship/2026/watching/"
         }
       ],
-      "status": "RESTOCKED",
+      "status": "RESULT_PENDING",
       "status_basis": "FACT_ADDITIONAL_LOTTERY",
       "status_basis_label_ja": "公式に告知された追加抽選の期間にもとづく",
-      "status_label_ja": "再販・在庫復活",
-      "status_note_ja": "受付中とした情報が古いか、公式URLを確認できていません（確認日 2026-09-15）。最新の確認日と公式URLがそろうまで、受付状況は「未確認」としています。",
+      "status_label_ja": "抽選結果待ち",
+      "status_note_ja": null,
       "updated_at": "2026-09-15",
       "verification_tier": "CANONICAL_VERIFIED"
     },
@@ -11527,6 +11714,18 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": {
+          "basis_ja": "この商品自身の取引ではなく、通常のカードゲーム拡張パックBOXの過去の結果からの推論です。結果が分かっている14件のうち10件が、発売1か月後に手数料を引いても定価を上回りました。ほかに8件は取引が少なく結果が分かっていません（取引が少ない商品ほど定価割れが多いため、勝ちとは数えていません）。",
+          "closure_ja": "結果が分かっていない8件のうち6件以上が定価を上回っていれば買い寄り、1件も上回っていなければ見送り寄りになります。",
+          "confidence_ja": "低",
+          "k": 10,
+          "label_ja": "様子見（推論）",
+          "level": "MIXED_SIGNALS",
+          "n": 14,
+          "record_ja": "この方法を過去の14件（それぞれ発売前に分かっていた結果だけを使用）に当てはめると、買い寄り1件中0件的中、見送り寄り0件中0件的中、様子見10件、判定なし3件でした。",
+          "u": 8
+        },
+        "inference_blocked_ja": null,
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -11772,6 +11971,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "記念版・特別版のBOXは通常版と売れ方が違うため、通常版の結果からは推論しません。同じ特別版の過去の結果が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -11902,6 +12103,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12004,6 +12207,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12106,6 +12311,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12119,7 +12326,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -37,
+      "days_to_deadline": -38,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -12224,6 +12431,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12326,6 +12535,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12339,7 +12550,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -37,
+      "days_to_deadline": -38,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -12444,6 +12655,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12653,6 +12866,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "記念版・特別版のBOXは通常版と売れ方が違うため、通常版の結果からは推論しません。同じ特別版の過去の結果が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -12890,6 +13105,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "記念版・特別版のBOXは通常版と売れ方が違うため、通常版の結果からは推論しません。同じ特別版の過去の結果が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13020,6 +13237,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13120,6 +13339,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13228,6 +13449,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13393,6 +13616,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13404,7 +13629,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 34,
+      "days_to_deadline": 33,
       "deadline": "2026-10-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -13608,6 +13833,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13619,7 +13846,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 50,
+      "days_to_deadline": 49,
       "deadline": "2026-11-13",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -13714,6 +13941,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13812,6 +14041,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -13978,21 +14209,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -14050,42 +14281,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -14107,17 +14338,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -14148,23 +14379,23 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 1,
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 4,
         "trends": [
           {
             "buckets": [
@@ -14305,6 +14536,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -14439,27 +14690,75 @@
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -14519,6 +14818,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -14561,6 +14882,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -14640,12 +14972,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -14655,12 +14987,12 @@
       "product_id": "ws-anemoi-bp",
       "product_name": "ブースターパック anemoi",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -14755,21 +15087,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -14827,42 +15159,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -14884,17 +15216,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -14925,23 +15257,23 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 1,
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 4,
         "trends": [
           {
             "buckets": [
@@ -15082,6 +15414,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -15216,27 +15568,75 @@
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -15296,6 +15696,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -15338,6 +15760,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -15417,12 +15850,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -15432,12 +15865,12 @@
       "product_id": "ws-azurlane-vol3-bp",
       "product_name": "ブースターパック アズールレーン Vol.3",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -15532,21 +15965,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -15604,42 +16037,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -15661,17 +16094,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -15702,23 +16135,23 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 1,
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 4,
         "trends": [
           {
             "buckets": [
@@ -15859,6 +16292,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -15993,27 +16446,75 @@
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -16073,6 +16574,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -16115,6 +16638,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -16186,12 +16720,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -16201,12 +16735,12 @@
       "product_id": "ws-bangdream-mujingai-bp",
       "product_name": "ブースターパック BanG Dream! [夢限大みゅーたいぷ]",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -16301,21 +16835,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -16373,42 +16907,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -16430,17 +16964,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -16471,23 +17005,23 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 1,
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 4,
         "trends": [
           {
             "buckets": [
@@ -16628,6 +17162,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -16762,27 +17316,75 @@
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -16842,6 +17444,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -16884,6 +17508,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -16963,12 +17598,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -16978,12 +17613,12 @@
       "product_id": "ws-chokaguyahime-pb",
       "product_name": "プレミアムブースター 超かぐや姫！",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -17078,21 +17713,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -17150,42 +17785,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -17207,17 +17842,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -17248,23 +17883,23 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
-        "strong_analogs_evaluable": 1,
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "strong_analogs_evaluable": 4,
         "trends": [
           {
             "buckets": [
@@ -17405,6 +18040,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -17539,27 +18194,75 @@
             "sale_unit": "BOX",
             "strength": "STRONG",
             "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "STRONG",
+            "strength_label_ja": "よく似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -17619,6 +18322,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -17661,6 +18386,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -17740,12 +18476,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -17755,12 +18491,12 @@
       "product_id": "ws-gup-bp",
       "product_name": "ブースターパック ガールズ＆パンツァー",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -17805,6 +18541,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -17907,6 +18645,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -18059,21 +18799,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -18131,42 +18871,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -18188,17 +18928,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -18229,22 +18969,22 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "trends": [
           {
@@ -18386,6 +19126,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -18520,27 +19280,75 @@
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -18600,6 +19408,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -18642,6 +19472,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -18721,12 +19562,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -18736,12 +19577,12 @@
       "product_id": "ws-nikke-vol2-bp",
       "product_name": "ブースターパック 勝利の女神：NIKKE Vol.2",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -18842,21 +19683,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -18914,42 +19755,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -18971,17 +19812,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -19012,22 +19853,22 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "trends": [
           {
@@ -19169,6 +20010,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -19303,27 +20164,75 @@
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -19383,6 +20292,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -19425,6 +20356,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -19504,12 +20446,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -19519,12 +20461,12 @@
       "product_id": "ws-persona30-bp",
       "product_name": "ブースターパック Persona 30th Anniversary",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -19625,21 +20567,21 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 6533,
+            "interval_low_jpy": 6300,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": 1360,
+            "median_sale_jpy": 6400,
+            "price_to_list_ratio": 1.455,
+            "result": "HEADROOM_ALL_SALES",
+            "result_label_ja": "すべての取引で、手数料を引いても定価を上回った",
+            "sale_days": 2,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": 1270
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック GA文庫",
@@ -19697,42 +20639,42 @@
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4500,
+            "interval_low_jpy": 3500,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1250
           },
           {
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
-            "interval_high_jpy": null,
-            "interval_low_jpy": null,
-            "list_price_jpy": null,
-            "median_headroom_jpy": null,
-            "median_sale_jpy": null,
-            "price_to_list_ratio": null,
-            "result": null,
-            "result_label_ja": "取引データは未確認",
-            "sale_days": null,
-            "sale_unit": null,
+            "interval_high_jpy": 4150,
+            "interval_low_jpy": 3750,
+            "list_price_jpy": 4400,
+            "median_headroom_jpy": -980,
+            "median_sale_jpy": 3800,
+            "price_to_list_ratio": 0.864,
+            "result": "NO_HEADROOM",
+            "result_label_ja": "どの取引も、手数料を引くと定価以下",
+            "sale_days": 3,
+            "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている",
-            "strict_sales": null,
-            "window_complete": null,
-            "worst_headroom_jpy": null
+            "strict_sales": 3,
+            "window_complete": true,
+            "worst_headroom_jpy": -1025
           }
         ],
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_linked": 9,
         "counter_signal_names": [
           "ヴァイスシュヴァルツ ブースターパック 葬送のフリーレン Vol.2",
@@ -19754,17 +20696,17 @@
             "text_ja": "似た商品2件のうち、発売1週間後（4〜10日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が2件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           },
           {
-            "cleared": 1,
-            "evaluable": 1,
+            "cleared": 2,
+            "evaluable": 4,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "text_ja": "似た商品1件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは1件でした。件数が1件と少ないため、傾向とは言えません。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
+            "text_ja": "似た商品4件のうち、発売1か月後（23〜37日）の取引価格の中央値が手数料を引いても定価を上回ったのは2件でした。このほか、取引が少なく比較の対象外とした似た商品が3件あります。"
           }
         ],
         "fee_rate": 0.1,
         "horizon": "d30",
         "horizon_label_ja": "発売後1か月（23〜37日）",
-        "median_headroom_jpy": 5482,
+        "median_headroom_jpy": 190,
         "outlook": [
           {
             "analogs_used": 2,
@@ -19795,22 +20737,22 @@
             "tier": "NO_NUMBER"
           },
           {
-            "analogs_used": 1,
-            "check_max_error": 0.6792,
-            "check_median_error": 0.348,
-            "check_n": 5,
+            "analogs_used": 4,
+            "check_max_error": 1.2683,
+            "check_median_error": 0.3114,
+            "check_n": 11,
             "horizon": "d30",
             "horizon_label_ja": "発売後1か月（23〜37日）",
-            "ratio_max": null,
-            "ratio_median": null,
-            "ratio_min": null,
+            "ratio_max": 2.495,
+            "ratio_median": 1.159,
+            "ratio_min": 0.864,
             "ratio_p25": null,
             "ratio_p75": null,
-            "tier": "NO_NUMBER"
+            "tier": "EVIDENCED"
           }
         ],
-        "result": "FEW_ANALOGS",
-        "result_label_ja": "比べられる類似品が少なく、傾向としては示せません（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
+        "result": "ANALOGS_MIXED",
+        "result_label_ja": "類似品によって結果が分かれた（参考）。ただし、取引の少ない類似品に定価割れの兆候あり",
         "strong_analogs_evaluable": 0,
         "trends": [
           {
@@ -19952,6 +20894,26 @@
                 "p75_jpy": 5700,
                 "ratio": 1.295,
                 "thin": true
+              },
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 6300,
+                "n": 1,
+                "p25_jpy": 6300,
+                "p75_jpy": 6300,
+                "ratio": 1.432,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 6533,
+                "n": 2,
+                "p25_jpy": 6466,
+                "p75_jpy": 6600,
+                "ratio": 1.485,
+                "thin": true
               }
             ],
             "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -20086,27 +21048,75 @@
             "sale_unit": "BOX",
             "strength": "MODERATE",
             "strength_label_ja": "ある程度似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3800,
+                "n": 3,
+                "p25_jpy": 3650,
+                "p75_jpy": 4150,
+                "ratio": 0.864,
+                "thin": false
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている"
+          },
+          {
+            "buckets": [
+              {
+                "day_from": 25,
+                "day_to": 31,
+                "median_jpy": 3750,
+                "n": 1,
+                "p25_jpy": 3750,
+                "p75_jpy": 3750,
+                "ratio": 0.852,
+                "thin": true
+              },
+              {
+                "day_from": 32,
+                "day_to": 45,
+                "median_jpy": 3975,
+                "n": 2,
+                "p25_jpy": 3888,
+                "p75_jpy": 4062,
+                "ratio": 0.903,
+                "thin": true
+              }
+            ],
+            "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+            "list_price_jpy": 4400,
+            "sale_unit": "BOX",
+            "strength": "MODERATE",
+            "strength_label_ja": "ある程度似ている"
           }
         ],
         "unit_note_ja": "この商品の販売単位（パック・BOXなど）はまだ確認できていません。類似品の金額はBOX単位のため、金額ではなく定価に対する倍率を目安にしてください。",
-        "worst_headroom_jpy": 4375
+        "worst_headroom_jpy": -1250
       },
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
-        "analogs_evaluable": 1,
+        "analogs_evaluable": 4,
         "analogs_needed": 3,
         "conditions_ja": [
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
+        "inference": null,
+        "inference_blocked_ja": null,
+        "label_ja": "様子見",
+        "level": "MIXED_SIGNALS",
+        "missing_ja": [],
+        "reason_ja": "似た商品は定価を上回りましたが、取引の少ない似た商品に定価割れがあります"
       },
       "category": "TCG",
       "category_raw": "tcg_booster",
@@ -20166,6 +21176,28 @@
           "sample_status_label_ja": "件数が少なめ（参考値）"
         },
         {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 「Re:ゼロから始める異世界生活」Vol.4",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4500,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3500,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 【推しの子】Vol.3",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 4150,
+          "median_price_jpy": 3800,
+          "minimum_price_jpy": 3750,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
+        },
+        {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック グランブルーファンタジー",
           "horizon": "d7",
           "horizon_label_ja": "発売後1週（4〜10日）",
@@ -20208,6 +21240,17 @@
           "sample_count": 1,
           "sample_status": "LOW_SAMPLE",
           "sample_status_label_ja": "件数が少なめ（参考値）"
+        },
+        {
+          "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
+          "horizon": "d30",
+          "horizon_label_ja": "発売後1か月（23〜37日）",
+          "maximum_price_jpy": 6666,
+          "median_price_jpy": 6400,
+          "minimum_price_jpy": 6300,
+          "sample_count": 3,
+          "sample_status": "READY",
+          "sample_status_label_ja": "最低件数（3件）以上"
         },
         {
           "comparable_name": "ヴァイスシュヴァルツ ブースターパック 東方Project ～ Black and White Lotus Land.",
@@ -20287,12 +21330,12 @@
       "official_url_kind": "OFFICIAL",
       "opportunity_signals": [
         {
-          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか5件について、13期間分の取引価格を集計しています（この商品自体の実績ではありません）",
+          "basis_ja": "類似品『ヴァイスシュヴァルツ ブースターパック GA文庫』ほか7件について、16期間分の取引価格を集計しています（この商品自体の実績ではありません）",
           "code": "HISTORICAL_PRICE_EVIDENCE",
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が34件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が43件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -20302,12 +21345,12 @@
       "product_id": "ws-stellasola-bp",
       "product_name": "ブースターパック ステラソラ",
       "profit_evidence_detail": {
-        "comparables_with_price_evidence": 4,
+        "comparables_with_price_evidence": 6,
         "comparables_with_verified_route": 0,
         "linked_comparables": 9,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 34
+        "strict_completed_sales": 43
       },
       "profit_evidence_label_ja": "過去の取引価格を確認（利益は未判定）",
       "profit_evidence_status": "PRICE_EVIDENCE_READY",
@@ -20358,6 +21401,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -20520,6 +21565,8 @@
           "定価で買えた場合の目安です",
           "送料などの費用はまだ差し引いておらず、利益ではありません"
         ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
         "label_ja": "判断材料不足",
         "level": "NOT_ENOUGH_EVIDENCE",
         "missing_ja": [
@@ -20534,7 +21581,7 @@
         "サテライトショップ（各店要確認）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 25,
+      "days_to_deadline": 24,
       "deadline": "2026-10-19",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",

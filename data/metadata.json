@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-24",
+  "as_of": "2026-09-25",
   "audit_metadata": {
     "builder": "build_dashboard.py",
     "contract": "CONTRACT.md",
@@ -60,7 +60,7 @@
     "product_group_parent": 1,
     "superseded_observation": 9
   },
-  "generated_at": "2026-09-24T23:26:29+09:00",
+  "generated_at": "2026-09-25T01:31:34+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかを示すもので、順位づけやおすすめではありません。",
     "history": "過去の取引価格は、比較のために選んだ別の商品（類似品）の取引実績です。この商品の利益ではありません。",
@@ -98,11 +98,11 @@
     },
     {
       "kind": "comparable_catalogue",
-      "rows": 56
+      "rows": 57
     },
     {
       "kind": "comparable_price_history",
-      "rows": 45
+      "rows": 49
     },
     {
       "kind": "comparable_acquisition_routes",

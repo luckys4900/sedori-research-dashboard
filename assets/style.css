@@ -3383,6 +3383,7 @@ body { line-break: strict; }
 .buy-tile[aria-pressed="true"] { outline: 2px solid var(--focus); outline-offset: 1px; }
 .buy-tile-top { grid-area: top; display: flex; align-items: center; gap: 6px; font-weight: 800; }
 .buy-tile-num { grid-area: num; font-size: 1.25rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.buy-tile-inf { grid-column: 1 / -1; font-size: var(--fs-aux); color: var(--fg-muted); font-weight: 700; }
 .buy-tile-cue { grid-area: cue; font-size: var(--fs-aux); color: var(--fg-muted); }
 .buy-glyph { color: var(--buy-c); font-weight: 900; }
 .buy--LEAN_BUY { --buy-c: var(--open); --buy-bg: var(--open-bg); }
@@ -3436,3 +3437,7 @@ body { line-break: strict; }
 @media (forced-colors: active) {
   .buy-tile, .buy-pill, .detail-buy { border-color: CanvasText; }
 }
+
+.buy-pill--inferred { border-style: dashed; }
+.detail-infer { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border-strong); }
+.detail-infer-line { margin: 6px 0 0; font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.6; }

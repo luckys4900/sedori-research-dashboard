@@ -60,14 +60,17 @@
           <li><button type="button" class="buy-tile buy--LEAN_BUY" data-buy="LEAN_BUY" aria-pressed="false">
             <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">●</span><span class="buy-tile-lbl">買い寄り</span></span>
             <span class="buy-tile-num" id="buy-n-LEAN_BUY">—</span>
+            <span class="buy-tile-inf" id="buy-inf-LEAN_BUY" hidden></span>
             <span class="buy-tile-cue">似た商品3件以上が、すべて定価超え</span></button></li>
           <li><button type="button" class="buy-tile buy--MIXED_SIGNALS" data-buy="MIXED_SIGNALS" aria-pressed="false">
             <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">◐</span><span class="buy-tile-lbl">様子見</span></span>
             <span class="buy-tile-num" id="buy-n-MIXED_SIGNALS">—</span>
+            <span class="buy-tile-inf" id="buy-inf-MIXED_SIGNALS" hidden></span>
             <span class="buy-tile-cue">似た商品の結果が分かれた</span></button></li>
           <li><button type="button" class="buy-tile buy--LEAN_SKIP" data-buy="LEAN_SKIP" aria-pressed="false">
             <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">○</span><span class="buy-tile-lbl">見送り寄り</span></span>
             <span class="buy-tile-num" id="buy-n-LEAN_SKIP">—</span>
+            <span class="buy-tile-inf" id="buy-inf-LEAN_SKIP" hidden></span>
             <span class="buy-tile-cue">似た商品が定価を超えなかった</span></button></li>
           <li><button type="button" class="buy-tile buy--NOT_ENOUGH_EVIDENCE" data-buy="NOT_ENOUGH_EVIDENCE" aria-pressed="false">
             <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">－</span><span class="buy-tile-lbl">判断材料不足</span></span>
@@ -78,7 +81,7 @@
           <h3 class="buy-near-title">判定に近い商品（あと何が必要か）</h3>
           <ul class="buy-near" id="buy-near"></ul>
         </div>
-        <p class="buy-note">発売1か月後の取引価格を、手数料を引いて定価と比べています。定価で買えた場合の目安で、抽選品は当選が前提です。送料などはまだ差し引いていないため、利益ではありません。販売単位（BOX・パック）が似た商品と同じ場合だけ判定します。</p>
+        <p class="buy-note">発売1か月後の取引価格を、手数料を引いて定価と比べています。この商品自身の根拠が足りないときは、似た種類の商品の過去の結果から「推論」として目安を出し、そう明記しています。定価で買えた場合の目安で、抽選品は当選が前提です。送料などはまだ差し引いていないため、利益ではありません。販売単位（BOX・パック）が似た商品と同じ場合だけ判定します。</p>
       </section>
 
       <!--
