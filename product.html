@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
-<meta name="description" content="商品の受付状況・締切・発売日・確認状況・出典の詳細。購入推奨・利益予測は含みません。">
+<meta name="description" content="商品ごとの受付状況、締切、発売日、出典をまとめた詳細ページです。購入のおすすめや利益の予測は含みません。">
 <title>商品詳細 | Sedori Research Dashboard</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -31,24 +31,24 @@
   <div class="panel panel--error" id="error-panel" hidden>
     <h2>データを読み込めませんでした</h2>
     <p id="error-detail"></p>
-    <p><code>data/products.json</code> が生成されているか、ページが HTTP 経由で配信されているかを確認してください。</p>
+    <p>通信環境をご確認のうえ、しばらくしてからページを再読み込みしてください。</p>
   </div>
 
   <p class="loading" id="loading">データを読み込み中…</p>
 
   <div class="panel" id="notfound-panel" hidden>
-    <h2>商品が見つかりません</h2>
-    <p id="notfound-detail">指定された商品 ID はこのデータセットに存在しません。</p>
+    <h2>お探しの商品が見つかりませんでした</h2>
+    <p id="notfound-detail">この URL の商品は、現在掲載していません。一覧からお探しください。</p>
     <p><a href="index.html">一覧に戻る</a></p>
   </div>
 
   <article class="detail" id="detail" hidden></article>
 
   <footer class="site-footer">
-    <p>公開情報の投影のみを表示します。購入推奨・利益予測・スコア・順位付けは一切含みません。</p>
-    <p>利益の自動評価はまだ利用できません。最終判断は読者が行います。</p>
-    <p>「定価」は公式に公表された価格で、仕入れ価格ではありません。「取得原価」は経路ごとの価格の裏付けが取れた場合のみ表示します。</p>
-    <p>不明な値は「不明」と表示します。月精度の発売日は月精度のまま表示します。</p>
+    <p>当サイトは、公式サイトなどの公開情報をもとに作成しています。購入のおすすめ、利益の予測、点数やランキングは含みません。</p>
+    <p>利益の自動評価は行っていません。</p>
+    <p>「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。「取得原価」は購入経路ごとに金額の裏付けが取れた場合のみ表示しています。</p>
+    <p>確認できていない項目は「未確認」と表示しています。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
   </footer>
 </main>
 

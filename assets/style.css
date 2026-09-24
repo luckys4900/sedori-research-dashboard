@@ -2777,3 +2777,143 @@ body { background-image: linear-gradient(180deg, var(--wash) 0, transparent 560p
 .bt-outlook-body { font-size: var(--fs-label); font-variant-numeric: tabular-nums; }
 .bt-outlook-low { font-size: 1.02rem; }
 .bt-outlook-none, .bt-outlook-meta { font-size: var(--fs-aux); color: var(--fg-muted); }
+
+/* ---------- 似た過去の商品の取引価格の推移（charts）----------
+   Series hues are a validated categorical set (adjacent CVD / normal-vision checks pass in
+   both modes, against --bg-elev). None of them is a state hue: green / red / purple stay with
+   受付中 / 締切間近 / flags. Light yellow / aqua / pink sit under 3:1 on white, so every value
+   is also in the direct labels, the tooltip and the 「表で見る」 table. Text never wears a
+   series colour; only lines, markers and legend keys do. */
+:root {
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --chart-surface: var(--bg-elev);
+  --chart-grid: #e8e6e0;
+  --chart-axis: #bcb8ae;
+  --chart-ref: #585f6a;
+  --chart-under: rgba(88, 95, 106, .075);
+  --chart-ol-band: rgba(88, 95, 106, .22);
+  --chart-ol-mid: #3f454e;
+  --chart-cross: #8a909b;
+  --chart-neutral: #6b7280;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --chart-grid: #2e323b;
+    --chart-axis: #4b5260;
+    --chart-ref: #a7aeba;
+    --chart-under: rgba(167, 174, 186, .075);
+    --chart-ol-band: rgba(167, 174, 186, .26);
+    --chart-ol-mid: #d3d7df;
+    --chart-cross: #7d8594;
+    --chart-neutral: #a7aeba;
+  }
+}
+
+.pchart { margin: 12px 0; padding: 0; min-width: 0; }
+.pchart-cap { display: grid; gap: 2px; margin-bottom: 6px; }
+.pchart-title { font-weight: 800; font-size: var(--fs-body); }
+.pchart-sub { font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.6; }
+.pchart-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 6px; padding: 0; list-style: none; font-size: var(--fs-aux); color: var(--fg); }
+.pchart-legend-item { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.pchart-legend-aux { color: var(--fg-muted); }
+.pchart-key { flex: none; overflow: visible; }
+.pchart-stage { position: relative; width: 100%; min-width: 0; }
+.pchart-svg { display: block; width: 100%; overflow: visible; touch-action: pan-y; font-family: inherit; }
+.pchart-svg:focus { outline: none; }
+.pchart-svg:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.s1 { --c: var(--series-1); }
+.s2 { --c: var(--series-2); }
+.s3 { --c: var(--series-3); }
+.s4 { --c: var(--series-4); }
+.s5 { --c: var(--series-5); }
+.s-neutral { --c: var(--chart-neutral); }
+
+.pchart-seg { stroke: var(--c); stroke-width: 2; stroke-linecap: round; fill: none; }
+.pchart-seg.is-thin { stroke-dasharray: 4 4; }
+.pchart-dot { fill: var(--c); stroke: var(--chart-surface); stroke-width: 2; }
+.pchart-dot.is-thin { fill: var(--chart-surface); stroke: var(--c); stroke-width: 2; }
+.pchart-dot.is-hot { stroke-width: 2.5; }
+.pchart-grid { stroke: var(--chart-grid); stroke-width: 1; shape-rendering: crispEdges; }
+.pchart-axis { stroke: var(--chart-axis); stroke-width: 1; shape-rendering: crispEdges; }
+.pchart-ref { stroke: var(--chart-ref); stroke-width: 1.5; }
+.pchart-under { fill: var(--chart-under); }
+.pchart-ol-band { fill: var(--chart-ol-band); }
+.pchart-ol-mid { stroke: var(--chart-ol-mid); stroke-width: 2; stroke-linecap: round; }
+.pchart-cross { stroke: var(--chart-cross); stroke-width: 1; pointer-events: none; }
+.pchart-hit { fill: transparent; cursor: crosshair; }
+.pchart-tick { fill: var(--fg-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.pchart-tick--ref { fill: var(--fg); font-weight: 700; }
+.pchart-note { fill: var(--fg-muted); font-size: 11px; font-weight: 700; }
+.pchart-tag { fill: var(--fg); font-size: 11px; font-weight: 700; }
+.pchart-halo { paint-order: stroke; stroke: var(--chart-surface); stroke-width: 3px; stroke-linejoin: round; }
+.pchart-svg text { pointer-events: none; }
+
+.pchart-tip {
+  position: absolute;
+  z-index: 2;
+  max-width: min(260px, 90%);
+  padding: 7px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow-lift);
+  font-size: var(--fs-aux);
+  line-height: 1.45;
+  pointer-events: none;
+}
+.pchart-tip-head { font-weight: 800; margin-bottom: 4px; color: var(--fg); }
+.pchart-tip-row { display: flex; gap: 6px; align-items: flex-start; padding: 3px 0; border-top: 1px solid var(--border); }
+.pchart-tip-row .pchart-key { margin-top: 4px; }
+.pchart-tip-body { min-width: 0; }
+.pchart-tip-val { color: var(--fg); font-variant-numeric: tabular-nums; }
+.pchart-tip-val strong { font-size: .92rem; }
+.pchart-tip-name, .pchart-tip-n { color: var(--fg-muted); }
+.pchart-tip-n.is-thin { font-weight: 700; color: var(--fg); }
+
+.pchart-more { margin: 4px 0 0; font-size: var(--fs-aux); color: var(--fg-muted); }
+.pchart-table { margin-top: 6px; font-size: var(--fs-label); }
+.pchart-table summary { cursor: pointer; font-weight: 700; color: var(--focus); min-height: var(--tap-min); display: flex; align-items: center; }
+.pchart-scroll { max-width: 100%; overflow-x: auto; }
+.pchart-table table { border-collapse: collapse; width: 100%; font-size: var(--fs-aux); }
+.pchart-table th, .pchart-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.pchart-table thead th { color: var(--fg-muted); font-weight: 700; white-space: nowrap; }
+.pchart-table tbody th { font-weight: 700; max-width: 12em; }
+.pchart-table tbody th.is-repeat { border-bottom-color: transparent; }
+.pchart-table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pchart-table tr.is-thin td { color: var(--fg-muted); }
+
+/* card sparkline: one ink line + the 1.0 (定価) line; decorative, the text beside it carries the value */
+.bt-spark { flex-basis: 100%; display: grid; gap: 1px; margin-top: 2px; }
+.bt-spark-svg { display: block; width: 100%; height: 34px; overflow: visible; }
+.spark-ref { stroke: var(--chart-ref); stroke-width: 1; stroke-opacity: .55; vector-effect: non-scaling-stroke; }
+.spark-line { stroke: var(--fg); stroke-width: 1.75; fill: none; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.bt-spark-cap { color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+
+/* analog ratio strip: where each ratio sits against 定価 (the vertical tick), one shared scale */
+.bt-strip-cap { margin: 0 0 2px; font-size: var(--fs-aux); color: var(--fg-muted); }
+.bt-strip { position: relative; display: block; height: 10px; margin-top: 4px; border-radius: 999px; background: var(--bg-sunken); }
+.bt-strip-bar { position: absolute; top: 3px; height: 4px; border-radius: 2px; background: var(--chart-ref); opacity: .55; }
+.bt-strip-one { position: absolute; top: -2px; bottom: -2px; width: 2px; margin-left: -1px; background: var(--fg); }
+.bt-strip-dot { position: absolute; top: 1px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--fg); box-shadow: 0 0 0 2px var(--bg-elev); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pchart-tip, .pchart-dot { transition: none; }
+}
+@media (forced-colors: active) {
+  .pchart-seg, .spark-line { stroke: CanvasText; }
+  .pchart-dot { fill: CanvasText; }
+  .pchart-dot.is-thin { fill: Canvas; stroke: CanvasText; }
+  .bt-strip-one, .bt-strip-dot { background: CanvasText; }
+}
+/* phones: the readout sits under the plot instead of over the lines */
+.pchart-stage.is-narrow .pchart-tip { position: static; max-width: none; margin-top: 6px; box-shadow: none; }
