@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-24",
-  "generated_at": "2026-09-24T22:11:08+09:00",
+  "generated_at": "2026-09-24T23:26:29+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -46,6 +46,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_keychain",
       "channel": [
@@ -183,6 +198,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_keychain",
       "channel": [
@@ -320,6 +350,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_keychain",
       "channel": [
@@ -457,6 +502,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_keychain",
       "channel": [
@@ -594,6 +654,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_keychain",
       "channel": [
@@ -731,6 +806,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_keychain",
       "channel": [
@@ -872,6 +962,21 @@
         "購入・応募数の条件",
         "類似品の取引実績あり"
       ],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_pouch",
       "channel": [
@@ -1036,6 +1141,21 @@
         "購入・応募数の条件",
         "類似品の取引実績あり"
       ],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_bag",
       "channel": [
@@ -1141,6 +1261,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "BOOK_MOOK",
       "category_raw": "tcg_anniversary_book",
       "channel": [
@@ -1227,6 +1361,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_anniversary_set",
       "channel": [
@@ -1312,6 +1461,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_anniversary_set",
       "channel": [
@@ -1411,6 +1574,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "BOOK_MOOK",
       "category_raw": "tcg_anniversary_book",
       "channel": [
@@ -1511,6 +1688,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "BOOK_MOOK",
       "category_raw": "tcg_guide_book",
       "channel": [
@@ -1605,6 +1796,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_supply",
       "channel": [
@@ -1690,6 +1896,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "BOOK_MOOK",
       "category_raw": "magazine_with_card",
       "channel": [
@@ -1785,6 +2005,20 @@
       "application_end": "2026-08-06",
       "application_start": "2026-07-06",
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -1882,6 +2116,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -1974,6 +2222,20 @@
       "application_end": "2026-05-07",
       "application_start": "2026-04-03",
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2066,6 +2328,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2150,6 +2426,20 @@
       "application_end": "2026-11-23",
       "application_start": "2026-10-09",
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2247,6 +2537,20 @@
       "application_end": "2026-09-06",
       "application_start": "2026-09-04",
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2346,6 +2650,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2435,6 +2753,20 @@
       "application_end": "2026-09-06",
       "application_start": "2026-09-04",
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2534,6 +2866,20 @@
       "application_end": "2026-11-01",
       "application_start": "2026-10-31",
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -2636,6 +2982,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -3272,6 +3632,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 4,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "類似品はBOX単位の取引ですが、この商品のBOXの公式定価をまだ確認できていません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -3542,6 +3916,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -3622,6 +4010,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -3702,6 +4104,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -3782,6 +4198,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -4070,6 +4500,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -4214,6 +4658,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -4309,6 +4767,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -4397,6 +4869,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -4485,6 +4971,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -4573,6 +5073,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -5186,6 +5700,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 4,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "類似品はBOX単位の取引ですが、この商品はパック単位の定価しか確認できていません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -5464,6 +5992,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_supply",
       "channel": [
@@ -5552,6 +6094,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_supply",
       "channel": [
@@ -5646,6 +6202,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_supply",
       "channel": [
@@ -5734,6 +6304,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_supply",
       "channel": [
@@ -5822,6 +6406,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_supply",
       "channel": [
@@ -5910,6 +6508,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "character_toy_premium",
       "channel": [
@@ -5990,6 +6602,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "candy_toy_box",
       "channel": [
@@ -6070,6 +6696,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -6169,6 +6810,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "candy_toy_premium",
       "channel": [
@@ -6249,6 +6904,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "FIGURE",
       "category_raw": "figure_premium",
       "channel": [
@@ -6329,6 +6998,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "BOOK_MOOK",
       "category_raw": "anniversary_art_book",
       "channel": [
@@ -6409,6 +7092,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_pass_case",
       "channel": [
@@ -6489,6 +7186,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_pass_case",
       "channel": [
@@ -6569,6 +7280,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "plush_goods_set",
       "channel": [
@@ -6649,6 +7374,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "CHARACTER_GOODS",
       "category_raw": "character_goods_set",
       "channel": [
@@ -6843,6 +7582,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "plastic_model_premium",
       "channel": [
@@ -6939,6 +7692,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "plastic_model_premium",
       "channel": [
@@ -7030,6 +7797,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "character_toy_premium",
       "channel": [
@@ -7110,6 +7891,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "character_toy_premium",
       "channel": [
@@ -7190,6 +7985,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "card_collection_premium",
       "channel": [
@@ -7280,6 +8089,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "card_collection_premium",
       "channel": [
@@ -7370,6 +8193,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "card_collection_premium",
       "channel": [
@@ -7450,6 +8287,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "FIGURE",
       "category_raw": "figure_premium",
       "channel": [
@@ -7540,6 +8392,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "FIGURE",
       "category_raw": "figure_large_premium",
       "channel": [
@@ -7699,6 +8565,21 @@
         "類似品の過去の取引価格あり",
         "類似品の取引実績あり"
       ],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_promo_card_set",
       "channel": [
@@ -8224,6 +9105,21 @@
         "類似品の過去の取引価格あり",
         "類似品の取引実績あり"
       ],
+      "buy_signal": {
+        "analogs_evaluable": 2,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が2件で、あと1件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster_box",
       "channel": [
@@ -8426,6 +9322,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -8515,6 +9425,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -8604,6 +9528,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -8693,6 +9631,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -8844,6 +9796,21 @@
         "類似品の過去の取引価格あり",
         "類似品の取引実績あり"
       ],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_premium_supply_box",
       "channel": [
@@ -8990,6 +9957,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9079,6 +10060,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9168,6 +10163,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9257,6 +10266,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [],
@@ -9343,6 +10366,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9432,6 +10469,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9521,6 +10572,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9610,6 +10675,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9699,6 +10778,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9788,6 +10881,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9877,6 +10984,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_supply",
       "channel": [
@@ -9966,6 +11087,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -10044,6 +11179,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TOY",
       "category_raw": "plastic_model",
       "channel": [
@@ -10140,6 +11289,21 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "抽選品は当選が前提です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_event_limited_set",
       "channel": [
@@ -10356,6 +11520,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -10587,6 +11765,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -10703,6 +11895,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [
@@ -10791,6 +11997,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [
@@ -10879,6 +12099,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [
@@ -10983,6 +12217,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [
@@ -11071,6 +12319,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [
@@ -11175,6 +12437,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_deck",
       "channel": [
@@ -11370,6 +12646,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -11593,6 +12883,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -11709,6 +13013,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -11795,6 +13113,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -11889,6 +13221,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -12040,6 +13386,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -12241,6 +13601,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -12333,6 +13707,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -12417,6 +13805,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
@@ -13045,6 +14447,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -13808,6 +15224,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -14571,6 +16001,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -15326,6 +16770,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -16089,6 +17547,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -16326,6 +17798,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -16414,6 +17900,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -17028,6 +18528,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -17797,6 +19311,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -18566,6 +20094,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 1,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品が1件で、あと2件必要です（3件以上で判定）"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_booster",
       "channel": [
@@ -18809,6 +20351,20 @@
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_starter",
       "channel": [
@@ -18957,6 +20513,20 @@
         "購入・応募数の条件",
         "類似品の取引実績あり"
       ],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
       "category": "TCG",
       "category_raw": "tcg_collector_set",
       "channel": [

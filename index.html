@@ -34,17 +34,51 @@
       <section class="signal-hero" aria-labelledby="signal-hero-title">
         <div class="hero-inner">
           <div class="hero-copy">
-            <h1 id="signal-hero-title"><span class="phrase">抽選・予約・再販の情報を、</span><span class="phrase">今日チェックしたい順に。</span></h1>
-            <p class="hero-text">受付状況・締切・発売日を、公式サイトなどの公開情報からまとめています。</p>
+            <h1 id="signal-hero-title"><span class="phrase">抽選・予約・再販の情報と、</span><span class="phrase">買いの目安を一目で。</span></h1>
+            <p class="hero-text">受付状況・締切・発売日を公式情報からまとめ、似た商品の過去の取引から「買いの目安」を付けています。</p>
             <div class="hero-actions">
-              <a class="hero-action hero-action--primary" id="hero-primary" href="#sec-closing">締切が近い商品を見る</a>
+              <a class="hero-action hero-action--primary" id="hero-primary" href="#buy-panel">買いの目安を見る</a>
               <a class="hero-action hero-action--link" id="hero-secondary" href="#sec-all">全商品から探す</a>
             </div>
-            <p class="hero-trust">購入のおすすめや利益の予測は含みません。購入はご自身でご判断ください。</p>
+            <p class="hero-trust">目安は似た商品の過去の取引にもとづく参考で、利益の予測ではありません。購入はご自身でご判断ください。</p>
           </div>
           <!-- Decorative: real product photos picked from the data at runtime (app.js). -->
           <div class="hero-collage" id="hero-collage" aria-hidden="true"></div>
         </div>
+      </section>
+
+      <!--
+        買いの目安（参考）. Four levels from the build; each tile filters the full list.
+        Levels always carry a glyph and a word, never colour alone.
+      -->
+      <section class="buy-panel" id="buy-panel" aria-labelledby="buy-title">
+        <div class="buy-head">
+          <h2 id="buy-title">買いの目安<span class="buy-ref">（参考）</span></h2>
+          <p class="buy-headline" id="buy-headline" aria-live="polite">—</p>
+        </div>
+        <ul class="buy-row">
+          <li><button type="button" class="buy-tile buy--LEAN_BUY" data-buy="LEAN_BUY" aria-pressed="false">
+            <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">●</span><span class="buy-tile-lbl">買い寄り</span></span>
+            <span class="buy-tile-num" id="buy-n-LEAN_BUY">—</span>
+            <span class="buy-tile-cue">似た商品3件以上が、すべて定価超え</span></button></li>
+          <li><button type="button" class="buy-tile buy--MIXED_SIGNALS" data-buy="MIXED_SIGNALS" aria-pressed="false">
+            <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">◐</span><span class="buy-tile-lbl">様子見</span></span>
+            <span class="buy-tile-num" id="buy-n-MIXED_SIGNALS">—</span>
+            <span class="buy-tile-cue">似た商品の結果が分かれた</span></button></li>
+          <li><button type="button" class="buy-tile buy--LEAN_SKIP" data-buy="LEAN_SKIP" aria-pressed="false">
+            <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">○</span><span class="buy-tile-lbl">見送り寄り</span></span>
+            <span class="buy-tile-num" id="buy-n-LEAN_SKIP">—</span>
+            <span class="buy-tile-cue">似た商品が定価を超えなかった</span></button></li>
+          <li><button type="button" class="buy-tile buy--NOT_ENOUGH_EVIDENCE" data-buy="NOT_ENOUGH_EVIDENCE" aria-pressed="false">
+            <span class="buy-tile-top"><span class="buy-glyph" aria-hidden="true">－</span><span class="buy-tile-lbl">判断材料不足</span></span>
+            <span class="buy-tile-num" id="buy-n-NOT_ENOUGH_EVIDENCE">—</span>
+            <span class="buy-tile-cue">根拠がまだ足りない</span></button></li>
+        </ul>
+        <div class="buy-near-wrap" id="buy-near-wrap" hidden>
+          <h3 class="buy-near-title">判定に近い商品（あと何が必要か）</h3>
+          <ul class="buy-near" id="buy-near"></ul>
+        </div>
+        <p class="buy-note">発売1か月後の取引価格を、手数料を引いて定価と比べています。定価で買えた場合の目安で、抽選品は当選が前提です。送料などはまだ差し引いていないため、利益ではありません。販売単位（BOX・パック）が似た商品と同じ場合だけ判定します。</p>
       </section>
 
       <!--
@@ -423,9 +457,20 @@
               </select>
             </div>
             <div class="field">
+              <label class="field-label" for="f-buy">買いの目安</label>
+              <select id="f-buy">
+                <option value="">すべて</option>
+                <option value="LEAN_BUY">買い寄り</option>
+                <option value="MIXED_SIGNALS">様子見</option>
+                <option value="LEAN_SKIP">見送り寄り</option>
+                <option value="NOT_ENOUGH_EVIDENCE">判断材料不足</option>
+              </select>
+            </div>
+            <div class="field">
               <label class="field-label" for="f-sort">並び順</label>
               <select id="f-sort">
                 <option value="deadline">締切が近い順</option>
+                <option value="buy">買いの目安順</option>
                 <option value="new">新着順</option>
                 <option value="release">発売日順</option>
                 <option value="price">定価が安い順</option>

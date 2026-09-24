@@ -619,6 +619,42 @@ function entryFacts(p) {
 /* ------------------------------------------------------------ analog backtest */
 
 /** The published backtest when at least one analog could be evaluated, else null. */
+/* ------------------------------------------------------------ 買いの目安（参考）
+   One level per product, taken from the build. The page never computes
+   it: it only shows the level, the reason, and — when evidence is missing — what is missing. */
+var BUY_LEVELS = ['LEAN_BUY', 'MIXED_SIGNALS', 'LEAN_SKIP', 'NOT_ENOUGH_EVIDENCE'];
+var BUY_GLYPH = { LEAN_BUY: '●', MIXED_SIGNALS: '◐', LEAN_SKIP: '○', NOT_ENOUGH_EVIDENCE: '－' };
+function buySignalOf(p) {
+  var b = p && p.buy_signal;
+  return (b && BUY_LEVELS.indexOf(b.level) !== -1) ? b : null;
+}
+function buyPill(b, big) {
+  var pill = el('span', 'buy-pill buy--' + b.level + (big ? ' buy-pill--big' : ''));
+  pill.appendChild(el('span', 'buy-glyph', BUY_GLYPH[b.level]));
+  pill.appendChild(el('span', 'buy-lbl', String(b.label_ja)));
+  pill.setAttribute('aria-label', '買いの目安（参考）：' + b.label_ja);
+  return pill;
+}
+/** One-line reason: the result when there is one, otherwise the first missing piece. */
+function buyWhy(b) {
+  if (b.level === 'NOT_ENOUGH_EVIDENCE') {
+    var m = Array.isArray(b.missing_ja) && b.missing_ja.length ? b.missing_ja[0] : null;
+    return m ? '足りないもの：' + m : String(b.reason_ja);
+  }
+  return String(b.reason_ja);
+}
+function buyLine(p) {
+  var b = buySignalOf(p);
+  if (!b) { return null; }
+  var box = el('div', 'c-buy');
+  var head = el('span', 'c-buy-head');
+  head.appendChild(el('span', 'c-buy-cap', '買いの目安'));
+  head.appendChild(buyPill(b, false));
+  box.appendChild(head);
+  box.appendChild(el('span', 'c-buy-why', buyWhy(b)));
+  return box;
+}
+
 function backtestOf(p) {
   var bt = p && p.analog_backtest;
   if (!bt || typeof bt !== 'object') { return null; }
@@ -1783,14 +1819,14 @@ function initIndex() {
   };
   var filters = {
     q: '', cat: '', mode: '', status: '', ev: '', profit: '', signal: '',
-    deadline: '', release: '', mark: '', sec: '',
+    deadline: '', release: '', mark: '', sec: '', buy: '',
     onlyNew: false, onlyRestock: false, onlyAttention: false, sort: 'deadline'
   };
 
   /* ------------------------------------------------------------ URL <-> state */
   var URL_KEYS = {
     q: 'q', cat: 'cat', mode: 'mode', status: 'st', ev: 'ev', profit: 'pe',
-    signal: 'sig', deadline: 'dl', release: 'rel', mark: 'mark', sec: 'sec',
+    signal: 'sig', deadline: 'dl', release: 'rel', mark: 'mark', sec: 'sec', buy: 'buy',
     sort: 'sort'
   };
   function readUrl() {
@@ -1802,7 +1838,8 @@ function initIndex() {
     filters.onlyNew = sp.get('new') === '1';
     filters.onlyRestock = sp.get('restock') === '1';
     filters.onlyAttention = sp.get('attn') === '1';
-    if (['deadline', 'new', 'release', 'price', 'updated'].indexOf(filters.sort) === -1) {
+    if (filters.buy && BUY_LEVELS.indexOf(filters.buy) === -1) { filters.buy = ''; }
+    if (['deadline', 'buy', 'new', 'release', 'price', 'updated'].indexOf(filters.sort) === -1) {
       filters.sort = 'deadline';
     }
     if (filters.sec && !sectionById(filters.sec)) { filters.sec = ''; }
@@ -1879,6 +1916,7 @@ function initIndex() {
     if (credit) { nameBox.appendChild(credit); }
     /* A drawn tile sits in the same column as real photos here, so it says what it is (audit F3). */
     if (!productImageOf(p)) { nameBox.appendChild(el('span', 'c-tile-note', '写真未掲載（カテゴリのイメージ図です）')); }
+    put(nameBox, buyLine(p));
     idRow.appendChild(nameBox);
     a.appendChild(idRow);
 
@@ -2042,6 +2080,7 @@ function initIndex() {
     if (feedMeta.length) { fText.appendChild(el('div', 'c-cat', feedMeta.join('・'))); }
     fIdent.appendChild(fText);
     a.appendChild(fIdent);
+    put(a, buyLine(p));
 
     /* 3. 今買えるか: state badge (only when confirmed) + 販売方式 + 確認状況, one line */
     var now = el('div', 'f-now');
@@ -2213,6 +2252,7 @@ function initIndex() {
       if (filters.ev && p.evidence_state !== filters.ev) { return false; }
       if (filters.profit && p.profit_evidence_status !== filters.profit) { return false; }
       if (!matchesSignal(p)) { return false; }
+      if (filters.buy && (buySignalOf(p) || {}).level !== filters.buy) { return false; }
       if (!matchesDeadline(p, filters.deadline)) { return false; }
       if (!matchesRelease(p, filters.release)) { return false; }
       if (filters.onlyNew && p.is_new !== true) { return false; }
@@ -2277,9 +2317,23 @@ function initIndex() {
     }
     return null;
   }
+  /** 買いの目安順: level order, then (for 判断材料不足) the fewest missing pieces first. */
+  function buyRank(p) {
+    var b = buySignalOf(p);
+    if (!b) { return [9, 9, 0]; }
+    var missing = Array.isArray(b.missing_ja) ? b.missing_ja.length : 0;
+    var noData = b.level === 'NOT_ENOUGH_EVIDENCE' && !(num(b.analogs_evaluable) > 0) ? 1 : 0;
+    return [BUY_LEVELS.indexOf(b.level), noData, missing, -(num(b.analogs_evaluable) || 0)];
+  }
+  function cmpBuy(a, b) {
+    var ra = buyRank(a), rb = buyRank(b);
+    for (var i = 0; i < ra.length; i++) { if (ra[i] !== rb[i]) { return ra[i] - rb[i]; } }
+    return cmpDeadline(a, b);
+  }
   function sortRows(rows) {
     var copy = rows.slice();
     switch (filters.sort) {
+      case 'buy': copy.sort(cmpBuy); break;
       case 'new': copy.sort(byFirstSeenDesc); break;
       case 'release': copy.sort(cmpNullsLast(releaseSortKey, 1)); break;
       case 'price':
@@ -2313,6 +2367,50 @@ function initIndex() {
       if (arguments[i] !== null && arguments[i] !== undefined) { return arguments[i]; }
     }
     return 0;
+  }
+
+  /* 買いの目安 panel: four counts (each a filter), an honest headline, and the products
+     closest to a signal with what they still need. */
+  function renderBuyPanel() {
+    var panel = $('buy-panel');
+    if (!panel) { return; }
+    var counts = {};
+    BUY_LEVELS.forEach(function (l) { counts[l] = 0; });
+    state.products.forEach(function (p) { var b = buySignalOf(p); if (b) { counts[b.level] += 1; } });
+    BUY_LEVELS.forEach(function (l) {
+      var n = $('buy-n-' + l);
+      if (n) { n.textContent = String(counts[l]); }
+      var btn = panel.querySelector('[data-buy="' + l + '"]');
+      if (btn) { btn.setAttribute('aria-pressed', filters.buy === l ? 'true' : 'false'); }
+    });
+    var head = $('buy-headline');
+    var decided = counts.LEAN_BUY + counts.MIXED_SIGNALS + counts.LEAN_SKIP;
+    if (head) {
+      head.textContent = counts.LEAN_BUY > 0
+        ? '「買い寄り」は ' + counts.LEAN_BUY + ' 件です。条件（定価で買えた場合・送料などは差し引いていない）もあわせてご確認ください。'
+        : (decided > 0
+          ? '今の時点で「買い寄り」と言える商品はありません。判定が出ている商品は下のボタンから確認できます。'
+          : '今の時点で、買い・見送りを判定できる商品はまだありません。判定に近い商品と、足りない根拠は下のとおりです。');
+    }
+    var list = $('buy-near');
+    if (!list) { return; }
+    while (list.firstChild) { list.removeChild(list.firstChild); }
+    var near = state.products.filter(function (p) {
+      var b = buySignalOf(p);
+      return b && b.level === 'NOT_ENOUGH_EVIDENCE' && num(b.analogs_evaluable) > 0;
+    }).sort(cmpBuy).slice(0, 5);
+    var wrap = $('buy-near-wrap');
+    if (wrap) { wrap.hidden = near.length === 0; }
+    near.forEach(function (p) {
+      var b = buySignalOf(p);
+      var li = el('li', 'buy-near-item');
+      var a = el('a', 'buy-near-link');
+      a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
+      a.appendChild(wordWrapText(el('span', 'buy-near-name'), String(p.product_name || '')));
+      a.appendChild(el('span', 'buy-near-miss', (b.missing_ja || []).join('／')));
+      li.appendChild(a);
+      list.appendChild(li);
+    });
   }
 
   function renderKpis() {
@@ -2676,7 +2774,7 @@ function initIndex() {
    * so a filter can never be active while its control is folded out of sight.
    * It reads `filters`; it never writes one.
    */
-  var ADV_KEYS = ['profit', 'signal', 'deadline', 'release', 'mark'];
+  var ADV_KEYS = ['profit', 'signal', 'deadline', 'release', 'mark', 'buy'];
   function renderAdvancedState() {
     var box = $('tb-adv');
     var label = $('tb-adv-state');
@@ -2718,6 +2816,7 @@ function initIndex() {
     renderActiveSection();
     renderAdvancedState();
     syncKpiPressed();
+    renderBuyPanel();
   }
 
   /** Rebuild the mark-box registry from the cards currently in the document. */
@@ -2745,6 +2844,7 @@ function initIndex() {
     $('f-deadline').value = filters.deadline;
     $('f-release').value = filters.release;
     $('f-mark').value = filters.mark;
+    $('f-buy').value = filters.buy;
     $('f-sort').value = filters.sort;
     $('f-new').checked = filters.onlyNew;
     $('f-restock').checked = filters.onlyRestock;
@@ -2752,7 +2852,7 @@ function initIndex() {
     /* A value coming from the URL may not be a real option — fall back to すべて. */
     var selects = { 'f-cat': 'cat', 'f-mode': 'mode', 'f-status': 'status', 'f-ev': 'ev',
       'f-profit': 'profit', 'f-signal': 'signal', 'f-deadline': 'deadline',
-      'f-release': 'release', 'f-mark': 'mark', 'f-sort': 'sort' };
+      'f-release': 'release', 'f-mark': 'mark', 'f-buy': 'buy', 'f-sort': 'sort' };
     Object.keys(selects).forEach(function (id) {
       if ($(id).selectedIndex === -1) { $(id).value = (id === 'f-sort') ? 'deadline' : ''; }
       filters[selects[id]] = $(id).value;
@@ -2769,6 +2869,7 @@ function initIndex() {
     filters.deadline = $('f-deadline').value;
     filters.release = $('f-release').value;
     filters.mark = $('f-mark').value;
+    filters.buy = $('f-buy').value;
     filters.sort = $('f-sort').value;
     filters.onlyNew = $('f-new').checked;
     filters.onlyRestock = $('f-restock').checked;
@@ -2780,7 +2881,7 @@ function initIndex() {
   function clearFilters() {
     filters.q = ''; filters.cat = ''; filters.mode = ''; filters.status = '';
     filters.ev = ''; filters.profit = ''; filters.signal = ''; filters.deadline = '';
-    filters.release = ''; filters.mark = ''; filters.sec = '';
+    filters.release = ''; filters.mark = ''; filters.sec = ''; filters.buy = '';
     filters.onlyNew = false; filters.onlyRestock = false; filters.onlyAttention = false;
   }
 
@@ -2788,7 +2889,7 @@ function initIndex() {
     var form = $('toolbar');
     form.addEventListener('submit', function (e) { e.preventDefault(); });
     ['f-q', 'f-cat', 'f-mode', 'f-status', 'f-ev', 'f-profit', 'f-signal', 'f-deadline',
-      'f-release', 'f-mark', 'f-sort', 'f-new', 'f-restock', 'f-attn'].forEach(function (id) {
+      'f-release', 'f-mark', 'f-buy', 'f-sort', 'f-new', 'f-restock', 'f-attn'].forEach(function (id) {
       var node = $(id);
       node.addEventListener('change', onControlChange);
       if (node.tagName === 'INPUT' && node.type === 'search') {
@@ -2804,6 +2905,21 @@ function initIndex() {
       filters.sec = '';
       writeUrl(); renderList();
     });
+
+    /* 買いの目安 tiles: one tap filters the full list to that level, sorted by the signal. */
+    var buyJumps = document.querySelectorAll('[data-buy]');
+    for (var k = 0; k < buyJumps.length; k++) {
+      buyJumps[k].addEventListener('click', function (e) {
+        var level = e.currentTarget.dataset.buy || '';
+        var again = filters.buy === level;
+        clearFilters();
+        filters.buy = again ? '' : level;
+        filters.sort = 'buy';
+        syncControlsFromFilters(); writeUrl(); renderList(); renderBuyPanel();
+        var target = $('sec-all');
+        if (target) { target.scrollIntoView({ block: 'start' }); }
+      });
+    }
 
     var markJumps = document.querySelectorAll('[data-mark-filter]');
     for (var j = 0; j < markJumps.length; j++) {
@@ -2858,6 +2974,7 @@ function initIndex() {
         state.metadata = side[1];
         renderHeaderMeta(doc);
         renderKpis();
+        renderBuyPanel();
         renderReserveKpi();
         renderKpiNote();
         renderMyCheck();
@@ -3387,6 +3504,28 @@ function initProduct() {
     if (badges.children.length) { headText.appendChild(badges); }
     head.appendChild(headText);
     heroBody.appendChild(head);
+
+    /* --- 買いの目安（参考）: the answer first, then why, then what is missing, then the conditions --- */
+    var bs = buySignalOf(p);
+    if (bs) {
+      var verdict = el('section', 'detail-buy buy-box--' + bs.level);
+      verdict.setAttribute('aria-label', '買いの目安（参考）');
+      var vHead = el('div', 'detail-buy-head');
+      vHead.appendChild(el('span', 'detail-buy-cap', '買いの目安（参考）'));
+      vHead.appendChild(buyPill(bs, true));
+      verdict.appendChild(vHead);
+      verdict.appendChild(el('p', 'detail-buy-why', String(bs.reason_ja)));
+      if (Array.isArray(bs.missing_ja) && bs.missing_ja.length) {
+        verdict.appendChild(el('p', 'detail-buy-sub', '判定に足りないもの'));
+        var ml = el('ul', 'detail-buy-list');
+        bs.missing_ja.forEach(function (m) { ml.appendChild(el('li', null, String(m))); });
+        verdict.appendChild(ml);
+      }
+      if (Array.isArray(bs.conditions_ja) && bs.conditions_ja.length) {
+        verdict.appendChild(el('p', 'detail-buy-cond', '条件：' + bs.conditions_ja.join('／')));
+      }
+      heroBody.appendChild(verdict);
+    }
     card.appendChild(hero);
     if (unverified) {
       heroBody.appendChild(el('div', 'warn-box',
