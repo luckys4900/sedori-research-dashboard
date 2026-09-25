@@ -231,7 +231,7 @@ function el(tag, className, text) {
  * or ratio with its unit (類似品4件, 1.42倍, 13日), and a short bracketed period （75〜105日）.
  * Only text nodes and nowrap spans are created; the textContent is unchanged.
  */
-var KEEP_RE = /あと\d+日|\d{4}年\d{1,2}月(?:\d{1,2}日)?|\d{1,2}月\d{1,2}日|(?:中央値|最大|上限|下限)\s?\d+(?:\.\d+)?(?:倍|%)|類似品\d+件|[−-]?[¥￥][\d,]+(?:〜[−-]?[¥￥][\d,]+)?|\d+(?:\.\d+)?(?:倍|件|日|%|か月|週)(?:\s*\/\s*\d+件中)?|（[^（）]{1,16}）|【[^【】]{1,12}】/g;
+var KEEP_RE = /あと\d+日|\d{4}年\d{1,2}月(?:\d{1,2}日)?|\d{1,2}月\d{1,2}日|(?:中央値|最大|上限|下限)\s?\d+(?:\.\d+)?(?:倍|%)|類似品\d+件|[+−-]?[¥￥][\d,]+(?:〜[+−-]?[¥￥][\d,]+)?|\d+(?:\.\d+)?(?:倍|件|日|%|か月|週)(?:\s*\/\s*\d+件中)?|（[^（）]{1,16}）|【[^【】]{1,12}】/g;
 function keepText(node, text) {
   var str = String(text);
   var last = 0;
@@ -302,6 +302,59 @@ function fmtGeneratedAt(s) {
 function fmtPrice(v) {
   if (num(v) === null) { return null; }
   return '¥' + Math.round(v).toLocaleString('ja-JP');
+}
+
+/* ------------------------------------------------------------ 利ざやの計算
+   The yen arithmetic the build publishes (margin_yen / track_record). The page never computes a margin;
+   it only lays the published numbers out, always with 「送料別」 or the shipping range, and 「利益ではありません」. */
+function fmtSignedYenPlain(v) {
+  if (num(v) === null) { return null; }
+  return (v > 0 ? '+' : v < 0 ? '−' : '±') + '¥' + Math.abs(Math.round(v)).toLocaleString('ja-JP');
+}
+function marginOf(p) {
+  var m = p && p.margin_yen;
+  return (m && num(m.diff_before_shipping_jpy) !== null) ? m : null;
+}
+/** 「送料込み −¥558〜−¥18」 when the build published a shipping range; null otherwise. */
+function marginAfterShippingText(m) {
+  if (num(m.diff_after_shipping_min_jpy) === null || num(m.diff_after_shipping_max_jpy) === null) { return null; }
+  return '送料込み ' + fmtSignedYenPlain(m.diff_after_shipping_min_jpy) + '〜' + fmtSignedYenPlain(m.diff_after_shipping_max_jpy);
+}
+/** Detail table: 定価 → 中央値 → 手数料 → 手数料後 → 差（送料別）→ 送料 → 送料込みの差. */
+function marginTable(m, title) {
+  var box = el('div', 'mtable');
+  if (title) { box.appendChild(el('p', 'mtable-title', title)); }
+  box.appendChild(el('p', 'mtable-basis', String(m.basis_ja) + '（取引' + m.sales_n + '件の中央値）'));
+  var dl = el('dl', 'mtable-rows');
+  function row(label, value, cls) {
+    if (value === null) { return; }
+    var r = el('div', 'mtable-row' + (cls ? ' ' + cls : ''));
+    r.appendChild(el('dt', null, label));
+    r.appendChild(elKeep('dd', null, value));
+    dl.appendChild(r);
+  }
+  row('定価' + (m.list_price_unit_ja ? '（' + m.list_price_unit_ja + '）' : ''), fmtPrice(m.list_price_jpy));
+  row('発売1か月後の取引の中央値', fmtPrice(m.reference_sale_jpy));
+  row('販売手数料（' + Math.round(num(m.fee_rate) * 100) + '%）', '−' + fmtPrice(m.fee_jpy));
+  row('手数料を引いた受取額', fmtPrice(m.after_fee_jpy));
+  row('定価との差（送料別）', fmtSignedYenPlain(m.diff_before_shipping_jpy), 'is-key');
+  if (num(m.shipping_min_jpy) !== null) {
+    row('送料（公式料金表・' + String(m.shipping_methods_ja) + '）', '−¥' + m.shipping_min_jpy.toLocaleString('ja-JP') +
+      '〜−¥' + m.shipping_max_jpy.toLocaleString('ja-JP'));
+    row('送料込みの差', fmtSignedYenPlain(m.diff_after_shipping_min_jpy) + '〜' + fmtSignedYenPlain(m.diff_after_shipping_max_jpy), 'is-key');
+  }
+  box.appendChild(dl);
+  box.appendChild(el('p', 'mtable-note', String(m.excluded_ja) +
+    (num(m.shipping_min_jpy) !== null ? '送料は梱包後のサイズが確認できていないため、使える発送方法の最安〜最高の幅で示しています。' : '')));
+  return box;
+}
+
+/** 定価 with its unit when the build publishes one (「¥4,400（1BOX（10パック））」 reads badly, so a slash). */
+function fmtListPrice(p) {
+  var v = fmtPrice(listPriceOf(p));
+  if (v === null) { return null; }
+  var unit = shownText(p && p.list_price_unit_ja);
+  return unit === null ? v : v + ' / ' + unit;
 }
 
 function fmtCount(v) {
@@ -624,6 +677,7 @@ function entryFacts(p) {
    it: it only shows the level, the reason, and — when evidence is missing — what is missing. */
 var BUY_LEVELS = ['LEAN_BUY', 'MIXED_SIGNALS', 'LEAN_SKIP', 'NOT_ENOUGH_EVIDENCE'];
 var BUY_GLYPH = { LEAN_BUY: '●', MIXED_SIGNALS: '◐', LEAN_SKIP: '○', NOT_ENOUGH_EVIDENCE: '－' };
+var BUY_LEVEL_WORD = { LEAN_BUY: '買い寄り', MIXED_SIGNALS: '様子見', LEAN_SKIP: '見送り寄り', NOT_ENOUGH_EVIDENCE: '判断材料不足' };
 function buySignalOf(p) {
   var b = p && p.buy_signal;
   return (b && BUY_LEVELS.indexOf(b.level) !== -1) ? b : null;
@@ -656,21 +710,6 @@ function buyWhy(b) {
   }
   return String(b.reason_ja);
 }
-function buyLine(p) {
-  var b = buySignalOf(p);
-  if (!b) { return null; }
-  var inf = inferenceOf(p);
-  var box = el('div', 'c-buy' + (inf ? ' is-inferred' : ''));
-  var head = el('span', 'c-buy-head');
-  head.appendChild(el('span', 'c-buy-cap', '買いの目安'));
-  head.appendChild(buyPill(inf || b, false));
-  box.appendChild(head);
-  box.appendChild(el('span', 'c-buy-why', inf
-    ? '似た種類の過去' + inf.n + '件のうち' + inf.k + '件が定価超え（ほか' + inf.u + '件は結果がまだ出ていない）'
-    : buyWhy(b)));
-  return box;
-}
-
 function backtestOf(p) {
   var bt = p && p.analog_backtest;
   if (!bt || typeof bt !== 'object') { return null; }
@@ -691,13 +730,135 @@ function fmtSignedYen(v) {
 
 /** Median of the evaluable analogs' price-to-list ratios, for the one-line summary. */
 function backtestMedianRatio(bt) {
+  var info = backtestRatioInfo(bt);
+  return info ? info.ratio : null;
+}
+/**
+ * The same median with the number of analogs behind it, so a card can say 「類似品N件」 next to
+ * the ratio. Ratios only (never yen): a ratio is unit-free, so it reads the same for a pack and a box.
+ * The ratio is the analogs' median traded price over their own list price, before the sales fee.
+ */
+function backtestRatioInfo(bt) {
+  if (!bt) { return null; }
   var r = (bt.analogs || []).filter(function (a) {
     return a && num(a.price_to_list_ratio) !== null && a.strict_sales >= 3 && a.list_price_jpy !== null &&
       a.result !== 'INSUFFICIENT_SAMPLE';
   }).map(function (a) { return a.price_to_list_ratio; }).sort(function (x, y) { return x - y; });
   if (!r.length) { return null; }
   var mid = Math.floor(r.length / 2);
-  return r.length % 2 ? r[mid] : (r[mid - 1] + r[mid]) / 2;
+  return { ratio: r.length % 2 ? r[mid] : (r[mid - 1] + r[mid]) / 2, n: r.length };
+}
+
+/* ------------------------------------------------------------- 価値の目安（value strip）
+   One compact block per card that answers "is this worth a look?" from fields the build already
+   publishes: 定価, the similar products' traded price as a multiple of THEIR list price, and the
+   buy level (evidence first, then 推論). Nothing is computed here that the build did not publish,
+   except the median of the published per-analog ratios (the same median the 類似品 box shows). */
+
+/** 「発売後1か月（23〜37日）」 -> 「発売後1か月」, for a label that has to fit a card. */
+function horizonShort(bt) {
+  var hl = shownText(bt && bt.horizon_label_ja);
+  return hl ? hl.replace(/（.*$/, '') : null;
+}
+
+/** What still separates this product from a clearer signal, or null. Build text only. */
+function buyNeedText(p) {
+  var b = buySignalOf(p);
+  if (!b) { return null; }
+  var inf = inferenceOf(p);
+  if (inf) { return shownText(inf.closure_ja); }
+  if (b.level !== 'NOT_ENOUGH_EVIDENCE') { return null; }
+  var m = Array.isArray(b.missing_ja) ? b.missing_ja.filter(function (x) { return shownText(x) !== null; }) : [];
+  if (m.length) { return m.join('／'); }
+  return shownText(b.inference_blocked_ja);
+}
+
+/** The one-line reason under the level: the result, the inference counts, or what is missing. */
+function buyReasonText(p) {
+  var b = buySignalOf(p);
+  if (!b) { return null; }
+  var inf = inferenceOf(p);
+  if (inf) {
+    return '似た種類の過去' + inf.n + '件のうち' + inf.k + '件が定価超え（ほか' + inf.u + '件は結果がまだ出ていない）';
+  }
+  return buyWhy(b);
+}
+
+/**
+ * The value strip. opts.withPrice adds 定価 (feed cards; the screener has its own 定価 column);
+ * opts.need adds 「あと何が必要か」 (the 利ざや候補 view).
+ */
+function valueStrip(p, opts) {
+  opts = opts || {};
+  var b = buySignalOf(p);
+  var bt = hasEvaluableBacktest(p) ? backtestOf(p) : null;
+  var info = bt ? backtestRatioInfo(bt) : null;
+  var listP = opts.withPrice ? fmtListPrice(p) : null;
+  if (!b && !info && listP === null) { return null; }
+  var inf = inferenceOf(p);
+  var level = inf ? inf.level : (b ? b.level : null);
+  var box = el('div', 'vstrip' + (level ? ' buy--' + level : '') + (inf ? ' is-inferred' : '') +
+    (opts.need ? ' vstrip--need' : '') + (opts.compact ? ' vstrip--compact' : ''));
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label', '価値の目安（参考）');
+
+  if (b) {
+    var head = el('div', 'vs-head');
+    head.appendChild(el('span', 'vs-cap', '買いの目安'));
+    head.appendChild(buyPill(inf || b, false));
+    if (inf && shownText(inf.confidence_ja) !== null) {
+      head.appendChild(elKeep('span', 'vs-conf', '推論・確からしさ ' + inf.confidence_ja));
+    }
+    box.appendChild(head);
+  }
+
+  if (listP !== null || info) {
+    var nums = el('dl', 'vs-nums');
+    if (listP !== null) {
+      var pc = el('div', 'vs-cell vs-cell--price');
+      pc.appendChild(el('dt', 'vs-lbl', '定価'));
+      pc.appendChild(elKeep('dd', 'vs-val', listP));
+      nums.appendChild(pc);
+    }
+    if (info) {
+      var rc = el('div', 'vs-cell vs-cell--ratio');
+      var hs = horizonShort(bt);
+      rc.appendChild(el('dt', 'vs-lbl', '似た商品の取引' + (hs ? '（' + hs.replace(/^発売後/, '') + '）' : '')));
+      var dd = el('dd', 'vs-val');
+      dd.appendChild(elKeep('span', 'vs-ratio', '定価の' + info.ratio.toFixed(2) + '倍'));
+      var sub = el('span', 'vs-sub');
+      sub.appendChild(el('span', 'nb', '類似品' + info.n + '件の中央値'));
+      if (info.ratio !== 1) {
+        sub.appendChild(el('span', 'nb vs-dir', info.ratio > 1 ? '↑定価より高い' : '↓定価より低い'));
+      }
+      dd.appendChild(sub);
+      rc.appendChild(dd);
+      nums.appendChild(rc);
+    }
+    box.appendChild(nums);
+  }
+  var mg = marginOf(p);
+  if (mg && !opts.compact) {
+    var mc = el('p', 'vs-margin' + (mg.diff_before_shipping_jpy > 0 ? ' is-plus' : ' is-minus'));
+    mc.appendChild(el('span', 'vs-margin-lbl', mg.basis === 'OWN' ? 'この商品の実績' : '倍率を当てはめると'));
+    keepText(mc, '定価との差 ' + fmtSignedYenPlain(mg.diff_before_shipping_jpy) + '（手数料後・送料別）');
+    var ship = marginAfterShippingText(mg);
+    if (ship) { mc.appendChild(elKeep('span', 'vs-margin-ship', ship)); }
+    box.appendChild(mc);
+  }
+
+  if (b) {
+    var why = buyReasonText(p);
+    if (why) { box.appendChild(elKeep('p', 'vs-why', why)); }
+    var need = opts.need ? buyNeedText(p) : null;
+    if (need) {
+      var np = el('p', 'vs-need');
+      np.appendChild(el('span', 'vs-need-lbl', inf ? '目安が変わる条件' : 'あと必要なもの'));
+      keepText(np, need);
+      box.appendChild(np);
+    }
+  }
+  return box;
 }
 
 /**
@@ -1932,7 +2093,8 @@ function initIndex() {
     if (credit) { nameBox.appendChild(credit); }
     /* A drawn tile sits in the same column as real photos here, so it says what it is (audit F3). */
     if (!productImageOf(p)) { nameBox.appendChild(el('span', 'c-tile-note', '写真未掲載（カテゴリのイメージ図です）')); }
-    put(nameBox, buyLine(p));
+    /* 価値の目安: level + the similar products' ratio (定価 has its own column here) */
+    put(nameBox, valueStrip(p, { compact: true }));
     idRow.appendChild(nameBox);
     a.appendChild(idRow);
 
@@ -1976,7 +2138,7 @@ function initIndex() {
     a.appendChild(ev);
 
     /* --- L3: 定価 — the published list price. NOT an acquisition price. --- */
-    a.appendChild(cell('c-list-price', '定価', fmtPrice(listPriceOf(p))));
+    a.appendChild(cell('c-list-price', '定価', fmtListPrice(p)));
 
     /* --- L3: 取得原価 — only when a verified route price exists; otherwise not shown. --- */
     a.appendChild(cell('c-acq', '取得原価', fmtPrice(acquisitionCostOf(p))));
@@ -2043,8 +2205,9 @@ function initIndex() {
      external link is only rendered when the published URL passed the HTTPS safety gate. */
   function cardActions(p) {
     var actions = el('div', 'card-actions');
-    var detailLink = el('a', 'card-action card-action--detail', '詳細を見る');
+    var detailLink = el('a', 'card-action card-action--detail', '条件・根拠を見る');
     detailLink.href = 'product.html?id=' + encodeURIComponent(p.product_id);
+    if (!isUnknown(p.product_name)) { detailLink.setAttribute('aria-label', String(p.product_name) + '：条件・根拠を見る'); }
     actions.appendChild(detailLink);
     var ext = outboundCta(p, 'card-action card-action--ext');
     if (ext) { actions.appendChild(ext); }
@@ -2059,7 +2222,8 @@ function initIndex() {
    * 購入先, the 5-step evidence ladder, 注目候補の理由, route evidence, notes.
    * 取得原価 stays, as a quiet secondary line under 定価.
    */
-  function buildFeedCard(p) {
+  function buildFeedCard(p, opts) {
+    opts = opts || {};
     var li = el('li', 'card card--feed' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
     li.dataset.id = p.product_id;
     var a = el('a', 'card-main');
@@ -2096,7 +2260,9 @@ function initIndex() {
     if (feedMeta.length) { fText.appendChild(el('div', 'c-cat', feedMeta.join('・'))); }
     fIdent.appendChild(fText);
     a.appendChild(fIdent);
-    put(a, buyLine(p));
+    /* 2b. 価値の目安: 定価 / similar products' ratio / buy level — read right after the name */
+    var strip = valueStrip(p, { withPrice: true, need: !!opts.need });
+    put(a, strip);
 
     /* 3. 今買えるか: state badge (only when confirmed) + 販売方式 + 確認状況, one line */
     var now = el('div', 'f-now');
@@ -2129,7 +2295,8 @@ function initIndex() {
     /* 5. 定価 + 発売日 (取得原価 as a secondary line — never the list price, and only when
           a verified amount exists) */
     var row1 = el('div', 'f-row');
-    var listP = fmtPrice(listPriceOf(p));
+    /* 定価 already sits in the value strip when there is one; it is never shown twice */
+    var listP = strip && strip.querySelector('.vs-cell--price') ? null : fmtListPrice(p);
     var acq = fmtPrice(acquisitionCostOf(p));
     if (listP !== null) {
       var price = cell('c-list-price', '定価', listP);
@@ -2411,29 +2578,37 @@ function initIndex() {
       head.textContent = counts.LEAN_BUY > 0
         ? '「買い寄り」は ' + counts.LEAN_BUY + ' 件です。条件（定価で買えた場合・送料などは差し引いていない）もあわせてご確認ください。'
         : (decided > 0
-          ? '今の時点で「買い寄り」と言える商品はありません。目安が出ている ' + decided + ' 件は、似た商品の結果が分かれていて様子見です。'
-          : '今の時点で、買い・見送りを判定できる商品はまだありません。判定に近い商品と、足りない根拠は下のとおりです。');
+          ? '今の時点で「買い寄り」と言える商品はありません。目安が出ているのは ' + decided + ' 件（' +
+            BUY_LEVELS.filter(function (l) { return l !== 'NOT_ENOUGH_EVIDENCE' && counts[l]; }).map(function (l) {
+              return BUY_LEVEL_WORD[l] + ' ' + counts[l] + '件';
+            }).join('・') + '）です。'
+          : '今の時点で、目安を出せる商品はまだありません。判定に近い商品と足りない根拠は「利ざや候補」にまとめています。');
     }
-    var list = $('buy-near');
-    if (!list) { return; }
-    while (list.firstChild) { list.removeChild(list.firstChild); }
-    var near = state.products.filter(function (p) {
-      var b = buySignalOf(p);
-      return b && effectiveLevel(p) === 'NOT_ENOUGH_EVIDENCE' &&
-        (num(b.analogs_evaluable) > 0 || /BOXの公式定価/.test(String(b.inference_blocked_ja || '')));
-    }).sort(cmpBuy).slice(0, 5);
-    var wrap = $('buy-near-wrap');
-    if (wrap) { wrap.hidden = near.length === 0; }
-    near.forEach(function (p) {
-      var b = buySignalOf(p);
-      var li = el('li', 'buy-near-item');
-      var a = el('a', 'buy-near-link');
-      a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
-      a.appendChild(wordWrapText(el('span', 'buy-near-name'), String(p.product_name || '')));
-      var why = (b.missing_ja || []).slice();
-      if (!why.length && b.inference_blocked_ja) { why.push(String(b.inference_blocked_ja)); }
-      a.appendChild(el('span', 'buy-near-miss', why.join('／')));
-      li.appendChild(a);
+  }
+
+  /* 過去の実績: past products with a complete 1-month window, the published arithmetic,
+     most above list first — the "which kinds of product left a margin" view. */
+  function renderTrackRecord() {
+    var root = $('sec-track');
+    var list = $('track-list');
+    var rows = (state.doc && Array.isArray(state.doc.track_record)) ? state.doc.track_record : [];
+    if (!root || !list) { return; }
+    root.hidden = rows.length === 0;
+    list.textContent = '';
+    $('track-count').textContent = '全' + rows.length + '件';
+    rows.forEach(function (t) {
+      var li = el('li', 'track-item' + (t.diff_before_shipping_jpy > 0 ? ' is-plus' : ' is-minus'));
+      var name = el('div', 'track-name');
+      wordWrapText(name, String(t.comparable_name));
+      li.appendChild(name);
+      var nums = el('div', 'track-nums');
+      nums.appendChild(elKeep('span', 'track-ratio', '定価の' + Number(t.price_to_list_ratio).toFixed(2) + '倍'));
+      nums.appendChild(elKeep('span', 'track-prices', fmtPrice(t.list_price_jpy) + ' → ' + fmtPrice(t.reference_sale_jpy) +
+        '（' + t.sales_n + '件の中央値）'));
+      nums.appendChild(elKeep('span', 'track-diff', '手数料後の差 ' + fmtSignedYenPlain(t.diff_before_shipping_jpy) + '（送料別）'));
+      var ship = marginAfterShippingText(t);
+      if (ship) { nums.appendChild(elKeep('span', 'track-ship', ship)); }
+      li.appendChild(nums);
       list.appendChild(li);
     });
   }
@@ -2578,8 +2753,95 @@ function initIndex() {
     return isUnknown(p.updated_at) ? null : String(p.updated_at);
   }, -1);
 
+  /* ------------------------------------------------------------ 利ざや候補（参考）
+     Candidates = an effective level of 買い寄り or 様子見 (evidence, or 推論 when the product's own
+     evidence is short). 見送り寄り is not a candidate. Products that are close to a level but not
+     there yet are listed separately with what they still need — never mixed into the order. */
+  var MARGIN_LEVELS = ['LEAN_BUY', 'MIXED_SIGNALS'];
+  function isMarginCandidate(p) { return MARGIN_LEVELS.indexOf(effectiveLevel(p)) !== -1; }
+  function isNearSignal(p) {
+    var b = buySignalOf(p);
+    return !!b && effectiveLevel(p) === 'NOT_ENOUGH_EVIDENCE' &&
+      (num(b.analogs_evaluable) > 0 || /BOXの公式定価/.test(String(b.inference_blocked_ja || '')));
+  }
+  /* Ordering uses a ratio only when at least 3 analogs stand behind it (the reference minimum);
+     a thinner ratio is still shown on the card with its 類似品N件, but it does not move the order. */
+  function marginRatio(p) {
+    var info = hasEvaluableBacktest(p) ? backtestRatioInfo(backtestOf(p)) : null;
+    return info && info.n >= 3 ? info.ratio : null;
+  }
+  function cmpMargin(a, b) {
+    var la = BUY_LEVELS.indexOf(effectiveLevel(a)), lb = BUY_LEVELS.indexOf(effectiveLevel(b));
+    if (la !== lb) { return la - lb; }
+    var ia = inferenceOf(a) ? 1 : 0, ib = inferenceOf(b) ? 1 : 0;
+    if (ia !== ib) { return ia - ib; }
+    var ra = marginRatio(a), rb = marginRatio(b);
+    if (ra === null && rb !== null) { return 1; }
+    if (rb === null && ra !== null) { return -1; }
+    if (ra !== null && rb !== null && ra !== rb) { return rb - ra; }
+    return cmpDeadline(a, b);
+  }
+
+  /** The view's own headline (says plainly when nothing is 買い寄り) and the 「判定に近い商品」 list. */
+  function renderMargin() {
+    var root = $('sec-margin');
+    if (!root) { return; }
+    var rows = state.products.filter(isMarginCandidate);
+    var lean = rows.filter(function (p) { return effectiveLevel(p) === 'LEAN_BUY'; });
+    var inferred = rows.filter(function (p) { return !!inferenceOf(p); }).length;
+    var stateNode = $('margin-state');
+    if (stateNode) {
+      var infTxt = inferred ? '（うち推論 ' + inferred + '件）' : '';
+      stateNode.textContent = lean.length
+        ? '「買い寄り」は ' + lean.length + '件です。目安が出ている ' + rows.length + '件' + infTxt + 'を、下の順に並べています。'
+        : (rows.length
+          ? '今の時点で「買い寄り」の商品はありません。いちばん近いのは、似た商品の結果が分かれた「様子見」の ' +
+            rows.length + '件' + infTxt + 'です。各商品に、あと何が必要かを添えています。'
+          : '今の時点で、目安が出ている商品はありません。判定に近い商品と、足りない根拠は下のとおりです。');
+      stateNode.classList.toggle('has-lean', lean.length > 0);
+    }
+    var near = state.products.filter(isNearSignal).sort(cmpBuy);
+    var wrap = $('margin-near-wrap');
+    var list = $('margin-near');
+    if (!wrap || !list) { return; }
+    list.textContent = '';
+    wrap.hidden = near.length === 0;
+    near.forEach(function (p) {
+      var li = el('li', 'near-item');
+      var a = el('a', 'near-link');
+      a.href = 'product.html?id=' + encodeURIComponent(p.product_id);
+      var im = productImageOf(p);
+      if (im) {
+        var fig = el('span', 'near-thumb');
+        var nimg = photoEl(p, im, 'near-img', true, false);
+        nimg.addEventListener('error', function () { if (fig.parentNode) { fig.parentNode.removeChild(fig); } });
+        fig.appendChild(nimg);
+        a.appendChild(fig);
+      }
+      var txt = el('span', 'near-text');
+      txt.appendChild(wordWrapText(el('span', 'near-name'), String(p.product_name || '')));
+      var need = buyNeedText(p);
+      if (need) {
+        var np = el('span', 'near-need');
+        np.appendChild(el('span', 'vs-need-lbl', 'あと必要なもの'));
+        keepText(np, need);
+        txt.appendChild(np);
+      }
+      a.appendChild(txt);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    var go = $('buy-go-n');
+    if (go) { go.textContent = String(rows.length + near.length); }
+  }
+
   var SECTIONS = [
     { id: 'sec-closing', name: '締切間近', sort: cmpDeadline, pick: isClosingSoonRow },
+    /* 利ざや候補（参考, owner decision 2026-09-25): ordered by the value signal — level (evidence
+       before 推論), then the similar products' median ratio, then the deadline. Each card says what
+       it still needs. The only section not ordered by deadline first, and the only ratio ordering. */
+    { id: 'sec-margin', name: '利ざや候補（参考）', sort: cmpMargin, pick: isMarginCandidate,
+      cardOpts: { need: true } },
     { id: 'sec-nearterm', name: '期日が7日以内（締切間近以外）', sort: cmpDeadline,
 
       pick: isNearTermUnconfirmed },
@@ -2639,7 +2901,7 @@ function initIndex() {
          one-item section is a readable card, not a third of an empty row. */
       list.dataset.count = shown.length > 3 ? 'many' : String(shown.length);
       var frag = document.createDocumentFragment();
-      shown.forEach(function (p) { frag.appendChild(buildFeedCard(p)); });
+      shown.forEach(function (p) { frag.appendChild(buildFeedCard(p, sec.cardOpts)); });
       list.appendChild(frag);
       if (rows.length > SECTION_CAP && count) {
         count.textContent = '全' + rows.length + '件中 ' + shown.length + '件を表示';
@@ -2715,14 +2977,31 @@ function initIndex() {
     var btn = $('hero-primary');
     var alt = $('hero-secondary');
     if (!btn) { return; }
+    var margin = sectionById('sec-margin');
+    var nMargin = margin ? state.products.filter(margin.pick).length : 0;
+    function setAlt(href, text) {
+      if (!alt) { return; }
+      alt.href = href;
+      alt.textContent = text;
+      alt.hidden = false;
+    }
+    /* deadline first: the first confirmed-open section with items */
     for (var i = 0; i < PRIMARY_TARGETS.length; i++) {
       var sec = sectionById(PRIMARY_TARGETS[i][0]);
       var n = sec ? state.products.filter(sec.pick).length : 0;
       if (n > 0) {
         btn.href = '#' + PRIMARY_TARGETS[i][0];
         btn.textContent = PRIMARY_TARGETS[i][1] + '（' + n + '件）';
+        if (nMargin > 0) { setAlt('#sec-margin', '利ざや候補を見る'); } else { setAlt('#sec-all', '全商品から探す'); }
         return;
       }
+    }
+    /* nothing is confirmed open: the value view, which always explains itself */
+    if (nMargin > 0) {
+      btn.href = '#sec-margin';
+      btn.textContent = '利ざや候補を見る（' + nMargin + '件）';
+      setAlt('#sec-all', '全商品から探す');
+      return;
     }
     btn.href = '#sec-all';
     btn.textContent = '全商品から探す';
@@ -2776,6 +3055,8 @@ function initIndex() {
       btn.addEventListener('click', function () {
         clearFilters();
         filters.sec = sec.id;
+        /* the value view keeps its level order in the full list (買いの目安順) */
+        if (sec.id === 'sec-margin') { filters.sort = 'buy'; }
         syncControlsFromFilters();
         writeUrl();
         renderList();
@@ -3000,6 +3281,7 @@ function initIndex() {
         renderHeaderMeta(doc);
         renderKpis();
         renderBuyPanel();
+        renderTrackRecord();
         renderReserveKpi();
         renderKpiNote();
         renderMyCheck();
@@ -3011,6 +3293,7 @@ function initIndex() {
         wireSectionMoreButtons();
         renderHeroCollage();
         renderSections();
+        renderMargin();
         renderPrimaryAction();
         mountHowCounted();
         renderList();
@@ -3090,7 +3373,7 @@ function initProduct() {
       rendered; with neither 定価 nor a verified 取得原価 there is no price block. */
   function pricePair(p) {
     var items = [];
-    var listPrice = fmtPrice(listPriceOf(p));
+    var listPrice = fmtListPrice(p);
     var acq = fmtPrice(acquisitionCostOf(p));
     if (listPrice !== null) { items.push([shownText(p.list_price_label_ja) || '定価', listPrice]); }
     if (acq !== null) { items.push(['取得原価', acq]); }
@@ -3563,6 +3846,8 @@ function initProduct() {
       } else if (bs.level === 'NOT_ENOUGH_EVIDENCE' && bs.inference_blocked_ja) {
         verdict.appendChild(el('p', 'detail-infer-line', '推論について：' + String(bs.inference_blocked_ja)));
       }
+      var dm = marginOf(p);
+      if (dm) { verdict.appendChild(marginTable(dm, '利ざやの計算（参考）')); }
       if (Array.isArray(bs.conditions_ja) && bs.conditions_ja.length) {
         verdict.appendChild(el('p', 'detail-buy-cond', '条件：' + bs.conditions_ja.join('／')));
       }
@@ -3627,7 +3912,7 @@ function initProduct() {
     /* v1.1.0 supplies the Japanese label; a raw token is never printed. */
     row(g2.dl, '状況の根拠', p.status_basis_label_ja);
     row(g2.dl, '補足', p.status_note_ja);
-    row(g2.dl, shownText(p.list_price_label_ja) || '定価', fmtPrice(listPriceOf(p)));
+    row(g2.dl, shownText(p.list_price_label_ja) || '定価', fmtListPrice(p));
     row(g2.dl, '取得原価', fmtPrice(acquisitionCostOf(p)));
     row(g2.dl, '販売方式', lbl(SALE_MODE_LABEL, p.sale_mode));
     /* sale_mode_raw is a source code (retail, lottery …): shown only through a Japanese label,

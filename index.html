@@ -77,11 +77,10 @@
             <span class="buy-tile-num" id="buy-n-NOT_ENOUGH_EVIDENCE">—</span>
             <span class="buy-tile-cue">根拠がまだ足りない</span></button></li>
         </ul>
-        <div class="buy-near-wrap" id="buy-near-wrap" hidden>
-          <h3 class="buy-near-title">判定に近い商品（あと何が必要か）</h3>
-          <ul class="buy-near" id="buy-near"></ul>
+        <div class="buy-foot">
+          <a class="buy-go" id="buy-go" href="#sec-margin"><span>利ざや候補と、あと何が必要かを見る</span><span class="buy-go-n"><span id="buy-go-n">—</span>件</span><span class="buy-go-arrow" aria-hidden="true">→</span></a>
+          <p class="buy-note">似た商品の発売1か月後の取引価格（手数料を引いた額）と定価を比べた参考です。送料などは差し引いていないため利益ではありません。定価で買えた場合で、抽選品は当選が前提です。「推論」は似た種類の商品の過去の結果から出した目安です。</p>
         </div>
-        <p class="buy-note">発売1か月後の取引価格を、手数料を引いて定価と比べています。この商品自身の根拠が足りないときは、似た種類の商品の過去の結果から「推論」として目安を出し、そう明記しています。定価で買えた場合の目安で、抽選品は当選が前提です。送料などはまだ差し引いていないため、利益ではありません。販売単位（BOX・パック）が似た商品と同じ場合だけ判定します。</p>
       </section>
 
       <!--
@@ -162,6 +161,8 @@
     <nav class="quicknav" aria-label="セクションへ移動">
       <ul class="quicknav-list">
         <li><a href="#sec-closing">締切間近</a></li>
+        <li><a class="quicknav-value" href="#sec-margin">利ざや候補</a></li>
+        <li><a href="#sec-track">過去の実績</a></li>
         <li><a href="#sec-lottery">抽選受付中</a></li>
         <li><a href="#sec-preorder">予約受付中</a></li>
         <li><a href="#sec-buyable">購入可能</a></li>
@@ -189,64 +190,6 @@
 
   <div id="app" hidden>
 
-    <!--
-      使い方. A reader arriving cold needs three things: where to look, what to do with
-      what they found, and where the evidence is. Nothing here is advice; step 1 points at
-      dates, step 2 at their own mark, step 3 at the sources.
-    -->
-    <section class="howto" aria-labelledby="howto-title">
-      <h2 id="howto-title">はじめての方へ：3ステップで使えます</h2>
-      <ol class="howto-steps">
-        <li>
-          <span class="howto-num" aria-hidden="true">1</span>
-          <strong>今日の締切を見る</strong>
-          <span>「締切間近」と「受付中」には、受付中であることを確認できた商品だけが並びます。まずここを見ておけば、締切の見落としを防げます。</span>
-        </li>
-        <li>
-          <span class="howto-num" aria-hidden="true">2</span>
-          <strong>気になった商品に印を付ける</strong>
-          <span>各商品の「購入候補」「様子見」「見送り」を押すと、上の「あなたの判断」にまとまります。印はお使いのブラウザにだけ保存されます。</span>
-        </li>
-        <li>
-          <span class="howto-num" aria-hidden="true">3</span>
-          <strong>詳細ページで根拠を確かめる</strong>
-          <span>商品名を押すと、受付期間や出典、情報の確認状況をすべてご覧いただけます。購入するかどうかは、ご自身でご判断ください。</span>
-        </li>
-      </ol>
-
-      <details class="legend" id="legend">
-        <summary class="legend-sum">表示の読み方（バッジと印の意味）</summary>
-        <ul class="legend-list">
-          <li>
-            <span class="legend-sample">
-              <span class="badge badge--open">受付中</span><span class="badge badge--urgent">締切間近</span>
-            </span>
-            <span><strong>塗りつぶしのバッジ</strong>は、受付中・締切間近・終了など、いまの状態を表します。</span>
-          </li>
-          <li>
-            <span class="legend-sample">
-              <span class="badge badge--ev-verified">確認済み</span><span class="badge badge--ev-partial">一部確認</span><span class="badge badge--ev-none">未検証</span>
-            </span>
-            <span><strong>枠線のバッジ</strong>は、情報をどこまで確認できたかを表します。「未検証」は、公式情報での確認がまだ済んでいない商品です。</span>
-          </li>
-          <li>
-            <span class="legend-sample">
-              <span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span><span class="badge badge--attention">注目候補</span>
-            </span>
-            <span><strong>補足の目印</strong>です。おすすめや買い時を示すものではありません。</span>
-          </li>
-          <li>
-            <span class="legend-sample legend-ladder" aria-hidden="true">
-              <i class="is-on"></i><i class="is-on"></i><i></i><i></i><i></i>
-            </span>
-            <span><strong>5段階の目盛り</strong>は、利益を考えるための材料がどこまで集まったかを表します。金額や評価を示すものではありません。</span>
-          </li>
-          <li>
-            <span><strong>確認が取れていない項目は表示していません。</strong>項目が載っていないことは、「なし」や「0」という意味ではありません。推測で日付を補うこともしていません。</span>
-          </li>
-        </ul>
-      </details>
-    </section>
 
     <!--
       Today's feed. Confirmed-open items first (締切間近 -> 抽選 -> 予約 -> 購入可能),
@@ -263,6 +206,47 @@
       <p class="sec-note">受付中であることを<strong>確認できた</strong>商品のうち、締切まで7日以内のものです。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>いまのところ、締切まで7日以内で受付中を確認できた商品はありません。<a class="sec-empty-next" href="#sec-nearterm">期日が近い商品（要確認）を見る</a></p>
+    </section>
+
+    <!--
+      利ざや候補（参考）. The value view: products whose buy level is 買い寄り or 様子見 (the product's
+      own evidence first, then 推論), ordered by level, then by the similar products' median
+      price-to-list ratio, then by deadline. Every card says what it still needs. When nothing is
+      買い寄り the headline says so, and the products close to a level follow with what is missing.
+    -->
+    <section class="sec sec--margin" id="sec-margin" data-sec>
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="sec-mark" aria-hidden="true">¥</span>利ざや候補<span class="sec-ref">（参考）</span></h2>
+        <span class="sec-count" data-sec-count></span>
+        <button type="button" class="btn btn--more" data-sec-more hidden>すべて見る</button>
+      </div>
+      <p class="margin-state" id="margin-state" aria-live="polite"></p>
+      <p class="margin-caveat">数字はすべて<strong>似た過去の商品</strong>の取引で、この商品の価格ではありません。目安の段階は販売手数料を引いて比べていますが、送料などは差し引いていないため<strong>利益ではありません</strong>。定価で買えた場合で、抽選品は当選が前提です。「推論」の目安は確からしさ「低」です。</p>
+      <details class="margin-how">
+        <summary class="margin-how-sum">並び順・倍率・推論の読み方</summary>
+        <ul class="margin-keys">
+          <li><strong>並び</strong><span>買いの目安（この商品自身の根拠を先に、推論を後に）→ 似た商品の取引価格が定価の何倍だったか → 締切の近さ。順位や評価ではありません。</span></li>
+        <li><strong>倍率</strong><span>似た過去の商品の取引価格の中央値を、その商品の定価で割ったものです（販売手数料を引く前）。この商品自身の価格ではありません。</span></li>
+        <li><strong>利益ではありません</strong><span>目安の段階は手数料を引いた価格で比べていますが、送料などの費用は差し引いていません。定価で買えた場合の話で、抽選品は当選が前提です。</span></li>
+        <li><strong>推論</strong><span>この商品自身ではなく、似た種類の商品の過去の結果から出した目安です。確からしさは「低」です。</span></li>
+      </ul>
+      </details>
+      <ul class="grid" data-sec-list></ul>
+      <p class="sec-empty" data-sec-empty hidden>いまのところ、目安が出ている商品はありません。判定に近い商品は下のとおりです。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
+      <div class="margin-near-wrap" id="margin-near-wrap" hidden>
+        <h3 class="margin-near-title">判定に近い商品（あと何が必要か）</h3>
+        <ul class="margin-near" id="margin-near"></ul>
+      </div>
+    </section>
+
+    <!-- 過去の実績: realised arithmetic of past products; not the current products' prices -->
+    <section class="sec sec--track" id="sec-track" aria-labelledby="track-title" hidden>
+      <div class="sec-head">
+        <h2 class="sec-title" id="track-title"><span class="sec-mark" aria-hidden="true">≒</span>過去の実績<span class="sec-ref">（発売1か月後の取引）</span></h2>
+        <span class="sec-count" id="track-count"></span>
+      </div>
+      <p class="margin-caveat">過去に発売された商品が、発売1か月後にいくらで取引されたかの実績です（取引3件以上・期間を最後まで集計できたものだけ）。定価の何倍で売れたかの順に並べています。販売手数料10%を引いた受取額と定価の差を示し、送料は公式料金表の幅で示しています。仕入れ時の送料・梱包材は含まず、利益ではありません。</p>
+      <ul class="track-list" id="track-list"></ul>
     </section>
 
     <section class="sec sec--open" id="sec-lottery" data-sec>
@@ -359,6 +343,65 @@
       <p class="sec-note" id="sec-new-note">掲載を始めてから14日以内の商品です。</p>
       <ul class="grid" data-sec-list></ul>
       <p class="sec-empty" data-sec-empty hidden>いまのところ、掲載から14日以内の商品はありません。<a class="sec-empty-next" href="#sec-all">全商品一覧から探す</a></p>
+    </section>
+
+    <!--
+      使い方. A reader arriving cold needs three things: where to look, what to do with
+      what they found, and where the evidence is. Nothing here is advice; step 1 points at
+      dates, step 2 at their own mark, step 3 at the sources.
+    -->
+    <section class="howto" aria-labelledby="howto-title">
+      <h2 id="howto-title">はじめての方へ：3ステップで使えます</h2>
+      <ol class="howto-steps">
+        <li>
+          <span class="howto-num" aria-hidden="true">1</span>
+          <strong>今日の締切を見る</strong>
+          <span>「締切間近」と「受付中」には、受付中であることを確認できた商品だけが並びます。まずここを見ておけば、締切の見落としを防げます。</span>
+        </li>
+        <li>
+          <span class="howto-num" aria-hidden="true">2</span>
+          <strong>気になった商品に印を付ける</strong>
+          <span>各商品の「購入候補」「様子見」「見送り」を押すと、上の「あなたの判断」にまとまります。印はお使いのブラウザにだけ保存されます。</span>
+        </li>
+        <li>
+          <span class="howto-num" aria-hidden="true">3</span>
+          <strong>詳細ページで根拠を確かめる</strong>
+          <span>商品名を押すと、受付期間や出典、情報の確認状況をすべてご覧いただけます。購入するかどうかは、ご自身でご判断ください。</span>
+        </li>
+      </ol>
+
+      <details class="legend" id="legend">
+        <summary class="legend-sum">表示の読み方（バッジと印の意味）</summary>
+        <ul class="legend-list">
+          <li>
+            <span class="legend-sample">
+              <span class="badge badge--open">受付中</span><span class="badge badge--urgent">締切間近</span>
+            </span>
+            <span><strong>塗りつぶしのバッジ</strong>は、受付中・締切間近・終了など、いまの状態を表します。</span>
+          </li>
+          <li>
+            <span class="legend-sample">
+              <span class="badge badge--ev-verified">確認済み</span><span class="badge badge--ev-partial">一部確認</span><span class="badge badge--ev-none">未検証</span>
+            </span>
+            <span><strong>枠線のバッジ</strong>は、情報をどこまで確認できたかを表します。「未検証」は、公式情報での確認がまだ済んでいない商品です。</span>
+          </li>
+          <li>
+            <span class="legend-sample">
+              <span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span><span class="badge badge--attention">注目候補</span>
+            </span>
+            <span><strong>補足の目印</strong>です。おすすめや買い時を示すものではありません。</span>
+          </li>
+          <li>
+            <span class="legend-sample legend-ladder" aria-hidden="true">
+              <i class="is-on"></i><i class="is-on"></i><i></i><i></i><i></i>
+            </span>
+            <span><strong>5段階の目盛り</strong>は、利益を考えるための材料がどこまで集まったかを表します。金額や評価を示すものではありません。</span>
+          </li>
+          <li>
+            <span><strong>確認が取れていない項目は表示していません。</strong>項目が載っていないことは、「なし」や「0」という意味ではありません。推測で日付を補うこともしていません。</span>
+          </li>
+        </ul>
+      </details>
     </section>
 
     <!-- Full list with toolbar -->
@@ -536,7 +579,7 @@
       <div>
         <dt>利益の見込みは分かりますか？</dt>
         <dd>
-          利益額や見込み額、順位は表示しません。代わりに、よく似た過去の商品が、販売手数料を引いても定価をどれだけ上回る価格で
+          利益額や見込み額は表示しません。「利ざや候補」は、買いの目安と似た商品の倍率の順に並べた参考で、利益の順位ではありません。代わりに、よく似た過去の商品が、販売手数料を引いても定価をどれだけ上回る価格で
           取引されたか（定価との差額）を「類似品の過去相場（参考）」として載せています。送料や梱包などの費用はまだ
           確認できていないため、この差額は利益ではありません。費用がこの額を超えると赤字になる、という上限の目安です。
           また、定価で購入できた場合の数字で、抽選品は当選が前提です。
