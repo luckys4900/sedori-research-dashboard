@@ -3608,3 +3608,316 @@ body { line-break: strict; }
 .track-ratio { font-weight: 800; color: var(--fg); }
 .track-diff { font-weight: 700; color: var(--fg); }
 @media (min-width: 900px) { .track-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* =========================================================================
+   14. B改 — calm, dense, ink on white (owner-approved direction 2026-09-27)
+   -------------------------------------------------------------------------
+   A visual layer only. Same five type sizes (tokens above), same four radii,
+   same meaning rules: filled = state, outline = 確認状況, colour never alone.
+   What changes: a neutral grey paper, ink as the single accent, flat surfaces
+   (no gradients, no floating photos, no blur), borders instead of shadows.
+   New pieces: 分野タブ, これからの予定, and the 調べた角度 (6-angle) bar.
+   ========================================================================= */
+:root {
+  --bg: #f4f5f7;
+  --bg-elev: #ffffff;
+  --bg-sunken: #eef0f3;
+  --fg: #12151b;
+  --fg-muted: #5c6370;
+  --fg-faint: #5c6370;       /* 5.3:1 on --bg-sunken, 5.6:1 on --bg */
+  --border: #e6e8ec;
+  --border-strong: #d6d9df;
+  --line-soft: #eef0f3;
+  --dash: #9aa1ad;           /* dashed outline of a not-yet-confirmed angle */
+  --accent: #12151b;
+  --accent-ink: #12151b;
+  --accent-bg: #eef0f3;
+  --accent-line: #d6d9df;
+  --accent-2: #3d4450;
+  --accent-grad: #12151b;    /* kept as a plain colour: no gradients in B改 */
+  --on-accent: #ffffff;
+  --wash: transparent;
+  --sec-band: transparent;
+  --media-bg: #eef0f3;
+  --shadow: none;
+  --shadow-lift: 0 1px 2px rgba(18, 21, 27, .06);
+  --photo-shadow: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111317;
+    --bg-elev: #181b20;
+    --bg-sunken: #0d0f12;
+    --fg: #eceef2;
+    --fg-muted: #a7aeba;
+    --fg-faint: #a0a8b5;
+    --border: #2a2f37;
+    --border-strong: #3b414c;
+    --line-soft: #23272e;
+    --dash: #6c7482;
+    --accent: #eceef2;
+    --accent-ink: #ffffff;
+    --accent-bg: #22262d;
+    --accent-line: #3b414c;
+    --accent-2: #c6ccd6;
+    --accent-grad: #eceef2;
+    --on-accent: #12151b;
+    --media-bg: #22262d;
+    --shadow: none;
+    --shadow-lift: 0 1px 2px rgba(0, 0, 0, .4);
+  }
+}
+
+body {
+  font-family: "IBM Plex Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  font-feature-settings: "tnum" 1, "palt" 1;
+  background-image: none;
+}
+
+/* ---- header: flat white bar ---- */
+.site-header { background: var(--bg-elev); border-bottom: 1px solid var(--border); box-shadow: none; }
+.site-title::before { background: var(--fg); width: .55em; height: .55em; }
+
+/* ---- hero: a plain white block, ink text; photos lie flat ---- */
+.signal-hero {
+  color: var(--fg);
+  background: var(--bg-elev);
+  background-image: none;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.signal-hero h1 { color: var(--fg); font-size: var(--fs-head); font-weight: 700; letter-spacing: .01em; }
+.signal-hero .hero-kicker, .signal-hero .hero-text, .signal-hero .hero-trust { color: var(--fg-muted); }
+.signal-hero .hero-action {
+  background: var(--bg-elev); border-color: var(--border-strong); color: var(--fg); box-shadow: none;
+}
+.signal-hero .hero-action:not(.hero-action--primary):hover { background: var(--bg-sunken); border-color: var(--fg-muted); color: var(--fg); }
+.signal-hero .hero-action--primary,
+.signal-hero .hero-action--primary:hover { background: var(--fg); border-color: var(--fg); color: var(--bg-elev); transform: none; }
+.signal-hero :focus-visible { outline-color: var(--focus); }
+.hc-tile { rotate: 0deg; border: 1px solid var(--border); box-shadow: none; background: var(--bg-elev); animation: none !important; }
+.hero-action { border-radius: var(--radius-sm); }
+
+/* ---- panels and sections: borders, no shadows, no bands ---- */
+.buy-panel, .today, .my-check, .howto, .sec {
+  background: var(--bg-elev);
+  background-image: none;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.sec { border-radius: var(--radius); }
+.sec-head { border-bottom: 1px solid var(--border); }
+.sec-head::after { display: none; }
+.sec-title { font-weight: 700; }
+.sec-mark,
+.sec--all .sec-mark, .sec--backtest .sec-mark, .sec--margin .sec-mark {
+  background: transparent; color: var(--fg); box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+.sec-count { background: var(--bg-sunken); border-color: var(--border); color: var(--fg); }
+.howto-num { background: var(--fg); color: var(--bg-elev); }
+.kpi-row .kpi:hover, .kpi-split-item:hover, .my-check-item:hover { transform: none; box-shadow: none; border-color: var(--fg-muted); }
+.quicknav-list a { border-radius: var(--radius-sm); }
+.quicknav-list a:hover { background: var(--bg-sunken); border-color: var(--fg-muted); }
+.quicknav-list .quicknav-value { background: var(--bg-sunken); border-color: var(--border-strong); color: var(--fg); }
+
+/* ---- cards: white, 1px line, 12px corners; no lift, no blur ---- */
+.card, .card--feed { background: var(--bg-elev); border: 1px solid var(--border); box-shadow: none; }
+.grid:not(.grid--dense) .card:hover { transform: none; box-shadow: none; border-color: var(--border-strong); }
+.pmedia-backdrop { display: none; }
+.pmedia--feed { background: var(--bg-sunken); border-bottom: 1px solid var(--border); }
+.pmedia--feed .pmedia-img, .pmedia--feed .thumb--fill, .pmedia--hero { box-shadow: none; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card--feed:hover .pmedia-img { transform: translate(-50%, -50%); }
+}
+.c-name { font-weight: 700; }
+.card-action--detail, .card-action--detail:hover { background: var(--bg-elev); border-color: var(--border-strong); color: var(--fg); }
+.card-action--detail:hover { border-color: var(--fg); }
+.card-action, .btn { border-radius: var(--radius-sm); }
+.buy-go { background: var(--bg-sunken); border-color: var(--border); color: var(--fg); }
+.buy-go:hover { border-color: var(--fg-muted); }
+.detail-card:not(.is-unverified) { background-image: none; }
+
+/* ---- 調べた角度: six equal cells. Known = filled ink; not yet = dashed outline. ---- */
+.angles-mini { display: grid; gap: 4px; min-width: 0; }
+.angle-bar {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 3px;
+  margin: 0;
+  min-width: 0;
+}
+.angle-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 3px 0;
+  border: 1px dashed var(--dash);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+  font-size: var(--fs-aux);
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.angle-cell.is-known { border: 1px solid var(--fg); background: var(--fg); color: var(--bg-elev); font-weight: 700; }
+.angle-count { margin: 0; font-size: var(--fs-aux); color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.grid.grid--dense .angles-mini { margin-top: 4px; }
+.grid.grid--dense .angle-bar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (forced-colors: active) {
+  .angle-cell { border-color: CanvasText; }
+  .angle-cell.is-known { background: CanvasText; color: Canvas; }
+}
+
+/* ---- 分野タブ: one row, scrolls sideways inside itself, never the page ---- */
+.cat-tabs {
+  margin: 0 0 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+.cat-tabs[hidden] { display: none; }
+.cat-tabs-row {
+  display: flex;
+  gap: 4px;
+  padding: 0 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.cat-tab {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tap);
+  padding: 0 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--fg-muted);
+  font: inherit;
+  font-size: var(--fs-label);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.cat-tab:hover { color: var(--fg); }
+.cat-tab[aria-pressed="true"] { color: var(--fg); font-weight: 700; border-bottom-color: var(--fg); }
+.cat-tab-n { font-size: var(--fs-aux); font-variant-numeric: tabular-nums; }
+.cat-tab:focus-visible { outline-offset: -3px; }
+.cat-tabs-note { margin: 0; padding: 6px 12px; border-top: 1px solid var(--border); font-size: var(--fs-label); color: var(--fg); }
+.cat-tabs-note[hidden] { display: none; }
+
+/* ---- これからの予定 ---- */
+.sched {
+  margin: 0 0 16px;
+  padding: 14px 14px 6px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.sched[hidden] { display: none; }
+.sched-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; }
+.sched-title { margin: 0; font-size: var(--fs-head); font-weight: 700; }
+.sched-sub { font-size: var(--fs-aux); color: var(--fg-muted); }
+.sched-week {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin: 12px 0 8px;
+  padding: 0;
+  text-align: center;
+}
+.sw-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 0 5px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  min-width: 0;
+  line-height: 1.25;
+}
+.sw-dow { font-size: var(--fs-aux); color: var(--fg-muted); }
+.sw-num { font-size: var(--fs-head); font-weight: 700; font-variant-numeric: tabular-nums; }
+.sw-dot { width: 6px; height: 6px; margin-top: 3px; border-radius: 999px; background: transparent; }
+.sw-day.has-events .sw-dot { background: var(--fg); }
+.sw-day.is-base { background: var(--fg); color: var(--bg-elev); }
+.sw-day.is-base .sw-dow { color: var(--bg-elev); }
+.sw-day.is-base.has-events .sw-dot { background: var(--bg-elev); }
+.sched-list { list-style: none; margin: 0; padding: 0; }
+.sched-row { border-top: 1px solid var(--line-soft); min-width: 0; }
+.sched-item {
+  display: grid;
+  grid-template-columns: 5.6em minmax(0, 1fr);
+  gap: 10px;
+  min-height: var(--tap);
+  padding: 9px 0;
+  color: var(--fg);
+  text-decoration: none;
+}
+.sched-item:hover .sched-name { text-decoration: underline; text-underline-offset: 2px; }
+.sched-date { font-size: var(--fs-label); font-weight: 700; font-variant-numeric: tabular-nums; }
+.sched-body { display: flex; flex-direction: column; min-width: 0; }
+.sched-kind, .sched-sub { font-size: var(--fs-aux); color: var(--fg-muted); }
+.sched-name { font-size: var(--fs-body); font-weight: 700; line-height: 1.4; }
+.sched-empty { margin: 8px 0; font-size: var(--fs-label); color: var(--fg-muted); }
+.sched-more { display: flex; align-items: center; justify-content: center; width: 100%; min-height: var(--tap); margin: 4px 0 8px; font-weight: 700; }
+.sched-more[hidden] { display: none; }
+@media (min-width: 900px) {
+  .sched-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+}
+
+/* ---- detail: 調べた角度 summary and one section per angle ---- */
+.angle-sum {
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  background: var(--bg-sunken);
+  border-radius: var(--radius);
+}
+.angle-sum-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; }
+.angle-sum-title { margin: 0; font-size: var(--fs-body); font-weight: 700; }
+.angle-sum-sub { font-size: var(--fs-aux); color: var(--fg-muted); }
+.angle-bar--links { margin-top: 8px; }
+.angle-bar--links .angle-cell { min-height: var(--tap); text-decoration: none; font-size: var(--fs-label); }
+.angle-bar--links .angle-cell:not(.is-known):hover { border-color: var(--fg); color: var(--fg); }
+.angle-legend { margin: 6px 0 0; font-size: var(--fs-aux); color: var(--fg-muted); }
+.angle-secs { display: grid; gap: 0; margin: 0 0 18px; }
+.angle-sec { padding: 16px 0 0; scroll-margin-top: 12px; min-width: 0; }
+.angle-sec-title { margin: 0 0 6px; font-size: var(--fs-head); font-weight: 700; }
+.angle-dl { margin: 0; display: grid; }
+.angle-row {
+  display: grid;
+  grid-template-columns: minmax(6em, 9em) minmax(0, 1fr);
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: var(--fs-body);
+}
+.angle-row dt { color: var(--fg-muted); }
+.angle-row dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.angle-src { display: block; margin-top: 2px; font-size: var(--fs-aux); color: var(--fg-muted); }
+.angle-src:hover { color: var(--fg); }
+.angle-unknown {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px dashed var(--dash);
+  border-radius: var(--radius);
+}
+.angle-unknown-head { margin: 0; font-size: var(--fs-body); }
+.angle-unknown-why { margin: 4px 0 0; font-size: var(--fs-label); color: var(--fg-muted); line-height: 1.6; }
+@media (min-width: 900px) {
+  .angle-secs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+}
+
+/* 15. A count such as （17件） stays on one line with the word before it. */
+.nowrap { white-space: nowrap; }
+
+/* 16. IBM Plex Sans JP sets kana wider than the system fonts and the Google Fonts subset drops
+   palt; a slight tracking keeps the phone's first screen (hero + buy panel + KPIs) in one view. */
+body { letter-spacing: -0.02em; }

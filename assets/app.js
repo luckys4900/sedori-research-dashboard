@@ -1851,6 +1851,73 @@ function profitLadder(p, withLabel) {
   return wrap;
 }
 
+/* ------------------------------------------------------------ 調べた角度（6 angles）
+   research_angles is published by the build: always the same six angles in a fixed order,
+   each with `known` and the rows that back it. The page only lays them out. A known angle is a
+   FILLED cell, an angle not confirmed yet is a DASHED cell, and every cell also says which in
+   its accessible name — colour is never the only signal. */
+var ANGLE_KEYS = ['timing', 'route', 'supply', 'demand', 'value', 'risk'];
+var ANGLE_LABEL = { timing: 'いつ', route: 'どこで', supply: '供給', demand: '需要', value: '価格', risk: 'リスク' };
+var ANGLE_KNOWN_JA = '確認済み';
+var ANGLE_UNKNOWN_JA = 'まだ確認できていません';
+
+/** A plain YYYY-MM-DD value reads as a date; anything else is shown verbatim. */
+function angleValueText(v) {
+  var s = shownText(v);
+  if (s === null) { return null; }
+  return /^\d{4}-\d{2}-\d{2}$/.test(s) ? fmtDate(s) : s;
+}
+
+/**
+ * The six angles in the fixed order, or null when the build did not publish them. Rows whose
+ * label or value is missing (or declares itself unconfirmed) are dropped, never shown empty.
+ */
+function researchAnglesOf(p) {
+  var ra = p && p.research_angles;
+  if (!ra || typeof ra !== 'object' || !Array.isArray(ra.angles)) { return null; }
+  var byKey = {};
+  ra.angles.forEach(function (a) {
+    if (a && typeof a === 'object' && typeof a.key === 'string') { byKey[a.key] = a; }
+  });
+  var out = [];
+  var checked = 0;
+  ANGLE_KEYS.forEach(function (key) {
+    var a = own(byKey, key) || {};
+    var known = a.known === true;
+    if (known) { checked++; }
+    var rows = (Array.isArray(a.rows) ? a.rows : []).filter(function (r) {
+      return r && typeof r === 'object' && shownText(r.label_ja) !== null && angleValueText(r.value_ja) !== null;
+    });
+    out.push({ key: key, label: shownText(a.label_ja) || ANGLE_LABEL[key], known: known, rows: rows });
+  });
+  return { checked: checked, total: ANGLE_KEYS.length, angles: out, officialChecked: ra.official_pages_checked === true };
+}
+
+function angleStateText(a) { return a.label + '：' + (a.known ? ANGLE_KNOWN_JA : ANGLE_UNKNOWN_JA); }
+
+/**
+ * The compact six-cell bar for a card, plus 「n/6 を確認」. null when nothing is published.
+ * The cells are not links (the whole card already is one).
+ */
+function angleBar(p) {
+  var ra = researchAnglesOf(p);
+  if (!ra) { return null; }
+  var wrap = el('div', 'angles-mini');
+  var bar = el('div', 'angle-bar');
+  bar.setAttribute('role', 'group');
+  bar.setAttribute('aria-label', '調べた角度 ' + ra.checked + '/' + ra.total);
+  ra.angles.forEach(function (a) {
+    var c = el('span', 'angle-cell' + (a.known ? ' is-known' : ''), a.label);
+    c.setAttribute('role', 'img');
+    c.setAttribute('aria-label', angleStateText(a));
+    c.title = angleStateText(a);
+    bar.appendChild(c);
+  });
+  wrap.appendChild(bar);
+  wrap.appendChild(el('p', 'angle-count', ra.checked + '/' + ra.total + ' を確認'));
+  return wrap;
+}
+
 /**
  * Signal chips. `max` caps the visible chips and adds a 「+N」 counter.
  *
@@ -1991,6 +2058,8 @@ function initIndex() {
     products: [],
     marks: readMarks(),
     showNewBadge: true,
+    /* the category the sections / schedule were last rendered for */
+    renderedCat: null,
     /* card element registry so a mark change can re-sync every copy of a card */
     markBoxes: {}
   };
@@ -2095,6 +2164,8 @@ function initIndex() {
     if (!productImageOf(p)) { nameBox.appendChild(el('span', 'c-tile-note', '写真未掲載（カテゴリのイメージ図です）')); }
     /* 価値の目安: level + the similar products' ratio (定価 has its own column here) */
     put(nameBox, valueStrip(p, { compact: true }));
+    /* 調べた角度: six cells + 「n/6 を確認」, inside the name column so the screener keeps its columns */
+    put(nameBox, angleBar(p));
     idRow.appendChild(nameBox);
     a.appendChild(idRow);
 
@@ -2260,6 +2331,8 @@ function initIndex() {
     if (feedMeta.length) { fText.appendChild(el('div', 'c-cat', feedMeta.join('・'))); }
     fIdent.appendChild(fText);
     a.appendChild(fIdent);
+    /* 2a. 調べた角度: which of the six angles are confirmed, read right after the name */
+    put(a, angleBar(p));
     /* 2b. 価値の目安: 定価 / similar products' ratio / buy level — read right after the name */
     var strip = valueStrip(p, { withPrice: true, need: !!opts.need });
     put(a, strip);
@@ -2786,7 +2859,7 @@ function initIndex() {
   function renderMargin() {
     var root = $('sec-margin');
     if (!root) { return; }
-    var rows = state.products.filter(isMarginCandidate);
+    var rows = state.products.filter(inTab).filter(isMarginCandidate);
     var lean = rows.filter(function (p) { return effectiveLevel(p) === 'LEAN_BUY'; });
     var inferred = rows.filter(function (p) { return !!inferenceOf(p); }).length;
     var stateNode = $('margin-state');
@@ -2800,7 +2873,7 @@ function initIndex() {
           : '今の時点で、目安が出ている商品はありません。判定に近い商品と、足りない根拠は下のとおりです。');
       stateNode.classList.toggle('has-lean', lean.length > 0);
     }
-    var near = state.products.filter(isNearSignal).sort(cmpBuy);
+    var near = state.products.filter(inTab).filter(isNearSignal).sort(cmpBuy);
     var wrap = $('margin-near-wrap');
     var list = $('margin-near');
     if (!wrap || !list) { return; }
@@ -2833,6 +2906,202 @@ function initIndex() {
     });
     var go = $('buy-go-n');
     if (go) { go.textContent = String(rows.length + near.length); }
+  }
+
+  /* ------------------------------------------------------------ 分野タブ
+     One row of buttons: すべて + every category that has a label and at least one product.
+     A tab IS the カテゴリ filter (filters.cat): it narrows the highlight sections, the schedule and
+     全商品一覧 alike, and the カテゴリ select below stays in step with it. */
+  function inTab(p) { return !filters.cat || p.category === filters.cat; }
+
+  function buildCatTabs() {
+    var row = $('cat-tabs-row');
+    if (!row) { return; }
+    row.textContent = '';
+    var counts = {};
+    var cats = [];
+    state.products.forEach(function (p) {
+      if (!lbl(CATEGORY_LABEL, p.category)) { return; }
+      if (!Object.prototype.hasOwnProperty.call(counts, p.category)) { counts[p.category] = 0; cats.push(p.category); }
+      counts[p.category] += 1;
+    });
+    var order = Object.keys(CATEGORY_LABEL);
+    cats.sort(function (a, b) {
+      var ka = order.indexOf(a), kb = order.indexOf(b);
+      return (ka < 0 ? 99 : ka) - (kb < 0 ? 99 : kb);
+    });
+    var tabs = [['', 'すべて', state.products.length]].concat(cats.map(function (c) {
+      return [c, lbl(CATEGORY_LABEL, c), counts[c]];
+    }));
+    tabs.forEach(function (t) {
+      var b = el('button', 'cat-tab');
+      b.type = 'button';
+      b.dataset.cat = t[0];
+      b.appendChild(el('span', 'cat-tab-lbl', t[1]));
+      b.appendChild(el('span', 'cat-tab-n', String(t[2])));
+      b.setAttribute('aria-label', t[1] + '（' + t[2] + '件）');
+      b.addEventListener('click', function () {
+        if (filters.cat === t[0]) { return; }
+        filters.cat = t[0];
+        filters.sec = '';
+        syncControlsFromFilters();
+        writeUrl();
+        renderList();
+      });
+      row.appendChild(b);
+    });
+    var nav = $('cat-tabs');
+    if (nav) { nav.hidden = cats.length === 0; }
+  }
+
+  function syncCatTabs() {
+    var btns = document.querySelectorAll('#cat-tabs-row .cat-tab');
+    var active = null;
+    for (var i = 0; i < btns.length; i++) {
+      var on = btns[i].dataset.cat === (filters.cat || '');
+      btns[i].setAttribute('aria-pressed', String(on));
+      if (on) { active = btns[i]; }
+    }
+    var note = $('cat-tabs-note');
+    if (note) {
+      var label = filters.cat ? lbl(CATEGORY_LABEL, filters.cat) : null;
+      var n = state.products.filter(inTab).length;
+      note.textContent = label ? '「' + label + '」の商品だけを表示しています（' + n + '件）。' : '';
+      note.hidden = !label;
+    }
+    return active;
+  }
+
+  /* ------------------------------------------------------------ これからの予定
+     Every published calendar date on or after the as_of date becomes one agenda line. Only
+     day-precision dates are used: a month-only release is never placed on a guessed day.
+     Weekdays are calendar arithmetic on the published date, not new information. */
+  var SCHEDULE_FIELDS = [
+    ['release_date', '発売'], ['reservation_start', '予約開始'], ['reservation_end', '予約締切'],
+    ['application_start', '応募開始'], ['application_end', '応募締切'],
+    ['lottery_start', '抽選受付開始'], ['lottery_end', '抽選受付締切'], ['result_date', '抽選結果'],
+    ['payment_deadline', '支払期限'], ['sales_end', '販売終了']
+  ];
+  var SCHEDULE_CAP = 8;
+  var DOW_JA = ['日', '月', '火', '水', '木', '金', '土'];
+  var scheduleOpen = false;
+
+  function isoDay(v) {
+    if (isUnknown(v)) { return null; }
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v).slice(0, 10));
+    return m ? m[0] : null;
+  }
+  function dayParts(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+    var d = new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3])));
+    return { y: Number(m[1]), mo: Number(m[2]), d: Number(m[3]), dow: DOW_JA[d.getUTCDay()] };
+  }
+  function addDays(iso, n) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+    var d = new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]) + n));
+    return d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2);
+  }
+
+  function scheduleEvents(asOf) {
+    var out = [];
+    state.products.filter(inTab).forEach(function (p) {
+      var seen = {};
+      SCHEDULE_FIELDS.forEach(function (f, order) {
+        if (f[0] === 'release_date' && p.release_date_precision !== 'day') { return; }
+        var day = isoDay(p[f[0]]);
+        if (!day || day < asOf) { return; }
+        var key = day + '|' + f[1];
+        if (seen[key]) { return; }
+        seen[key] = true;
+        seen[day] = true;
+        out.push({ day: day, kind: f[1], order: order, p: p });
+      });
+      /* the build's own nearest deadline, when no dated field above already covers that day */
+      var dl = isoDay(p.deadline);
+      if (dl && dl >= asOf && !seen[dl]) {
+        out.push({ day: dl, kind: lbl(DEADLINE_KIND_LABEL, p.deadline_kind) || '締切', order: SCHEDULE_FIELDS.length, p: p });
+      }
+    });
+    out.sort(function (a, b) {
+      if (a.day !== b.day) { return a.day < b.day ? -1 : 1; }
+      if (a.order !== b.order) { return a.order - b.order; }
+      return String(a.p.product_name || '') < String(b.p.product_name || '') ? -1 : 1;
+    });
+    return out;
+  }
+
+  function renderSchedule() {
+    var root = $('sec-schedule');
+    var week = $('sched-week');
+    var list = $('sched-list');
+    var empty = $('sched-empty');
+    var more = $('sched-more');
+    if (!root || !week || !list) { return; }
+    var asOf = state.doc ? isoDay(state.doc.as_of) : null;
+    root.hidden = !asOf;
+    if (!asOf) { return; }
+    var events = scheduleEvents(asOf);
+    var perDay = {};
+    events.forEach(function (e) { perDay[e.day] = (perDay[e.day] || 0) + 1; });
+
+    week.textContent = '';
+    for (var i = 0; i < 7; i++) {
+      var day = addDays(asOf, i);
+      var dp = dayParts(day);
+      var n = perDay[day] || 0;
+      var li = el('li', 'sw-day' + (i === 0 ? ' is-base' : '') + (n ? ' has-events' : ''));
+      li.appendChild(el('span', 'sw-dow', dp.dow));
+      li.appendChild(el('span', 'sw-num', String(dp.d)));
+      var dot = el('span', 'sw-dot');
+      dot.setAttribute('aria-hidden', 'true');
+      li.appendChild(dot);
+      li.appendChild(el('span', 'visually-hidden',
+        dp.mo + '月' + dp.d + '日' + (i === 0 ? '（基準日）' : '') + (n ? '・予定' + n + '件' : '・予定なし')));
+      week.appendChild(li);
+    }
+
+    list.textContent = '';
+    var baseYear = dayParts(asOf).y;
+    var shown = scheduleOpen ? events : events.slice(0, SCHEDULE_CAP);
+    shown.forEach(function (e) {
+      var dp = dayParts(e.day);
+      var li = el('li', 'sched-row');
+      var a = el('a', 'sched-item');
+      a.href = 'product.html?id=' + encodeURIComponent(e.p.product_id);
+      var date = el('span', 'sched-date');
+      date.appendChild(el('span', 'nb', (dp.y !== baseYear ? dp.y + '/' : '') + dp.mo + '/' + dp.d + '（' + dp.dow + '）'));
+      a.appendChild(date);
+      var body = el('span', 'sched-body');
+      var meta = [e.kind];
+      var cat = lbl(CATEGORY_LABEL, e.p.category);
+      if (cat) { meta.push(cat); }
+      body.appendChild(el('span', 'sched-kind', meta.join(' ・ ')));
+      body.appendChild(wordWrapText(el('span', 'sched-name'), isUnknown(e.p.product_name) ? '商品の詳細' : String(e.p.product_name)));
+      var price = fmtListPrice(e.p);
+      if (price !== null) { body.appendChild(elKeep('span', 'sched-sub', '定価 ' + price)); }
+      a.appendChild(body);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    if (empty) { empty.hidden = events.length !== 0; }
+    if (more) {
+      more.hidden = events.length <= SCHEDULE_CAP;
+      more.setAttribute('aria-expanded', String(scheduleOpen));
+      more.textContent = scheduleOpen ? '閉じる' : 'すべて見る（' + events.length + '件）';
+    }
+    var sub = $('sched-count');
+    if (sub) { sub.textContent = events.length ? ' ・ 全' + events.length + '件' : ''; }
+  }
+
+  /** Re-render everything the category tab narrows, only when the tab actually changed. */
+  function renderForCat(force) {
+    if (!force && state.renderedCat === filters.cat) { syncCatTabs(); return; }
+    state.renderedCat = filters.cat;
+    syncCatTabs();
+    renderSections();
+    renderMargin();
+    renderSchedule();
+    syncRails();
   }
 
   var SECTIONS = [
@@ -2882,7 +3151,8 @@ function initIndex() {
     SECTIONS.forEach(function (sec) {
       var root = $(sec.id);
       if (!root) { return; }
-      var rows = state.products.filter(sec.pick).sort(sec.sort);
+      /* the category tab narrows every section the same way it narrows 全商品一覧 */
+      var rows = state.products.filter(inTab).filter(sec.pick).sort(sec.sort);
       var list = root.querySelector('[data-sec-list]');
       var count = root.querySelector('[data-sec-count]');
       var emptyNode = root.querySelector('[data-sec-empty]');
@@ -2973,6 +3243,14 @@ function initIndex() {
     ['sec-closing', '締切が近い商品を見る'], ['sec-lottery', '受付中の抽選を見る'],
     ['sec-preorder', '受付中の予約を見る'], ['sec-buyable', 'いま購入できる商品を見る']
   ];
+  /* 「利ざや候補を見る（17件）」: the count never breaks away from its label's last line */
+  function setCountLabel(el, text, n) {
+    el.textContent = text;
+    var count = document.createElement('span');
+    count.className = 'nowrap';
+    count.textContent = '（' + n + '件）';
+    el.appendChild(count);
+  }
   function renderPrimaryAction() {
     var btn = $('hero-primary');
     var alt = $('hero-secondary');
@@ -2991,7 +3269,7 @@ function initIndex() {
       var n = sec ? state.products.filter(sec.pick).length : 0;
       if (n > 0) {
         btn.href = '#' + PRIMARY_TARGETS[i][0];
-        btn.textContent = PRIMARY_TARGETS[i][1] + '（' + n + '件）';
+        setCountLabel(btn, PRIMARY_TARGETS[i][1], n);
         if (nMargin > 0) { setAlt('#sec-margin', '利ざや候補を見る'); } else { setAlt('#sec-all', '全商品から探す'); }
         return;
       }
@@ -2999,7 +3277,7 @@ function initIndex() {
     /* nothing is confirmed open: the value view, which always explains itself */
     if (nMargin > 0) {
       btn.href = '#sec-margin';
-      btn.textContent = '利ざや候補を見る（' + nMargin + '件）';
+      setCountLabel(btn, '利ざや候補を見る', nMargin);
       setAlt('#sec-all', '全商品から探す');
       return;
     }
@@ -3053,7 +3331,10 @@ function initIndex() {
       var btn = root.querySelector('[data-sec-more]');
       if (!btn) { return; }
       btn.addEventListener('click', function () {
+        /* the section was narrowed by the category tab, so its full list keeps that tab */
+        var keepCat = filters.cat;
         clearFilters();
+        filters.cat = keepCat;
         filters.sec = sec.id;
         /* the value view keeps its level order in the full list (買いの目安順) */
         if (sec.id === 'sec-margin') { filters.sort = 'buy'; }
@@ -3106,6 +3387,8 @@ function initIndex() {
 
   /* -------------------------------------------------------------- list render */
   function renderList() {
+    /* the sections and the schedule follow the category tab (a no-op when it did not change) */
+    renderForCat();
     var rows = sortRows(applyFilters());
     var list = $('list');
     var head = $('list-head');
@@ -3207,6 +3490,17 @@ function initIndex() {
       filters.sort = 'deadline';
       syncControlsFromFilters(); writeUrl(); renderList();
     });
+    var schedMore = $('sched-more');
+    if (schedMore) {
+      schedMore.addEventListener('click', function () {
+        scheduleOpen = !scheduleOpen;
+        renderSchedule();
+        if (!scheduleOpen) {
+          var head = $('sec-schedule');
+          if (head) { head.scrollIntoView({ block: 'nearest' }); }
+        }
+      });
+    }
     $('active-sec-clear').addEventListener('click', function () {
       filters.sec = '';
       writeUrl(); renderList();
@@ -3292,8 +3586,8 @@ function initIndex() {
         wireControls();
         wireSectionMoreButtons();
         renderHeroCollage();
-        renderSections();
-        renderMargin();
+        buildCatTabs();
+        renderForCat(true);
         renderPrimaryAction();
         mountHowCounted();
         renderList();
@@ -3763,6 +4057,72 @@ function initProduct() {
     return g.node;
   }
 
+  /** 「調べた角度 n/6」 and the six chips, each an in-page link to its angle's section. */
+  function angleSummary(ra) {
+    var box = el('section', 'angle-sum');
+    box.setAttribute('aria-labelledby', 'angle-sum-title');
+    var head = el('div', 'angle-sum-head');
+    var title = el('h2', 'angle-sum-title', '調べた角度 ' + ra.checked + '/' + ra.total);
+    title.id = 'angle-sum-title';
+    head.appendChild(title);
+    if (ra.officialChecked) { head.appendChild(el('span', 'angle-sum-sub', '公式ページでも確認')); }
+    box.appendChild(head);
+    var nav = el('nav', 'angle-bar angle-bar--links');
+    nav.setAttribute('aria-label', '角度ごとの内容へ移動');
+    ra.angles.forEach(function (a) {
+      var link = el('a', 'angle-cell' + (a.known ? ' is-known' : ''), a.label);
+      link.href = '#angle-' + a.key;
+      link.setAttribute('aria-label', angleStateText(a));
+      nav.appendChild(link);
+    });
+    box.appendChild(nav);
+    box.appendChild(el('p', 'angle-legend', '塗りつぶしは確認できた角度、点線の枠はまだ確認できていない角度です。'));
+    return box;
+  }
+
+  /** One section per angle (h2 = its label): a two-column list of what was confirmed, with the
+      source host when a URL was published; an angle not confirmed yet says so in a dashed box. */
+  function angleSections(p, ra) {
+    var wrap = el('div', 'angle-secs');
+    ra.angles.forEach(function (a) {
+      var sec = el('section', 'angle-sec' + (a.known ? ' is-known' : ''));
+      sec.id = 'angle-' + a.key;
+      sec.appendChild(el('h2', 'angle-sec-title', a.label));
+      if (a.rows.length) {
+        var dl = el('dl', 'angle-dl');
+        a.rows.forEach(function (r) {
+          var rowEl = el('div', 'angle-row');
+          rowEl.appendChild(el('dt', null, String(r.label_ja)));
+          var dd = elKeep('dd', null, angleValueText(r.value_ja));
+          if (isSafeHttpUrl(r.source_url) && hostOf(r.source_url)) {
+            var src = el('a', 'angle-src', '出典: ' + hostOf(r.source_url).replace(/^www\./, ''));
+            src.href = String(r.source_url);          /* https only, validated above */
+            src.target = '_blank';
+            src.rel = 'noopener noreferrer';
+            dd.appendChild(src);
+          }
+          rowEl.appendChild(dd);
+          dl.appendChild(rowEl);
+        });
+        sec.appendChild(dl);
+      }
+      if (!a.known) {
+        var box = el('div', 'angle-unknown');
+        box.appendChild(el('p', 'angle-unknown-head',
+          a.rows.length ? 'この角度の判断材料は、まだ確認できていません。' : 'まだ確認できていません。'));
+        if (a.key === 'value') {
+          var need = buyNeedText(p);
+          var bs = buySignalOf(p);
+          var why = need ? 'あと必要なもの：' + need : (bs ? shownText(bs.reason_ja) : null);
+          if (why) { box.appendChild(elKeep('p', 'angle-unknown-why', why)); }
+        }
+        sec.appendChild(box);
+      }
+      wrap.appendChild(sec);
+    });
+    return wrap;
+  }
+
   function render(doc, p) {
     var root = $('detail');
     var unverified = isUnverifiedRow(p);
@@ -3813,6 +4173,10 @@ function initProduct() {
     head.appendChild(headText);
     heroBody.appendChild(head);
 
+    /* --- 調べた角度 n/6: right after the header, each chip jumps to its own section below --- */
+    var angles = researchAnglesOf(p);
+    if (angles) { heroBody.appendChild(angleSummary(angles)); }
+
     /* --- 買いの目安（参考）: the answer first, then why, then what is missing, then the conditions --- */
     var bs = buySignalOf(p);
     if (bs) {
@@ -3854,6 +4218,7 @@ function initProduct() {
       heroBody.appendChild(verdict);
     }
     card.appendChild(hero);
+    if (angles) { card.appendChild(angleSections(p, angles)); }
     if (unverified) {
       heroBody.appendChild(el('div', 'warn-box',
         'この商品は未検証です。公式情報での確認がまだ済んでいないため、確認済みの商品とは区別してご覧ください。'));

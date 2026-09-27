@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="抽選・予約・再販の受付状況や締切、発売日を、公式サイトなどの公開情報からまとめた一覧です。購入のおすすめや利益の予測は含みません。">
 <title>Sedori Research Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&amp;display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="index">
@@ -160,6 +163,7 @@
     <!-- Quick navigation. Plain in-page anchors; wraps instead of scrolling sideways. -->
     <nav class="quicknav" aria-label="セクションへ移動">
       <ul class="quicknav-list">
+        <li><a href="#sec-schedule">これからの予定</a></li>
         <li><a href="#sec-closing">締切間近</a></li>
         <li><a class="quicknav-value" href="#sec-margin">利ざや候補</a></li>
         <li><a href="#sec-track">過去の実績</a></li>
@@ -189,6 +193,31 @@
   <p class="loading" id="loading" role="status">商品の一覧を読み込んでいます…</p>
 
   <div id="app" hidden>
+
+    <!--
+      分野タブ. Buttons with aria-pressed (one pressed at a time). A tab is the カテゴリ filter:
+      it narrows every list on this page — the schedule, the highlight sections and 全商品一覧.
+    -->
+    <nav class="cat-tabs" id="cat-tabs" aria-label="分野で絞り込む">
+      <div class="cat-tabs-row" id="cat-tabs-row"></div>
+      <p class="cat-tabs-note" id="cat-tabs-note" aria-live="polite" hidden></p>
+    </nav>
+
+    <!--
+      これからの予定. The next seven days from the 基準日 (a dot marks a day with an entry), then
+      the dated entries themselves: 発売・予約・応募・抽選・結果・締切. Only published dates on or
+      after the 基準日, and only day-precision dates — a month-only release is never given a day.
+    -->
+    <section class="sched" id="sec-schedule" aria-labelledby="sched-title">
+      <div class="sched-head">
+        <h2 class="sched-title" id="sched-title">これからの予定</h2>
+        <span class="sched-sub">発売・受付・締切<span class="sched-count" id="sched-count"></span></span>
+      </div>
+      <ol class="sched-week" id="sched-week" aria-label="基準日からの7日間"></ol>
+      <ul class="sched-list" id="sched-list" aria-label="予定の一覧"></ul>
+      <p class="sched-empty" id="sched-empty" hidden>この分野で、基準日以降の日付が公表されている予定はありません。</p>
+      <button type="button" class="btn sched-more" id="sched-more" aria-expanded="false" aria-controls="sched-list" hidden>すべて見る</button>
+    </section>
 
 
     <!--
