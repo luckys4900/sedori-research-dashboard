@@ -3921,3 +3921,11 @@ body {
 /* 16. IBM Plex Sans JP sets kana wider than the system fonts and the Google Fonts subset drops
    palt; a slight tracking keeps the phone's first screen (hero + buy panel + KPIs) in one view. */
 body { letter-spacing: -0.02em; }
+
+/* 17. Phone: the hero's second action repeats a link that sits just below it (the buy panel's
+   「利ざや候補と、あと何が必要かを見る」 / the category tabs), so it is dropped there and the primary
+   action keeps one line — the first screen (hero + buy panel + KPIs) stays in one view. */
+@media (max-width: 480px) {
+  .signal-hero #hero-secondary { display: none; }
+  .signal-hero .hero-action--primary { flex: 1 1 100%; justify-content: center; white-space: nowrap; }
+}
