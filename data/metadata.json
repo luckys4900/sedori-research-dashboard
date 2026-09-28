@@ -60,7 +60,7 @@
     "product_group_parent": 1,
     "superseded_observation": 9
   },
-  "generated_at": "2026-09-28T09:52:00+09:00",
+  "generated_at": "2026-09-28T15:43:01+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかを示すもので、順位づけやおすすめではありません。",
     "history": "過去の取引価格は、比較のために選んだ別の商品（類似品）の取引実績です。この商品の利益ではありません。",
@@ -73,10 +73,10 @@
   },
   "reconciliation": {
     "observation_rows_excluded": 12,
-    "observation_rows_in": 80,
+    "observation_rows_in": 91,
     "product_rows_excluded": 2,
     "product_rows_in": 103,
-    "published_total": 169
+    "published_total": 180
   },
   "schema_version": "1.1.0",
   "source_tables": [
@@ -94,7 +94,7 @@
     },
     {
       "kind": "discovery_feed",
-      "rows": 80
+      "rows": 91
     },
     {
       "kind": "comparable_catalogue",

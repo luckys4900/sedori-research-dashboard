@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-28",
-  "generated_at": "2026-09-28T09:52:00+09:00",
+  "generated_at": "2026-09-28T15:43:01+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -3701,6 +3701,170 @@
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
       "analog_backtest": null,
+      "application_end": "2026-11-11",
+      "application_start": "2026-10-30",
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": 44,
+      "deadline": "2026-11-11",
+      "deadline_kind": "APPLICATION",
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "遊☆戯☆王VRAINS",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://yu-gi-oh.jp/news/jcvlqvk9l/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "購入・応募数の上限：税込2,200円お買い上げごとにランダム1枚",
+          "code": "PURCHASE_LIMIT",
+          "label_ja": "購入・応募数の条件"
+        },
+        {
+          "basis_ja": "受付期間は12日間です",
+          "code": "SHORT_ORDER_WINDOW",
+          "label_ja": "受付期間が短い"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-0b531a17eec459cd",
+      "product_name": "『遊☆戯☆王VRAINS』POP UP SHOP 購入特典ポストカード",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": "税込2,200円お買い上げごとにランダム1枚",
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "抽選受付",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-10-30 〜 2026-11-11"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": true,
+            "label_ja": "供給",
+            "rows": [
+              {
+                "label_ja": "購入上限",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "税込2,200円お買い上げごとにランダム1枚"
+              }
+            ]
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 2,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "YU-GI-OH OFFICIAL SITE",
+          "url": "https://yu-gi-oh.jp/news/jcvlqvk9l/"
+        }
+      ],
+      "status": "NOT_STARTED",
+      "status_basis": "DERIVED_FROM_WINDOW",
+      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
+      "status_label_ja": "受付開始前",
+      "status_note_ja": null,
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": null,
       "application_start": null,
       "attention_reasons": [],
@@ -4493,6 +4657,176 @@
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
       "status_label_ja": "受付中",
+      "status_note_ja": null,
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": "WITHIN_3D",
+      "days_to_deadline": 2,
+      "deadline": "2026-09-30",
+      "deadline_kind": "RESERVATION",
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "遊☆戯☆王デュエルモンスターズ",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 5500,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://yu-gi-oh.jp/news/068kxck0ny/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "公表されている提供方法は受注生産・受注販売です。KCストア受注販売",
+          "code": "MADE_TO_ORDER",
+          "label_ja": "受注生産（受付期間内の申込のみ）"
+        },
+        {
+          "basis_ja": "受付期間は13日間です",
+          "code": "SHORT_ORDER_WINDOW",
+          "label_ja": "受付期間が短い"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-131bb4ba44a6be89",
+      "product_name": "海馬瀬人 お誕生日記念グッズセット／B",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "予約開始",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-17"
+              },
+              {
+                "label_ja": "予約締切",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-30"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥5,500"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": "2026-09-30",
+      "reservation_start": "2026-09-17",
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "YU-GI-OH OFFICIAL SITE",
+          "url": "https://yu-gi-oh.jp/news/068kxck0ny/"
+        }
+      ],
+      "status": "CLOSING_SOON",
+      "status_basis": "DERIVED_FROM_WINDOW",
+      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
+      "status_label_ja": "締切間近",
       "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -6464,6 +6798,176 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
+      "closing_soon_band": "WITHIN_3D",
+      "days_to_deadline": 2,
+      "deadline": "2026-09-30",
+      "deadline_kind": "RESERVATION",
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "遊☆戯☆王デュエルモンスターズ",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 5500,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://yu-gi-oh.jp/news/068kxck0ny/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "公表されている提供方法は受注生産・受注販売です。KCストア受注販売",
+          "code": "MADE_TO_ORDER",
+          "label_ja": "受注生産（受付期間内の申込のみ）"
+        },
+        {
+          "basis_ja": "受付期間は13日間です",
+          "code": "SHORT_ORDER_WINDOW",
+          "label_ja": "受付期間が短い"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-4eb23d223c2728f5",
+      "product_name": "海馬瀬人 お誕生日記念グッズセット／C",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "予約開始",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-17"
+              },
+              {
+                "label_ja": "予約締切",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-30"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥5,500"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": "2026-09-30",
+      "reservation_start": "2026-09-17",
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "YU-GI-OH OFFICIAL SITE",
+          "url": "https://yu-gi-oh.jp/news/068kxck0ny/"
+        }
+      ],
+      "status": "CLOSING_SOON",
+      "status_basis": "DERIVED_FROM_WINDOW",
+      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
+      "status_label_ja": "締切間近",
+      "status_note_ja": null,
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
       "closing_soon_band": null,
       "days_to_deadline": 94,
       "deadline": "2026-12-31",
@@ -6759,6 +7263,158 @@
       "acquisition_cost_status": "UNVERIFIED",
       "analog_backtest": null,
       "application_end": null,
+      "application_start": "2026-09-28",
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "メガミデバイス",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://www.kotobukiya.co.jp/blog2/megami/article/detail/335/",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-5b2c113d68c60a38",
+      "product_name": "PUNI☆MOFU リン",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "抽選受付",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-28"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "コトブキヤ メガミデバイス開発室",
+          "url": "https://www.kotobukiya.co.jp/blog2/megami/article/detail/335/"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
@@ -6905,6 +7561,171 @@
       "status_label_ja": "受付状況は未確認",
       "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
       "updated_at": "2026-09-19",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": 44,
+      "deadline": "2026-11-11",
+      "deadline_kind": "RESERVATION",
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "遊☆戯☆王 デュエルモンスターズGX",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 49500,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://yu-gi-oh.jp/news/3pp6hv-4t_c/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "公表されている提供方法は受注生産・受注販売です。受注販売",
+          "code": "MADE_TO_ORDER",
+          "label_ja": "受注生産（受付期間内の申込のみ）"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-6208c658463b911b",
+      "product_name": "究極宝玉神 レインボー・ドラゴン スケールフィギュア",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "予約開始",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-18"
+              },
+              {
+                "label_ja": "予約締切",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-11-11"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥49,500"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": "2026-11-11",
+      "reservation_start": "2026-09-18",
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": "2027-06",
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "YU-GI-OH OFFICIAL SITE",
+          "url": "https://yu-gi-oh.jp/news/3pp6hv-4t_c/"
+        }
+      ],
+      "status": "OPEN_NOW",
+      "status_basis": "DERIVED_FROM_WINDOW",
+      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
+      "status_label_ja": "受付中",
+      "status_note_ja": null,
+      "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
     {
@@ -9389,6 +10210,487 @@
       "status_basis_label_ja": null,
       "status_label_ja": "受付状況は未確認",
       "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "コジマプロダクション",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 11000,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://www.kotobukiya.co.jp/product/detail/p4934054066957/",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-85be54fac8faf96f",
+      "product_name": "ルーデンス",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "予約開始",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-24"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥11,000"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": "2026-09-24",
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": "2027-03",
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "コトブキヤ 製品情報ポータル",
+          "url": "https://www.kotobukiya.co.jp/product/detail/p4934054066957/"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "遊戯王OCG",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 990,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://yu-gi-oh.jp/news/yv7uwp8bq/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-8eb166476208ba71",
+      "product_name": "デュエリストカードプロテクター THE CHRONICLES 罪宝狩りの悪魔",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": false,
+            "label_ja": "いつ",
+            "rows": []
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥990"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 0,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": "2026-10-31",
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "YU-GI-OH OFFICIAL SITE",
+          "url": "https://yu-gi-oh.jp/news/yv7uwp8bq/"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": "WITHIN_3D",
+      "days_to_deadline": 2,
+      "deadline": "2026-09-30",
+      "deadline_kind": "RESERVATION",
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "遊☆戯☆王デュエルモンスターズ",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 5500,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://yu-gi-oh.jp/news/068kxck0ny/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "公表されている提供方法は受注生産・受注販売です。KCストア受注販売",
+          "code": "MADE_TO_ORDER",
+          "label_ja": "受注生産（受付期間内の申込のみ）"
+        },
+        {
+          "basis_ja": "受付期間は13日間です",
+          "code": "SHORT_ORDER_WINDOW",
+          "label_ja": "受付期間が短い"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-90fc13d9035c4874",
+      "product_name": "海馬瀬人 お誕生日記念グッズセット／A",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "予約開始",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-17"
+              },
+              {
+                "label_ja": "予約締切",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-30"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥5,500"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": "2026-09-30",
+      "reservation_start": "2026-09-17",
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "YU-GI-OH OFFICIAL SITE",
+          "url": "https://yu-gi-oh.jp/news/068kxck0ny/"
+        }
+      ],
+      "status": "CLOSING_SOON",
+      "status_basis": "DERIVED_FROM_WINDOW",
+      "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
+      "status_label_ja": "締切間近",
+      "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
@@ -12957,6 +14259,158 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "ONE PIECE",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 990,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://p-bandai.jp/carddas/a0008/list-dr10-n47/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-d4a654a93f0e214f",
+      "product_name": "ONE PIECEカードゲーム プレミアムカードコレクション -ONE PIECE DAY'26-【4次：2027年6月発送分】",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": false,
+            "label_ja": "いつ",
+            "rows": []
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥990"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 0,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": "2027-06",
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "プレミアムバンダイ バンダイカードショップ",
+          "url": "https://p-bandai.jp/carddas/a0008/list-dr10-n47/"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
       "closing_soon_band": "WITHIN_24H",
       "days_to_deadline": 0,
       "deadline": "2026-09-28",
@@ -13596,6 +15050,158 @@
       "acquisition_cost_status": "UNVERIFIED",
       "analog_backtest": null,
       "application_end": null,
+      "application_start": "2026-09-28",
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "メガミデバイス",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://www.kotobukiya.co.jp/blog2/megami/article/detail/335/",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-ed8ae2b18eb55ad0",
+      "product_name": "メガミデバイス M.S.G PUNI☆MOFU リン アイデカールセット",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "抽選受付",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026-09-28"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "コトブキヤ メガミデバイス開発室",
+          "url": "https://www.kotobukiya.co.jp/blog2/megami/article/detail/335/"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
       "application_start": null,
       "attention_reasons": [],
       "buy_signal": {
@@ -13904,6 +15510,151 @@
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
       "status_label_ja": "受付中",
       "status_note_ja": null,
+      "updated_at": "2026-09-28",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-09-28",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "ドラゴンボールスーパーカードゲーム フュージョンワールド",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": "2026-09-25",
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://p-bandai.jp/carddas/news-list-0/",
+      "official_url_kind": "OFFICIAL",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-f31c86192808ce95",
+      "product_name": "【抽選販売】ドラゴンボールスーパーカードゲーム FW ブースター CROSS FORCE [FB10]【2026年10月発送分】",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": false,
+            "label_ja": "いつ",
+            "rows": []
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 0,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": "2026-10",
+      "source_references": [
+        {
+          "kind": "OFFICIAL",
+          "name": "プレミアムバンダイ バンダイカードショップ",
+          "url": "https://p-bandai.jp/carddas/news-list-0/"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
