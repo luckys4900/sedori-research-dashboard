@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-28",
+  "as_of": "2026-10-01",
   "by_category": {
     "BOOK_MOOK": 5,
     "CHARACTER_GOODS": 11,
@@ -30,17 +30,17 @@
     "UNKNOWN": 84
   },
   "by_status": {
-    "CLOSED": 13,
-    "CLOSING_SOON": 8,
+    "CLOSED": 20,
+    "CLOSING_SOON": 4,
     "ENDED": 1,
-    "NOT_STARTED": 20,
-    "OPEN_NOW": 19,
+    "NOT_STARTED": 18,
+    "OPEN_NOW": 18,
     "PAYMENT_PENDING": 0,
     "PICKUP_PENDING": 0,
     "RELEASED": 32,
     "RESTOCKED": 4,
-    "RESULT_PENDING": 3,
-    "SHIPPING_PENDING": 0,
+    "RESULT_PENDING": 1,
+    "SHIPPING_PENDING": 2,
     "UNKNOWN": 80
   },
   "by_verification": {
@@ -49,17 +49,17 @@
     "DISCOVERY_UNVERIFIED": 79
   },
   "counts": {
-    "accepting_now": 27,
+    "accepting_now": 22,
     "acquisition_cost_verified": 0,
     "attention": 6,
-    "buyable_now": 27,
-    "closing_soon": 8,
-    "closing_soon_24h": 2,
-    "closing_soon_3d": 5,
-    "closing_soon_7d": 1,
-    "new_items": 180,
+    "buyable_now": 22,
+    "closing_soon": 4,
+    "closing_soon_24h": 1,
+    "closing_soon_3d": 0,
+    "closing_soon_7d": 3,
+    "new_items": 112,
     "open_lottery": 0,
-    "open_now": 19,
+    "open_now": 18,
     "open_preorder": 0,
     "restocked": 4,
     "total": 180,
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 117
   },
-  "generated_at": "2026-09-28T15:43:01+09:00",
+  "generated_at": "2026-10-01T12:47:16+09:00",
   "schema_version": "1.1.0"
 }
