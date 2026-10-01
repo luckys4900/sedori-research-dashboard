@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-01",
-  "generated_at": "2026-10-01T13:07:39+09:00",
+  "generated_at": "2026-10-01T13:35:59+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -6338,7 +6338,7 @@
       "is_attention": false,
       "is_new": true,
       "last_verified_at": null,
-      "list_price_jpy": 1,
+      "list_price_jpy": 880,
       "list_price_label_ja": "定価",
       "list_price_unit_ja": null,
       "lottery_end": null,
@@ -6408,7 +6408,7 @@
                 "label_ja": "定価",
                 "source_ja": "掲載データ",
                 "source_url": null,
-                "value_ja": "¥1"
+                "value_ja": "¥880"
               }
             ]
           },
@@ -6435,7 +6435,7 @@
       "sale_mode": "UNKNOWN",
       "sale_mode_raw": null,
       "sales_end": null,
-      "shipping_period": "発売日：10月3日（土）～順次",
+      "shipping_period": "2026-10-03",
       "source_references": [
         {
           "kind": "RETAILER",
@@ -6448,7 +6448,7 @@
       "status_basis_label_ja": null,
       "status_label_ja": "受付状況は未確認",
       "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
-      "updated_at": "2026-09-28",
+      "updated_at": "2026-10-01",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
     {
@@ -9546,158 +9546,6 @@
       "status_label_ja": "受付状況は未確認",
       "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
       "updated_at": "2026-09-28",
-      "verification_tier": "DISCOVERY_UNVERIFIED"
-    },
-    {
-      "acquisition_cost_jpy": null,
-      "acquisition_cost_status": "UNVERIFIED",
-      "analog_backtest": null,
-      "application_end": null,
-      "application_start": null,
-      "attention_reasons": [],
-      "buy_signal": {
-        "analogs_evaluable": 0,
-        "analogs_needed": 3,
-        "conditions_ja": [
-          "定価で買えた場合の目安です",
-          "送料などの費用はまだ差し引いておらず、利益ではありません"
-        ],
-        "inference": null,
-        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
-        "label_ja": "判断材料不足",
-        "level": "NOT_ENOUGH_EVIDENCE",
-        "missing_ja": [
-          "比べられる類似品の取引データがまだありません"
-        ],
-        "reason_ja": "判定に必要な根拠がそろっていません"
-      },
-      "category": "UNKNOWN",
-      "category_raw": null,
-      "channel": [],
-      "closing_soon_band": null,
-      "days_to_deadline": null,
-      "deadline": null,
-      "deadline_kind": null,
-      "evidence_label_ja": "未検証",
-      "evidence_state": "UNVERIFIED",
-      "first_seen_at": "2026-10-01",
-      "historical_price_evidence": [],
-      "image": null,
-      "ip": "Sanrio (クロミ)",
-      "is_attention": false,
-      "is_new": true,
-      "last_verified_at": null,
-      "list_price_jpy": 880,
-      "list_price_label_ja": "定価",
-      "list_price_unit_ja": null,
-      "lottery_end": null,
-      "lottery_start": null,
-      "margin_yen": null,
-      "notes_ja": null,
-      "official_url": "https://www.sanrio.co.jp/news/goods/ku-atarikuji-20260924/",
-      "official_url_kind": "RETAILER",
-      "opportunity_signals": [
-        {
-          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
-          "code": "UNKNOWN",
-          "label_ja": "注目理由は未確認"
-        }
-      ],
-      "payment_deadline": null,
-      "pickup_period": null,
-      "product_id": "disc-sku-759566bbd10466ed",
-      "product_name": "クロミ当りくじ 全12等級+ラストワン",
-      "profit_evidence_detail": {
-        "comparables_with_price_evidence": 0,
-        "comparables_with_verified_route": 0,
-        "linked_comparables": 0,
-        "minimum_profit_sample": 5,
-        "profit_usable_comparables": 0,
-        "strict_completed_sales": 0
-      },
-      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
-      "profit_evidence_status": "NOT_EVALUATED",
-      "purchase_limit": null,
-      "purchase_url": null,
-      "release_date": null,
-      "release_date_display": null,
-      "release_date_precision": null,
-      "research_angles": {
-        "angles": [
-          {
-            "key": "timing",
-            "known": false,
-            "label_ja": "いつ",
-            "rows": []
-          },
-          {
-            "key": "route",
-            "known": false,
-            "label_ja": "どこで",
-            "rows": []
-          },
-          {
-            "key": "supply",
-            "known": false,
-            "label_ja": "供給",
-            "rows": []
-          },
-          {
-            "key": "demand",
-            "known": false,
-            "label_ja": "需要",
-            "rows": []
-          },
-          {
-            "key": "value",
-            "known": false,
-            "label_ja": "価格",
-            "rows": [
-              {
-                "label_ja": "定価",
-                "source_ja": "掲載データ",
-                "source_url": null,
-                "value_ja": "¥880"
-              }
-            ]
-          },
-          {
-            "key": "risk",
-            "known": false,
-            "label_ja": "リスク",
-            "rows": []
-          }
-        ],
-        "checked": 0,
-        "official_pages_checked": false,
-        "total": 6
-      },
-      "reservation_end": null,
-      "reservation_start": null,
-      "restock_status": null,
-      "result_date": null,
-      "route_evidence": {
-        "routes": [],
-        "shadow_only": true,
-        "status": "NONE"
-      },
-      "sale_mode": "UNKNOWN",
-      "sale_mode_raw": null,
-      "sales_end": null,
-      "shipping_period": "2026-10-03",
-      "source_references": [
-        {
-          "kind": "RETAILER",
-          "name": "www.sanrio.co.jp",
-          "url": "https://www.sanrio.co.jp/news/goods/ku-atarikuji-20260924/"
-        }
-      ],
-      "status": "UNKNOWN",
-      "status_basis": null,
-      "status_basis_label_ja": null,
-      "status_label_ja": "受付状況は未確認",
-      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
-      "updated_at": "2026-10-01",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
     {

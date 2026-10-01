@@ -55,12 +55,12 @@
   "excluded_rows": {
     "already_published_as_a_product": 2,
     "inactive_product_group": 1,
-    "merged_into_one_item": 1,
+    "merged_into_one_item": 2,
     "no_usable_name": 0,
     "product_group_parent": 1,
-    "superseded_observation": 9
+    "superseded_observation": 10
   },
-  "generated_at": "2026-10-01T13:07:39+09:00",
+  "generated_at": "2026-10-01T13:35:59+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかを示すもので、順位づけやおすすめではありません。",
     "history": "過去の取引価格は、比較のために選んだ別の商品（類似品）の取引実績です。この商品の利益ではありません。",
@@ -72,11 +72,11 @@
     "verification": "公式情報での確認が済んでいない商品は「未検証」（DISCOVERY_UNVERIFIED）として区別し、確認済みの商品と同じ見た目にはしません。"
   },
   "reconciliation": {
-    "observation_rows_excluded": 12,
-    "observation_rows_in": 95,
+    "observation_rows_excluded": 14,
+    "observation_rows_in": 96,
     "product_rows_excluded": 2,
     "product_rows_in": 103,
-    "published_total": 184
+    "published_total": 183
   },
   "schema_version": "1.1.0",
   "source_tables": [
@@ -94,7 +94,7 @@
     },
     {
       "kind": "discovery_feed",
-      "rows": 95
+      "rows": 96
     },
     {
       "kind": "comparable_catalogue",
