@@ -25,8 +25,8 @@
       <p class="site-purpose">抽選・予約・再販の受付と締切を、公式情報から追う商品リサーチ</p>
     </div>
     <p class="site-meta">
-      <span class="site-meta-item"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
-      <span class="site-meta-item"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
+      <span class="site-meta-item" title="この一覧を作り直して公開した時刻です。各商品の最新の確認日とは限りません。"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
+      <span class="site-meta-item" title="受付状況や「あと◯日」を判定した日です。"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
     </p>
     <div class="masthead-search" role="search">
       <label class="visually-hidden" for="f-q-top">商品を検索</label>
@@ -44,10 +44,7 @@
       <li><a href="#sec-open">受付中</a></li>
       <li><a href="#sec-restock">再販</a></li>
       <li><a href="#sec-attention">注目</a></li>
-      <li><button type="button" class="topnav-cat" data-nav-cat="TCG" aria-pressed="false">TCG</button></li>
-      <li><button type="button" class="topnav-cat" data-nav-cat="FIGURE" aria-pressed="false">フィギュア</button></li>
-      <li><button type="button" class="topnav-cat" data-nav-cat="TOY" aria-pressed="false">玩具</button></li>
-      <li><a href="#sec-all">全商品</a></li>
+      <li id="topnav-cats-end"><a href="#sec-all">全商品</a></li>
     </ul>
   </div>
 </nav>
@@ -69,9 +66,9 @@
     <div class="strip" id="kpi-row" role="group" aria-label="基準日の件数">
       <span class="strip-lbl">本日</span>
       <button type="button" class="kpi kpi--closing" data-kpi="closing" data-chip="closing" aria-pressed="false"><span class="kpi-label">締切間近</span><span class="kpi-num" id="kpi-closing">—</span></button>
-      <button type="button" class="kpi" data-kpi="open" data-chip="open" aria-pressed="false"><span class="kpi-label">受付中</span><span class="kpi-num" id="kpi-open">—</span></button>
-      <button type="button" class="kpi" data-kpi="preorder" data-chip="preorder" aria-pressed="false"><span class="kpi-label">予約</span><span class="kpi-num" id="kpi-preorder">—</span></button>
-      <button type="button" class="kpi" data-kpi="lottery" data-chip="lottery" aria-pressed="false"><span class="kpi-label">抽選</span><span class="kpi-num" id="kpi-lottery">—</span></button>
+      <button type="button" class="kpi" data-kpi="open" data-chip="open" aria-pressed="false"><span class="kpi-label">受付中（締切間近を含む）</span><span class="kpi-num" id="kpi-open">—</span></button>
+      <button type="button" class="kpi" data-kpi="preorder" data-chip="preorder" aria-pressed="false"><span class="kpi-label">受付中の予約</span><span class="kpi-num" id="kpi-preorder">—</span></button>
+      <button type="button" class="kpi" data-kpi="lottery" data-chip="lottery" aria-pressed="false"><span class="kpi-label">受付中の抽選</span><span class="kpi-num" id="kpi-lottery">—</span></button>
       <button type="button" class="kpi" data-kpi="restock" data-chip="restock" aria-pressed="false"><span class="kpi-label">再販</span><span class="kpi-num" id="kpi-restock">—</span></button>
       <button type="button" class="kpi" data-kpi="new" data-chip="new" aria-pressed="false"><span class="kpi-label">新着</span><span class="kpi-num" id="kpi-new">—</span></button>
       <button type="button" class="kpi kpi--total" data-kpi="total" aria-pressed="false"><span class="kpi-label">全商品</span><span class="kpi-num" id="kpi-total">—</span></button>
@@ -89,6 +86,16 @@
         <p class="sec-empty" id="today-empty" hidden>いまのところ、締切が近い受付中の商品はありません。</p>
       </section>
 
+      <!-- 最近調べた商品: the most recently checked or observed items (each row keeps its 確認状況
+           badge), so a fresh addition is one scroll from the top instead of several 「さらに30件」. -->
+      <section class="recent" id="recent" aria-labelledby="recent-title">
+        <div class="sec-head">
+          <h2 class="sec-title" id="recent-title">最近調べた商品</h2>
+          <span class="sec-sub">商品ごとの更新日が新しい順</span>
+        </div>
+        <ol class="recent-list" id="recent-list"></ol>
+      </section>
+
       <!-- B 最新の商材: one feed with chips. The old highlight sections are chips now; their ids stay
            here as anchors so links such as #sec-closing keep working and select the chip. -->
       <section class="sec sec--feed" id="feed" aria-labelledby="feed-title" data-sec>
@@ -101,8 +108,8 @@
           <button type="button" class="fchip" data-chip="all" aria-pressed="true">すべて</button>
           <button type="button" class="fchip" data-chip="open" aria-pressed="false">受付中</button>
           <button type="button" class="fchip" data-chip="closing" aria-pressed="false">締切間近</button>
-          <button type="button" class="fchip" data-chip="preorder" aria-pressed="false">予約</button>
-          <button type="button" class="fchip" data-chip="lottery" aria-pressed="false">抽選</button>
+          <button type="button" class="fchip" data-chip="preorder" aria-pressed="false">受付中の予約</button>
+          <button type="button" class="fchip" data-chip="lottery" aria-pressed="false">受付中の抽選</button>
           <button type="button" class="fchip" data-chip="restock" aria-pressed="false">再販</button>
           <button type="button" class="fchip" data-chip="attention" aria-pressed="false">注目候補</button>
           <button type="button" class="fchip" data-chip="margin" aria-pressed="false">利ざや候補</button>
@@ -110,12 +117,12 @@
         </div>
 
         <div class="feed-notes">
-          <p class="feed-note" data-note="all">確認済みの商品を先に、更新の新しい順に並べています（未検証の商品も含みます）。</p>
-          <p class="feed-note" data-note="open" hidden>受付中であることを<strong>確認できた</strong>商品です（販売方式が公表されていないものを含みます）。</p>
-          <p class="feed-note" data-note="closing" hidden>受付中であることを<strong>確認できた</strong>商品のうち、締切まで7日以内のものです。</p>
-          <p class="feed-note" data-note="preorder" hidden>受付中を<strong>確認できた</strong>予約・受注生産の商品です。</p>
-          <p class="feed-note" data-note="lottery" hidden>応募を受け付けていることを<strong>確認できた</strong>抽選です。</p>
-          <p class="feed-note" data-note="restock" hidden>再販・在庫復活を<strong>確認できた</strong>商品です。</p>
+          <p class="feed-note" data-note="all">確認状況（確認済み→一部確認→未検証）の順に、その中では商品ごとの更新日が新しい順に並べています。</p>
+          <p class="feed-note" data-note="open" hidden>公表された受付期間などから受付中と判定した商品です（締切間近を含みます）。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
+          <p class="feed-note" data-note="closing" hidden>公表された受付期間などから受付中と判定した商品のうち、締切まで7日以内のものです。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
+          <p class="feed-note" data-note="preorder" hidden>販売方式が予約・受注生産で、受付期間などから受付中と判定した商品です。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
+          <p class="feed-note" data-note="lottery" hidden>販売方式が抽選で、受付期間などから応募受付中と判定した商品です。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
+          <p class="feed-note" data-note="restock" hidden>公表された情報から再販・在庫復活と判定した商品です。</p>
           <p class="feed-note" data-note="attention" hidden>販売方法の制限と類似品の取引記録の<strong>両方を確認できた</strong>商品です。おすすめや期待値を示すものではありません。</p>
           <p class="feed-note" id="sec-new-note" data-note="new" hidden>掲載を始めてから14日以内の商品です。</p>
           <div class="feed-note margin-box" data-note="margin" hidden>
@@ -213,7 +220,7 @@
           <summary class="rail-sum"><span class="rail-title">使い方・表示の読み方</span></summary>
           <div class="rail-body">
             <ol class="howto-steps">
-              <li><strong>今日の締切を見る</strong>「締切間近」「受付中」は受付中を確認できた商品だけです。</li>
+              <li><strong>今日の締切を見る</strong>「締切間近」「受付中」は、公表された受付期間などから受付中と判定した商品です。公式情報での確認が済んでいないものは「未検証」と表示します。</li>
               <li><strong>気になる商品に印を付ける</strong>各商品の「印」から。印はこのブラウザにだけ保存されます。</li>
               <li><strong>詳細ページで根拠を確かめる</strong>受付期間・出典・確認状況をすべて載せています。購入の判断はご自身でお願いします。</li>
             </ol>
@@ -222,6 +229,7 @@
               <li><span class="legend-sample"><span class="badge badge--ev-verified">確認済み</span><span class="badge badge--ev-partial">一部確認</span><span class="badge badge--ev-none">未検証</span></span><span><strong>枠線</strong>は、情報をどこまで確認できたかです。「未検証」は公式情報での確認がまだの商品です。</span></li>
               <li><span class="legend-sample"><span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span><span class="badge badge--attention">注目候補</span></span><span><strong>角型</strong>は補足の目印です。おすすめや買い時を示すものではありません。</span></li>
               <li><span class="legend-sample"><span class="buy-glyph" aria-hidden="true">● ◐ ○ －</span></span><span><strong>買いの目安</strong>は似た商品の過去の取引からの参考で、利益ではありません。あなたの「印」とは別のものです。</span></li>
+              <li><span><strong>更新日時と基準日：</strong>更新日時はこの一覧を作り直して公開した時刻、基準日は受付状況や「あと◯日」を判定した日です。各商品の最新の確認日とは限りません（各行の「更新」は、その商品を最後に確認・観測した日です）。</span></li>
               <li><span><strong>確認が取れていない項目は表示していません。</strong>載っていないことは「なし」や「0」という意味ではありません。</span></li>
             </ul>
           </div>
@@ -277,9 +285,9 @@
                 <label class="field-label" for="f-deadline">締切</label>
                 <select id="f-deadline">
                   <option value="">すべて</option>
-                  <option value="24h">24時間以内（受付中を確認）</option>
-                  <option value="3d">3日以内（受付中を確認）</option>
-                  <option value="7d">7日以内（受付中を確認）</option>
+                  <option value="24h">24時間以内（受付中と判定）</option>
+                  <option value="3d">3日以内（受付中と判定）</option>
+                  <option value="7d">7日以内（受付中と判定）</option>
                   <option value="near_unconfirmed">7日以内（締切間近以外）</option>
                 </select>
               </div>
@@ -398,7 +406,7 @@
       </div>
       <div>
         <dt>いつの情報ですか？</dt>
-        <dd>ページ上部の「更新日時」「基準日」時点の情報です。「あと◯日」は基準日から数えています。</dd>
+        <dd>「更新日時」はこの一覧を作り直して公開した時刻、「基準日」は受付状況や「あと◯日」を判定した日です。各商品の最新の確認日とは限りません。各行の「更新」は、その商品を最後に確認・観測した日です。</dd>
       </div>
       <div>
         <dt>付けた印は他の人に見えますか？</dt>

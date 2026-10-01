@@ -300,6 +300,52 @@ strong { font-weight: 700; }
   padding-bottom: 4px;
 }
 
+.recent-list { display: grid; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); }
+.recent-item {
+  display: grid;
+  grid-template-columns: 3.4em auto minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 8px;
+  padding: 0 12px;
+  border-left: 3px solid transparent;
+}
+.recent-item + .recent-item { border-top: 1px solid var(--border); }
+.recent-item.is-unverified { border-left: 3px dashed var(--unverified-line); }
+.recent-day { font-size: var(--fs-xs); color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.recent-badges { display: flex; gap: 4px; }
+.recent-link { display: flex; align-items: center; min-height: var(--tap); min-width: 0; text-decoration: none; }
+.recent-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: var(--fg);
+  font-size: var(--fs-s);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  text-decoration: none;
+}
+.recent-link:hover .recent-name { text-decoration: underline; }
+
+/* a row that scrolls sideways shows 「›」 at its right edge while there is more (no gradient) */
+.can-scroll::after {
+  content: "›" / "";
+  position: sticky;
+  right: 0;
+  flex: none;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 0 6px;
+  background: var(--bg);
+  color: var(--fg-muted);
+  font-size: var(--fs-l);
+  font-weight: 700;
+  pointer-events: none;
+}
+.topnav-list.can-scroll::after { background: var(--surface); }
+
 .chips-row {
   display: flex;
   gap: 6px;
@@ -445,8 +491,8 @@ strong { font-weight: 700; }
    line holds the 類似品 summary, one quiet outbound link and the 「印」 menu. */
 .card--feed {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
-  grid-template-areas: "main main main" "bt ext mark";
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  grid-template-areas: "main main main main" "bt upd ext mark";
   align-items: center;
   gap: 8px;
   padding: 8px 12px 12px;
@@ -481,6 +527,7 @@ strong { font-weight: 700; }
 .card--feed .card-action--ext::after { content: " ↗"; }
 .card--feed .cta-host { display: none; }
 .card--feed .mark-menu { grid-area: mark; z-index: 3; }
+.row-upd { grid-area: upd; font-size: var(--fs-xs); color: var(--fg-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .card--feed .mark-sum { position: relative; min-width: var(--tap); margin: -12px 0; padding: 0 8px; border: 0; font-size: var(--fs-xs); }
 .card--feed .mark-sum::after { content: ""; position: absolute; inset: 10px 0; border: 1px dashed var(--border-strong); border-radius: var(--r-sm); }
 .card--feed .mark-menu.is-marked .mark-sum::after { border-style: solid; border-color: var(--flag); }
@@ -1228,10 +1275,11 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
   .masthead-search { grid-column: auto; }
   .layout {
     grid-template-columns: minmax(0, 1fr) var(--rail-w);
-    grid-template-areas: "today rail" "feed rail" "all rail" "past rail";
+    grid-template-areas: "today rail" "recent rail" "feed rail" "all rail" "past rail";
     column-gap: 32px;
   }
   .today { grid-area: today; }
+  .recent { grid-area: recent; }
   .sec--feed { grid-area: feed; }
   .rail {
     grid-area: rail;
@@ -1280,6 +1328,7 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
   .card--feed .bt-line-warn { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .card--feed .bt-line-val .phrase-unit + .phrase-unit { display: none; }
   .card--feed .bt-line-how { order: -1; }
+  .card--feed:has(> .bt-line) .row-upd { display: none; }
 }
 
 /* medium widths: 締切 and 定価 move under the name, so the name keeps the width of the row */

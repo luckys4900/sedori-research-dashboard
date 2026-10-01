@@ -60,7 +60,7 @@
     "product_group_parent": 1,
     "superseded_observation": 10
   },
-  "generated_at": "2026-10-01T15:05:50+09:00",
+  "generated_at": "2026-10-01T18:34:22+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかを示すもので、順位づけやおすすめではありません。",
     "history": "過去の取引価格は、比較のために選んだ別の商品（類似品）の取引実績です。この商品の利益ではありません。",
@@ -111,7 +111,7 @@
   ],
   "suppressed_fields": {
     "suppressed_non_https_url": 0,
-    "suppressed_note": 3,
+    "suppressed_note": 14,
     "suppressed_resale_url": 8
   }
 }

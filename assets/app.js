@@ -71,8 +71,37 @@ var STATUS_ORDER = [
 var CATEGORY_LABEL = {
   TCG: 'トレーディングカード', FIGURE: 'フィギュア', TOY: '玩具・ホビー',
   CHARACTER_GOODS: 'キャラクターグッズ', BOOK_MOOK: '書籍・ムック',
-  ONLINE_LOTTERY: 'オンラインくじ', COLLAB: 'コラボ商品', OTHER: 'その他'
+  ONLINE_LOTTERY: 'オンラインくじ', COLLAB: 'コラボ商品', OTHER: 'その他',
+  /* navigation / filter label only: the data value stays UNKNOWN, and a card or the detail page
+     still shows no category for it (lbl() never resolves UNKNOWN) */
+  UNKNOWN: 'その他（分類前）'
 };
+/* Short names for the navigation bar (plan §7). Same categories, same filter. */
+var NAV_CAT_LABEL = {
+  TCG: 'TCG', FIGURE: 'フィギュア', TOY: '玩具', CHARACTER_GOODS: 'キャラクターグッズ',
+  BOOK_MOOK: '書籍', ONLINE_LOTTERY: 'オンラインくじ', COLLAB: 'コラボ', OTHER: 'その他', UNKNOWN: 'その他（分類前）'
+};
+/** A category as a navigation / filter choice — including UNKNOWN (「その他（分類前）」), so the
+    category choices always add up to the whole list. Never used to label a product. */
+function catChoiceLabel(v) {
+  var got = own(CATEGORY_LABEL, v);
+  return got === undefined ? null : got;
+}
+
+/* The acceptance state as a filter choice. OPEN_NOW is named so that it cannot be read as the
+   status strip's 受付中 (which also counts 締切間近), and UNKNOWN gets a reachable choice. */
+var STATUS_CHOICE_LABEL = { OPEN_NOW: '受付中（締切間近を除く）', UNKNOWN: '受付状況は確認中' };
+
+/* Search aliases (query side only; product names are never rewritten). A query word that belongs
+   to a group matches a product containing ANY spelling of that group. Exact substrings only — no
+   fuzzy matching. */
+var SEARCH_ALIASES = [
+  ['hololive', 'ホロライブ'],
+  ['pokemon', 'pokémon', 'ポケモン', 'ポケットモンスター'],
+  ['one piece', 'onepiece', 'ワンピース'],
+  ['chiikawa', 'ちいかわ'],
+  ['sanrio', 'サンリオ']
+];
 
 var SALE_MODE_LABEL = {
   LOTTERY: '抽選', PREORDER: '予約', MADE_TO_ORDER: '受注生産',
@@ -292,6 +321,38 @@ function fmtGeneratedAt(s) {
       m[4] + ':' + m[5] + ' (JST)';
   }
   return String(s);
+}
+
+/**
+ * Dates written inside free text, in one style and at the precision they were published:
+ * 2026-10-03 → 2026年10月3日, 2026-12 → 2026年12月, 2026-12下旬 → 2026年12月下旬. A month is never
+ * turned into a day, and nothing else in the text changes.
+ */
+function normDateText(text) {
+  return String(text)
+    .replace(/(^|[^\d])(\d{4})-(\d{2})-(\d{2})(?!\d)/g, function (m, pre, y, mo, d) {
+      return pre + Number(y) + '年' + Number(mo) + '月' + Number(d) + '日';
+    })
+    .replace(/(^|[^\d])(\d{4})-(\d{2})(?![\d-])/g, function (m, pre, y, mo) {
+      return pre + Number(y) + '年' + Number(mo) + '月';
+    });
+}
+
+/** 「10/1」 (with the year only when it differs from the 基準日's) for a published YYYY-MM-DD. */
+function fmtShortDay(d, asOf) {
+  var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(d || ''));
+  if (!m) { return null; }
+  var md = Number(m[2]) + '/' + Number(m[3]);
+  return (asOf && String(asOf).slice(0, 4) !== m[1]) ? m[1] + '/' + md : md;
+}
+
+/** A list-level flag that is true for (almost) every product carries no information: the 新着 badge
+    is shown only while fewer than NEW_BADGE_MAX_SHARE of the products are new. List and detail
+    page use this one rule. */
+function newBadgeShown(products) {
+  if (!products || !products.length) { return false; }
+  var n = products.filter(function (p) { return p.is_new === true; }).length;
+  return n / products.length < NEW_BADGE_MAX_SHARE;
 }
 
 /** ¥5,280 — only for a real integer. null stays UNKNOWN. */
@@ -528,10 +589,13 @@ function evidenceBadge(p) {
   else if (p.evidence_state === 'PARTIAL') { variant = 'ev-partial'; }
   var label = shownText(p.evidence_label_ja);
   /* No label: no badge. A discovery row still says 未検証 — that is its state, not a gap. */
-  if (label === null) { return isUnverifiedRow(p) ? el('span', 'badge badge--ev-none', '未検証') : null; }
+  if (label === null && !isUnverifiedRow(p)) { return null; }
+  if (label === null) { label = '未検証'; }
   /* Defensive: never show 確認済み for a non-VERIFIED row. */
   if (p.evidence_state !== 'VERIFIED' && label === '確認済み') { label = '未検証'; }
-  return el('span', 'badge badge--' + variant, label);
+  var badge = el('span', 'badge badge--' + variant, label);
+  if (isUnverifiedRow(p)) { badge.title = '公式情報での確認がまだ済んでいない商品です'; }
+  return badge;
 }
 
 function isUnverifiedRow(p) {
@@ -1725,8 +1789,7 @@ var ANGLE_UNKNOWN_JA = 'まだ確認できていません';
 /** A plain YYYY-MM-DD value reads as a date; anything else is shown verbatim. */
 function angleValueText(v) {
   var s = shownText(v);
-  if (s === null) { return null; }
-  return /^\d{4}-\d{2}-\d{2}$/.test(s) ? fmtDate(s) : s;
+  return s === null ? null : normDateText(s);
 }
 
 /**
@@ -2209,6 +2272,7 @@ function initIndex() {
     $('today-empty').hidden = rows.length !== 0;
     list.hidden = rows.length === 0;
     syncRail(list);
+    if (list.__cue) { list.__cue(); }
   }
 
   /** A swipe row (phones) is a scroll container: it gets a tab stop and a name so it can be
@@ -2288,8 +2352,16 @@ function initIndex() {
     li.appendChild(a);
 
     put(li, backtestLine(p));
-    /* one quiet outbound text link and the reader's own 「印」 */
+    /* 更新 M/D: when this product was last checked or observed (a checked product: its last verification; a newly found one:
+       latest observation) — not the time the list was rebuilt. Omitted when unknown. */
     var actions = el('div', 'card-actions');
+    var upd = fmtShortDay(p.updated_at, state.doc && state.doc.as_of);
+    if (upd) {
+      var u = el('span', 'row-upd', '更新 ' + upd);
+      u.title = 'この商品を最後に確認・観測した日';
+      actions.appendChild(u);
+    }
+    /* one quiet outbound text link and the reader's own 「印」 */
     put(actions, outboundCta(p, 'card-action card-action--ext'));
     actions.appendChild(markMenu(p));
     li.appendChild(actions);
@@ -2310,11 +2382,31 @@ function initIndex() {
     return p.__hay;
   }
   function normQuery() { return filters.q.trim().toLowerCase().replace(/\s+/g, ' '); }
+  /** The query as a list of terms; each term is a list of spellings, any of which may match.
+      A multi-word alias (「one piece」) is taken as one term before the split on spaces. */
+  function queryTerms(q) {
+    var terms = [];
+    var rest = q;
+    SEARCH_ALIASES.forEach(function (g) {
+      g.forEach(function (spelling) {
+        var at = rest.indexOf(spelling);
+        while (at !== -1) {
+          terms.push(g);
+          rest = rest.slice(0, at) + ' ' + rest.slice(at + spelling.length);
+          at = rest.indexOf(spelling);
+        }
+      });
+    });
+    rest.split(/\s+/).forEach(function (t) { if (t) { terms.push([t]); } });
+    return terms;
+  }
   function matchesQuery(p, q) {
     if (!q) { return true; }
     var hay = haystack(p);
-    /* whitespace tolerant: every token must appear somewhere */
-    return q.split(/\s+/).every(function (t) { return t === '' || hay.indexOf(t) !== -1; });
+    /* whitespace tolerant: every term must appear somewhere, in any of its spellings */
+    return queryTerms(q).every(function (spellings) {
+      return spellings.some(function (t) { return hay.indexOf(t) !== -1; });
+    });
   }
 
   /**
@@ -2653,11 +2745,17 @@ function initIndex() {
     state.products.forEach(function (p) {
       /* An option is offered only for a value that has a displayable label: UNKNOWN (and a
          status whose label says it is unconfirmed) is not a choice on the page. */
-      if (lbl(CATEGORY_LABEL, p.category) && cats.indexOf(p.category) === -1) { cats.push(p.category); }
+      if (catChoiceLabel(p.category) && cats.indexOf(p.category) === -1) { cats.push(p.category); }
       if (lbl(SALE_MODE_LABEL, p.sale_mode) && modes.indexOf(p.sale_mode) === -1) { modes.push(p.sale_mode); }
-      if (hasShownStatus(p) && statuses.indexOf(p.status) === -1) {
-        statuses.push(p.status);
-        statusLabels[p.status] = String(p.status_label_ja);
+      if (statuses.indexOf(p.status) === -1) {
+        if (hasShownStatus(p)) {
+          statuses.push(p.status);
+          statusLabels[p.status] = own(STATUS_CHOICE_LABEL, p.status) || String(p.status_label_ja);
+        } else if (p.status === 'UNKNOWN') {
+          /* the acceptance state is not confirmed: no badge on the product, but a reachable choice */
+          statuses.push(p.status);
+          statusLabels[p.status] = STATUS_CHOICE_LABEL.UNKNOWN;
+        }
       }
       signalsOf(p).forEach(function (s) {
         if (isUnknown(s.code) || signals.indexOf(s.code) !== -1) { return; }
@@ -2678,7 +2776,7 @@ function initIndex() {
     modes.sort(byOrder(Object.keys(SALE_MODE_LABEL)));
     statuses.sort(byOrder(STATUS_ORDER));
     signals.sort(byOrder(Object.keys(SIGNAL_LABEL)));
-    fillSelect($('f-cat'), cats, function (v) { return lbl(CATEGORY_LABEL, v); });
+    fillSelect($('f-cat'), cats, function (v) { return catChoiceLabel(v); });
     fillSelect($('f-mode'), modes, function (v) { return lbl(SALE_MODE_LABEL, v); });
     var statusSel = $('f-status');
     var grp = document.createElement('option');
@@ -2819,7 +2917,7 @@ function initIndex() {
     var counts = {};
     var cats = [];
     state.products.forEach(function (p) {
-      if (!lbl(CATEGORY_LABEL, p.category)) { return; }
+      if (!catChoiceLabel(p.category)) { return; }
       if (!Object.prototype.hasOwnProperty.call(counts, p.category)) { counts[p.category] = 0; cats.push(p.category); }
       counts[p.category] += 1;
     });
@@ -2829,7 +2927,7 @@ function initIndex() {
       return (ka < 0 ? 99 : ka) - (kb < 0 ? 99 : kb);
     });
     var tabs = [['', 'すべて', state.products.length]].concat(cats.map(function (c) {
-      return [c, lbl(CATEGORY_LABEL, c), counts[c]];
+      return [c, catChoiceLabel(c), counts[c]];
     }));
     tabs.forEach(function (t) {
       var b = el('button', 'cat-tab qchip');
@@ -2846,11 +2944,25 @@ function initIndex() {
     });
     var nav = $('cat-tabs');
     if (nav) { nav.hidden = cats.length === 0; }
-    /* the navigation's category shortcuts exist only for categories that have products */
-    var navBtns = document.querySelectorAll('[data-nav-cat]');
-    for (var i = 0; i < navBtns.length; i++) {
-      var li = navBtns[i].closest('li');
-      if (li) { li.hidden = !counts[navBtns[i].dataset.navCat]; }
+    /* the navigation carries the same categories (short names), so its choices add up to the total */
+    var end = $('topnav-cats-end');
+    if (end) {
+      var old = document.querySelectorAll('.topnav-cat-item');
+      for (var i = 0; i < old.length; i++) { old[i].parentNode.removeChild(old[i]); }
+      cats.forEach(function (c) {
+        var li = el('li', 'topnav-cat-item');
+        var b = el('button', 'topnav-cat', own(NAV_CAT_LABEL, c) || catChoiceLabel(c));
+        b.type = 'button';
+        b.dataset.navCat = c;
+        b.setAttribute('aria-pressed', 'false');
+        b.setAttribute('aria-label', catChoiceLabel(c) + '（' + counts[c] + '件）');
+        b.addEventListener('click', function () {
+          setCategory(filters.cat === c ? '' : c);
+          scrollToId('feed');
+        });
+        li.appendChild(b);
+        end.parentNode.insertBefore(li, end);
+      });
     }
   }
 
@@ -2865,7 +2977,7 @@ function initIndex() {
     }
     var note = $('cat-tabs-note');
     if (note) {
-      var label = filters.cat ? lbl(CATEGORY_LABEL, filters.cat) : null;
+      var label = filters.cat ? catChoiceLabel(filters.cat) : null;
       var n = state.products.filter(inTab).length;
       note.textContent = label ? '「' + label + '」の商品だけを表示しています（' + n + '件）。' : '';
       note.hidden = !label;
@@ -3042,10 +3154,10 @@ function initIndex() {
   /* chip -> the section it shows; `aux` is a weaker second list under the chip (締切間近 only). */
   var FEED_CHIPS = {
     all: { name: 'すべて', sec: null },
-    open: { name: '受付中', sec: 'sec-open' },
+    open: { name: '受付中（締切間近を含む）', sec: 'sec-open' },
     closing: { name: '締切間近', sec: 'sec-closing', aux: 'sec-nearterm' },
-    preorder: { name: '予約', sec: 'sec-preorder' },
-    lottery: { name: '抽選', sec: 'sec-lottery' },
+    preorder: { name: '受付中の予約', sec: 'sec-preorder' },
+    lottery: { name: '受付中の抽選', sec: 'sec-lottery' },
     restock: { name: '再販', sec: 'sec-restock' },
     attention: { name: '注目候補', sec: 'sec-attention' },
     margin: { name: '利ざや候補', sec: 'sec-margin' },
@@ -3054,11 +3166,11 @@ function initIndex() {
   /* An empty chip is not hidden: it says why it is empty. */
   var FEED_EMPTY = {
     all: 'この条件に合う商品はありません。キーワードや分野を変えてみてください。',
-    open: 'いまのところ、受付中を確認できた商品はありません。',
-    closing: 'いまのところ、締切まで7日以内で受付中を確認できた商品はありません。',
-    preorder: 'いまのところ、受付中を確認できた予約・受注生産の商品はありません。',
-    lottery: 'いまのところ、受付中を確認できた抽選はありません。',
-    restock: 'いまのところ、再販・在庫復活を確認できた商品はありません。',
+    open: 'いまのところ、受付中と判定した商品はありません。',
+    closing: 'いまのところ、締切まで7日以内で受付中と判定した商品はありません。',
+    preorder: 'いまのところ、受付中と判定した予約・受注生産の商品はありません。販売方式が予約の商品は、全商品一覧の「販売方式」で探せます。',
+    lottery: 'いまのところ、受付中と判定した抽選はありません。販売方式が抽選の商品は、全商品一覧の「販売方式」で探せます。',
+    restock: 'いまのところ、再販・在庫復活と判定した商品はありません。',
     attention: 'いまのところ、両方の条件を満たす商品はありません。',
     margin: 'いまのところ、目安が出ている商品はありません。判定に近い商品は上のとおりです。',
     new: 'いまのところ、掲載から14日以内の商品はありません。'
@@ -3301,10 +3413,47 @@ function initIndex() {
     renderMyCheck();
   }
 
+  /* 最近調べた商品: the items checked or observed most recently, newest first (updated_at, then
+     first_seen_at), each with its 確認状況 badge. A compact list, so a fresh addition is reachable
+     from the top of the page without paging the feed. */
+  var RECENT_MAX = 8;
+  function cmpRecent(a, b) {
+    var ua = isUnknown(a.updated_at) ? '' : String(a.updated_at);
+    var ub = isUnknown(b.updated_at) ? '' : String(b.updated_at);
+    if (ua !== ub) { return ua < ub ? 1 : -1; }
+    var fa = isUnknown(a.first_seen_at) ? '' : String(a.first_seen_at);
+    var fb = isUnknown(b.first_seen_at) ? '' : String(b.first_seen_at);
+    if (fa !== fb) { return fa < fb ? 1 : -1; }
+    return a.product_id < b.product_id ? -1 : 1;
+  }
+  function renderRecent() {
+    var list = $('recent-list');
+    if (!list) { return; }
+    list.textContent = '';
+    var rows = state.products.filter(inScope).sort(cmpRecent).slice(0, RECENT_MAX);
+    rows.forEach(function (p) {
+      var li = el('li', 'recent-item' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
+      li.dataset.id = p.product_id;
+      var upd = fmtShortDay(p.updated_at, state.doc && state.doc.as_of);
+      if (upd) { li.appendChild(el('span', 'recent-day', upd)); }
+      var badges = el('span', 'recent-badges');
+      put(badges, evidenceBadge(p));
+      put(badges, statusBadge(p));
+      li.appendChild(badges);
+      var a = el('a', 'recent-link');
+      a.href = detailHref(p);
+      a.appendChild(wordWrapText(el('span', 'recent-name'), isUnknown(p.product_name) ? '商品の詳細' : String(p.product_name)));
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    $('recent').hidden = rows.length === 0;
+  }
+
   /** Everything the category tab and the keyword narrow. */
   function renderScoped() {
     syncCatTabs();
     renderFeatured();
+    renderRecent();
     renderMargin();
     renderFeed();
     renderSchedule();
@@ -3449,15 +3598,6 @@ function initIndex() {
       });
     }
 
-    /* navigation: category shortcuts */
-    var navCats = document.querySelectorAll('[data-nav-cat]');
-    for (var n = 0; n < navCats.length; n++) {
-      navCats[n].addEventListener('click', function (e) {
-        var cat = e.currentTarget.dataset.navCat;
-        setCategory(filters.cat === cat ? '' : cat);
-        scrollToId('feed');
-      });
-    }
 
     /* 買いの目安 lines: one tap filters the full list to that level, sorted by the signal. */
     var buyJumps = document.querySelectorAll('[data-buy]');
@@ -3509,6 +3649,17 @@ function initIndex() {
     }
   }
 
+  /* A row that scrolls sideways shows a 「›」 at its right edge while there is more to see. */
+  function wireScrollCue(node) {
+    if (!node) { return; }
+    function update() {
+      node.classList.toggle('can-scroll', node.scrollWidth - node.clientWidth - node.scrollLeft > 4);
+    }
+    node.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    node.__cue = update;
+    update();
+  }
   /* Rail modules are open on a wide screen; on a phone only the schedule starts open. */
   function openRailForWidth() {
     var wide = window.matchMedia && window.matchMedia('(min-width: 1100px)').matches;
@@ -3524,10 +3675,7 @@ function initIndex() {
     state.doc = doc;
     state.products = doc.products;
     /* A flag that is true for (almost) everything carries no information. */
-    var newShare = state.products.length
-      ? state.products.filter(function (p) { return p.is_new === true; }).length / state.products.length
-      : 0;
-    state.showNewBadge = newShare < NEW_BADGE_MAX_SHARE;
+    state.showNewBadge = newBadgeShown(state.products);
     return Promise.all([loadOptionalJson(DATA_STATS), loadOptionalJson(DATA_METADATA)])
       .then(function (side) {
         state.stats = side[0];
@@ -3551,6 +3699,7 @@ function initIndex() {
         renderScoped();
         mountHowCounted();
         renderList();
+        ['topnav-list', 'kpi-row', 'feed-chips', 'featured-list'].forEach(function (id) { wireScrollCue($(id)); });
         if (!marksAvailable) {
           var note = $('my-check-note');
           if (note) { note.textContent = 'お使いのブラウザの設定により、印を保存できません。'; }
@@ -3585,7 +3734,7 @@ function initProduct() {
     } else {
       var shown = shownText(value);
       if (shown === null) { return false; }
-      dd = elKeep('dd', null, shown);
+      dd = elKeep('dd', null, normDateText(shown));
     }
     var wrap = document.createElement('div');
     wrap.appendChild(el('dt', null, label));
@@ -4181,7 +4330,8 @@ function initProduct() {
     var badges = el('div', 'detail-badges');
     put(badges, statusBadge(p));
     put(badges, evidenceBadge(p));
-    if (p.is_new === true) { badges.appendChild(el('span', 'badge badge--flag', '新着')); }
+    /* the same 新着 rule as the list: shown only while the flag is not on (almost) every product */
+    if (p.is_new === true && newBadgeShown(doc.products)) { badges.appendChild(el('span', 'badge badge--flag', '新着')); }
     if (isRestockRow(p)) { badges.appendChild(el('span', 'badge badge--restock', '再販')); }
     if (p.is_attention === true) { badges.appendChild(el('span', 'badge badge--attention', '注目候補')); }
     if (badges.children.length) { head.appendChild(badges); }
