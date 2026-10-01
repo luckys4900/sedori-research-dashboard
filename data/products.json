@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-01",
-  "generated_at": "2026-10-01T13:35:59+09:00",
+  "generated_at": "2026-10-01T14:47:57+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -24939,7 +24939,7 @@
           "label_ja": "類似品の過去の取引価格あり"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が2件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が1件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -24954,7 +24954,7 @@
         "linked_comparables": 4,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 2
+        "strict_completed_sales": 1
       },
       "profit_evidence_label_ja": "一部の価格情報のみ確認",
       "profit_evidence_status": "PARTIAL",
@@ -41728,7 +41728,7 @@
           "label_ja": "購入・応募数の条件"
         },
         {
-          "basis_ja": "類似品について、条件を満たす取引が3件あります（この商品自体の実績ではありません）",
+          "basis_ja": "類似品について、条件を満たす取引が2件あります（この商品自体の実績ではありません）",
           "code": "STRICT_COMPLETED_SALES",
           "label_ja": "類似品の取引実績あり"
         }
@@ -41743,7 +41743,7 @@
         "linked_comparables": 2,
         "minimum_profit_sample": 5,
         "profit_usable_comparables": 0,
-        "strict_completed_sales": 3
+        "strict_completed_sales": 2
       },
       "profit_evidence_label_ja": "一部の価格情報のみ確認",
       "profit_evidence_status": "PARTIAL",
