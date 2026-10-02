@@ -593,6 +593,8 @@ function evidenceBadge(p) {
   if (label === null) { label = '未検証'; }
   /* Defensive: never show 確認済み for a non-VERIFIED row. */
   if (p.evidence_state !== 'VERIFIED' && label === '確認済み') { label = '未検証'; }
+  /* R21H: shown on the detail page only, in plain words */
+  if (label === '未検証') { label = '公式確認前'; }
   var badge = el('span', 'badge badge--' + variant, label);
   if (isUnverifiedRow(p)) { badge.title = '公式情報での確認がまだ済んでいない商品です'; }
   return badge;
@@ -790,9 +792,10 @@ function buyMark(b, quietEmpty) {
   /* R21F: a list row prints nothing for 判断材料不足 (the 「－」 on almost every row read as noise) */
   if (!(empty && quietEmpty)) { mark.appendChild(el('span', 'buy-glyph', BUY_GLYPH[b.level])); }
   if (empty && quietEmpty) {
-    mark.appendChild(el('span', 'visually-hidden', '買いの目安：判断材料不足'));
+    mark.appendChild(el('span', 'visually-hidden', '買いの目安：目安なし'));
   } else {
-    mark.appendChild(el('span', 'buy-word', empty ? '材料不足' : String(b.label_ja)));
+    /* R21H: say where an inferred level comes from in plain words, not 「推論」 */
+    mark.appendChild(el('span', 'buy-word', empty ? '目安なし' : String(b.label_ja).replace(/（推論）/, '（類似品から）')));
   }
   mark.setAttribute('title', '買いの目安（参考）：' + String(b.label_ja));
   return mark;
@@ -805,6 +808,8 @@ function buyMark(b, quietEmpty) {
  */
 function backtestLine(p) {
   if (!hasEvaluableBacktest(p)) { return null; }
+  /* R21H: fewer than 3 comparable products is too thin for a list line; the detail page shows it with its caveat */
+  if ((num(backtestOf(p).analogs_evaluable) || 0) < 3) { return null; }
   var bt = backtestOf(p);
   var box = el('div', 'bt-line' + ((bt.counter_signal_names || []).length ? ' has-counter' : ''));
   box.appendChild(el('span', 'bt-line-lbl', '類似品'));
@@ -818,7 +823,7 @@ function backtestLine(p) {
     var hl = shownText(main.horizon_label_ja);
     var hShort = hl ? hl.replace(/（.*$/, '').replace(/^発売後/, '') : null;
     parts.push(main.evaluable + '件中' + main.cleared + '件が定価超え' +
-      (hShort ? '（' + hShort + '）' : '') + (main.evaluable < 3 ? '・少数' : ''));
+      (hShort ? '（' + hShort + '）' : ''));
   } else {
     parts.push('類似品' + bt.analogs_evaluable + '件');
   }
@@ -2105,9 +2110,8 @@ function initIndex() {
     else if (parts.soon) { dl.classList.add('is-soon'); }
     else if (parts.muted) {
       dl.classList.add('is-unconfirmed');
-      /* R21F: 「・要確認」 only where nothing else says the state — no status badge and the date still ahead.
-         A 受付終了 row read 「終了済み・要確認」. The muted colour stays on every unconfirmed deadline. */
-      if (!hasShownStatus(p) && !parts.passed) { dl.classList.add('needs-check'); }
+      /* R21H: no 「・要確認」 text — the published date is a fact; the muted colour alone says the acceptance state
+         is not confirmed (it is never drawn as open or urgent) */
     }
     var dateNode = el('span', 'f-date', parts.date);
     dateNode.setAttribute('aria-label', parts.fullDate || parts.date);
@@ -2227,7 +2231,8 @@ function initIndex() {
       bc.appendChild(el('dt', 'visually-hidden', '買いの目安（参考）'));
       var dd = el('dd', 'vs-val');
       dd.appendChild(buyMark(inf || b, quiet));
-      if (inf && shownText(inf.confidence_ja) !== null) {
+      /* R21H: the basis is in the label (「類似品から」); no 確からしさ score in a list */
+      if (!quiet && inf && shownText(inf.confidence_ja) !== null) {
         /* the level's own label already says （推論） */
         dd.appendChild(elKeep('span', 'vs-conf', (/推論/.test(String(inf.label_ja)) ? '' : '推論・') + '確からしさ ' + inf.confidence_ja));
       }
@@ -2248,14 +2253,13 @@ function initIndex() {
     a.appendChild(productMedia(p, 'featured', { tileNote: TILE_NOTE_SHORT, artTag: true }));
     var st = el('div', 'c-status');
     put(st, statusBadge(p));
-    put(st, evidenceBadge(p));
     flagBadges(st, p);
     if (st.children.length) { a.appendChild(st); }
     put(a, deadlineBox(p, 'f-deadline--big'));
     if (!isUnknown(p.product_name)) { a.appendChild(wordWrapText(el('div', 'c-name'), String(p.product_name))); }
     var meta = identityMeta(p, true);
     if (meta.length) { a.appendChild(el('div', 'c-cat', meta.join('・'))); }
-    put(a, rowStrip(p));
+    put(a, rowStrip(p, true));
     li.appendChild(a);
     li.appendChild(cardActions(p));
     return li;
@@ -2320,15 +2324,13 @@ function initIndex() {
        title art keeps a short corner tag (イメージ) so it never passes as a product photo. */
     a.appendChild(productMedia(p, 'row', { tileNote: TILE_NOTE_SHORT, artTag: true }));
 
-    /* 調べた角度: six dots under the picture */
-    put(a, angleBar(p));
+    /* R21H: the 調べた角度 dots are not shown in a list (the detail page has the angle summary) */
     var body = el('div', 'row-body');
     /* one meta strip above the name — state, verification, flags, then IP・分野・方式 — so the
        name keeps its full two lines */
     var top = el('div', 'row-top');
     var st = el('div', 'c-status');
     put(st, statusBadge(p));
-    put(st, evidenceBadge(p));
     flagBadges(st, p);
     if (st.children.length) { top.appendChild(st); }
     body.appendChild(top);
@@ -2873,7 +2875,7 @@ function initIndex() {
         ? '「買い寄り」は ' + lean.length + '件です。目安が出ている ' + rows.length + '件' + infTxt + 'を並べています。'
         : (rows.length
           ? '今の時点で「買い寄り」の商品はありません。いちばん近いのは「様子見」の ' + rows.length + '件' + infTxt + 'です。'
-          : '今の時点で、目安が出ている商品はありません。判定に近い商品は下のとおりです。'));
+          : '今の時点で、目安が出ている商品はありません。目安まであと少しの商品は下のとおりです。'));
       stateNode.classList.toggle('has-lean', lean.length > 0);
     }
     var near = state.products.filter(inScope).filter(isNearSignal).sort(cmpBuy);
@@ -3181,7 +3183,7 @@ function initIndex() {
     lottery: 'いまのところ、受付中と判定した抽選はありません。販売方式が抽選の商品は、全商品一覧の「販売方式」で探せます。',
     restock: 'いまのところ、再販・在庫復活と判定した商品はありません。',
     attention: 'いまのところ、両方の条件を満たす商品はありません。',
-    margin: 'いまのところ、目安が出ている商品はありません。判定に近い商品は上のとおりです。',
+    margin: 'いまのところ、目安が出ている商品はありません。目安まであと少しの商品は上のとおりです。',
     new: 'いまのところ、掲載から14日以内の商品はありません。'
   };
   /* The former section ids are anchors now; each one selects its chip. */
@@ -3361,18 +3363,11 @@ function initIndex() {
     a.appendChild(cell('c-release', '発売日', releaseText(p)));
 
     /* 確認状況 — an OUTLINE badge, never the filled state look */
-    var ev = el('div', 'c-ev');
-    put(ev, evidenceBadge(p));
-    a.appendChild(ev);
+    /* R21H: no verification badge in a list (the detail page shows it); the cell stays so the table keeps its grid */
+    a.appendChild(el('div', 'c-ev'));
 
     /* 調べた角度 n/6 and the 買いの目安 glyph */
     var extra = el('div', 'c-extra');
-    var ra = researchAnglesOf(p);
-    if (ra) {
-      var ac = el('span', 'angle-count', ra.checked + '/' + ra.total);
-      ac.setAttribute('aria-label', '調べた角度 ' + ra.checked + '/' + ra.total);
-      extra.appendChild(ac);
-    }
     var b = buySignalOf(p);
     if (b) { extra.appendChild(buyMark(inferenceOf(p) || b, true)); }
     a.appendChild(extra);
@@ -3446,7 +3441,6 @@ function initIndex() {
       var upd = fmtShortDay(p.updated_at, state.doc && state.doc.as_of);
       if (upd) { li.appendChild(el('span', 'recent-day', upd)); }
       var badges = el('span', 'recent-badges');
-      put(badges, evidenceBadge(p));
       put(badges, statusBadge(p));
       li.appendChild(badges);
       var a = el('a', 'recent-link');

@@ -302,18 +302,19 @@ strong { font-weight: 700; }
 
 .recent-list { display: grid; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); }
 .recent-item {
-  display: grid;
-  grid-template-columns: 3.4em auto minmax(0, 1fr);
+  /* R21H: flex, so a row without a state badge does not keep an empty column between the date and the name */
+  display: flex;
   align-items: center;
   gap: 4px 8px;
   padding: 0 12px;
   border-left: 3px solid transparent;
 }
 .recent-item + .recent-item { border-top: 1px solid var(--border); }
-.recent-item.is-unverified { border-left: 3px dashed var(--unverified-line); }
-.recent-day { font-size: var(--fs-xs); color: var(--fg-muted); font-variant-numeric: tabular-nums; }
-.recent-badges { display: flex; gap: 4px; }
-.recent-link { display: flex; align-items: center; min-height: var(--tap); min-width: 0; text-decoration: none; }
+/* R21H: lists no longer mark unverified rows with a dashed frame (the detail page states it) */
+.recent-day { flex: 0 0 3.4em; font-size: var(--fs-xs); color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.recent-badges { display: flex; flex: none; gap: 4px; }
+.recent-badges:empty { display: none; }
+.recent-link { flex: 1 1 auto; display: flex; align-items: center; min-height: var(--tap); min-width: 0; text-decoration: none; }
 .recent-name {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -1206,15 +1207,12 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
 
 /* 未検証 rows: a dashed frame plus the explicit 未検証 badge (no tint, so a mostly-unverified
    list does not turn into one yellow block) */
-.card--featured.is-unverified { border-style: dashed; border-color: var(--unverified-line); }
-.card--feed.is-unverified, .card--row.is-unverified { border-left: 3px dashed var(--unverified-line); }
 
 /* deadline urgency: only rows with a closing_soon_band get it (app.js) */
 .f-deadline.is-urgent .f-date, .f-deadline.is-urgent .f-rel, .cell.is-urgent .val, .detail-deadline.is-urgent .price-val { color: var(--urgent); }
 .f-deadline.is-soon .f-rel, .cell.is-soon .val, .detail-deadline.is-soon .price-val { color: var(--closing); }
 .f-deadline.is-unconfirmed .f-date, .deadline-rel.is-unconfirmed { color: var(--fg-muted); }
 .f-deadline.is-unconfirmed .f-rel { color: var(--fg-muted); }
-.f-deadline.needs-check .f-rel::after { content: "・要確認"; font-weight: 400; font-size: var(--fs-xs); }
 .f-rel.is-passed { color: var(--fg-muted); font-weight: 400; }
 .cell.is-urgent .deadline-rel { color: var(--urgent); }
 .cell.is-soon .deadline-rel { color: var(--closing); }

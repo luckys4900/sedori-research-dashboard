@@ -26,7 +26,7 @@
     </div>
     <p class="site-meta">
       <span class="site-meta-item" title="この一覧を作り直して公開した時刻です。各商品の最新の確認日とは限りません。"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
-      <span class="site-meta-item" title="受付状況や「あと◯日」を判定した日です。"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
+      <span class="site-meta-item" title="受付状況や「あと◯日」の基準にした日です。"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
     </p>
     <div class="masthead-search" role="search">
       <label class="visually-hidden" for="f-q-top">商品を検索</label>
@@ -117,12 +117,12 @@
         </div>
 
         <div class="feed-notes">
-          <p class="feed-note" data-note="all">確認状況（確認済み→一部確認→未検証）の順に、その中では商品ごとの更新日が新しい順に並べています。</p>
-          <p class="feed-note" data-note="open" hidden>公表された受付期間などから受付中と判定した商品です（締切間近を含みます）。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
-          <p class="feed-note" data-note="closing" hidden>公表された受付期間などから受付中と判定した商品のうち、締切まで7日以内のものです。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
-          <p class="feed-note" data-note="preorder" hidden>販売方式が予約・受注生産で、受付期間などから受付中と判定した商品です。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
-          <p class="feed-note" data-note="lottery" hidden>販売方式が抽選で、受付期間などから応募受付中と判定した商品です。公式情報での確認が完了していない商品は「未検証」と表示します。</p>
-          <p class="feed-note" data-note="restock" hidden>公表された情報から再販・在庫復活と判定した商品です。</p>
+          <p class="feed-note" data-note="all">公式情報がそろっている商品から順に、その中では更新日が新しい順に並べています。</p>
+          <p class="feed-note" data-note="open" hidden>公表された受付期間をもとに、いま受付中の商品です（締切間近を含みます）。</p>
+          <p class="feed-note" data-note="closing" hidden>受付中の商品のうち、締切まで7日以内のものです。</p>
+          <p class="feed-note" data-note="preorder" hidden>販売方式が予約・受注生産で、いま受付中の商品です。</p>
+          <p class="feed-note" data-note="lottery" hidden>販売方式が抽選で、いま応募を受け付けている商品です。</p>
+          <p class="feed-note" data-note="restock" hidden>公表された情報で再販・在庫復活が分かっている商品です。</p>
           <p class="feed-note" data-note="attention" hidden>販売方法の制限と類似品の取引記録の<strong>両方を確認できた</strong>商品です。おすすめや期待値を示すものではありません。</p>
           <p class="feed-note" id="sec-new-note" data-note="new" hidden>掲載を始めてから14日以内の商品です。</p>
           <div class="feed-note margin-box" data-note="margin" hidden>
@@ -131,14 +131,14 @@
             <details class="margin-how">
               <summary>算出方法を見る</summary>
               <ul class="margin-keys">
-                <li><strong>並び</strong><span>買いの目安（この商品自身の根拠を先に、推論を後に）→ 似た商品の取引価格が定価の何倍だったか → 締切の近さ。順位や評価ではありません。</span></li>
+                <li><strong>並び</strong><span>買いの目安 → 似た商品の取引価格が定価の何倍だったか → 締切の近さ。順位や評価ではありません。</span></li>
                 <li><strong>倍率</strong><span>数字はすべて似た過去の商品の取引で、この商品の価格ではありません。取引価格の中央値を、その商品の定価で割ったものです（販売手数料を引く前）。</span></li>
                 <li><strong>利益ではありません</strong><span>目安の段階は販売手数料を引いた価格で比べていますが、送料などの費用は差し引いていません。定価で買えた場合の話で、抽選品は当選が前提です。</span></li>
-                <li><strong>推論</strong><span>この商品自身ではなく、似た種類の商品の過去の結果から出した目安です。確からしさ「低」です。</span></li>
+                <li><strong>類似品から</strong><span>この商品自身ではなく、似た種類の商品の過去の取引から出した目安です。</span></li>
               </ul>
             </details>
             <div class="margin-near-wrap" id="margin-near-wrap" hidden>
-              <h3 class="sub-title">判定に近い商品（あと何が必要か）</h3>
+              <h3 class="sub-title">目安まであと少しの商品（あと何が必要か）</h3>
               <ul class="margin-near" id="margin-near"></ul>
             </div>
           </div>
@@ -150,7 +150,7 @@
         <!-- 締切間近 only: rows whose date is within 7 days but whose acceptance was not confirmed.
              Deliberately a weaker, separate list — never counted or styled as 締切間近. -->
         <div class="feed-aux" id="feed-aux" hidden>
-          <h3 class="sub-title"><span class="tag-warn">要確認</span>期日が7日以内（締切間近以外）</h3>
+          <h3 class="sub-title">期日が7日以内のその他の商品</h3>
           <p class="feed-aux-note">期日まで7日以内ですが、<strong>受付中かどうかはまだ確認できていません</strong>。応募の前に公式ページをご確認ください。</p>
           <ul class="feed-list feed-list--aux" id="feed-aux-list"></ul>
         </div>
@@ -183,7 +183,7 @@
               <li><button type="button" class="buy-line" data-buy="LEAN_BUY" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">●</span><span class="buy-word">買い寄り</span><span class="buy-n" id="buy-n-LEAN_BUY">—</span><span class="buy-inf" id="buy-inf-LEAN_BUY" hidden></span></button></li>
               <li><button type="button" class="buy-line" data-buy="MIXED_SIGNALS" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">◐</span><span class="buy-word">様子見</span><span class="buy-n" id="buy-n-MIXED_SIGNALS">—</span><span class="buy-inf" id="buy-inf-MIXED_SIGNALS" hidden></span></button></li>
               <li><button type="button" class="buy-line" data-buy="LEAN_SKIP" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">○</span><span class="buy-word">見送り寄り</span><span class="buy-n" id="buy-n-LEAN_SKIP">—</span><span class="buy-inf" id="buy-inf-LEAN_SKIP" hidden></span></button></li>
-              <li><button type="button" class="buy-line" data-buy="NOT_ENOUGH_EVIDENCE" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">－</span><span class="buy-word">材料不足</span><span class="buy-n" id="buy-n-NOT_ENOUGH_EVIDENCE">—</span></button></li>
+              <li><button type="button" class="buy-line" data-buy="NOT_ENOUGH_EVIDENCE" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">－</span><span class="buy-word">目安なし</span><span class="buy-n" id="buy-n-NOT_ENOUGH_EVIDENCE">—</span></button></li>
             </ul>
             <p class="rail-note" id="buy-headline" aria-live="polite">類似商品の発売後取引を参考表示。利益予測ではありません。</p>
             <a class="rail-link" id="buy-go" href="#sec-margin">利ざや候補を見る（<span id="buy-go-n">—</span>件）</a>
@@ -220,16 +220,15 @@
           <summary class="rail-sum"><span class="rail-title">使い方・表示の読み方</span></summary>
           <div class="rail-body">
             <ol class="howto-steps">
-              <li><strong>今日の締切を見る</strong>「締切間近」「受付中」は、公表された受付期間などから受付中と判定した商品です。公式情報での確認が済んでいないものは「未検証」と表示します。</li>
+              <li><strong>今日の締切を見る</strong>「締切間近」「受付中」は、公表された受付期間をもとに、いま受付中の商品です。</li>
               <li><strong>気になる商品に印を付ける</strong>各商品の「印」から。印はこのブラウザにだけ保存されます。</li>
               <li><strong>詳細ページで根拠を確かめる</strong>受付期間・出典・確認状況をすべて載せています。購入の判断はご自身でお願いします。</li>
             </ol>
             <ul class="legend-list">
               <li><span class="legend-sample"><span class="badge badge--open">受付中</span><span class="badge badge--urgent">締切間近</span></span><span><strong>塗りつぶし</strong>は、いまの状態です。</span></li>
-              <li><span class="legend-sample"><span class="badge badge--ev-verified">確認済み</span><span class="badge badge--ev-partial">一部確認</span><span class="badge badge--ev-none">未検証</span></span><span><strong>枠線</strong>は、情報をどこまで確認できたかです。「未検証」は公式情報での確認がまだの商品です。</span></li>
               <li><span class="legend-sample"><span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span><span class="badge badge--attention">注目候補</span></span><span><strong>角型</strong>は補足の目印です。おすすめや買い時を示すものではありません。</span></li>
               <li><span class="legend-sample"><span class="buy-glyph" aria-hidden="true">● ◐ ○ －</span></span><span><strong>買いの目安</strong>は似た商品の過去の取引からの参考で、利益ではありません。あなたの「印」とは別のものです。</span></li>
-              <li><span><strong>更新日時と基準日：</strong>更新日時はこの一覧を作り直して公開した時刻、基準日は受付状況や「あと◯日」を判定した日です。各商品の最新の確認日とは限りません（各行の「更新」は、その商品を最後に確認・観測した日です）。</span></li>
+              <li><span><strong>更新日時と基準日：</strong>更新日時はこの一覧を作り直して公開した時刻、基準日は受付状況や「あと◯日」の基準にした日です。各商品の最新の確認日とは限りません（各行の「更新」は、その商品を最後に確認・観測した日です）。</span></li>
               <li><span><strong>確認が取れていない項目は表示していません。</strong>載っていないことは「なし」や「0」という意味ではありません。</span></li>
             </ul>
           </div>
@@ -273,7 +272,7 @@
                 <option value="">すべて</option>
                 <option value="VERIFIED">確認済み</option>
                 <option value="PARTIAL">一部確認</option>
-                <option value="UNVERIFIED">未検証</option>
+                <option value="UNVERIFIED">公式確認前</option>
               </select>
             </div>
           </div>
@@ -285,9 +284,9 @@
                 <label class="field-label" for="f-deadline">締切</label>
                 <select id="f-deadline">
                   <option value="">すべて</option>
-                  <option value="24h">24時間以内（受付中と判定）</option>
-                  <option value="3d">3日以内（受付中と判定）</option>
-                  <option value="7d">7日以内（受付中と判定）</option>
+                  <option value="24h">24時間以内（受付中）</option>
+                  <option value="3d">3日以内（受付中）</option>
+                  <option value="7d">7日以内（受付中）</option>
                   <option value="near_unconfirmed">7日以内（締切間近以外）</option>
                 </select>
               </div>
@@ -331,7 +330,7 @@
                   <option value="LEAN_BUY">買い寄り</option>
                   <option value="MIXED_SIGNALS">様子見</option>
                   <option value="LEAN_SKIP">見送り寄り</option>
-                  <option value="NOT_ENOUGH_EVIDENCE">判断材料不足</option>
+                  <option value="NOT_ENOUGH_EVIDENCE">目安なし</option>
                 </select>
               </div>
               <div class="field">
@@ -362,7 +361,7 @@
         <!-- Column header of the desktop table. Sticky, so a column keeps its meaning while scrolling. -->
         <div class="list-head" id="list-head" aria-hidden="true">
           <span>商品名</span><span>状態 / 販売方式</span><span>締切</span><span>定価</span>
-          <span>発売日</span><span>確認状況</span><span>角度 / 目安</span>
+          <span>発売日</span><span></span><span>目安</span>
         </div>
 
         <ul class="screener" id="list"></ul>
@@ -406,7 +405,7 @@
       </div>
       <div>
         <dt>いつの情報ですか？</dt>
-        <dd>「更新日時」はこの一覧を作り直して公開した時刻、「基準日」は受付状況や「あと◯日」を判定した日です。各商品の最新の確認日とは限りません。各行の「更新」は、その商品を最後に確認・観測した日です。</dd>
+        <dd>「更新日時」はこの一覧を作り直して公開した時刻、「基準日」は受付状況や「あと◯日」の基準にした日です。各商品の最新の確認日とは限りません。各行の「更新」は、その商品を最後に確認・観測した日です。</dd>
       </div>
       <div>
         <dt>付けた印は他の人に見えますか？</dt>
@@ -417,7 +416,7 @@
 
   <footer class="site-footer">
     <p>公式サイトなどの公開情報をもとに作成しています。購入のおすすめ、利益の予測、点数やランキングは含みません。購入の判断はご自身でお願いいたします。</p>
-    <p>確認が取れていない項目は表示していません（0 や推測した日付で補うこともしません）。「未検証」の商品は、公式情報での確認がまだ済んでいない新しい候補です。</p>
+    <p>確認が取れていない項目は表示していません（0 や推測した日付で補うこともしません）。</p>
   </footer>
 </main>
 
