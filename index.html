@@ -82,6 +82,10 @@
           <h2 class="sec-title" id="today-title">今日まず見る</h2>
           <span class="sec-sub" id="today-sub"></span>
         </div>
+        <h3 class="sub-title">利益検討候補</h3>
+        <p class="pa-topnote" id="profit-note"></p>
+        <ul class="profit-list" id="profit-list" hidden></ul>
+        <h3 class="sub-title">判断材料がそろった商品</h3>
         <ul class="featured" id="featured-list"></ul>
         <p class="sec-empty" id="today-empty" hidden>いまのところ、判断材料がそろって受付中の商品はありません。</p>
       </section>
@@ -236,6 +240,16 @@
       </aside>
 
       <!-- C 全商品を詳しく探す: the screener. Search + 4 basic filters + 詳細, dense table, 50 rows a page. -->
+      <details class="faq" id="profit-faq">
+        <summary>利益分析の読み方</summary>
+        <ul class="faq-list">
+          <li>想定売価は保証ではありません。似た商品やこの商品の<strong>成約</strong>（出品中の価格ではなく、実際に売れた価格）から幅で示しています。</li>
+          <li>想定純利益は、取得価格・販売手数料（10%）・送料・梱包費の入力と仮定に基づく試算です。分からない値を0として計算することはしません（「未算定」と表示します）。</li>
+          <li>取得価格は、確認できた購入価格か、公式の販売で定価購入できる場合の公式定価だけを使います。パックとBOXなど販売単位が違う価格は換算しません。</li>
+          <li>合計は「利益余地30・根拠確度25・回転性20・供給15・タイミング10」の算定できた部分の和です。算定できた範囲が70%未満のときは合計を出しません。</li>
+          <li>利益検討状態は、いまの根拠から見た検討の段階で、購入の指示ではありません。根拠が更新されると判定も変わります。基準は暫定で、過去実績での検証は件数がそろうまで完了扱いにしません。</li>
+        </ul>
+      </details>
       <section class="sec sec--all" id="sec-all" aria-labelledby="all-title">
         <div class="sec-head">
           <h2 class="sec-title" id="all-title">全商品を詳しく探す</h2>

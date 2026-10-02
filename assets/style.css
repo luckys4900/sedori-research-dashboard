@@ -1495,3 +1495,39 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
 /* the decision card states the price-drop risk once, in 注意点 */
 .card--decision .bt-line-warn { display: none; }
 @media (max-width: 639px) { .card--decision .bt-line-val .phrase-unit + .phrase-unit { display: none; } }
+
+/* ---------------------------------------------------------------- R22 profitability */
+.pbox { display: grid; gap: 10px; margin: 12px 0; padding: 12px 14px; border: 1px solid var(--border-strong);
+  border-radius: var(--r-md); background: var(--surface); }
+.pbox.pbox--compact { margin: 6px 0 0; padding: 0; border: 0; }
+.pa-title { margin: 0; font-size: var(--fs-m); }
+.pa-sub { margin: 4px 0 0; font-size: var(--fs-s); }
+.pa-head { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.pstate { display: inline-flex; padding: 2px 8px; border-radius: 999px; font-size: var(--fs-xs); font-weight: 700;
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--fg); }
+.pstate--profit_candidate { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+.pstate--negative_margin, .pstate--avoid_risk { color: var(--urgent); border-color: var(--urgent); }
+.pa-total { display: inline-flex; gap: 8px; align-items: baseline; font-size: var(--fs-s); }
+.pa-cov, .pa-conf { font-size: var(--fs-xs); color: var(--fg-muted); }
+.pa-table-wrap { overflow-x: auto; }
+.pa-table { border-collapse: collapse; width: 100%; font-size: var(--fs-s); font-variant-numeric: tabular-nums; }
+.pa-table th, .pa-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+.pa-table th:first-child { text-align: left; color: var(--fg-muted); font-weight: 700; font-size: var(--fs-xs); }
+.pa-table thead th { color: var(--fg-muted); font-size: var(--fs-xs); }
+.pa-table td.is-neg { color: var(--urgent); }
+.pa-breakdown { display: grid; gap: 6px; }
+.pa-comp { padding: 6px 0; border-top: 1px solid var(--border); }
+.pa-comp-head { display: flex; justify-content: space-between; font-size: var(--fs-s); font-weight: 700; }
+.pa-comp.pa-comp--unscored .pa-comp-pts { color: var(--fg-muted); font-weight: 400; }
+.pa-reasons { margin: 4px 0 0; padding: 0; list-style: none; font-size: var(--fs-xs); display: grid; gap: 2px; }
+.pa-reasons .is-minus { color: var(--fg-muted); }
+.pa-gates, .pa-note { margin: 0; font-size: var(--fs-xs); color: var(--fg-muted); }
+.pa-topnote { margin: 0 0 8px; font-size: var(--fs-s); color: var(--fg-muted); }
+.profit-list { display: grid; gap: 10px; margin: 0 0 12px; padding: 0; list-style: none; }
+.card--profit { padding: 12px 14px; }
+.pa-why, .pa-risk { margin: 4px 0 0; font-size: var(--fs-s); }
+.pa-risk { color: var(--urgent); }
+.dfact--profit .dfact-val { font-weight: 700; }
+.faq { margin: 16px 0; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); }
+.faq > summary { cursor: pointer; font-weight: 700; min-height: var(--tap); display: flex; align-items: center; }
+.faq-list { margin: 6px 0 0; padding-left: 1.2em; font-size: var(--fs-s); display: grid; gap: 4px; }
