@@ -448,6 +448,19 @@ strong { font-weight: 700; }
   background: var(--media-bg);
   border-radius: var(--r-sm);
 }
+/* R21F: title art in a list wears a short corner tag instead of a caption line */
+.pmedia-tag {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  padding: 1px 6px;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--fg-muted);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-tight);
+  box-shadow: 0 0 0 1px var(--border);
+}
 .credit-host { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pmedia-img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .pmedia .thumb { display: block; width: 100%; height: 100%; }
@@ -1201,7 +1214,7 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
 .f-deadline.is-soon .f-rel, .cell.is-soon .val, .detail-deadline.is-soon .price-val { color: var(--closing); }
 .f-deadline.is-unconfirmed .f-date, .deadline-rel.is-unconfirmed { color: var(--fg-muted); }
 .f-deadline.is-unconfirmed .f-rel { color: var(--fg-muted); }
-.f-deadline.is-unconfirmed .f-rel::after { content: "・要確認"; font-weight: 400; font-size: var(--fs-xs); }
+.f-deadline.needs-check .f-rel::after { content: "・要確認"; font-weight: 400; font-size: var(--fs-xs); }
 .f-rel.is-passed { color: var(--fg-muted); font-weight: 400; }
 .cell.is-urgent .deadline-rel { color: var(--urgent); }
 .cell.is-soon .deadline-rel { color: var(--closing); }
@@ -1328,7 +1341,12 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
   .card--feed .bt-line-warn { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .card--feed .bt-line-val .phrase-unit + .phrase-unit { display: none; }
   .card--feed .bt-line-how { order: -1; }
-  .card--feed:has(> .bt-line) .row-upd { display: none; }
+  /* R21F: the 類似品 summary gets a full-width line of its own on a phone; sharing the action line cut it
+     to 「4件中3件ｶ」. The 更新 date comes back on the action line. */
+  .card--feed:has(> .bt-line) { grid-template-areas: "main main main main" "bt bt bt bt" ". upd ext mark"; }
+  .card--feed > .bt-line { flex-wrap: wrap; white-space: normal; }
+  .card--feed { row-gap: 4px; }
+  .card--feed .bt-line-val { overflow: visible; white-space: nowrap; }
 }
 
 /* medium widths: 締切 and 定価 move under the name, so the name keeps the width of the row */
@@ -1349,7 +1367,9 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
     grid-template-areas: "thumb body" "ang body" "when when" "price price";
     grid-template-rows: auto 1fr auto auto;
   }
-  .card--feed { padding: 8px 8px 10px; row-gap: 6px; }
+  .card--feed { padding: 8px 8px; row-gap: 4px; }
+  /* R21F: the 類似品 line keeps one line; 「数え方」 is on the detail page the row opens */
+  .card--feed .bt-line-how { display: none; }
 }
 
 /* SCREENER ROW, wide: a dense seven-column table with a sticky header */
@@ -1434,3 +1454,6 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
   .pchart-key-line { border-top-color: CanvasText; }
   .pchart-key-dot { background: CanvasText; }
 }
+
+/* R21F: even two-line product names (no one-character last line) where supported */
+.c-name { text-wrap: pretty; }

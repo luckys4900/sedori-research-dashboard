@@ -787,7 +787,8 @@ function buyNeedText(p) {
 function buyMark(b, quietEmpty) {
   var empty = b.level === 'NOT_ENOUGH_EVIDENCE';
   var mark = el('span', 'buy-mark buy--' + b.level);
-  mark.appendChild(el('span', 'buy-glyph', BUY_GLYPH[b.level]));
+  /* R21F: a list row prints nothing for 判断材料不足 (the 「－」 on almost every row read as noise) */
+  if (!(empty && quietEmpty)) { mark.appendChild(el('span', 'buy-glyph', BUY_GLYPH[b.level])); }
   if (empty && quietEmpty) {
     mark.appendChild(el('span', 'visually-hidden', '買いの目安：判断材料不足'));
   } else {
@@ -824,7 +825,8 @@ function backtestLine(p) {
   if (ratio !== null) { parts.push('定価の' + ratio.toFixed(2) + '倍（中央値）'); }
   var val = el('span', 'bt-line-val');
   parts.forEach(function (part, i) {
-    val.appendChild(keepText(el('span', 'phrase-unit'), part + (i < parts.length - 1 ? '・' : '')));
+    /* the separator leads the following unit, so a phone that hides the second unit leaves no dangling 「・」 */
+    val.appendChild(keepText(el('span', 'phrase-unit'), (i ? '・' : '') + part));
   });
   box.appendChild(val);
   var spark = buildSparkline(bt);
@@ -1666,6 +1668,7 @@ function fillWithTile(frame, p, note) {
     /* the drawn tile itself is aria-hidden, so its caption is too: a link's name starts with the product */
     var noteEl = el('span', 'pmedia-note', note);
     noteEl.setAttribute('aria-hidden', 'true');
+    noteEl.title = TILE_NOTE;
     frame.appendChild(noteEl);
   }
 }
@@ -1693,6 +1696,14 @@ function productMedia(p, variant, opts) {
     if (typeof opts.onFail === 'function') { opts.onFail(); }
   });
   frame.appendChild(img);
+  if (opts.artTag && im.kind === 'key_visual') {
+    /* R21F: in a list the title-art warning is a corner tag, not a text line (the detail page carries the full
+       credit). The picture's alt text already says 商品写真ではありません for assistive technology. */
+    var tag = el('span', 'pmedia-tag', 'イメージ');
+    tag.setAttribute('aria-hidden', 'true');
+    tag.title = 'タイトル画像（商品写真ではありません）';
+    frame.appendChild(tag);
+  }
   if (opts.overlayCredit) {
     var host = imageHostShort(im);
     if (host) {
@@ -1984,6 +1995,8 @@ function renderHeaderMeta(doc) {
  */
 
 var TILE_NOTE = '写真未掲載のイメージ図';
+/** R21F: the list's short form (the full wording is its tooltip and the detail page's caption). */
+var TILE_NOTE_SHORT = '写真なし';
 
 function initIndex() {
   var FEED_PAGE = 30;
@@ -2090,7 +2103,12 @@ function initIndex() {
     dl.appendChild(el('span', 'f-lbl', parts.kind ? parts.kind : '締切'));
     if (parts.urgent) { dl.classList.add('is-urgent'); }
     else if (parts.soon) { dl.classList.add('is-soon'); }
-    else if (parts.muted) { dl.classList.add('is-unconfirmed'); }
+    else if (parts.muted) {
+      dl.classList.add('is-unconfirmed');
+      /* R21F: 「・要確認」 only where nothing else says the state — no status badge and the date still ahead.
+         A 受付終了 row read 「終了済み・要確認」. The muted colour stays on every unconfirmed deadline. */
+      if (!hasShownStatus(p) && !parts.passed) { dl.classList.add('needs-check'); }
+    }
     var dateNode = el('span', 'f-date', parts.date);
     dateNode.setAttribute('aria-label', parts.fullDate || parts.date);
     dl.appendChild(dateNode);
@@ -2102,6 +2120,8 @@ function initIndex() {
   function releaseBox(p) {
     var r = releaseText(p);
     if (r === null) { return null; }
+    /* R21F: 「2026年10月」 already reads as a month; the 「（日付は未発表）」 note is on the detail page */
+    if (p.release_date_precision === 'month') { r = r.replace(/（日付は未発表）$/, ''); }
     var box = el('div', 'f-deadline f-release');
     box.appendChild(el('span', 'f-lbl', '発売'));
     box.appendChild(elKeep('span', 'f-date', r));
@@ -2224,11 +2244,8 @@ function initIndex() {
     li.dataset.id = p.product_id;
     var a = el('a', 'card-main');
     a.href = detailHref(p);
-    var credit = creditLine(p, 'c-credit');
-    a.appendChild(productMedia(p, 'featured', {
-      tileNote: TILE_NOTE,
-      onFail: function () { if (credit && credit.parentNode) { credit.parentNode.removeChild(credit); } }
-    }));
+    /* R21F: no credit line on a list card (the detail page carries it); title art wears a corner tag */
+    a.appendChild(productMedia(p, 'featured', { tileNote: TILE_NOTE_SHORT, artTag: true }));
     var st = el('div', 'c-status');
     put(st, statusBadge(p));
     put(st, evidenceBadge(p));
@@ -2239,7 +2256,6 @@ function initIndex() {
     var meta = identityMeta(p, true);
     if (meta.length) { a.appendChild(el('div', 'c-cat', meta.join('・'))); }
     put(a, rowStrip(p));
-    if (credit) { a.appendChild(credit); }
     li.appendChild(a);
     li.appendChild(cardActions(p));
     return li;
@@ -2300,15 +2316,9 @@ function initIndex() {
     var li = el('li', 'card card--feed' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
     li.dataset.id = p.product_id;
     var a = el('div', 'card-main');
-    /* the source host sits on the thumbnail's foot; title art says so in a full line of its own */
-    var im = productImageOf(p);
-    var titleArt = !!im && im.kind === 'key_visual';
-    var credit = titleArt ? creditLine(p, 'c-credit') : null;
-    a.appendChild(productMedia(p, 'row', {
-      tileNote: TILE_NOTE,
-      overlayCredit: !titleArt,
-      onFail: function () { if (credit && credit.parentNode) { credit.parentNode.removeChild(credit); } }
-    }));
+    /* R21F: the row shows the picture only. Its source and the title-art explanation are on the detail page;
+       title art keeps a short corner tag (イメージ) so it never passes as a product photo. */
+    a.appendChild(productMedia(p, 'row', { tileNote: TILE_NOTE_SHORT, artTag: true }));
 
     /* 調べた角度: six dots under the picture */
     put(a, angleBar(p));
@@ -2343,7 +2353,6 @@ function initIndex() {
     });
     if (metaParts.length) { top.appendChild(metaRow); }
     if (!top.children.length) { body.removeChild(top); }
-    if (credit) { body.appendChild(credit); }
     a.appendChild(body);
 
     var when = deadlineBox(p) || releaseBox(p);
