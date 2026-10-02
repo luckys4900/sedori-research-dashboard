@@ -756,7 +756,7 @@ function decisionChips(p) {
   return box;
 }
 
-/* ------------------------------------------------------------ R22 profitability harness
+/* ------------------------------------------------------------ profit analysis (Profit Power / Confidence)
    Every number below is the backend's own; the page formats, never re-derives. An
    unknown value is 未算定, never 0; below 70 % coverage there is no total. Not a purchase order. */
 var PROFIT_SHORT_JA = { PROFIT_CANDIDATE: '利益検討候補', WATCH_PRICE: '売価の裏付け待ち', WATCH_SUPPLY: '供給増に注意',
@@ -783,18 +783,24 @@ function profitLine(p) {
   if (num(e.net_profit_base) === null) { return label; }
   return label + '（中心 ' + yenSigned(e.net_profit_base) + '）';
 }
+/** 利益力 / 確度 / 算定範囲: two separate scales, never added together. */
 function profitHead(pr) {
   var head = el('div', 'pa-head');
   head.appendChild(el('span', 'pstate pstate--' + String(pr.state).toLowerCase(), String(pr.state_label_ja)));
-  var tot = el('span', 'pa-total');
-  if (num(pr.score) !== null) {
-    tot.appendChild(el('strong', null, '合計 ' + pr.score + ' / ' + (pr.score_max || 100)));
-  } else {
-    tot.appendChild(el('strong', null, '合計は算定材料不足'));
+  var meters = el('div', 'pa-meters');
+  function meter(cls, label, value, sub) {
+    var m = el('div', 'pa-meter ' + cls);
+    m.appendChild(el('span', 'pa-meter-lbl', label));
+    m.appendChild(el('strong', 'pa-meter-val', value));
+    if (sub) { m.appendChild(el('span', 'pa-meter-sub', sub)); }
+    meters.appendChild(m);
   }
-  tot.appendChild(el('span', 'pa-cov', '算定範囲 ' + Math.round((pr.score_coverage || 0) * 100) + '%・判定は合計ではなく条件で決まります'));
-  head.appendChild(tot);
-  if (pr.confidence) { head.appendChild(el('span', 'pa-conf', '根拠確度 ' + pr.confidence.label_ja)); }
+  var pw = pr.profit_power || {}, cf = pr.confidence || {};
+  meter('pa-meter--power', '利益力', num(pw.score) !== null ? pw.score + ' / ' + (pw.max || 100) : '算定材料不足', null);
+  meter('pa-meter--conf', '数字の確度', num(cf.score) !== null ? cf.score + ' / ' + (cf.max || 100) : '未算定',
+    cf.label_ja ? '（' + cf.label_ja + (cf.analog_only ? '・類似品のみ' : '') + '）' : null);
+  meter('pa-meter--cov', '算定範囲', Math.round((pr.data_coverage || 0) * 100) + '%', null);
+  head.appendChild(meters);
   return head;
 }
 /** The full 利益分析 block for the detail page (compact: the card version on the top page). */
@@ -837,7 +843,9 @@ function profitBlock(p, compact) {
     r.appendChild(elKeep('dd', 'dfact-val', v));
     facts.appendChild(r);
   }
-  fact('損益分岐', num(e.break_even_jpy) !== null ? '売価 ' + yenPlain(e.break_even_jpy) + ' 以上で黒字' : null);
+  var buf = num(e.downside_buffer_pct);
+  fact('損益分岐', num(e.break_even_jpy) !== null ? '売価 ' + yenPlain(e.break_even_jpy) + ' 以上で黒字' +
+    (buf !== null ? (buf >= 0 ? '（中心売価から' + Math.round(buf * 100) + '%下がっても黒字）' : '（中心売価が損益分岐を' + Math.round(-buf * 100) + '%下回る）') : '') : null);
   fact('取得価格', num(e.acquisition_jpy) !== null ? yenPlain(e.acquisition_jpy) + '（' + e.acquisition_basis_ja + '）'
     : String(e.acquisition_basis_ja) + ((e.acquisition_reasons_ja || [])[0] ? '：' + e.acquisition_reasons_ja[0] : ''));
   if (!compact) {
@@ -847,33 +855,51 @@ function profitBlock(p, compact) {
       (e.shipping_basis_ja ? '（' + e.shipping_basis_ja + '）' : '') + '・梱包 ' + (e.packing_jpy || 0) + '円' : null);
   }
   fact('回転', pr.liquidity ? pr.liquidity.label_ja + (num(pr.liquidity.days_to_sale) !== null ? '（1個売れるまで約' + Math.round(pr.liquidity.days_to_sale) + '日）' : '') : null);
-  fact('供給リスク', pr.supply ? pr.supply.label_ja : null);
+  if (!compact) {
+    fact('供給', pr.supply ? '増えるリスク ' + pr.supply.label_ja : null);
+    fact('時期', pr.timing ? pr.timing.label_ja : null);
+    fact('期待利益', pr.expected_note_ja ? 'まだ出しません（' + pr.expected_note_ja + '）' : null);
+  }
+  fact('最大のリスク', pr.max_risk_ja, 'dfact--risk');
   fact('次に確認', pr.next_check_ja ? pr.next_check_ja + (pr.next_check_effect_ja ? ' → ' + pr.next_check_effect_ja : '') : null, 'dfact--next');
-  fact('確認日', pr.checked_on ? fmtDate(pr.checked_on) : null, 'dfact--src');
+  if (!compact) { fact('確認日', pr.checked_on ? fmtDate(pr.checked_on) : null, 'dfact--src'); }
   if (facts.children.length) { box.appendChild(facts); }
   if (!compact) {
-    /* 算定内訳: each component's points (or 未算定) and its reasons — the explanation is the backend's own list */
-    var br = el('div', 'pa-breakdown');
-    br.appendChild(el('h3', 'pa-sub', '算定内訳となぜこの判定か'));
-    (pr.components || []).forEach(function (c) {
-      var item = el('div', 'pa-comp' + (num(c.score) === null ? ' pa-comp--unscored' : ''));
-      var h = el('div', 'pa-comp-head');
-      h.appendChild(el('span', 'pa-comp-lbl', String(c.label_ja)));
-      h.appendChild(el('span', 'pa-comp-pts', num(c.score) === null ? '未算定' : (c.score + ' / ' + c.max)));
-      item.appendChild(h);
-      var ul = el('ul', 'pa-reasons');
-      (c.plus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-plus', '＋ ' + t)); });
-      (c.minus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-minus', '－ ' + t)); });
-      if (ul.children.length) { item.appendChild(ul); }
-      br.appendChild(item);
-    });
-    box.appendChild(br);
+    /* なぜこの判定？: the backend's own reasons, plus first, then minus; then each scale's breakdown */
+    var why = el('div', 'pa-why-box');
+    why.appendChild(el('h3', 'pa-sub', 'なぜこの判定？'));
+    var w = pr.why || {};
+    var wl = el('ul', 'pa-reasons pa-why-list');
+    (w.plus_ja || []).forEach(function (t) { wl.appendChild(el('li', 'is-plus', '＋ ' + t)); });
+    (w.minus_ja || []).forEach(function (t) { wl.appendChild(el('li', 'is-minus', '－ ' + t)); });
+    if (wl.children.length) { why.appendChild(wl); }
     var gates = el('p', 'pa-gates');
     var failed = (pr.hard_gates || []).filter(function (g) { return !g.passed; }).map(function (g) { return g.label_ja; });
     gates.textContent = failed.length ? '利益検討候補になるために足りない条件：' + failed.join('／') : '利益検討候補の条件をすべて満たしています。';
-    box.appendChild(gates);
+    why.appendChild(gates);
+    box.appendChild(why);
+    function breakdown(title, comps, cls) {
+      var br = el('details', 'pa-breakdown ' + cls);
+      br.appendChild(el('summary', 'pa-sub', title));
+      (comps || []).forEach(function (c) {
+        var item = el('div', 'pa-comp' + (num(c.score) === null ? ' pa-comp--unscored' : ''));
+        var h = el('div', 'pa-comp-head');
+        h.appendChild(el('span', 'pa-comp-lbl', String(c.label_ja)));
+        h.appendChild(el('span', 'pa-comp-pts', num(c.score) === null ? '未算定' : (c.score + ' / ' + c.max)));
+        item.appendChild(h);
+        var ul = el('ul', 'pa-reasons');
+        (c.plus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-plus', '＋ ' + t)); });
+        (c.minus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-minus', '－ ' + t)); });
+        if (ul.children.length) { item.appendChild(ul); }
+        br.appendChild(item);
+      });
+      return br;
+    }
+    box.appendChild(breakdown('利益力の内訳', (pr.profit_power || {}).components, 'pa-breakdown--power'));
+    box.appendChild(breakdown('数字の確度の内訳', (pr.confidence || {}).components, 'pa-breakdown--conf'));
     var note = el('p', 'note-line pa-note');
-    note.appendChild(document.createTextNode('想定売価は保証ではなく、成約データと手数料・送料の仮定に基づく試算です（基準は暫定・' +
+    note.appendChild(document.createTextNode('利益力（どれだけ残るか）と数字の確度（どこまで信じられるか）は別の物差しで、足し合わせません。' +
+      '想定売価は保証ではなく、成約データと手数料・送料の仮定に基づく試算です（基準は暫定・' +
       (pr.calibration_status === 'CALIBRATION_PENDING' ? '過去実績での検証は件数不足のため未完了' : '検証状況は読み方を参照') + '）。購入の指示ではありません。'));
     var a = el('a', null, '利益分析の読み方');
     a.href = 'index.html#profit-faq';
@@ -2500,8 +2526,13 @@ function initIndex() {
     var note = $('profit-note');
     if (!list || !note) { return; }
     var all = state.products.filter(inScope);
+    /* strongest profit first (the backend's 利益力), then 確度; ties keep the listing order */
     var cands = all.filter(function (p) { return profitOf(p) && profitOf(p).state === 'PROFIT_CANDIDATE'; })
-      .sort(cmpDecision).slice(0, 3);
+      .sort(function (a, b) {
+        var pa = profitOf(a), pb = profitOf(b);
+        return ((pb.profit_power || {}).score || 0) - ((pa.profit_power || {}).score || 0) ||
+          ((pb.confidence || {}).score || 0) - ((pa.confidence || {}).score || 0) || cmpDecision(a, b);
+      }).slice(0, 3);
     list.textContent = '';
     cands.forEach(function (p) {
       var li = el('li', 'card card--profit');
@@ -2512,7 +2543,6 @@ function initIndex() {
       put(li, profitBlock(p, true));
       var d = decisionOf(p);
       if (d && d.why_now_ja) { li.appendChild(el('p', 'pa-why', 'いつ：' + d.why_now_ja)); }
-      if (d && d.risk_ja) { li.appendChild(el('p', 'pa-risk', '注意点：' + d.risk_ja)); }
       list.appendChild(li);
     });
     list.hidden = cands.length === 0;

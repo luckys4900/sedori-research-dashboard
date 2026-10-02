@@ -1508,6 +1508,13 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
 .pstate--profit_candidate { background: var(--fg); color: var(--surface); border-color: var(--fg); }
 .pstate--negative_margin, .pstate--avoid_risk { color: var(--urgent); border-color: var(--urgent); }
 .pa-total { display: inline-flex; gap: 8px; align-items: baseline; font-size: var(--fs-s); }
+.pa-meters { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+.pa-meter { display: inline-flex; gap: 4px; align-items: baseline; font-size: var(--fs-s); }
+.pa-meter-lbl, .pa-meter-sub { font-size: var(--fs-xs); color: var(--fg-muted); }
+.pa-meter-val { font-variant-numeric: tabular-nums; }
+.pa-why-box { display: grid; gap: 4px; }
+details.pa-breakdown > summary { cursor: pointer; }
+.dfact--risk .dfact-val { color: var(--urgent); }
 .pa-cov, .pa-conf { font-size: var(--fs-xs); color: var(--fg-muted); }
 .pa-table-wrap { overflow-x: auto; }
 .pa-table { border-collapse: collapse; width: 100%; font-size: var(--fs-s); font-variant-numeric: tabular-nums; }
