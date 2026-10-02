@@ -1455,3 +1455,43 @@ input[type="checkbox"] { width: 22px; height: 22px; margin: 0; accent-color: var
 
 /* R21F: even two-line product names (no one-character last line) where supported */
 .c-name { text-wrap: pretty; }
+
+/* ---------------------------------------------------------------- R22 decision harness */
+/* 今日まず見る: stacked decision cards (no swipe rail) */
+#featured-list.featured { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; overflow: visible; }
+@media (min-width: 900px) { #featured-list.featured { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.card--decision { flex: none; }
+.card--decision .card-main { display: grid; gap: 8px; padding: 12px 14px 0; }
+.dc-head { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.dc-name { font-size: var(--fs-m); font-weight: 700; color: var(--fg); text-decoration: none; }
+.dc-name:hover { text-decoration: underline; }
+.dchips { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.tier-chip { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px; font-size: var(--fs-xs);
+  font-weight: 700; border: 1px solid var(--border-strong); color: var(--fg); background: var(--surface); white-space: nowrap; }
+.tier-chip.tier--lead { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+.tier-chip.tier--pending, .tier-chip.tier--archive { color: var(--fg-muted); }
+.conf-chip { font-size: var(--fs-xs); color: var(--fg-muted); white-space: nowrap; }
+.conf-chip.conf--high { color: var(--fg); font-weight: 700; }
+.dfacts { display: grid; gap: 2px; margin: 0; }
+.dfact { display: grid; grid-template-columns: 4.6em minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.dfact-lbl { font-size: var(--fs-xs); color: var(--fg-muted); font-weight: 700; }
+.dfact-val { margin: 0; font-size: var(--fs-s); line-height: var(--lh-tight); }
+.dfact--when .dfact-val { font-weight: 700; }
+.dfact--risk .dfact-val { color: var(--urgent); }
+.dfact--src .dfact-val { font-size: var(--fs-xs); color: var(--fg-muted); }
+.detail-decision { display: grid; gap: 8px; margin: 12px 0; padding: 12px 14px; border: 1px solid var(--border-strong);
+  border-radius: var(--r-md); background: var(--surface); }
+.detail-decision.tier-box--lead { border-color: var(--fg); }
+.row-upd.is-stale { color: var(--urgent); }
+.legend-inline { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; margin-top: 4px; font-size: var(--fs-xs); }
+.fresh-chip { font-size: var(--fs-xs); color: var(--fg-muted); white-space: nowrap; }
+.fresh-chip.is-stale { color: var(--urgent); }
+/* compact decision cards on a phone: the series line is on the detail page; the 類似品 line sits inside the card */
+@media (max-width: 639px) { .card--decision .c-cat { display: none; } .card--decision .card-main { gap: 6px; } }
+.card--decision > .bt-line { padding: 4px 14px 0; }
+.card--decision > .bt-line { flex-wrap: wrap; white-space: normal; }
+.card--decision .bt-line-val { overflow: visible; white-space: normal; }
+.card--decision .bt-spark { display: none; }
+/* the decision card states the price-drop risk once, in 注意点 */
+.card--decision .bt-line-warn { display: none; }
+@media (max-width: 639px) { .card--decision .bt-line-val .phrase-unit + .phrase-unit { display: none; } }

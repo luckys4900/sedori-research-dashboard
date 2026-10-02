@@ -659,6 +659,102 @@ function deadlineParts(p, asOf) {
   };
 }
 
+/* ------------------------------------------------------------ R22 decision harness
+   `decision` is built by dashboard/scripts/harness.py from published facts only: an editorial listing tier (not a
+   verdict), a confidence level that counts evidence (not a profit probability), and plain-language why-now / risk /
+   next-check lines. The page orders and groups by it; it never prints a score or a rank. */
+function decisionOf(p) { return (p && p.decision && typeof p.decision === 'object') ? p.decision : null; }
+var TIER_RANK = { LEAD: 0, FOLLOW: 1, PENDING: 2, ARCHIVE: 3 };
+var URGENCY_RANK = { TODAY: 0, WEEK: 1, LATER: 2 };
+var CONF_RANK = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+function rankIn(table, v) { var r = own(table, v); return r === undefined ? 9 : r; }
+/** On the page by default: a lead or an item to follow. Info-wait and finished items stay in 全商品一覧. */
+function isListed(p) { var d = decisionOf(p); return !d || d.tier === 'LEAD' || d.tier === 'FOLLOW'; }
+function confLevel(p) { var d = decisionOf(p); return d && d.confidence ? d.confidence.level : null; }
+/** Order to check in: tier, then the urgency band, then evidence completeness, then the deadline. Not a rank. */
+function cmpDecision(a, b) {
+  var da = decisionOf(a) || {}, db = decisionOf(b) || {};
+  var x = rankIn(TIER_RANK, da.tier) - rankIn(TIER_RANK, db.tier);
+  if (x) { return x; }
+  x = rankIn(URGENCY_RANK, da.urgency) - rankIn(URGENCY_RANK, db.urgency);
+  if (x) { return x; }
+  x = rankIn(CONF_RANK, confLevel(a)) - rankIn(CONF_RANK, confLevel(b));
+  if (x) { return x; }
+  var ka = num(a.days_to_deadline), kb = num(b.days_to_deadline);
+  if (ka !== kb) { return ka === null ? 1 : (kb === null ? -1 : ka - kb); }
+  return String(a.product_id) < String(b.product_id) ? -1 : 1;
+}
+/** 今日まず見る: leads first, then items to follow whose evidence is at least partly in place; a low-confidence item
+    only when it closes within 3 days (and it then says 確度 低 on its face). Never an info-wait or finished item. */
+function firstLook(rows, max) {
+  var act = rows.filter(function (p) { var d = decisionOf(p); return d && d.actionable && (d.tier === 'LEAD' || d.tier === 'FOLLOW'); });
+  var strong = act.filter(function (p) { return decisionOf(p).tier === 'LEAD' || confLevel(p) !== 'LOW'; }).sort(cmpDecision);
+  if (strong.length >= max) { return strong.slice(0, max); }
+  var urgent = act.filter(function (p) { return strong.indexOf(p) < 0 && decisionOf(p).urgency === 'TODAY'; }).sort(cmpDecision);
+  return strong.concat(urgent).slice(0, max);
+}
+/** 「4件中3件が定価超え・定価の1.12倍」 — only with 3 or more comparable products. */
+function similarText(p) {
+  if (!hasEvaluableBacktest(p)) { return null; }
+  var bt = backtestOf(p);
+  if ((num(bt.analogs_evaluable) || 0) < 3) { return null; }
+  var main = (Array.isArray(bt.evidence_notes) ? bt.evidence_notes : []).filter(function (n) {
+    return n && n.horizon === bt.horizon && num(n.evaluable) !== null && n.evaluable > 0 && num(n.cleared) !== null;
+  })[0];
+  var ratio = backtestMedianRatio(bt);
+  var parts = [];
+  if (main) { parts.push(main.evaluable + '件中' + main.cleared + '件が手数料後に定価超え'); }
+  if (ratio !== null) { parts.push('定価の' + ratio.toFixed(2) + '倍（中央値）'); }
+  return parts.length ? parts.join('・') : null;
+}
+/** The decision facts as one <dl>: why now, price, similar products, driver, risk, next check, evidence. */
+function decisionFacts(p, detail) {
+  var d = decisionOf(p);
+  if (!d) { return null; }
+  var dl = el('dl', 'dfacts');
+  function row(label, value, cls) {
+    var v = shownText(value);
+    if (v === null) { return; }
+    var r = el('div', 'dfact' + (cls ? ' ' + cls : ''));
+    r.appendChild(el('dt', 'dfact-lbl', label));
+    r.appendChild(elKeep('dd', 'dfact-val', v));
+    dl.appendChild(r);
+  }
+  row('いつ', d.why_now_ja, 'dfact--when');
+  row('定価', d.price_ja);
+  if (detail) { row('類似品', similarText(p)); }   /* a card carries the 類似品 line with its 「数え方」 link instead */
+  row('動く要因', d.catalyst_ja);
+  row('注意点', d.risk_ja, 'dfact--risk');
+  row('次に確認', d.next_check_ja, 'dfact--next');
+  if (detail) {
+    var c = d.confidence || {};
+    var why = [].concat(c.plus_ja || [], (c.minus_ja || []).map(function (m) { return '不足：' + m; }));
+    row('確度の内訳', why.join('／'));
+  }
+  if (detail) {
+    row('根拠', [shownText(d.evidence_ja), d.freshness ? shownText(d.freshness.label_ja) : null].filter(Boolean).join('・'), 'dfact--src');
+  }
+  return dl.children.length ? dl : null;
+}
+/** The tier and confidence chips. */
+function decisionChips(p) {
+  var d = decisionOf(p);
+  if (!d) { return null; }
+  var box = el('span', 'dchips');
+  box.appendChild(el('span', 'tier-chip tier--' + String(d.tier).toLowerCase(), String(d.tier_label_ja)));
+  if (d.confidence) {
+    var c = el('span', 'conf-chip conf--' + String(d.confidence.level).toLowerCase(), String(d.confidence.label_ja));
+    var minus = (d.confidence.minus_ja || [])[0];
+    if (minus) { c.title = '確度が上がらない理由：' + minus; }
+    box.appendChild(c);
+  }
+  /* the date the facts were checked, next to the confidence it affects */
+  if (d.freshness && shownText(d.freshness.label_ja) !== null) {
+    box.appendChild(el('span', 'fresh-chip' + (d.freshness.band === 'STALE' ? ' is-stale' : ''), String(d.freshness.label_ja)));
+  }
+  return box;
+}
+
 /**
  * The outbound call to action, or null. Only an https URL that passed isSafeHttpUrl
  * becomes an href, and the two URLs are never conflated: a purchase_url is labelled
@@ -2096,7 +2192,9 @@ function initIndex() {
   function flagBadges(box, p) {
     if (p.is_new === true && state.showNewBadge) { box.appendChild(el('span', 'badge badge--flag', '新着')); }
     if (p.status !== 'RESTOCKED' && isRestockRow(p)) { box.appendChild(el('span', 'badge badge--restock', '再販')); }
-    if (p.is_attention === true) { box.appendChild(el('span', 'badge badge--attention', '注目候補')); }
+    if (p.is_attention === true && (!decisionOf(p) || decisionOf(p).actionable)) {
+      box.appendChild(el('span', 'badge badge--attention', '注目候補'));
+    }
   }
 
   /** The deadline as the eye needs it: kind, short date, relative count. Urgent colour only for a
@@ -2245,22 +2343,25 @@ function initIndex() {
   /* ------------------------------------------------------------ A FEATURED */
 
   function buildFeatured(p) {
-    var li = el('li', 'card card--featured' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
+    /* R22: one decision unit per card — tier and confidence, the name, then why now / price / similar products /
+       driver / risk / next check / evidence and its date. No image box: the decision is in the words. */
+    var li = el('li', 'card card--featured card--decision');
     li.dataset.id = p.product_id;
-    var a = el('a', 'card-main');
-    a.href = detailHref(p);
-    /* R21F: no credit line on a list card (the detail page carries it); title art wears a corner tag */
-    a.appendChild(productMedia(p, 'featured', { tileNote: TILE_NOTE_SHORT, artTag: true }));
-    var st = el('div', 'c-status');
-    put(st, statusBadge(p));
-    flagBadges(st, p);
-    if (st.children.length) { a.appendChild(st); }
-    put(a, deadlineBox(p, 'f-deadline--big'));
-    if (!isUnknown(p.product_name)) { a.appendChild(wordWrapText(el('div', 'c-name'), String(p.product_name))); }
+    var a = el('div', 'card-main');
+    var head = el('div', 'dc-head');
+    put(head, decisionChips(p));
+    /* one fact once per decision unit: the 「いつ」 row already says 発売済み / 受付開始前 / 締切 */
+    var d0 = decisionOf(p);
+    if (!d0 || !shownText(d0.why_now_ja)) { put(head, statusBadge(p)); }
+    a.appendChild(head);
+    var name = wordWrapText(el('a', 'c-name dc-name'), isUnknown(p.product_name) ? '商品の詳細' : String(p.product_name));
+    name.href = detailHref(p);
+    a.appendChild(name);
     var meta = identityMeta(p, true);
     if (meta.length) { a.appendChild(el('div', 'c-cat', meta.join('・'))); }
-    put(a, rowStrip(p, true));
+    put(a, decisionFacts(p, false));
     li.appendChild(a);
+    put(li, backtestLine(p));
     li.appendChild(cardActions(p));
     return li;
   }
@@ -2268,31 +2369,20 @@ function initIndex() {
   function renderFeatured() {
     var list = $('featured-list');
     if (!list) { return; }
-    var scoped = state.products.filter(inScope);
-    var closing = scoped.filter(isClosingSoonRow).sort(cmpDeadline);
-    var rows = closing;
-    var sub = '締切間近 ' + closing.length + '件';
-    if (!rows.length) {
-      /* nothing is closing within 7 days: the confirmed-open rows with the nearest deadline */
-      rows = scoped.filter(function (p) {
-        return isOpenStatus(p) && num(p.days_to_deadline) !== null && p.days_to_deadline >= 0;
-      }).sort(cmpDeadline);
-      sub = rows.length ? '受付中・締切が近い順' : '';
-    }
+    var rows = firstLook(state.products.filter(inScope), FEATURED_MAX);
+    state.firstLookIds = rows.map(function (p) { return p.product_id; });
     list.textContent = '';
     var frag = document.createDocumentFragment();
-    rows.slice(0, FEATURED_MAX).forEach(function (p) { frag.appendChild(buildFeatured(p)); });
+    rows.forEach(function (p) { frag.appendChild(buildFeatured(p)); });
     list.appendChild(frag);
-    list.dataset.count = String(Math.min(rows.length, FEATURED_MAX));
+    list.dataset.count = String(rows.length);
     var subNode = $('today-sub');
     if (subNode) {
       subNode.textContent = '';
-      if (sub) { keepText(subNode, sub + (rows.length > FEATURED_MAX ? '（ほかは下の一覧に）' : '')); }
+      if (rows.length) { keepText(subNode, '判断材料・締切・確度から、先に確かめる' + rows.length + '件'); }
     }
     $('today-empty').hidden = rows.length !== 0;
     list.hidden = rows.length === 0;
-    syncRail(list);
-    if (list.__cue) { list.__cue(); }
   }
 
   /** A swipe row (phones) is a scroll container: it gets a tab stop and a name so it can be
@@ -2330,6 +2420,8 @@ function initIndex() {
        name keeps its full two lines */
     var top = el('div', 'row-top');
     var st = el('div', 'c-status');
+    var dec = decisionOf(p);
+    if (dec && dec.tier === 'LEAD') { st.appendChild(el('span', 'tier-chip tier--lead', String(dec.tier_label_ja))); }
     put(st, statusBadge(p));
     flagBadges(st, p);
     if (st.children.length) { top.appendChild(st); }
@@ -2368,8 +2460,10 @@ function initIndex() {
     var actions = el('div', 'card-actions');
     var upd = fmtShortDay(p.updated_at, state.doc && state.doc.as_of);
     if (upd) {
-      var u = el('span', 'row-upd', '更新 ' + upd);
-      u.title = 'この商品を最後に確認・観測した日';
+      /* R22: the date this item's facts were last checked — a stale one says so */
+      var fr = decisionOf(p) && decisionOf(p).freshness;
+      var u = el('span', 'row-upd' + (fr && fr.band === 'STALE' ? ' is-stale' : ''), upd + ' 確認');
+      u.title = 'この商品を最後に確認・観測した日' + (fr && fr.days !== null && fr.days !== undefined ? '（' + fr.days + '日前）' : '');
       actions.appendChild(u);
     }
     /* one quiet outbound text link and the reader's own 「印」 */
@@ -3148,9 +3242,9 @@ function initIndex() {
     { id: 'sec-restock', name: '再販・在庫復活', sort: byUpdatedDesc,
       pick: function (p) { return p.status === 'RESTOCKED'; } },
     { id: 'sec-new', name: '新着（14日以内）', sort: byFirstSeenDesc,
-      pick: function (p) { return p.is_new === true; } },
+      pick: function (p) { return p.is_new === true; } },   /* = stats new_items (the KPI); each row shows its own state */
     { id: 'sec-attention', name: '注目候補', sort: cmpDeadline,
-      pick: function (p) { return p.is_attention === true; } },
+      pick: function (p) { return p.is_attention === true && (!decisionOf(p) || decisionOf(p).actionable); } },
     /* Sorted by deadline like every other section — deliberately NOT by headroom, which
        would turn a reference measure into a ranking. */
     { id: 'sec-backtest', name: '類似品の過去相場あり', sort: cmpDeadline, pick: hasEvaluableBacktest }
@@ -3202,7 +3296,13 @@ function initIndex() {
     var chip = own(FEED_CHIPS, key) || FEED_CHIPS.all;
     var sec = chip.sec ? sectionById(chip.sec) : null;
     var rows = state.products.filter(inScope);
-    if (sec) { rows = rows.filter(sec.pick).sort(sec.sort); } else { rows.sort(cmpFeedAll); }
+    if (sec) { rows = rows.filter(sec.pick).sort(sec.sort); }
+    else {
+      /* R22: すべて lists what is still worth a look (leads, items to follow) in the order to check them, minus the
+         ones already at the top; finished and info-wait items are one step away in 全商品一覧 */
+      var top = state.firstLookIds || [];
+      rows = rows.filter(function (p) { return isListed(p) && top.indexOf(p.product_id) < 0; }).sort(cmpDecision);
+    }
     return rows;
   }
 
@@ -3776,7 +3876,9 @@ function initProduct() {
       rendered; with neither 定価 nor a verified 取得原価 there is no price block. */
   function pricePair(p) {
     var items = [];
-    var listPrice = fmtListPrice(p);
+    /* R22: the price with its unit (「¥440／パック・1BOX（10パック）¥4,400」) when the harness has it */
+    var dp = decisionOf(p) ? shownText(decisionOf(p).price_ja) : null;
+    var listPrice = dp || fmtListPrice(p);
     var acq = fmtPrice(acquisitionCostOf(p));
     if (listPrice !== null) { items.push([shownText(p.list_price_label_ja) || '定価', listPrice]); }
     if (acq !== null) { items.push(['取得原価', acq]); }
@@ -4339,10 +4441,18 @@ function initProduct() {
     if (p.is_attention === true) { badges.appendChild(el('span', 'badge badge--attention', '注目候補')); }
     if (badges.children.length) { head.appendChild(badges); }
     heroBody.appendChild(head);
-    if (unverified) {
-      heroBody.appendChild(el('p', 'warn-box',
-        'この商品は未検証です。公式情報での確認がまだ済んでいないため、確認済みの商品とは区別してご覧ください。'));
+    /* R22: the decision unit first — tier, confidence and its reasons, why now, price, similar products, risk,
+       next check, evidence and its date — before the conditions table and the long sections */
+    var dec0 = decisionOf(p);
+    if (dec0) {
+      var dbox = el('section', 'detail-decision tier-box--' + String(dec0.tier).toLowerCase());
+      dbox.setAttribute('aria-label', '判断の要点');
+      put(dbox, decisionChips(p));
+      put(dbox, decisionFacts(p, true));
+      heroBody.appendChild(dbox);
     }
+    /* R22: the unverified state is stated once, in the decision block (risk / next check), not in a warning box */
+
 
     /* Key–value block. 締切 splits date and 残り日数; the urgent look only for a closing_soon_band row
        (deadlineParts -> isClosingSoonRow). A value that is not confirmed is simply absent. */

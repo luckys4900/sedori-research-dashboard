@@ -79,11 +79,11 @@
       <!-- A 今日チェック: at most three FEATURED cards, closing soonest first. -->
       <section class="today" id="today" aria-labelledby="today-title">
         <div class="sec-head">
-          <h2 class="sec-title" id="today-title">今日チェック</h2>
+          <h2 class="sec-title" id="today-title">今日まず見る</h2>
           <span class="sec-sub" id="today-sub"></span>
         </div>
         <ul class="featured" id="featured-list"></ul>
-        <p class="sec-empty" id="today-empty" hidden>いまのところ、締切が近い受付中の商品はありません。</p>
+        <p class="sec-empty" id="today-empty" hidden>いまのところ、判断材料がそろって受付中の商品はありません。</p>
       </section>
 
       <!-- 最近調べた商品: the most recently checked or observed items (each row keeps its 確認状況
@@ -117,7 +117,7 @@
         </div>
 
         <div class="feed-notes">
-          <p class="feed-note" data-note="all">公式情報がそろっている商品から順に、その中では更新日が新しい順に並べています。</p>
+          <p class="feed-note" data-note="all">判断材料がそろった商品、締切が近い商品、確度が高い商品の順です。受付が終わった商品・情報待ちの商品は「全商品を詳しく探す」にあります。<span class="legend-inline"><span class="tier-chip tier--lead">判断材料がそろった</span>公式で確認済み・定価と<span class="nb">類似品3件以上</span>の取引あり　<span class="conf-chip conf--medium">確度 中</span>根拠のそろい具合（利益の見込みではありません）</span></p>
           <p class="feed-note" data-note="open" hidden>公表された受付期間をもとに、いま受付中の商品です（締切間近を含みます）。</p>
           <p class="feed-note" data-note="closing" hidden>受付中の商品のうち、締切まで7日以内のものです。</p>
           <p class="feed-note" data-note="preorder" hidden>販売方式が予約・受注生産で、いま受付中の商品です。</p>
