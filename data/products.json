@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-01",
-  "generated_at": "2026-10-01T18:34:22+09:00",
+  "as_of": "2026-10-02",
+  "generated_at": "2026-10-02T09:44:06+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -2131,7 +2131,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -31,
+      "days_to_deadline": -32,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -2862,7 +2862,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -31,
+      "days_to_deadline": -32,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -3216,7 +3216,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -56,
+      "days_to_deadline": -57,
       "deadline": "2026-08-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -3407,7 +3407,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 36,
+      "days_to_deadline": 35,
       "deadline": "2026-11-06",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -3572,7 +3572,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 31,
+      "days_to_deadline": 30,
       "deadline": "2026-11-01",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -3724,7 +3724,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 41,
+      "days_to_deadline": 40,
       "deadline": "2026-11-11",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -4192,7 +4192,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -3,
+      "days_to_deadline": -4,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -4521,7 +4521,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 13,
+      "days_to_deadline": 12,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -4693,7 +4693,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -1,
+      "days_to_deadline": -2,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -4868,7 +4868,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_7D",
-      "days_to_deadline": 6,
+      "days_to_deadline": 5,
       "deadline": "2026-10-07",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -5032,7 +5032,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 15,
+      "days_to_deadline": 14,
       "deadline": "2026-10-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -5184,7 +5184,166 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 11,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-10-02",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "ONE PIECE",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 6050,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://one-piece.com/news/82550/index.html",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-1731a737958200d1",
+      "product_name": "リバーシブルバケットハット／ゴーイング・メリー号&サウザンド・サニー号",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": "2026-10-09",
+      "release_date_display": "2026年10月9日",
+      "release_date_precision": "day",
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "発売日",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026年10月9日"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥6,050"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "one-piece.com",
+          "url": "https://one-piece.com/news/82550/index.html"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-10-02",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": 10,
       "deadline": "2026-10-12",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -5488,7 +5647,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_7D",
-      "days_to_deadline": 5,
+      "days_to_deadline": 4,
       "deadline": "2026-10-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -5652,7 +5811,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 55,
+      "days_to_deadline": 54,
       "deadline": "2026-11-25",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -5983,7 +6142,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 13,
+      "days_to_deadline": 12,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -6155,7 +6314,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 32,
+      "days_to_deadline": 31,
       "deadline": "2026-11-02",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -6478,7 +6637,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 13,
+      "days_to_deadline": 12,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -6650,7 +6809,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 122,
+      "days_to_deadline": 121,
       "deadline": "2027-01-31",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -6853,16 +7012,23 @@
       "profit_evidence_status": "NOT_EVALUATED",
       "purchase_limit": null,
       "purchase_url": null,
-      "release_date": null,
-      "release_date_display": null,
-      "release_date_precision": null,
+      "release_date": "2026-10-02",
+      "release_date_display": "2026年10月2日",
+      "release_date_precision": "day",
       "research_angles": {
         "angles": [
           {
             "key": "timing",
-            "known": false,
+            "known": true,
             "label_ja": "いつ",
-            "rows": []
+            "rows": [
+              {
+                "label_ja": "発売日",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026年10月2日"
+              }
+            ]
           },
           {
             "key": "route",
@@ -6895,7 +7061,7 @@
             "rows": []
           }
         ],
-        "checked": 0,
+        "checked": 1,
         "official_pages_checked": false,
         "total": 6
       },
@@ -6924,7 +7090,7 @@
       "status_basis_label_ja": null,
       "status_label_ja": "受付状況は未確認",
       "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
-      "updated_at": "2026-10-01",
+      "updated_at": "2026-10-02",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
     {
@@ -6954,7 +7120,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -1,
+      "days_to_deadline": -2,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -7129,7 +7295,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 91,
+      "days_to_deadline": 90,
       "deadline": "2026-12-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -7274,7 +7440,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 17,
+      "days_to_deadline": 16,
       "deadline": "2026-10-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -7750,7 +7916,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 41,
+      "days_to_deadline": 40,
       "deadline": "2026-11-11",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -7915,7 +8081,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -147,
+      "days_to_deadline": -148,
       "deadline": "2026-05-07",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -8398,7 +8564,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 38,
+      "days_to_deadline": 37,
       "deadline": "2026-11-08",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -8550,7 +8716,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 53,
+      "days_to_deadline": 52,
       "deadline": "2026-11-23",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -8722,7 +8888,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -25,
+      "days_to_deadline": -26,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -8908,7 +9074,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 17,
+      "days_to_deadline": 16,
       "deadline": "2026-10-18",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -9074,7 +9240,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -3,
+      "days_to_deadline": -4,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -9575,7 +9741,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 55,
+      "days_to_deadline": 54,
       "deadline": "2026-11-25",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -9740,7 +9906,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -1,
+      "days_to_deadline": -2,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -9917,7 +10083,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -136,
+      "days_to_deadline": -137,
       "deadline": "2026-05-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -10239,7 +10405,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 12,
+      "days_to_deadline": 11,
       "deadline": "2026-10-13",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -10574,6 +10740,158 @@
       "deadline_kind": null,
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-10-02",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "ONE PIECE",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://one-piece.com/news/82455/index.html",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-883090837f331a4b",
+      "product_name": "S.H.Figuarts ナミ -新世界-",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": "2027年5月",
+      "release_date_precision": "month",
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "発売日",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2027年5月"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "one-piece.com",
+          "url": "https://one-piece.com/news/82455/index.html"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-10-02",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
       "first_seen_at": "2026-09-28",
       "historical_price_evidence": [],
       "image": null,
@@ -10721,7 +11039,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -1,
+      "days_to_deadline": -2,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -10896,7 +11214,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -3,
+      "days_to_deadline": -4,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -11072,7 +11390,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_7D",
-      "days_to_deadline": 6,
+      "days_to_deadline": 5,
       "deadline": "2026-10-07",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -11244,7 +11562,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -2,
+      "days_to_deadline": -3,
       "deadline": "2026-09-29",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -11560,7 +11878,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 1,
+      "days_to_deadline": 0,
       "deadline": "2026-10-02",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -12327,7 +12645,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 18,
+      "days_to_deadline": 17,
       "deadline": "2026-10-19",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -12437,10 +12755,10 @@
           "url": "https://www.konami.com/yugioh/duelistfestival/tokyo2026/"
         }
       ],
-      "status": "NOT_STARTED",
+      "status": "OPEN_NOW",
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "受付開始前",
+      "status_label_ja": "受付中",
       "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -12472,7 +12790,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -1,
+      "days_to_deadline": -2,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -12649,7 +12967,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 13,
+      "days_to_deadline": 12,
       "deadline": "2026-10-14",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -13423,7 +13741,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -25,
+      "days_to_deadline": -26,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -13597,7 +13915,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 31,
+      "days_to_deadline": 30,
       "deadline": "2026-11-01",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -13774,7 +14092,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -17,
+      "days_to_deadline": -18,
       "deadline": "2026-09-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -13926,6 +14244,165 @@
       "acquisition_cost_jpy": null,
       "acquisition_cost_status": "UNVERIFIED",
       "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-10-02",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "ONE PIECE",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": 154,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://one-piece.com/news/82454/index.html",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-c8473c01cbc6d0d5",
+      "product_name": "にふぉるめーしょん ワンピース大海賊シールウエハース LOG.16",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": "2026年12月",
+      "release_date_precision": "month",
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "発売日",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026年12月"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": [
+              {
+                "label_ja": "定価",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "¥154"
+              }
+            ]
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "one-piece.com",
+          "url": "https://one-piece.com/news/82454/index.html"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-10-02",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
       "application_end": "2026-10-15",
       "application_start": "2026-09-16",
       "attention_reasons": [],
@@ -13949,7 +14426,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 14,
+      "days_to_deadline": 13,
       "deadline": "2026-10-15",
       "deadline_kind": "APPLICATION",
       "evidence_label_ja": "未検証",
@@ -14260,7 +14737,159 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 13,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "evidence_label_ja": "未検証",
+      "evidence_state": "UNVERIFIED",
+      "first_seen_at": "2026-10-02",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": "ONE PIECE",
+      "is_attention": false,
+      "is_new": true,
+      "last_verified_at": null,
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://one-piece.com/news/82464/index.html",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "販売数の制限や類似品の取引実績は、まだ確認できていません",
+          "code": "UNKNOWN",
+          "label_ja": "注目理由は未確認"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "disc-sku-cfc28a4412771a86",
+      "product_name": "ワンピの実ミクロ ブリスターチャーム ONE PIECE BASE SHOP LIMITED Ver.",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "purchase_limit": null,
+      "purchase_url": null,
+      "release_date": "2026-10-09",
+      "release_date_display": "2026年10月9日",
+      "release_date_precision": "day",
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": true,
+            "label_ja": "いつ",
+            "rows": [
+              {
+                "label_ja": "発売日",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026年10月9日"
+              }
+            ]
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": false,
+            "label_ja": "供給",
+            "rows": []
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [
+        {
+          "kind": "RETAILER",
+          "name": "one-piece.com",
+          "url": "https://one-piece.com/news/82464/index.html"
+        }
+      ],
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
+      "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
+      "updated_at": "2026-10-02",
+      "verification_tier": "DISCOVERY_UNVERIFIED"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": 12,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -14437,7 +15066,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 18,
+      "days_to_deadline": 17,
       "deadline": "2026-10-19",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -14754,7 +15383,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -3,
+      "days_to_deadline": -4,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -15128,15 +15757,22 @@
       "purchase_limit": null,
       "purchase_url": null,
       "release_date": null,
-      "release_date_display": null,
-      "release_date_precision": null,
+      "release_date_display": "2026年10月下旬",
+      "release_date_precision": "month",
       "research_angles": {
         "angles": [
           {
             "key": "timing",
-            "known": false,
+            "known": true,
             "label_ja": "いつ",
-            "rows": []
+            "rows": [
+              {
+                "label_ja": "発売日",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "2026年10月下旬"
+              }
+            ]
           },
           {
             "key": "route",
@@ -15169,7 +15805,7 @@
             "rows": []
           }
         ],
-        "checked": 0,
+        "checked": 1,
         "official_pages_checked": false,
         "total": 6
       },
@@ -15198,7 +15834,7 @@
       "status_basis_label_ja": null,
       "status_label_ja": "受付状況は未確認",
       "status_note_ja": "公式ページで応募期間を確認できていないため、受付状況は未確認です。",
-      "updated_at": "2026-10-01",
+      "updated_at": "2026-10-02",
       "verification_tier": "DISCOVERY_UNVERIFIED"
     },
     {
@@ -15228,7 +15864,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 60,
+      "days_to_deadline": 59,
       "deadline": "2026-11-30",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -15399,7 +16035,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 15,
+      "days_to_deadline": 14,
       "deadline": "2026-10-16",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -15716,7 +16352,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -2,
+      "days_to_deadline": -3,
       "deadline": "2026-09-29",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -15892,7 +16528,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 15,
+      "days_to_deadline": 14,
       "deadline": "2026-10-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "未検証",
@@ -16182,7 +16818,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 15,
+      "days_to_deadline": 14,
       "deadline": "2026-10-16",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "未検証",
@@ -20356,7 +20992,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 2,
+      "days_to_deadline": 1,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -20538,7 +21174,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 2,
+      "days_to_deadline": 1,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "確認済み",
@@ -20726,7 +21362,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 2,
+      "days_to_deadline": 1,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -20908,7 +21544,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 2,
+      "days_to_deadline": 1,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -21090,7 +21726,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 2,
+      "days_to_deadline": 1,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "evidence_label_ja": "一部確認",
@@ -21272,7 +21908,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -4,
+      "days_to_deadline": -5,
       "deadline": "2026-09-27",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -21282,7 +21918,7 @@
       "image": null,
       "ip": "仮面ライダー",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 7480,
       "list_price_label_ja": "定価",
@@ -21456,7 +22092,7 @@
       "image": null,
       "ip": "ちいかわ",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 3960,
       "list_price_label_ja": "定価",
@@ -21626,7 +22262,7 @@
       },
       "ip": "ドラゴンボール",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-19",
       "list_price_jpy": null,
       "list_price_label_ja": "定価",
@@ -21812,7 +22448,7 @@
       "image": null,
       "ip": "機動戦士Vガンダム",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 4950,
       "list_price_label_ja": "定価",
@@ -21980,7 +22616,7 @@
       "image": null,
       "ip": "機動戦士ガンダム",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 9350,
       "list_price_label_ja": "定価",
@@ -22145,7 +22781,7 @@
         "プレミアムバンダイ サンライズストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 3,
+      "days_to_deadline": 2,
       "deadline": "2026-10-04",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -22155,7 +22791,7 @@
       "image": null,
       "ip": "機動新世紀ガンダムX",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 14300,
       "list_price_label_ja": "定価",
@@ -22336,7 +22972,7 @@
       "image": null,
       "ip": "HUNTER×HUNTER",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 1980,
       "list_price_label_ja": "定価",
@@ -22504,7 +23140,7 @@
       "image": null,
       "ip": "HUNTER×HUNTER",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 1980,
       "list_price_label_ja": "定価",
@@ -22672,7 +23308,7 @@
       "image": null,
       "ip": "アイドルマスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 4950,
       "list_price_label_ja": "定価",
@@ -22830,7 +23466,7 @@
         "プレミアムバンダイ A-on STORE"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 4,
+      "days_to_deadline": 3,
       "deadline": "2026-10-05",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -22840,7 +23476,7 @@
       "image": null,
       "ip": "ラブライブ！スーパースター!!",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 4950,
       "list_price_label_ja": "定価",
@@ -23520,7 +24156,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 57,
+      "days_to_deadline": 56,
       "deadline": "2026-11-27",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -23530,7 +24166,7 @@
       "image": null,
       "ip": "ポムポムプリン",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 8360,
       "list_price_label_ja": "定価",
@@ -23694,7 +24330,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 25,
+      "days_to_deadline": 24,
       "deadline": "2026-10-26",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -23704,7 +24340,7 @@
       "image": null,
       "ip": "フレッシュプリキュア！",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 6930,
       "list_price_label_ja": "定価",
@@ -23878,7 +24514,7 @@
       "image": null,
       "ip": "プリキュア",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 9350,
       "list_price_label_ja": "定価",
@@ -24069,7 +24705,7 @@
       "image": null,
       "ip": "プリキュア",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 6380,
       "list_price_label_ja": "定価",
@@ -24250,7 +24886,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -14,
+      "days_to_deadline": -15,
       "deadline": "2026-09-17",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "一部確認",
@@ -24260,7 +24896,7 @@
       "image": null,
       "ip": "SDガンダム",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 7000,
       "list_price_label_ja": "定価",
@@ -24425,7 +25061,7 @@
         "プレミアムバンダイ 魂ウェブ商店"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 17,
+      "days_to_deadline": 16,
       "deadline": "2026-10-18",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "一部確認",
@@ -24435,7 +25071,7 @@
       "image": null,
       "ip": "機動新世紀ガンダムX",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 24200,
       "list_price_label_ja": "定価",
@@ -24626,7 +25262,7 @@
       "image": null,
       "ip": "帰ってきたウルトラマン",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 36080,
       "list_price_label_ja": "定価",
@@ -24871,7 +25507,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -31,
+      "days_to_deadline": -32,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -25529,7 +26165,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -15,
+      "days_to_deadline": -16,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -25888,7 +26524,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 500,
       "list_price_label_ja": "定価",
@@ -26072,7 +26708,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 500,
       "list_price_label_ja": "定価",
@@ -26256,7 +26892,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 3300,
       "list_price_label_ja": "定価",
@@ -26440,7 +27076,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 1210,
       "list_price_label_ja": "定価",
@@ -26668,7 +27304,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -15,
+      "days_to_deadline": -16,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -26960,7 +27596,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 2970,
       "list_price_label_ja": "定価",
@@ -27144,7 +27780,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 2970,
       "list_price_label_ja": "定価",
@@ -27328,7 +27964,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 2970,
       "list_price_label_ja": "定価",
@@ -27509,7 +28145,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 6200,
       "list_price_label_ja": "定価",
@@ -27673,7 +28309,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 889,
       "list_price_label_ja": "定価",
@@ -27857,7 +28493,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 990,
       "list_price_label_ja": "定価",
@@ -28041,7 +28677,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 889,
       "list_price_label_ja": "定価",
@@ -28225,7 +28861,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 990,
       "list_price_label_ja": "定価",
@@ -28409,7 +29045,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 889,
       "list_price_label_ja": "定価",
@@ -28593,7 +29229,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 990,
       "list_price_label_ja": "定価",
@@ -28777,7 +29413,7 @@
       },
       "ip": "ポケットモンスター",
       "is_attention": false,
-      "is_new": true,
+      "is_new": false,
       "last_verified_at": "2026-09-17",
       "list_price_jpy": 3500,
       "list_price_label_ja": "定価",
@@ -29286,7 +29922,7 @@
         "コナミスタイル"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -7,
+      "days_to_deadline": -8,
       "deadline": "2026-09-24",
       "deadline_kind": "LOTTERY",
       "evidence_label_ja": "確認済み",
@@ -29469,10 +30105,10 @@
           "url": "https://www.konami.com/yugioh/worldchampionship/2026/watching/"
         }
       ],
-      "status": "RESULT_PENDING",
+      "status": "CLOSED",
       "status_basis": "FACT_ADDITIONAL_LOTTERY",
       "status_basis_label_ja": "公式に告知された追加抽選の期間にもとづく",
-      "status_label_ja": "抽選結果待ち",
+      "status_label_ja": "受付終了",
       "status_note_ja": null,
       "updated_at": "2026-09-15",
       "verification_tier": "CANONICAL_VERIFIED"
@@ -30523,7 +31159,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -44,
+      "days_to_deadline": -45,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -30911,7 +31547,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -44,
+      "days_to_deadline": -45,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -32485,7 +33121,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 27,
+      "days_to_deadline": 26,
       "deadline": "2026-10-28",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -32781,7 +33417,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 43,
+      "days_to_deadline": 42,
       "deadline": "2026-11-13",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
@@ -34268,11 +34904,11 @@
       "sales_end": null,
       "shipping_period": null,
       "source_references": [],
-      "status": "UNKNOWN",
+      "status": "RELEASED",
       "status_basis": null,
       "status_basis_label_ja": null,
-      "status_label_ja": "受付状況は未確認",
-      "status_note_ja": "予約受付の有無と開始日は未確認です（公表されているのは発売日のみ）",
+      "status_label_ja": "発売済み",
+      "status_note_ja": null,
       "updated_at": "2026-09-16",
       "verification_tier": "CANONICAL_PARTIAL"
     },
@@ -41690,7 +42326,7 @@
         "サテライトショップ（各店要確認）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 18,
+      "days_to_deadline": 17,
       "deadline": "2026-10-19",
       "deadline_kind": "RESERVATION",
       "evidence_label_ja": "確認済み",
