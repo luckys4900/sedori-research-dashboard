@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-03",
+  "as_of": "2026-10-04",
   "by_category": {
     "BOOK_MOOK": 5,
     "CHARACTER_GOODS": 11,
@@ -32,12 +32,12 @@
   "by_status": {
     "CLOSED": 22,
     "CLOSING_SOON": 3,
-    "ENDED": 1,
+    "ENDED": 6,
     "NOT_STARTED": 12,
     "OPEN_NOW": 20,
     "PAYMENT_PENDING": 0,
     "PICKUP_PENDING": 0,
-    "RELEASED": 38,
+    "RELEASED": 33,
     "RESTOCKED": 4,
     "RESULT_PENDING": 0,
     "SHIPPING_PENDING": 2,
@@ -55,8 +55,8 @@
     "buyable_now": 23,
     "closing_soon": 3,
     "closing_soon_24h": 0,
-    "closing_soon_3d": 1,
-    "closing_soon_7d": 2,
+    "closing_soon_3d": 3,
+    "closing_soon_7d": 0,
     "new_items": 76,
     "open_lottery": 0,
     "open_now": 20,
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 118
   },
-  "generated_at": "2026-10-03T06:32:20+09:00",
+  "generated_at": "2026-10-04T06:32:11+09:00",
   "schema_version": "1.1.0"
 }
