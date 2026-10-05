@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-05",
+  "as_of": "2026-10-06",
   "audit_metadata": {
     "builder": "build_dashboard.py",
     "contract": "CONTRACT.md",
@@ -60,7 +60,7 @@
     "product_group_parent": 1,
     "superseded_observation": 12
   },
-  "generated_at": "2026-10-05T11:22:41+09:00",
+  "generated_at": "2026-10-06T06:32:12+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかを示すもので、順位づけやおすすめではありません。",
     "history": "過去の取引価格は、比較のために選んだ別の商品（類似品）の取引実績です。この商品の利益ではありません。",

@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-05",
+  "as_of": "2026-10-06",
   "by_category": {
     "BOOK_MOOK": 5,
     "CHARACTER_GOODS": 11,
@@ -30,7 +30,7 @@
     "UNKNOWN": 91
   },
   "by_status": {
-    "CLOSED": 23,
+    "CLOSED": 24,
     "CLOSING_SOON": 3,
     "ENDED": 6,
     "NOT_STARTED": 12,
@@ -41,7 +41,7 @@
     "RESTOCKED": 4,
     "RESULT_PENDING": 0,
     "SHIPPING_PENDING": 2,
-    "UNKNOWN": 84
+    "UNKNOWN": 83
   },
   "by_verification": {
     "CANONICAL_PARTIAL": 65,
@@ -54,8 +54,8 @@
     "attention": 6,
     "buyable_now": 23,
     "closing_soon": 3,
-    "closing_soon_24h": 1,
-    "closing_soon_3d": 2,
+    "closing_soon_24h": 3,
+    "closing_soon_3d": 0,
     "closing_soon_7d": 0,
     "new_items": 76,
     "open_lottery": 0,
@@ -63,11 +63,11 @@
     "open_preorder": 0,
     "restocked": 4,
     "total": 187,
-    "unknown_status": 84,
+    "unknown_status": 83,
     "unverified": 86,
     "verified": 36,
     "with_signal": 118
   },
-  "generated_at": "2026-10-05T11:22:41+09:00",
+  "generated_at": "2026-10-06T06:32:12+09:00",
   "schema_version": "1.1.0"
 }
