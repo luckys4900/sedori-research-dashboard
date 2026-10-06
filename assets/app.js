@@ -1767,11 +1767,11 @@ function idHash(text) {
    a tile must never look like it is reporting a status. */
 var THUMB_HUES = [12, 40, 86, 150, 190, 222, 268, 320];
 
-/** The site mark (a magnifier over a rising line), as plain SVG primitives in a 64x64 box. The same mark is
-    the header logo and the picture of every product that has no photo yet. */
-var BRAND_MARK = [['circle', { cx: 28, cy: 28, r: 15 }],
-                  ['line', { x1: 39, y1: 39, x2: 52, y2: 52 }],
-                  ['path', { d: 'M20 33 L26 27 L31 31 L37 22' }]];
+/** The site mark (a price tag with a rising line), as plain SVG primitives in a 64x64 box. The same mark is
+    the header logo and the corner mark on the cover of every product that has no photo yet. */
+var BRAND_MARK = [['path', { d: 'M33 7 H53 a4 4 0 0 1 4 4 V31 L31 57 a4 4 0 0 1 -5.6 0 L7 38.6 a4 4 0 0 1 0 -5.6 Z' }],
+                  ['circle', { cx: 45, cy: 19, r: 4 }],
+                  ['path', { d: 'M18 38 L26 31 L31 35 L39 26' }]];
 
 /**
  * 「何の商品か」の一行: IP・カテゴリ（・詳細では販売方式）。
@@ -1822,24 +1822,133 @@ function svgEl(name, attrs) {
  * `variant` only changes the size class; the drawing is identical, because the point of the
  * tile is that the card and the detail page show the SAME one.
  */
+/** Kind of a character for cover line breaks: a name never breaks inside a run of one kind. */
+function charKind(ch) {
+  if (/\s/.test(ch)) { return 'space'; }
+  if (/[\u30a0-\u30ff\u31f0-\u31ff\uff66-\uff9f\u30fc]/.test(ch)) { return 'kata'; }
+  if (/[\u3040-\u309f]/.test(ch)) { return 'hira'; }
+  if (/[\u4e00-\u9fff\u3400-\u4dbf\u3005]/.test(ch)) { return 'kanji'; }
+  if (/[A-Za-z0-9\uff10-\uff19\uff21-\uff3a\uff41-\uff5a]/.test(ch)) { return 'latin'; }
+  return 'mark';
+}
+
+/** Visual width in em (bold): full-width 1, capitals / digits about 0.7, other Latin and marks about 0.58. */
+function textEm(str) {
+  var w = 0;
+  for (var i = 0; i < str.length; i++) {
+    var ch = str.charAt(i);
+    w += str.charCodeAt(i) > 0xff ? 1 : (/[A-Z0-9]/.test(ch) ? 0.7 : 0.58);
+  }
+  return w;
+}
+
+/** A long katakana / kanji run is split where the word segmenter sees a word (サンリオ|キャラクターズ), never
+    into a piece of fewer than 4 characters; a short run stays whole (ハイキュー, エヴァンゲリオン). */
+function splitLongRun(run) {
+  if (run.length < 8 || typeof Intl === 'undefined' || typeof Intl.Segmenter !== 'function') { return [run]; }
+  var segs = Array.from(new Intl.Segmenter('ja', { granularity: 'word' }).segment(run)).map(function (x) { return x.segment; });
+  var out = [];
+  segs.forEach(function (sg) {
+    if (out.length && (out[out.length - 1].length < 4 || sg.length < 4)) { out[out.length - 1] += sg; }
+    else { out.push(sg); }
+  });
+  if (out.length > 1 && out[out.length - 1].length < 4) { out[out.length - 2] += out.pop(); }
+  return out;
+}
+
+/**
+ * The cover title: unbreakable pieces (a run of one kind of character; marks such as !! and short
+ * Latin tails like the X in ガンダムX stay attached; a long run splits only at a real word), joined by a
+ * break opportunity at a space or where the kind changes. The size is the largest at which every
+ * piece fits a line and the whole name fits three lines.
+ */
+function coverTitle(text) {
+  var runs = [], gaps = [], cur = '', kind = null;
+  for (var i = 0; i < text.length; i++) {
+    var ch = text.charAt(i), k = charKind(ch);
+    if (k === 'space') {
+      if (cur) { runs.push(cur); gaps.push(' '); cur = ''; kind = null; }
+      continue;
+    }
+    if (/[×・\/]/.test(ch) && cur) {     /* a joint: stays at the end of its line, a break may follow */
+      runs.push(cur + ch); gaps.push(''); cur = ''; kind = null;
+      continue;
+    }
+    var attach = k === 'mark' || kind === null || k === kind ||
+      (k === 'latin' && /^[A-Za-z0-9]{1,2}$/.test(text.slice(i).split(/\s/)[0]) && (kind === 'kata' || kind === 'kanji'));
+    if (!attach) { runs.push(cur); gaps.push(''); cur = ''; }
+    cur += ch;
+    if (k !== 'mark') { kind = k; }
+  }
+  if (cur) { runs.push(cur); }
+  var pieces = [], joins = [];
+  runs.forEach(function (r, j) {
+    var parts = /^[A-Za-z0-9]/.test(r) ? [r] : splitLongRun(r);
+    parts.forEach(function (pc, m) {
+      if (pieces.length) { joins.push(m === 0 ? (gaps[j - 1] || '') : ''); }
+      pieces.push(pc);
+    });
+  });
+  var widths = pieces.map(textEm);
+  function lines(size) {
+    var cap = 62 / size, n = 1, used = 0;
+    for (var q = 0; q < widths.length; q++) {
+      var add = (used && joins[q - 1] === ' ' ? 0.3 : 0) + widths[q];
+      if (used && used + add > cap) { n++; used = widths[q]; } else { used += add; }
+    }
+    return n;
+  }
+  var size = Math.min(15, 62 / Math.max.apply(null, widths.concat([1])));
+  while (size > 6 && lines(size) > 3) { size -= 0.25; }
+  var node = el('span', 'thumb-title');
+  node.style.setProperty('--fit', size.toFixed(2));
+  pieces.forEach(function (pc, j) {
+    if (j > 0) {
+      if (joins[j - 1] === ' ') { node.appendChild(document.createTextNode(' ')); }
+      else { node.appendChild(document.createElement('wbr')); }
+    }
+    node.appendChild(el('span', 'thumb-piece', pc));
+  });
+  return node;
+}
+
 function productThumb(p, variant) {
-  var hue = THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length];
-  var box = el('span', 'thumb' + (variant ? ' thumb--' + variant : ''));
+  /* A designed cover, not an "image missing" sign: the product's own tint, a light stripe texture,
+     the series / IP (or the category) set large, and the site mark small in the corner. */
+  var box = el('span', 'thumb thumb--cover' + (variant ? ' thumb--' + variant : ''));
   box.setAttribute('aria-hidden', 'true');
-  var svg = svgEl('svg', { viewBox: '0 0 64 64', focusable: 'false', role: 'presentation' });
-  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 64, height: 64, rx: 10, fill: 'hsl(' + hue + ', 44%, 92%)' }));
-  svg.appendChild(svgEl('path', { d: 'M0 46 L64 26 L64 64 L0 64 Z', fill: 'hsl(' + hue + ', 40%, 87%)' }));
-  var mark = svgEl('g', { transform: 'translate(10 10) scale(0.69)' });
+  var hue = THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length];
+  var bg = svgEl('svg', { viewBox: '0 0 100 100', preserveAspectRatio: 'none', focusable: 'false',
+                          role: 'presentation', 'class': 'thumb-bg' });
+  bg.appendChild(svgEl('rect', { x: 0, y: 0, width: 100, height: 100, fill: 'hsl(' + hue + ', 52%, 86%)' }));
+  bg.appendChild(svgEl('path', { d: 'M0 0 H62 L0 62 Z', fill: 'hsl(' + hue + ', 60%, 91%)' }));
+  bg.appendChild(svgEl('path', { d: 'M100 100 H58 L100 58 Z', fill: 'hsl(' + ((hue + 30) % 360) + ', 46%, 80%)' }));
+  bg.appendChild(svgEl('rect', { x: 6, y: 6, width: 88, height: 88, rx: 5, fill: 'none',
+                                 stroke: 'hsl(0, 0%, 100%)', 'stroke-opacity': '0.65', 'stroke-width': '1.2',
+                                 'vector-effect': 'non-scaling-stroke' }));
+  box.appendChild(bg);
+  var cat = lbl(CATEGORY_LABEL, p.category) || '';
+  var text = (!isUnknown(p.ip) ? String(p.ip) : cat).replace(/[（(].*?[)）]/g, '').trim();
+  if (text) {
+    var lab = el('span', 'thumb-label');
+    var title = coverTitle(text);
+    lab.appendChild(title);
+    if (cat && cat !== text) { lab.appendChild(el('span', 'thumb-kicker', cat)); }
+    box.appendChild(lab);
+  }
+  var svg = svgEl('svg', { viewBox: '0 0 64 64', focusable: 'false', role: 'presentation',
+                           'class': 'thumb-mark' + (text ? '' : ' thumb-mark--solo') });
+  var g = svgEl('g', {});
   for (var i = 0; i < BRAND_MARK.length; i++) {
     var node = svgEl(BRAND_MARK[i][0], BRAND_MARK[i][1]);
     node.setAttribute('fill', 'none');
-    node.setAttribute('stroke', 'hsl(' + hue + ', 38%, 38%)');
-    node.setAttribute('stroke-width', '4');
+    node.setAttribute('stroke', 'currentColor');
+    node.setAttribute('stroke-width', '5');
     node.setAttribute('stroke-linejoin', 'round');
     node.setAttribute('stroke-linecap', 'round');
-    mark.appendChild(node);
+    g.appendChild(node);
   }
-  svg.appendChild(mark);
+  svg.appendChild(g);
   box.appendChild(svg);
   return box;
 }

@@ -468,6 +468,35 @@ strong { font-weight: 700; }
 .pmedia .thumb { display: block; width: 100%; height: 100%; }
 .pmedia .thumb svg { display: block; width: 100%; height: 100%; }
 .pmedia.is-tile .thumb { padding: 0; }
+/* the cover shown when a product has no photo yet (its background is drawn in SVG) */
+.pmedia .thumb--cover {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; overflow: hidden; container-type: size;
+  color: hsl(var(--tile-h, 222) 48% 22%);
+}
+.pmedia .thumb--cover svg.thumb-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.thumb--cover .thumb-label {
+  position: relative; z-index: 1; display: grid; gap: 4cqmin; justify-items: center;
+  padding: 0 12%; max-width: 100%; box-sizing: border-box; text-align: center;
+}
+.thumb--cover .thumb-title {
+  font-weight: 800; letter-spacing: 0.02em; line-height: 1.22;
+  font-size: clamp(7px, calc(var(--fit, 15) * 1cqmin), 40px);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+}
+/* a piece (one run of katakana, kanji, Latin…) never breaks inside */
+.thumb--cover .thumb-piece { white-space: nowrap; }
+.thumb--cover .thumb-kicker {
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis;
+  padding: 0.15em 0.7em; border-radius: 999px; background: hsl(0 0% 100% / 0.6);
+  font-size: clamp(8px, 7cqmin, 16px); font-weight: 700; line-height: 1.3; white-space: nowrap;
+}
+/* on a small tile the name alone; the category is beside the card anyway */
+@container (max-width: 120px) { .thumb--cover .thumb-kicker { display: none; } }
+.pmedia .thumb--cover svg.thumb-mark {
+  position: absolute; z-index: 1; right: 11%; bottom: 11%; width: 13cqmin; height: 13cqmin; opacity: 0.5;
+}
+.pmedia .thumb--cover svg.thumb-mark--solo { position: relative; right: auto; bottom: auto; width: 34cqmin; height: 34cqmin; }
 .pmedia-note, .pmedia-credit {
   position: absolute;
   left: 0;
@@ -488,7 +517,6 @@ strong { font-weight: 700; }
 .card--featured .cta-host { display: none; }
 .pmedia--featured { height: 150px; }
 .pmedia--featured.is-tile { height: 88px; }
-.pmedia--featured.is-tile .thumb svg { object-fit: contain; }
 .f-deadline {
   display: flex;
   flex-wrap: wrap;
