@@ -1767,34 +1767,11 @@ function idHash(text) {
    a tile must never look like it is reporting a status. */
 var THUMB_HUES = [12, 40, 86, 150, 190, 222, 268, 320];
 
-/** The glyph per category, as plain SVG primitives in a 64x64 box. */
-var THUMB_GLYPH = {
-  TCG: [['rect', { x: 14, y: 12, width: 26, height: 38, rx: 3 }],
-        ['rect', { x: 26, y: 18, width: 26, height: 38, rx: 3 }],
-        ['line', { x1: 31, y1: 27, x2: 47, y2: 27 }],
-        ['line', { x1: 31, y1: 35, x2: 47, y2: 35 }]],
-  FIGURE: [['circle', { cx: 32, cy: 19, r: 7 }],
-           ['path', { d: 'M20 52 Q32 28 44 52 Z' }],
-           ['line', { x1: 24, y1: 52, x2: 40, y2: 52 }]],
-  TOY: [['rect', { x: 14, y: 24, width: 36, height: 26, rx: 3 }],
-        ['path', { d: 'M14 24 L22 14 L50 14 L50 24' }],
-        ['line', { x1: 32, y1: 24, x2: 32, y2: 50 }]],
-  CHARACTER_GOODS: [['circle', { cx: 32, cy: 18, r: 6 }],
-                    ['path', { d: 'M32 24 L32 30' }],
-                    ['rect', { x: 20, y: 30, width: 24, height: 22, rx: 6 }]],
-  BOOK_MOOK: [['path', { d: 'M12 16 Q32 24 32 24 L32 50 Q32 50 12 42 Z' }],
-              ['path', { d: 'M52 16 Q32 24 32 24 L32 50 Q32 50 52 42 Z' }]],
-  ONLINE_LOTTERY: [['rect', { x: 12, y: 22, width: 40, height: 22, rx: 4 }],
-                   ['line', { x1: 26, y1: 22, x2: 26, y2: 44 }],
-                   ['line', { x1: 34, y1: 26, x2: 46, y2: 26 }],
-                   ['line', { x1: 34, y1: 34, x2: 46, y2: 34 }]],
-  COLLAB: [['circle', { cx: 25, cy: 32, r: 11 }],
-           ['circle', { cx: 39, cy: 32, r: 11 }]],
-  OTHER: [['rect', { x: 14, y: 22, width: 36, height: 28, rx: 3 }],
-          ['line', { x1: 14, y1: 32, x2: 50, y2: 32 }],
-          ['line', { x1: 32, y1: 22, x2: 32, y2: 50 }]]
-};
-var THUMB_GLYPH_FALLBACK = 'OTHER';
+/** The site mark (a magnifier over a rising line), as plain SVG primitives in a 64x64 box. The same mark is
+    the header logo and the picture of every product that has no photo yet. */
+var BRAND_MARK = [['circle', { cx: 28, cy: 28, r: 15 }],
+                  ['line', { x1: 39, y1: 39, x2: 52, y2: 52 }],
+                  ['path', { d: 'M20 33 L26 27 L31 31 L37 22' }]];
 
 /**
  * 「何の商品か」の一行: IP・カテゴリ（・詳細では販売方式）。
@@ -1810,6 +1787,22 @@ function identityMeta(p, withMode) {
     if (mode) { out.push(mode); }
   }
   return out;
+}
+
+/** The site logo in the header: the same mark as the picture tile, in the text colour. */
+function brandLogo() {
+  var svg = svgEl('svg', { viewBox: '0 0 64 64', focusable: 'false', role: 'presentation', 'class': 'brand-logo' });
+  svg.setAttribute('aria-hidden', 'true');
+  for (var i = 0; i < BRAND_MARK.length; i++) {
+    var node = svgEl(BRAND_MARK[i][0], BRAND_MARK[i][1]);
+    node.setAttribute('fill', 'none');
+    node.setAttribute('stroke', 'currentColor');
+    node.setAttribute('stroke-width', '5');
+    node.setAttribute('stroke-linejoin', 'round');
+    node.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(node);
+  }
+  return svg;
 }
 
 function svgEl(name, attrs) {
@@ -1830,31 +1823,23 @@ function svgEl(name, attrs) {
  * tile is that the card and the detail page show the SAME one.
  */
 function productThumb(p, variant) {
-  var key = own(THUMB_GLYPH, p.category) !== undefined ? String(p.category) : THUMB_GLYPH_FALLBACK;
   var hue = THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length];
   var box = el('span', 'thumb' + (variant ? ' thumb--' + variant : ''));
   box.setAttribute('aria-hidden', 'true');
   var svg = svgEl('svg', { viewBox: '0 0 64 64', focusable: 'false', role: 'presentation' });
-  svg.appendChild(svgEl('rect', {
-    x: 0, y: 0, width: 64, height: 64, rx: 10,
-    fill: 'hsl(' + hue + ', 44%, 90%)'
-  }));
-  /* A second, slightly rotated plane behind the glyph: it reads as a cropped photo would,
-     without pretending to be one. */
-  svg.appendChild(svgEl('path', {
-    d: 'M0 46 L64 26 L64 64 L0 64 Z',
-    fill: 'hsl(' + hue + ', 40%, 84%)'
-  }));
-  var strokes = own(THUMB_GLYPH, key);
-  for (var i = 0; i < strokes.length; i++) {
-    var node = svgEl(strokes[i][0], strokes[i][1]);
-    node.setAttribute('fill', strokes[i][0] === 'line' ? 'none' : 'hsl(' + hue + ', 34%, 97%)');
-    node.setAttribute('stroke', 'hsl(' + hue + ', 38%, 34%)');
-    node.setAttribute('stroke-width', '2.6');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 64, height: 64, rx: 10, fill: 'hsl(' + hue + ', 44%, 92%)' }));
+  svg.appendChild(svgEl('path', { d: 'M0 46 L64 26 L64 64 L0 64 Z', fill: 'hsl(' + hue + ', 40%, 87%)' }));
+  var mark = svgEl('g', { transform: 'translate(10 10) scale(0.69)' });
+  for (var i = 0; i < BRAND_MARK.length; i++) {
+    var node = svgEl(BRAND_MARK[i][0], BRAND_MARK[i][1]);
+    node.setAttribute('fill', 'none');
+    node.setAttribute('stroke', 'hsl(' + hue + ', 38%, 38%)');
+    node.setAttribute('stroke-width', '4');
     node.setAttribute('stroke-linejoin', 'round');
     node.setAttribute('stroke-linecap', 'round');
-    svg.appendChild(node);
+    mark.appendChild(node);
   }
+  svg.appendChild(mark);
   box.appendChild(svg);
   return box;
 }
@@ -1919,13 +1904,6 @@ function fillWithTile(frame, p, note) {
   frame.classList.add('is-tile');
   frame.style.setProperty('--tile-h', String(THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length]));
   frame.insertBefore(productThumb(p, 'fill'), frame.firstChild);
-  if (note) {
-    /* the drawn tile itself is aria-hidden, so its caption is too: a link's name starts with the product */
-    var noteEl = el('span', 'pmedia-note', note);
-    noteEl.setAttribute('aria-hidden', 'true');
-    noteEl.title = TILE_NOTE;
-    frame.appendChild(noteEl);
-  }
 }
 
 /**
@@ -2249,9 +2227,6 @@ function renderHeaderMeta(doc) {
  * featured card and once as a feed row; the screener is the full list, one page at a time.
  */
 
-var TILE_NOTE = '写真未掲載のイメージ図';
-/** R21F: the list's short form (the full wording is its tooltip and the detail page's caption). */
-var TILE_NOTE_SHORT = '写真なし';
 
 function initIndex() {
   var FEED_PAGE = 30;
@@ -2606,7 +2581,7 @@ function initIndex() {
     var a = el('div', 'card-main');
     /* R21F: the row shows the picture only. Its source and the title-art explanation are on the detail page;
        title art keeps a short corner tag (イメージ) so it never passes as a product photo. */
-    a.appendChild(productMedia(p, 'row', { tileNote: TILE_NOTE_SHORT, artTag: true }));
+    a.appendChild(productMedia(p, 'row', { artTag: true }));
 
     /* R21H: the 調べた角度 dots are not shown in a list (the detail page has the angle summary) */
     var body = el('div', 'row-body');
@@ -4604,17 +4579,15 @@ function initProduct() {
     var fig = el('figure', 'detail-media');
     var im = productImageOf(p);
     var caption = el('figcaption', 'detail-credit');
-    var TILE_CAPTION = 'この商品の公式画像はまだ掲載していません。表示している図はカテゴリのイメージで、商品の写真ではありません。';
     fig.appendChild(productMedia(p, 'hero', {
       eager: true,
-      onFail: function () { caption.textContent = TILE_CAPTION; caption.classList.add('is-tile'); }
+      onFail: function () { caption.textContent = ''; caption.hidden = true; }
     }));
     var creditText = im ? imageCreditText(im) : null;
     if (creditText) {
       caption.textContent = creditText;
     } else {
-      caption.textContent = TILE_CAPTION;
-      caption.classList.add('is-tile');
+      caption.hidden = true;
     }
     fig.appendChild(caption);
     hero.appendChild(fig);
@@ -4871,6 +4844,8 @@ document.addEventListener('click', function (e) {
 
 (function () {
   var page = document.body.getAttribute('data-page');
+  var siteLink = document.querySelector('.site-title a');
+  if (siteLink && !siteLink.querySelector('.brand-logo')) { siteLink.insertBefore(brandLogo(), siteLink.firstChild); }
   if (page === 'index') { initIndex(); }
   else if (page === 'product') { initProduct(); }
 })();

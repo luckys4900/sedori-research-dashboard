@@ -200,6 +200,7 @@ strong { font-weight: 700; }
 .masthead-in { display: grid; gap: 2px 16px; padding-top: 2px; padding-bottom: 8px; }
 .brand { min-width: 0; }
 .site-title { font-size: var(--fs-m); font-weight: 700; line-height: var(--lh-tight); }
+.brand-logo { width: 1.35em; height: 1.35em; margin-right: 0.4em; flex: none; }
 .site-title a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--fg); text-decoration: none; }
 .site-purpose { display: none; font-size: var(--fs-s); color: var(--fg-muted); line-height: var(--lh-tight); }
 .site-meta { display: flex; flex-wrap: wrap; gap: 0 12px; font-size: var(--fs-xs); color: var(--fg-muted); }
@@ -466,7 +467,7 @@ strong { font-weight: 700; }
 .pmedia-img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .pmedia .thumb { display: block; width: 100%; height: 100%; }
 .pmedia .thumb svg { display: block; width: 100%; height: 100%; }
-.pmedia.is-tile .thumb { padding: 18%; }
+.pmedia.is-tile .thumb { padding: 0; }
 .pmedia-note, .pmedia-credit {
   position: absolute;
   left: 0;
@@ -487,7 +488,7 @@ strong { font-weight: 700; }
 .card--featured .cta-host { display: none; }
 .pmedia--featured { height: 150px; }
 .pmedia--featured.is-tile { height: 88px; }
-.pmedia--featured.is-tile .thumb { padding: 6px 0 22px; }
+.pmedia--featured.is-tile .thumb svg { object-fit: contain; }
 .f-deadline {
   display: flex;
   flex-wrap: wrap;
