@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-14",
-  "generated_at": "2026-10-14T13:02:07+09:00",
+  "as_of": "2026-10-15",
+  "generated_at": "2026-10-15T06:32:17+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -80,7 +80,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -91,13 +91,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥330",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -106,7 +106,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -621,7 +621,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -632,13 +632,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥330",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -647,7 +647,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -1162,7 +1162,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -1173,13 +1173,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥330",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -1188,7 +1188,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -1703,7 +1703,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -1714,13 +1714,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥330",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -1729,7 +1729,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -2244,7 +2244,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -2255,13 +2255,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥330",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -2270,7 +2270,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -2785,7 +2785,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -2796,13 +2796,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥330",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -2811,7 +2811,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -3329,7 +3329,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -3340,13 +3340,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥660",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -3355,7 +3355,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -3896,7 +3896,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -3907,13 +3907,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,100",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -3922,7 +3922,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/10 発売（発売4日目）"
+        "why_now_ja": "10/10 発売（発売5日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -4408,7 +4408,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -4419,8 +4419,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥2,860",
@@ -4538,7 +4538,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は46日前"
+                "最新の成約は47日前"
               ],
               "score": 6.0
             },
@@ -4899,7 +4899,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -44,
+      "days_to_deadline": -45,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -4910,7 +4910,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -4921,13 +4921,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥15,400",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -5390,7 +5390,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -5402,8 +5402,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥12,100",
@@ -5886,7 +5886,7 @@
           "level": "MEDIUM",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -5898,13 +5898,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,980",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "RETAILER_PRIMARY",
           "label_ja": "販売店ページで確認",
@@ -6377,7 +6377,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -6388,13 +6388,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,925",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -6853,7 +6853,7 @@
         "公式抽選"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -44,
+      "days_to_deadline": -45,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -6864,7 +6864,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -6875,13 +6875,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -7345,7 +7345,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -7356,13 +7356,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥730",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "RETAILER_PRIMARY",
           "label_ja": "販売店ページで確認",
@@ -7371,7 +7371,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/18 発売（発売26日目）"
+        "why_now_ja": "9/18 発売（発売27日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -7821,7 +7821,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -69,
+      "days_to_deadline": -70,
       "deadline": "2026-08-06",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -7834,7 +7834,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -7842,8 +7842,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -8339,8 +8339,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -8354,7 +8354,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/16 発売（あと2日）"
+        "why_now_ja": "10/16 発売（あと1日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -8776,7 +8776,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 23,
+      "days_to_deadline": 22,
       "deadline": "2026-11-06",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -8788,7 +8788,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -8798,8 +8798,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥44,000",
@@ -8813,7 +8813,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/6（あと23日）"
+        "why_now_ja": "予約締切 11/6（あと22日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -9254,7 +9254,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 18,
+      "days_to_deadline": 17,
       "deadline": "2026-11-01",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -9266,7 +9266,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -9276,8 +9276,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥9,900",
@@ -9291,7 +9291,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "抽選締切 11/1（あと18日）"
+        "why_now_ja": "抽選締切 11/1（あと17日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -9719,7 +9719,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 28,
+      "days_to_deadline": 27,
       "deadline": "2026-11-11",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -9732,7 +9732,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -9740,8 +9740,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -9755,7 +9755,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "受付 10/30〜11/11（開始まであと16日）"
+        "why_now_ja": "受付 10/30〜11/11（開始まであと15日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -10202,7 +10202,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -10213,8 +10213,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥30,800",
@@ -10670,7 +10670,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -10679,8 +10679,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -11105,7 +11105,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -16,
+      "days_to_deadline": -17,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -11117,7 +11117,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -11127,8 +11127,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥17,600",
@@ -11590,7 +11590,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -11601,8 +11601,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥5,280",
@@ -12052,12 +12052,12 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 0,
+      "closing_soon_band": null,
+      "days_to_deadline": -1,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "decision": {
-        "actionable": true,
+        "actionable": false,
         "catalyst_ja": null,
         "confidence": {
           "label_ja": "情報の確度 低",
@@ -12065,7 +12065,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -12075,10 +12075,10 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
-        "next_check_ja": "販売ページで購入制限と受付方法を確認する",
+        "next_check_ja": null,
         "price_ja": "¥6,800",
         "price_unit_conflict": false,
         "risk_ja": "購入制限・受付方法などの条件はまだ確かめていない",
@@ -12087,10 +12087,10 @@
           "label_ja": "公式ページの記載から（照合前）",
           "market_data": false
         },
-        "tier": "FOLLOW",
-        "tier_label_ja": "経過を見る",
-        "urgency": "TODAY",
-        "why_now_ja": "予約締切 10/14（本日まで）"
+        "tier": "ARCHIVE",
+        "tier_label_ja": "受付終了・参考",
+        "urgency": "LATER",
+        "why_now_ja": null
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -12123,6 +12123,11 @@
           "basis_ja": "購入・応募数の上限：2027年04月発送予定・お1人様3点まで",
           "code": "PURCHASE_LIMIT",
           "label_ja": "購入・応募数の条件"
+        },
+        {
+          "basis_ja": "予約・受注の期限（2026年10月14日）を過ぎています",
+          "code": "END_OF_SALE",
+          "label_ja": "受付・販売は終了"
         }
       ],
       "payment_deadline": null,
@@ -12233,8 +12238,8 @@
         },
         "data_coverage": 0.15,
         "drivers_ja": [
-          "タイミング",
-          "供給の締まり"
+          "供給の締まり",
+          "タイミング"
         ],
         "economics": {
           "acquisition_basis": "UNKNOWN",
@@ -12280,7 +12285,7 @@
           },
           {
             "label_ja": "受付中・販売中と確かめられる",
-            "passed": true
+            "passed": false
           },
           {
             "label_ja": "算定範囲が70%以上",
@@ -12313,9 +12318,9 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "再販の有無はまだ確かめていない",
-        "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
-        "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
+        "max_risk_ja": "受付・販売が終わっている",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
         "profit_power": {
           "components": [
@@ -12377,11 +12382,11 @@
               "key": "timing",
               "label_ja": "タイミング",
               "max": 5,
-              "minus_ja": [],
-              "plus_ja": [
-                "受付期間中"
+              "minus_ja": [
+                "受付・販売が終わっている"
               ],
-              "score": 3.0
+              "plus_ja": [],
+              "score": 0.0
             }
           ],
           "max": 100,
@@ -12394,8 +12399,8 @@
           "risk": "MEDIUM"
         },
         "timing": {
-          "label_ja": "受注期間中",
-          "state": "ORDER_WINDOW"
+          "label_ja": "受付終了",
+          "state": "CLOSED"
         },
         "why": {
           "minus_ja": [
@@ -12406,7 +12411,6 @@
             "成約データがない"
           ],
           "plus_ja": [
-            "受付期間中",
             "購入数の制限あり"
           ]
         }
@@ -12506,10 +12510,10 @@
           "url": "https://www.goodsmile.com/ja/product/1142157"
         }
       ],
-      "status": "CLOSING_SOON",
+      "status": "CLOSED",
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "締切間近",
+      "status_label_ja": "受付終了",
       "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -12541,7 +12545,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -14,
+      "days_to_deadline": -15,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -12553,7 +12557,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -12563,8 +12567,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥5,500",
@@ -13019,7 +13023,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -7,
+      "days_to_deadline": -8,
       "deadline": "2026-10-07",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -13031,7 +13035,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -13041,8 +13045,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥11,000",
@@ -13502,8 +13506,8 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_3D",
-      "days_to_deadline": 2,
+      "closing_soon_band": "WITHIN_24H",
+      "days_to_deadline": 1,
       "deadline": "2026-10-16",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -13515,7 +13519,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -13525,8 +13529,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥880",
@@ -13540,7 +13544,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "TODAY",
-        "why_now_ja": "抽選締切 10/16（あと2日）"
+        "why_now_ja": "抽選締切 10/16（あと1日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -13980,7 +13984,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から12日",
+            "確認から13日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -13991,8 +13995,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-02",
-          "days": 12,
-          "label_ja": "10/2確認（12日前）"
+          "days": 13,
+          "label_ja": "10/2確認（13日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥6,050",
@@ -14431,7 +14435,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -2,
+      "days_to_deadline": -3,
       "deadline": "2026-10-12",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -14443,7 +14447,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -14454,8 +14458,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,980",
@@ -14915,7 +14919,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -14924,8 +14928,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -15350,7 +15354,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -8,
+      "days_to_deadline": -9,
       "deadline": "2026-10-06",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -15363,7 +15367,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -15371,8 +15375,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -15825,7 +15829,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 42,
+      "days_to_deadline": 41,
       "deadline": "2026-11-25",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -15837,7 +15841,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -15847,8 +15851,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥21,800",
@@ -15862,7 +15866,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/25（あと42日）"
+        "why_now_ja": "予約締切 11/25（あと41日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -16325,7 +16329,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -16336,8 +16340,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥26,400",
@@ -16775,12 +16779,12 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 0,
+      "closing_soon_band": null,
+      "days_to_deadline": -1,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "decision": {
-        "actionable": true,
+        "actionable": false,
         "catalyst_ja": null,
         "confidence": {
           "label_ja": "情報の確度 低",
@@ -16788,7 +16792,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -16798,10 +16802,10 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
-        "next_check_ja": "販売ページで購入制限と受付方法を確認する",
+        "next_check_ja": null,
         "price_ja": "¥23,000",
         "price_unit_conflict": false,
         "risk_ja": "購入制限・受付方法などの条件はまだ確かめていない",
@@ -16810,10 +16814,10 @@
           "label_ja": "公式ページの記載から（照合前）",
           "market_data": false
         },
-        "tier": "FOLLOW",
-        "tier_label_ja": "経過を見る",
-        "urgency": "TODAY",
-        "why_now_ja": "予約締切 10/14（本日まで）"
+        "tier": "ARCHIVE",
+        "tier_label_ja": "受付終了・参考",
+        "urgency": "LATER",
+        "why_now_ja": null
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -16846,6 +16850,11 @@
           "basis_ja": "購入・応募数の上限：2026年10月発送予定・お1人様3点まで",
           "code": "PURCHASE_LIMIT",
           "label_ja": "購入・応募数の条件"
+        },
+        {
+          "basis_ja": "予約・受注の期限（2026年10月14日）を過ぎています",
+          "code": "END_OF_SALE",
+          "label_ja": "受付・販売は終了"
         }
       ],
       "payment_deadline": null,
@@ -16956,8 +16965,8 @@
         },
         "data_coverage": 0.15,
         "drivers_ja": [
-          "タイミング",
-          "供給の締まり"
+          "供給の締まり",
+          "タイミング"
         ],
         "economics": {
           "acquisition_basis": "UNKNOWN",
@@ -17003,7 +17012,7 @@
           },
           {
             "label_ja": "受付中・販売中と確かめられる",
-            "passed": true
+            "passed": false
           },
           {
             "label_ja": "算定範囲が70%以上",
@@ -17036,9 +17045,9 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "再販の有無はまだ確かめていない",
-        "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
-        "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
+        "max_risk_ja": "受付・販売が終わっている",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
         "profit_power": {
           "components": [
@@ -17100,11 +17109,11 @@
               "key": "timing",
               "label_ja": "タイミング",
               "max": 5,
-              "minus_ja": [],
-              "plus_ja": [
-                "受付期間中"
+              "minus_ja": [
+                "受付・販売が終わっている"
               ],
-              "score": 3.0
+              "plus_ja": [],
+              "score": 0.0
             }
           ],
           "max": 100,
@@ -17117,8 +17126,8 @@
           "risk": "MEDIUM"
         },
         "timing": {
-          "label_ja": "受注期間中",
-          "state": "ORDER_WINDOW"
+          "label_ja": "受付終了",
+          "state": "CLOSED"
         },
         "why": {
           "minus_ja": [
@@ -17129,7 +17138,6 @@
             "成約データがない"
           ],
           "plus_ja": [
-            "受付期間中",
             "購入数の制限あり"
           ]
         }
@@ -17229,10 +17237,10 @@
           "url": "https://www.goodsmile.com/ja/product/1143955"
         }
       ],
-      "status": "CLOSING_SOON",
+      "status": "CLOSED",
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "締切間近",
+      "status_label_ja": "受付終了",
       "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -17264,7 +17272,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 19,
+      "days_to_deadline": 18,
       "deadline": "2026-11-02",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -17276,7 +17284,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -17287,8 +17295,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥22,000",
@@ -17302,7 +17310,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/2（あと19日）"
+        "why_now_ja": "予約締切 11/2（あと18日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -17762,7 +17770,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から13日",
+            "確認から14日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -17773,8 +17781,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-01",
-          "days": 13,
-          "label_ja": "10/1確認（13日前）"
+          "days": 14,
+          "label_ja": "10/1確認（14日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥880",
@@ -18213,12 +18221,12 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 0,
+      "closing_soon_band": null,
+      "days_to_deadline": -1,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "decision": {
-        "actionable": true,
+        "actionable": false,
         "catalyst_ja": null,
         "confidence": {
           "label_ja": "情報の確度 低",
@@ -18226,7 +18234,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -18236,10 +18244,10 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
-        "next_check_ja": "販売ページで購入制限と受付方法を確認する",
+        "next_check_ja": null,
         "price_ja": "¥18,500",
         "price_unit_conflict": false,
         "risk_ja": "購入制限・受付方法などの条件はまだ確かめていない",
@@ -18248,10 +18256,10 @@
           "label_ja": "公式ページの記載から（照合前）",
           "market_data": false
         },
-        "tier": "FOLLOW",
-        "tier_label_ja": "経過を見る",
-        "urgency": "TODAY",
-        "why_now_ja": "予約締切 10/14（本日まで）"
+        "tier": "ARCHIVE",
+        "tier_label_ja": "受付終了・参考",
+        "urgency": "LATER",
+        "why_now_ja": null
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -18284,6 +18292,11 @@
           "basis_ja": "購入・応募数の上限：2027年10月発送予定・お1人様3点まで",
           "code": "PURCHASE_LIMIT",
           "label_ja": "購入・応募数の条件"
+        },
+        {
+          "basis_ja": "予約・受注の期限（2026年10月14日）を過ぎています",
+          "code": "END_OF_SALE",
+          "label_ja": "受付・販売は終了"
         }
       ],
       "payment_deadline": null,
@@ -18394,8 +18407,8 @@
         },
         "data_coverage": 0.15,
         "drivers_ja": [
-          "タイミング",
-          "供給の締まり"
+          "供給の締まり",
+          "タイミング"
         ],
         "economics": {
           "acquisition_basis": "UNKNOWN",
@@ -18441,7 +18454,7 @@
           },
           {
             "label_ja": "受付中・販売中と確かめられる",
-            "passed": true
+            "passed": false
           },
           {
             "label_ja": "算定範囲が70%以上",
@@ -18474,9 +18487,9 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "再販の有無はまだ確かめていない",
-        "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
-        "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
+        "max_risk_ja": "受付・販売が終わっている",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
         "profit_power": {
           "components": [
@@ -18538,11 +18551,11 @@
               "key": "timing",
               "label_ja": "タイミング",
               "max": 5,
-              "minus_ja": [],
-              "plus_ja": [
-                "受付期間中"
+              "minus_ja": [
+                "受付・販売が終わっている"
               ],
-              "score": 3.0
+              "plus_ja": [],
+              "score": 0.0
             }
           ],
           "max": 100,
@@ -18555,8 +18568,8 @@
           "risk": "MEDIUM"
         },
         "timing": {
-          "label_ja": "受注期間中",
-          "state": "ORDER_WINDOW"
+          "label_ja": "受付終了",
+          "state": "CLOSED"
         },
         "why": {
           "minus_ja": [
@@ -18567,7 +18580,6 @@
             "成約データがない"
           ],
           "plus_ja": [
-            "受付期間中",
             "購入数の制限あり"
           ]
         }
@@ -18667,10 +18679,10 @@
           "url": "https://www.goodsmile.com/ja/product/1138213"
         }
       ],
-      "status": "CLOSING_SOON",
+      "status": "CLOSED",
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "締切間近",
+      "status_label_ja": "受付終了",
       "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -18723,8 +18735,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "公式ページで受付期間と定価を確認する",
         "price_ja": null,
@@ -18738,7 +18750,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/23 発売（あと9日）"
+        "why_now_ja": "10/23 発売（あと8日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -19176,8 +19188,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥660",
@@ -19191,7 +19203,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/20 発売（あと6日）"
+        "why_now_ja": "10/20 発売（あと5日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -19620,7 +19632,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 109,
+      "days_to_deadline": 108,
       "deadline": "2027-01-31",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -19633,7 +19645,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -19641,8 +19653,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -19656,7 +19668,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "応募締切 1/31（あと109日）"
+        "why_now_ja": "応募締切 1/31（あと108日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -20099,7 +20111,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から12日",
+            "確認から13日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -20108,8 +20120,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-02",
-          "days": 12,
-          "label_ja": "10/2確認（12日前）"
+          "days": 13,
+          "label_ja": "10/2確認（13日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -20549,7 +20561,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -14,
+      "days_to_deadline": -15,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -20561,7 +20573,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -20571,8 +20583,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥5,500",
@@ -21027,7 +21039,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 78,
+      "days_to_deadline": 77,
       "deadline": "2026-12-31",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -21040,7 +21052,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -21048,8 +21060,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -21063,7 +21075,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "抽選締切 12/31（あと78日）"
+        "why_now_ja": "抽選締切 12/31（あと77日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -21476,7 +21488,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 4,
+      "days_to_deadline": 3,
       "deadline": "2026-10-18",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -21488,7 +21500,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -21499,8 +21511,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥27,500",
@@ -21513,8 +21525,8 @@
         },
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
-        "urgency": "WEEK",
-        "why_now_ja": "予約締切 10/18（あと4日）"
+        "urgency": "TODAY",
+        "why_now_ja": "予約締切 10/18（あと3日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -21975,7 +21987,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -21984,8 +21996,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -22430,7 +22442,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前",
+            "情報が26日前",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -22439,8 +22451,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -22873,7 +22885,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 28,
+      "days_to_deadline": 27,
       "deadline": "2026-11-11",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -22885,7 +22897,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -22895,8 +22907,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥49,500",
@@ -22910,7 +22922,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/11（あと28日）"
+        "why_now_ja": "予約締切 11/11（あと27日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -23343,7 +23355,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -160,
+      "days_to_deadline": -161,
       "deadline": "2026-05-07",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -23356,7 +23368,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -23364,8 +23376,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -23843,7 +23855,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -23854,8 +23866,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥240",
@@ -24291,7 +24303,7 @@
       "deadline": null,
       "deadline_kind": null,
       "decision": {
-        "actionable": true,
+        "actionable": false,
         "catalyst_ja": null,
         "confidence": {
           "label_ja": "情報の確度 低",
@@ -24308,10 +24320,10 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
-        "next_check_ja": "販売ページで購入制限と受付方法を確認する",
+        "next_check_ja": null,
         "price_ja": null,
         "price_unit_conflict": false,
         "risk_ja": "購入制限・受付方法などの条件はまだ確かめていない",
@@ -24320,10 +24332,10 @@
           "label_ja": "公式ページの記載から（照合前）",
           "market_data": false
         },
-        "tier": "FOLLOW",
-        "tier_label_ja": "経過を見る",
+        "tier": "PENDING",
+        "tier_label_ja": "情報待ち",
         "urgency": "LATER",
-        "why_now_ja": "本日発売"
+        "why_now_ja": null
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -24506,7 +24518,7 @@
           },
           {
             "label_ja": "受付中・販売中と確かめられる",
-            "passed": true
+            "passed": false
           },
           {
             "label_ja": "算定範囲が70%以上",
@@ -24539,9 +24551,9 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "発売直後の価格は変動が大きい",
-        "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
-        "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
+        "max_risk_ja": "受付中・販売中とまだ確かめていない",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
         "profit_power": {
           "components": [
@@ -24601,12 +24613,10 @@
               "label_ja": "タイミング",
               "max": 5,
               "minus_ja": [
-                "発売直後の価格は変動が大きい"
+                "受付中・販売中とまだ確かめていない"
               ],
-              "plus_ja": [
-                "発売直後で相場が動く時期"
-              ],
-              "score": 3.0
+              "plus_ja": [],
+              "score": 0.0
             }
           ],
           "max": 100,
@@ -24619,8 +24629,8 @@
           "risk": "UNKNOWN"
         },
         "timing": {
-          "label_ja": "発売直後",
-          "state": "LAUNCH"
+          "label_ja": "受付中と確かめていない",
+          "state": "CLOSED"
         },
         "why": {
           "minus_ja": [
@@ -24630,9 +24640,7 @@
             "現在の出品数はまだ確かめていない",
             "成約データがない"
           ],
-          "plus_ja": [
-            "発売直後で相場が動く時期"
-          ]
+          "plus_ja": []
         }
       },
       "purchase_limit": null,
@@ -24758,7 +24766,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前",
+            "情報が26日前",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -24767,8 +24775,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -25193,7 +25201,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 25,
+      "days_to_deadline": 24,
       "deadline": "2026-11-08",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -25206,7 +25214,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -25214,8 +25222,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -25229,7 +25237,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "応募締切 11/8（あと25日）"
+        "why_now_ja": "応募締切 11/8（あと24日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -25649,7 +25657,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 40,
+      "days_to_deadline": 39,
       "deadline": "2026-11-23",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -25662,7 +25670,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -25670,8 +25678,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -25685,7 +25693,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "応募締切 11/23（あと40日）"
+        "why_now_ja": "応募締切 11/23（あと39日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -26130,7 +26138,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -38,
+      "days_to_deadline": -39,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -26143,7 +26151,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -26151,8 +26159,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -26623,8 +26631,8 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_7D",
-      "days_to_deadline": 4,
+      "closing_soon_band": "WITHIN_3D",
+      "days_to_deadline": 3,
       "deadline": "2026-10-18",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -26636,7 +26644,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -26646,8 +26654,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥5,500",
@@ -26660,8 +26668,8 @@
         },
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
-        "urgency": "WEEK",
-        "why_now_ja": "応募締切 10/18（あと4日）"
+        "urgency": "TODAY",
+        "why_now_ja": "応募締切 10/18（あと3日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -27106,7 +27114,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -16,
+      "days_to_deadline": -17,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -27118,7 +27126,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -27129,8 +27137,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥19,800",
@@ -27610,7 +27618,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -27621,8 +27629,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥3,000",
@@ -28084,7 +28092,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -28095,8 +28103,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥5,280",
@@ -28547,7 +28555,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 42,
+      "days_to_deadline": 41,
       "deadline": "2026-11-25",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -28559,7 +28567,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -28569,8 +28577,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥3,685",
@@ -28584,7 +28592,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/25（あと42日）"
+        "why_now_ja": "予約締切 11/25（あと41日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -29025,7 +29033,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -14,
+      "days_to_deadline": -15,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -29037,7 +29045,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -29047,8 +29055,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥19,800",
@@ -29538,8 +29546,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -29553,7 +29561,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/15 発売（あと1日）"
+        "why_now_ja": "本日発売"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -29769,7 +29777,7 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "発売後の相場はまだ形成されていない",
+        "max_risk_ja": "発売直後の価格は変動が大きい",
         "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
         "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
         "policy_version": "PF-0.2-PROVISIONAL",
@@ -29831,12 +29839,12 @@
               "label_ja": "タイミング",
               "max": 5,
               "minus_ja": [
-                "発売後の相場はまだ形成されていない"
+                "発売直後の価格は変動が大きい"
               ],
               "plus_ja": [
-                "発売前に定価で確保できる段階"
+                "発売直後で相場が動く時期"
               ],
-              "score": 4.0
+              "score": 3.0
             }
           ],
           "max": 100,
@@ -29849,8 +29857,8 @@
           "risk": "UNKNOWN"
         },
         "timing": {
-          "label_ja": "発売前",
-          "state": "PRE_RELEASE"
+          "label_ja": "発売直後",
+          "state": "LAUNCH"
         },
         "why": {
           "minus_ja": [
@@ -29861,7 +29869,7 @@
             "成約データがない"
           ],
           "plus_ja": [
-            "発売前に定価で確保できる段階"
+            "発売直後で相場が動く時期"
           ]
         }
       },
@@ -29975,7 +29983,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -149,
+      "days_to_deadline": -150,
       "deadline": "2026-05-18",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -29988,7 +29996,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -29996,8 +30004,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -30460,7 +30468,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -30469,8 +30477,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -30902,7 +30910,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -1,
+      "days_to_deadline": -2,
       "deadline": "2026-10-13",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -30914,7 +30922,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -30925,8 +30933,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥2,640",
@@ -31406,7 +31414,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -31417,8 +31425,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥11,000",
@@ -31870,7 +31878,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から12日",
+            "確認から13日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -31879,8 +31887,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-02",
-          "days": 12,
-          "label_ja": "10/2確認（12日前）"
+          "days": 13,
+          "label_ja": "10/2確認（13日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -32324,7 +32332,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -32335,8 +32343,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥990",
@@ -32768,7 +32776,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -14,
+      "days_to_deadline": -15,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -32780,7 +32788,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -32790,8 +32798,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥5,500",
@@ -33246,7 +33254,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -16,
+      "days_to_deadline": -17,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -33258,7 +33266,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -33269,8 +33277,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥8,800",
@@ -33738,7 +33746,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -7,
+      "days_to_deadline": -8,
       "deadline": "2026-10-07",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -33750,7 +33758,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -33760,8 +33768,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥19,500",
@@ -34230,7 +34238,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -15,
+      "days_to_deadline": -16,
       "deadline": "2026-09-29",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -34242,7 +34250,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -34253,8 +34261,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,400",
@@ -34718,7 +34726,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -34729,8 +34737,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,650",
@@ -35162,7 +35170,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -12,
+      "days_to_deadline": -13,
       "deadline": "2026-10-02",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -35175,7 +35183,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -35183,8 +35191,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -35638,7 +35646,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -35647,8 +35655,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -36092,7 +36100,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -36103,8 +36111,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,200",
@@ -36548,7 +36556,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -36559,8 +36567,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥2,000",
@@ -37004,7 +37012,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -37015,8 +37023,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,980",
@@ -37463,7 +37471,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_7D",
-      "days_to_deadline": 5,
+      "days_to_deadline": 4,
       "deadline": "2026-10-19",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -37476,7 +37484,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -37484,8 +37492,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -37499,7 +37507,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "WEEK",
-        "why_now_ja": "抽選締切 10/19（あと5日）"
+        "why_now_ja": "抽選締切 10/19（あと4日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -37912,7 +37920,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -14,
+      "days_to_deadline": -15,
       "deadline": "2026-09-30",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -37924,7 +37932,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -37934,8 +37942,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥8,500",
@@ -38403,13 +38411,13 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 0,
+      "closing_soon_band": null,
+      "days_to_deadline": -1,
       "deadline": "2026-10-14",
       "deadline_kind": "APPLICATION",
       "decision": {
-        "actionable": true,
-        "catalyst_ja": "受付期間が短い",
+        "actionable": false,
+        "catalyst_ja": null,
         "confidence": {
           "label_ja": "情報の確度 低",
           "level": "LOW",
@@ -38417,7 +38425,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から13日"
+            "確認から14日"
           ],
           "plus_ja": []
         },
@@ -38425,10 +38433,10 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-01",
-          "days": 13,
-          "label_ja": "10/1確認（13日前）"
+          "days": 14,
+          "label_ja": "10/1確認（14日前）"
         },
-        "next_check_ja": "販売ページで購入制限と受付方法を確認する",
+        "next_check_ja": null,
         "price_ja": null,
         "price_unit_conflict": false,
         "risk_ja": "購入制限・受付方法などの条件はまだ確かめていない",
@@ -38437,10 +38445,10 @@
           "label_ja": "公式ページの記載から（照合前）",
           "market_data": false
         },
-        "tier": "FOLLOW",
-        "tier_label_ja": "経過を見る",
-        "urgency": "TODAY",
-        "why_now_ja": "応募締切 10/14（本日まで）"
+        "tier": "ARCHIVE",
+        "tier_label_ja": "受付終了・参考",
+        "urgency": "LATER",
+        "why_now_ja": null
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -38465,6 +38473,11 @@
           "basis_ja": "受付期間は13日間です",
           "code": "SHORT_ORDER_WINDOW",
           "label_ja": "受付期間が短い"
+        },
+        {
+          "basis_ja": "応募・受付の期限（2026年10月14日）を過ぎています",
+          "code": "END_OF_SALE",
+          "label_ja": "受付・販売は終了"
         }
       ],
       "payment_deadline": null,
@@ -38623,7 +38636,7 @@
           },
           {
             "label_ja": "受付中・販売中と確かめられる",
-            "passed": true
+            "passed": false
           },
           {
             "label_ja": "算定範囲が70%以上",
@@ -38656,9 +38669,9 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "取得価格または売価が未確定で純利益を計算できない",
-        "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
-        "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
+        "max_risk_ja": "受付・販売が終わっている",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
         "profit_power": {
           "components": [
@@ -38717,11 +38730,11 @@
               "key": "timing",
               "label_ja": "タイミング",
               "max": 5,
-              "minus_ja": [],
-              "plus_ja": [
-                "受付期間中"
+              "minus_ja": [
+                "受付・販売が終わっている"
               ],
-              "score": 3.0
+              "plus_ja": [],
+              "score": 0.0
             }
           ],
           "max": 100,
@@ -38734,8 +38747,8 @@
           "risk": "UNKNOWN"
         },
         "timing": {
-          "label_ja": "受注期間中",
-          "state": "ORDER_WINDOW"
+          "label_ja": "受付終了",
+          "state": "CLOSED"
         },
         "why": {
           "minus_ja": [
@@ -38745,9 +38758,7 @@
             "現在の出品数はまだ確かめていない",
             "成約データがない"
           ],
-          "plus_ja": [
-            "受付期間中"
-          ]
+          "plus_ja": []
         }
       },
       "purchase_limit": null,
@@ -38825,10 +38836,10 @@
           "url": "https://www.sanrio.co.jp/news/campaign/mx-eisai-20260928/"
         }
       ],
-      "status": "CLOSING_SOON",
+      "status": "CLOSED",
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "締切間近",
+      "status_label_ja": "受付終了",
       "status_note_ja": null,
       "updated_at": "2026-10-01",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -38873,7 +38884,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -38882,8 +38893,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -39338,7 +39349,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -39349,8 +39360,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥710",
@@ -39794,7 +39805,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -39805,8 +39816,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥39,600",
@@ -40275,8 +40286,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥880",
@@ -40290,7 +40301,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/24 発売（あと10日）"
+        "why_now_ja": "10/24 発売（あと9日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -40732,7 +40743,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -40741,8 +40752,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -41174,7 +41185,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -38,
+      "days_to_deadline": -39,
       "deadline": "2026-09-06",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -41187,7 +41198,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -41195,8 +41206,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -41656,7 +41667,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 18,
+      "days_to_deadline": 17,
       "deadline": "2026-11-01",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -41669,7 +41680,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -41677,8 +41688,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -41692,7 +41703,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "受付 10/31〜11/1（開始まであと17日）"
+        "why_now_ja": "受付 10/31〜11/1（開始まであと16日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -42142,7 +42153,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -30,
+      "days_to_deadline": -31,
       "deadline": "2026-09-14",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -42155,7 +42166,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": []
         },
@@ -42163,8 +42174,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -42635,7 +42646,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から12日",
+            "確認から13日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -42646,8 +42657,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-02",
-          "days": 12,
-          "label_ja": "10/2確認（12日前）"
+          "days": 13,
+          "label_ja": "10/2確認（13日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥154",
@@ -43086,7 +43097,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 1,
+      "days_to_deadline": 0,
       "deadline": "2026-10-15",
       "deadline_kind": "APPLICATION",
       "decision": {
@@ -43099,7 +43110,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -43107,8 +43118,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -43122,7 +43133,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "TODAY",
-        "why_now_ja": "応募締切 10/15（あと1日）"
+        "why_now_ja": "応募締切 10/15（本日まで）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -43563,8 +43574,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -43578,7 +43589,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/28 発売（あと14日）"
+        "why_now_ja": "10/28 発売（あと13日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -44012,7 +44023,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -44023,8 +44034,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥6,688",
@@ -44488,7 +44499,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から12日",
+            "確認から13日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -44497,8 +44508,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-02",
-          "days": 12,
-          "label_ja": "10/2確認（12日前）"
+          "days": 13,
+          "label_ja": "10/2確認（13日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -44929,12 +44940,12 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_24H",
-      "days_to_deadline": 0,
+      "closing_soon_band": null,
+      "days_to_deadline": -1,
       "deadline": "2026-10-14",
       "deadline_kind": "RESERVATION",
       "decision": {
-        "actionable": true,
+        "actionable": false,
         "catalyst_ja": null,
         "confidence": {
           "label_ja": "情報の確度 低",
@@ -44942,7 +44953,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -44952,10 +44963,10 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
-        "next_check_ja": "販売ページで購入制限と受付方法を確認する",
+        "next_check_ja": null,
         "price_ja": "¥8,000",
         "price_unit_conflict": false,
         "risk_ja": "購入制限・受付方法などの条件はまだ確かめていない",
@@ -44964,10 +44975,10 @@
           "label_ja": "公式ページの記載から（照合前）",
           "market_data": false
         },
-        "tier": "FOLLOW",
-        "tier_label_ja": "経過を見る",
-        "urgency": "TODAY",
-        "why_now_ja": "予約締切 10/14（本日まで）"
+        "tier": "ARCHIVE",
+        "tier_label_ja": "受付終了・参考",
+        "urgency": "LATER",
+        "why_now_ja": null
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -45005,6 +45016,11 @@
           "basis_ja": "購入・応募数の上限：2027年03月発送予定・お1人様3点まで",
           "code": "PURCHASE_LIMIT",
           "label_ja": "購入・応募数の条件"
+        },
+        {
+          "basis_ja": "予約・受注の期限（2026年10月14日）を過ぎています",
+          "code": "END_OF_SALE",
+          "label_ja": "受付・販売は終了"
         }
       ],
       "payment_deadline": null,
@@ -45115,8 +45131,8 @@
         },
         "data_coverage": 0.15,
         "drivers_ja": [
-          "タイミング",
-          "供給の締まり"
+          "供給の締まり",
+          "タイミング"
         ],
         "economics": {
           "acquisition_basis": "UNKNOWN",
@@ -45162,7 +45178,7 @@
           },
           {
             "label_ja": "受付中・販売中と確かめられる",
-            "passed": true
+            "passed": false
           },
           {
             "label_ja": "算定範囲が70%以上",
@@ -45195,9 +45211,9 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "受注生産で、申込数だけ供給が増える",
-        "next_check_effect_ja": "売価の幅が出る（取得価格も必要）",
-        "next_check_ja": "この商品または同じ販売単位の類似品の成約（3件以上）",
+        "max_risk_ja": "受付・販売が終わっている",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
         "profit_power": {
           "components": [
@@ -45259,11 +45275,11 @@
               "key": "timing",
               "label_ja": "タイミング",
               "max": 5,
-              "minus_ja": [],
-              "plus_ja": [
-                "受付期間中"
+              "minus_ja": [
+                "受付・販売が終わっている"
               ],
-              "score": 3.0
+              "plus_ja": [],
+              "score": 0.0
             }
           ],
           "max": 100,
@@ -45276,8 +45292,8 @@
           "risk": "HIGH"
         },
         "timing": {
-          "label_ja": "受注期間中",
-          "state": "ORDER_WINDOW"
+          "label_ja": "受付終了",
+          "state": "CLOSED"
         },
         "why": {
           "minus_ja": [
@@ -45288,7 +45304,6 @@
             "成約データがない"
           ],
           "plus_ja": [
-            "受付期間中",
             "購入数の制限あり"
           ]
         }
@@ -45388,10 +45403,10 @@
           "url": "https://www.goodsmile.com/ja/product/1138612"
         }
       ],
-      "status": "CLOSING_SOON",
+      "status": "CLOSED",
       "status_basis": "DERIVED_FROM_WINDOW",
       "status_basis_label_ja": "公表された受付期間（開始日・終了日）にもとづく",
-      "status_label_ja": "締切間近",
+      "status_label_ja": "受付終了",
       "status_note_ja": null,
       "updated_at": "2026-09-28",
       "verification_tier": "DISCOVERY_UNVERIFIED"
@@ -45423,7 +45438,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": "WITHIN_7D",
-      "days_to_deadline": 5,
+      "days_to_deadline": 4,
       "deadline": "2026-10-19",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -45435,7 +45450,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -45445,8 +45460,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥22,000",
@@ -45460,7 +45475,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "WEEK",
-        "why_now_ja": "予約締切 10/19（あと5日）"
+        "why_now_ja": "予約締切 10/19（あと4日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -45913,7 +45928,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -45924,8 +45939,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥990",
@@ -46357,7 +46372,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -16,
+      "days_to_deadline": -17,
       "deadline": "2026-09-28",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -46369,7 +46384,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -46379,8 +46394,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥12,800",
@@ -46850,7 +46865,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -46861,8 +46876,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥3,960",
@@ -47322,7 +47337,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から12日",
+            "確認から13日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -47331,8 +47346,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-10-02",
-          "days": 12,
-          "label_ja": "10/2確認（12日前）"
+          "days": 13,
+          "label_ja": "10/2確認（13日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -47764,7 +47779,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 47,
+      "days_to_deadline": 46,
       "deadline": "2026-11-30",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -47776,7 +47791,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -47787,8 +47802,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥27,500",
@@ -47802,7 +47817,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/30（あと47日）"
+        "why_now_ja": "予約締切 11/30（あと46日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -48271,8 +48286,8 @@
         "freshness": {
           "band": "FRESH",
           "checked_on": "2026-10-14",
-          "days": 0,
-          "label_ja": "10/14確認（今日）"
+          "days": 1,
+          "label_ja": "10/14確認（1日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -48286,7 +48301,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/16 発売（あと2日）"
+        "why_now_ja": "10/16 発売（あと1日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -48707,8 +48722,8 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_3D",
-      "days_to_deadline": 2,
+      "closing_soon_band": "WITHIN_24H",
+      "days_to_deadline": 1,
       "deadline": "2026-10-16",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -48720,7 +48735,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -48730,8 +48745,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥27,500",
@@ -48745,7 +48760,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "TODAY",
-        "why_now_ja": "予約締切 10/16（あと2日）"
+        "why_now_ja": "予約締切 10/16（あと1日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -49199,7 +49214,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -49208,8 +49223,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -49641,7 +49656,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": -15,
+      "days_to_deadline": -16,
       "deadline": "2026-09-29",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -49653,7 +49668,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -49664,8 +49679,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥770",
@@ -50132,8 +50147,8 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_3D",
-      "days_to_deadline": 2,
+      "closing_soon_band": "WITHIN_24H",
+      "days_to_deadline": 1,
       "deadline": "2026-10-16",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -50146,7 +50161,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": []
         },
@@ -50154,8 +50169,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": null,
@@ -50169,7 +50184,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "TODAY",
-        "why_now_ja": "抽選締切 10/16（あと2日）"
+        "why_now_ja": "抽選締切 10/16（あと1日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -50595,7 +50610,7 @@
             "研究データとの照合がまだ",
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": []
@@ -50604,8 +50619,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
@@ -51029,8 +51044,8 @@
       "category": "UNKNOWN",
       "category_raw": null,
       "channel": [],
-      "closing_soon_band": "WITHIN_3D",
-      "days_to_deadline": 2,
+      "closing_soon_band": "WITHIN_24H",
+      "days_to_deadline": 1,
       "deadline": "2026-10-16",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -51042,7 +51057,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日"
+            "確認から17日"
           ],
           "plus_ja": [
             "定価を確認"
@@ -51052,8 +51067,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": "販売ページで購入制限と受付方法を確認する",
         "price_ja": "¥9,900",
@@ -51067,7 +51082,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "TODAY",
-        "why_now_ja": "予約締切 10/16（あと2日）"
+        "why_now_ja": "予約締切 10/16（あと1日）"
       },
       "evidence_label_ja": "未検証",
       "evidence_state": "UNVERIFIED",
@@ -51520,7 +51535,7 @@
           "minus_ja": [
             "研究データとの照合がまだ",
             "比較できる類似品の取引がない",
-            "確認から16日",
+            "確認から17日",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -51531,8 +51546,8 @@
         "freshness": {
           "band": "AGING",
           "checked_on": "2026-09-28",
-          "days": 16,
-          "label_ja": "9/28確認（16日前）"
+          "days": 17,
+          "label_ja": "9/28確認（17日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥5,500",
@@ -52537,7 +52552,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -52550,13 +52565,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥250／1パック",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -52565,7 +52580,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/31 発売（あと17日）"
+        "why_now_ja": "10/31 発売（あと16日）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -53215,7 +53230,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -53226,13 +53241,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,650",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -53241,7 +53256,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/26 発売（発売18日目）"
+        "why_now_ja": "9/26 発売（発売19日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -53701,7 +53716,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -53712,13 +53727,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,650",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -53727,7 +53742,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/26 発売（発売18日目）"
+        "why_now_ja": "9/26 発売（発売19日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -54187,7 +54202,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -54198,13 +54213,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,650",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -54213,7 +54228,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/26 発売（発売18日目）"
+        "why_now_ja": "9/26 発売（発売19日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -54673,7 +54688,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -54684,13 +54699,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,650",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -54699,7 +54714,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/26 発売（発売18日目）"
+        "why_now_ja": "9/26 発売（発売19日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -55375,7 +55390,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引が少ない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -55386,13 +55401,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥440",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -55401,7 +55416,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/19 発売（発売25日目）"
+        "why_now_ja": "9/19 発売（発売26日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -55546,7 +55561,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は23日前"
+                "最新の成約は24日前"
               ],
               "score": 10.0
             },
@@ -55921,7 +55936,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -55932,13 +55947,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,400",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -56410,7 +56425,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -56421,13 +56436,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,760",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -56436,7 +56451,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/19 発売（発売25日目）"
+        "why_now_ja": "9/19 発売（発売26日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -56894,7 +56909,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -56905,13 +56920,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥3,300",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -56920,7 +56935,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/19 発売（発売25日目）"
+        "why_now_ja": "9/19 発売（発売26日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -57378,7 +57393,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -57389,13 +57404,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥880",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -57404,7 +57419,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/19 発売（発売25日目）"
+        "why_now_ja": "9/19 発売（発売26日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -57862,7 +57877,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -57873,13 +57888,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -57888,7 +57903,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/19 発売（発売25日目）"
+        "why_now_ja": "9/19 発売（発売26日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -58870,7 +58885,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が24日前",
+            "情報が25日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -58884,13 +58899,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-20",
-          "days": 24,
-          "label_ja": "9/20確認（24日前）"
+          "days": 25,
+          "label_ja": "9/20確認（25日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥240／1パック",
         "price_unit_conflict": false,
-        "risk_ja": "情報が24日前のまま",
+        "risk_ja": "情報が25日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -59532,7 +59547,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -11,
+      "days_to_deadline": -12,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "decision": {
@@ -59543,7 +59558,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -59554,13 +59569,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -60026,7 +60041,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -11,
+      "days_to_deadline": -12,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "decision": {
@@ -60037,7 +60052,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -60048,13 +60063,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,730",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -60526,7 +60541,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -11,
+      "days_to_deadline": -12,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "decision": {
@@ -60537,7 +60552,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -60548,13 +60563,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥660",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -61020,7 +61035,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -11,
+      "days_to_deadline": -12,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "decision": {
@@ -61031,7 +61046,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -61042,13 +61057,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -61514,7 +61529,7 @@
         "イベント会場（メラメラの実争奪戦）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -11,
+      "days_to_deadline": -12,
       "deadline": "2026-10-03",
       "deadline_kind": "SALES",
       "decision": {
@@ -61525,7 +61540,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -61536,13 +61551,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -62008,7 +62023,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -17,
+      "days_to_deadline": -18,
       "deadline": "2026-09-27",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -62019,7 +62034,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -62030,13 +62045,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥7,480",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -62496,7 +62511,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -62508,13 +62523,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥3,960",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -62963,7 +62978,7 @@
           "minus_ja": [
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が25日前"
+            "情報が26日前"
           ],
           "plus_ja": [
             "公式情報で確認済み"
@@ -62973,13 +62988,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-19",
-          "days": 25,
-          "label_ja": "9/19確認（25日前）"
+          "days": 26,
+          "label_ja": "9/19確認（26日前）"
         },
         "next_check_ja": null,
         "price_ja": null,
         "price_unit_conflict": false,
-        "risk_ja": "情報が25日前のまま",
+        "risk_ja": "情報が26日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -63465,7 +63480,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -63477,13 +63492,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,950",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -63941,7 +63956,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -63953,13 +63968,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥9,350",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -64413,7 +64428,7 @@
         "プレミアムバンダイ サンライズストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -10,
+      "days_to_deadline": -11,
       "deadline": "2026-10-04",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -64424,7 +64439,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -64435,13 +64450,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥14,300",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -64917,7 +64932,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -64929,13 +64944,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,980",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -65389,7 +65404,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -65401,13 +65416,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥1,980",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -65861,7 +65876,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -65873,13 +65888,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,950",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -66322,7 +66337,7 @@
         "プレミアムバンダイ A-on STORE"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -9,
+      "days_to_deadline": -10,
       "deadline": "2026-10-05",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -66333,7 +66348,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -66344,8 +66359,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,950",
@@ -66940,7 +66955,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -66951,13 +66966,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥9,790",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -67452,7 +67467,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -67464,13 +67479,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥16,500",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -67943,7 +67958,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 44,
+      "days_to_deadline": 43,
       "deadline": "2026-11-27",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -67954,7 +67969,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -67966,13 +67981,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥8,360",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -67981,7 +67996,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/27（あと44日）"
+        "why_now_ja": "予約締切 11/27（あと43日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -68420,7 +68435,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 12,
+      "days_to_deadline": 11,
       "deadline": "2026-10-26",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -68431,7 +68446,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -68443,13 +68458,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥6,930",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -68458,7 +68473,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "WEEK",
-        "why_now_ja": "予約締切 10/26（あと12日）"
+        "why_now_ja": "予約締切 10/26（あと11日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -68908,7 +68923,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -68919,13 +68934,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥9,350",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -69412,7 +69427,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -69423,13 +69438,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥6,380",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -69905,7 +69920,7 @@
         "プレミアムバンダイ BANDAI OFFICIAL TOY SHOP"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -27,
+      "days_to_deadline": -28,
       "deadline": "2026-09-17",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -69916,7 +69931,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -69927,13 +69942,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥7,000",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -70383,7 +70398,7 @@
         "プレミアムバンダイ 魂ウェブ商店"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 4,
+      "days_to_deadline": 3,
       "deadline": "2026-10-18",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -70394,7 +70409,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -70405,13 +70420,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥24,200",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -70419,8 +70434,8 @@
         },
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
-        "urgency": "WEEK",
-        "why_now_ja": "抽選締切 10/18（あと4日）"
+        "urgency": "TODAY",
+        "why_now_ja": "抽選締切 10/18（あと3日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -70898,7 +70913,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前",
+            "情報が28日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -70910,13 +70925,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥36,080",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -71450,7 +71465,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -44,
+      "days_to_deadline": -45,
       "deadline": "2026-08-31",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -71461,7 +71476,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が29日前"
+            "情報が30日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -71472,13 +71487,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-15",
-          "days": 29,
-          "label_ja": "9/15確認（29日前）"
+          "days": 30,
+          "label_ja": "9/15確認（30日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥10,800",
         "price_unit_conflict": false,
-        "risk_ja": "情報が29日前のまま",
+        "risk_ja": "情報が30日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -72419,7 +72434,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -28,
+      "days_to_deadline": -29,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -72430,7 +72445,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引が少ない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -72441,13 +72456,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥7,200／1BOX",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -72657,7 +72672,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は38日前"
+                "最新の成約は39日前"
               ],
               "score": 6.0
             },
@@ -73086,7 +73101,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -73097,13 +73112,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥500",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -73112,7 +73127,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -73581,7 +73596,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -73592,13 +73607,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥500",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -73607,7 +73622,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -74076,7 +74091,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -74087,13 +74102,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥3,300",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -74102,7 +74117,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -74571,7 +74586,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -74582,13 +74597,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,210",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -74597,7 +74612,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -75117,7 +75132,7 @@
         "ポケモンセンターオンライン"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -28,
+      "days_to_deadline": -29,
       "deadline": "2026-09-16",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -75128,7 +75143,7 @@
           "level": "MEDIUM",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -75140,13 +75155,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥27,500",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -75714,7 +75729,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -75725,13 +75740,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥2,970",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -75740,7 +75755,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -76209,7 +76224,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -76220,13 +76235,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥2,970",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -76235,7 +76250,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -76704,7 +76719,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -76715,13 +76730,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥2,970",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -76730,7 +76745,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -77196,7 +77211,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -77207,13 +77222,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥6,200",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -77222,7 +77237,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -77667,7 +77682,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -77678,13 +77693,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥889",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -77693,7 +77708,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -78162,7 +78177,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -78173,13 +78188,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -78188,7 +78203,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -78657,7 +78672,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -78668,13 +78683,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥889",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -78683,7 +78698,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -79152,7 +79167,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -79163,13 +79178,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -79178,7 +79193,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -79647,7 +79662,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -79658,13 +79673,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥889",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -79673,7 +79688,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -80142,7 +80157,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -80153,13 +80168,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥990",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -80168,7 +80183,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -80637,7 +80652,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が28日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -80648,13 +80663,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-17",
-          "days": 27,
-          "label_ja": "9/17確認（27日前）"
+          "days": 28,
+          "label_ja": "9/17確認（28日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥3,500",
         "price_unit_conflict": false,
-        "risk_ja": "情報が27日前のまま",
+        "risk_ja": "情報が28日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -80663,7 +80678,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -81129,7 +81144,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が26日前",
+            "情報が27日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -81141,13 +81156,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-18",
-          "days": 26,
-          "label_ja": "9/18確認（26日前）"
+          "days": 27,
+          "label_ja": "9/18確認（27日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥6,930",
         "price_unit_conflict": false,
-        "risk_ja": "情報が26日前のまま",
+        "risk_ja": "情報が27日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -81581,7 +81596,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -81594,13 +81609,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥4,950",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -82077,7 +82092,7 @@
         "コナミスタイル"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -20,
+      "days_to_deadline": -21,
       "deadline": "2026-09-24",
       "deadline_kind": "LOTTERY",
       "decision": {
@@ -82088,7 +82103,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が29日前"
+            "情報が30日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -82099,13 +82114,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-15",
-          "days": 29,
-          "label_ja": "9/15確認（29日前）"
+          "days": 30,
+          "label_ja": "9/15確認（30日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥8,800",
         "price_unit_conflict": false,
-        "risk_ja": "情報が29日前のまま",
+        "risk_ja": "情報が30日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -82743,7 +82758,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -82754,8 +82769,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥385",
@@ -82769,7 +82784,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/9 発売（発売5日目）"
+        "why_now_ja": "10/9 発売（発売6日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -83366,7 +83381,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -83378,8 +83393,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥418",
@@ -83393,7 +83408,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "11/6 発売（あと23日）"
+        "why_now_ja": "11/6 発売（あと22日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -83885,7 +83900,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -83896,13 +83911,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥1,980",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -83911,7 +83926,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/17 発売（発売27日目）"
+        "why_now_ja": "9/17 発売（発売28日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -84369,7 +84384,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -84381,13 +84396,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥6,050",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -84850,7 +84865,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -57,
+      "days_to_deadline": -58,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -84861,7 +84876,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -84872,8 +84887,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥20,900",
@@ -85373,7 +85388,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -85385,13 +85400,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥6,050",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -85854,7 +85869,7 @@
         "ブシロードオンラインストア"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": -57,
+      "days_to_deadline": -58,
       "deadline": "2026-08-18",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -85865,7 +85880,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -85876,8 +85891,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥20,900",
@@ -86380,7 +86395,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -86392,13 +86407,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥1,650",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -86972,7 +86987,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -86984,8 +86999,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥550",
@@ -87588,7 +87603,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -87600,8 +87615,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥550",
@@ -87615,7 +87630,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/23 発売（あと9日）"
+        "why_now_ja": "10/23 発売（あと8日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -88095,7 +88110,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -88106,13 +88121,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥4,400",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -88121,7 +88136,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/16 発売（発売28日目）"
+        "why_now_ja": "9/16 発売（発売29日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -88563,7 +88578,7 @@
           "level": "MEDIUM",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -88576,13 +88591,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥2,640",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -89058,7 +89073,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -89070,13 +89085,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥5,500",
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "RETAILER_PRIMARY",
           "label_ja": "販売店ページで確認",
@@ -89581,7 +89596,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 14,
+      "days_to_deadline": 13,
       "deadline": "2026-10-28",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -89592,7 +89607,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -89604,8 +89619,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "公式ページで受付期間と定価を確認する",
         "price_ja": "¥9,350",
@@ -89619,7 +89634,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "WEEK",
-        "why_now_ja": "予約締切 10/28（あと14日）"
+        "why_now_ja": "予約締切 10/28（あと13日）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -90182,7 +90197,7 @@
       "category_raw": null,
       "channel": [],
       "closing_soon_band": null,
-      "days_to_deadline": 30,
+      "days_to_deadline": 29,
       "deadline": "2026-11-13",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -90193,7 +90208,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -90205,8 +90220,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "公式ページで受付期間と定価を確認する",
         "price_ja": "¥4,400",
@@ -90220,7 +90235,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "予約締切 11/13（あと30日）"
+        "why_now_ja": "予約締切 11/13（あと29日）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -90686,7 +90701,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -90698,8 +90713,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "公式ページで受付期間と定価を確認する",
         "price_ja": "¥990",
@@ -91163,7 +91178,7 @@
           "level": "LOW",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -91176,8 +91191,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": null,
         "price_ja": "¥41,800",
@@ -92257,7 +92272,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で一部確認",
@@ -92269,8 +92284,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "1BOX（10パック） ¥4,400",
@@ -92284,7 +92299,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/2 発売（発売12日目）"
+        "why_now_ja": "10/2 発売（発売13日目）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -92576,7 +92591,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -93539,7 +93554,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -93552,8 +93567,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "1BOX（10パック） ¥4,400",
@@ -93859,7 +93874,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -94816,7 +94831,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -94829,8 +94844,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "1BOX（10パック） ¥4,400",
@@ -94844,7 +94859,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "11/13 発売（あと30日）"
+        "why_now_ja": "11/13 発売（あと29日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -95128,7 +95143,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -96091,7 +96106,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -96104,8 +96119,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "1BOX（6パック） ¥3,960",
@@ -96411,7 +96426,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -97368,7 +97383,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -97381,8 +97396,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "1BOX（10パック） ¥4,400",
@@ -97396,7 +97411,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/30 発売（あと16日）"
+        "why_now_ja": "10/30 発売（あと15日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -97688,7 +97703,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -98055,7 +98070,7 @@
           "minus_ja": [
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -98066,13 +98081,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": null,
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -98081,7 +98096,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/30 発売（あと16日）"
+        "why_now_ja": "10/30 発売（あと15日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -98540,7 +98555,7 @@
           "minus_ja": [
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -98551,13 +98566,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": null,
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -98566,7 +98581,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/30 発売（あと16日）"
+        "why_now_ja": "10/30 発売（あと15日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -99608,7 +99623,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前"
+            "情報が29日前"
           ],
           "plus_ja": [
             "公式情報で確認済み",
@@ -99620,8 +99635,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "最新の受付・在庫状況を確かめ直す",
         "price_ja": "¥440／パック・1BOX（10パック） ¥4,400",
@@ -99635,7 +99650,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "9/19 発売（発売25日目）"
+        "why_now_ja": "9/19 発売（発売26日目）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -99927,7 +99942,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -100896,7 +100911,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -100909,8 +100924,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥440／パック・1BOX（10パック） ¥4,400",
@@ -101216,7 +101231,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -102185,7 +102200,7 @@
           "label_ja": "情報の確度 中",
           "level": "MEDIUM",
           "minus_ja": [
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -102198,8 +102213,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥440／パック・1BOX（10パック） ¥4,400",
@@ -102213,7 +102228,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/16 発売（あと2日）"
+        "why_now_ja": "10/16 発売（あと1日）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",
@@ -102505,7 +102520,7 @@
               "max": 10,
               "minus_ja": [],
               "plus_ja": [
-                "最新の成約は32日前"
+                "最新の成約は33日前"
               ],
               "score": 6.0
             },
@@ -102884,7 +102899,7 @@
           "minus_ja": [
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -102895,13 +102910,13 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": null,
         "price_unit_conflict": false,
-        "risk_ja": "情報が28日前のまま",
+        "risk_ja": "情報が29日前のまま",
         "source_quality": {
           "class": "OFFICIAL_PRIMARY",
           "label_ja": "公式ページで確認",
@@ -102910,7 +102925,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "LATER",
-        "why_now_ja": "10/16 発売（あと2日）"
+        "why_now_ja": "10/16 発売（あと1日）"
       },
       "evidence_label_ja": "一部確認",
       "evidence_state": "PARTIAL",
@@ -103418,7 +103433,7 @@
         "サテライトショップ（各店要確認）"
       ],
       "closing_soon_band": null,
-      "days_to_deadline": 5,
+      "days_to_deadline": 4,
       "deadline": "2026-10-19",
       "deadline_kind": "RESERVATION",
       "decision": {
@@ -103429,7 +103444,7 @@
           "level": "MEDIUM",
           "minus_ja": [
             "比較できる類似品の取引がない",
-            "情報が28日前",
+            "情報が29日前",
             "受付状況が未確認"
           ],
           "plus_ja": [
@@ -103442,8 +103457,8 @@
         "freshness": {
           "band": "STALE",
           "checked_on": "2026-09-16",
-          "days": 28,
-          "label_ja": "9/16確認（28日前）"
+          "days": 29,
+          "label_ja": "9/16確認（29日前）"
         },
         "next_check_ja": "いま受付中かどうかを販売ページで確認する",
         "price_ja": "¥22,000",
@@ -103457,7 +103472,7 @@
         "tier": "FOLLOW",
         "tier_label_ja": "経過を見る",
         "urgency": "WEEK",
-        "why_now_ja": "予約締切 10/19（あと5日）"
+        "why_now_ja": "予約締切 10/19（あと4日）"
       },
       "evidence_label_ja": "確認済み",
       "evidence_state": "VERIFIED",

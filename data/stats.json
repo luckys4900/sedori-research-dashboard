@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-14",
+  "as_of": "2026-10-15",
   "by_category": {
     "BOOK_MOOK": 5,
     "CHARACTER_GOODS": 11,
@@ -30,8 +30,8 @@
     "UNKNOWN": 99
   },
   "by_status": {
-    "CLOSED": 27,
-    "CLOSING_SOON": 13,
+    "CLOSED": 32,
+    "CLOSING_SOON": 8,
     "ENDED": 6,
     "NOT_STARTED": 2,
     "OPEN_NOW": 9,
@@ -49,14 +49,14 @@
     "DISCOVERY_UNVERIFIED": 94
   },
   "counts": {
-    "accepting_now": 22,
+    "accepting_now": 17,
     "acquisition_cost_verified": 0,
     "attention": 6,
-    "buyable_now": 22,
-    "closing_soon": 13,
-    "closing_soon_24h": 6,
-    "closing_soon_3d": 4,
-    "closing_soon_7d": 3,
+    "buyable_now": 17,
+    "closing_soon": 8,
+    "closing_soon_24h": 5,
+    "closing_soon_3d": 1,
+    "closing_soon_7d": 2,
     "new_items": 15,
     "open_lottery": 0,
     "open_now": 9,
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 119
   },
-  "generated_at": "2026-10-14T13:02:07+09:00",
+  "generated_at": "2026-10-15T06:32:17+09:00",
   "schema_version": "1.1.0"
 }
