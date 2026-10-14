@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
-<meta name="description" content="商品ごとの受付状況、締切、発売日、出典をまとめた詳細ページです。購入のおすすめや利益の予測は含みません。">
+<meta name="description" content="商品ごとの受付状況、締切、発売日、出典と、成約データにもとづく暫定の利益試算をまとめた詳細ページです。購入のおすすめではありません。">
 <title>商品詳細 | Sedori Research Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
       <p class="site-title"><a href="index.html">Sedori Research Dashboard</a></p>
     </div>
     <p class="site-meta">
-      <span class="site-meta-item"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
+      <span class="site-meta-item site-meta-item--gen"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
       <span class="site-meta-item"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
     </p>
   </div>
@@ -47,10 +47,10 @@
 
   <article class="detail" id="detail" hidden></article>
 
-  <footer class="site-footer">
-    <p>公式サイトなどの公開情報をもとに作成しています。購入のおすすめ、利益の予測、点数やランキングは含みません。利益の自動評価は行っていません。</p>
+  <footer class="site-footer" id="site-footer" hidden>
+    <p>公式サイトなどの公開情報をもとに作成しています。利益の試算は成約データにもとづく暫定のもので、購入のおすすめや指示ではありません。</p>
     <p>「定価」はメーカーなどが公式に発表した価格で、仕入れ値ではありません。「取得原価」は購入経路ごとに金額の裏付けが取れた場合のみ表示しています。</p>
-    <p>確認が取れていない項目は表示していません（「なし」や「0」という意味ではありません）。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
+    <p>載っていない項目は、まだ確かめていない項目です（「なし」や「0」という意味ではありません）。発売日が月までしか公表されていない場合は、月のまま表示しています。</p>
   </footer>
 </main>
 

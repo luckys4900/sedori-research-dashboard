@@ -34,6 +34,8 @@
 /* ---------------------------------------------------------------- constants */
 
 var DATA_PRODUCTS = 'data/products.json';
+/* R24: the home page reads its slim copy (same products and values, without the detail-only evidence) */
+var DATA_HOME = 'data/products_home.json';
 var DATA_STATS = 'data/stats.json';
 var DATA_METADATA = 'data/metadata.json';
 var MARKS_KEY = 'sedori_dashboard_marks_v1';
@@ -49,7 +51,7 @@ var UNCONFIRMED_WORDING = /未確認|不明/;
 var NEW_BADGE_MAX_SHARE = 0.6;
 
 /* Human decision marks (browser only). Order is the button order. */
-var MARKS = [{ id: 'UNDECIDED', label: '印なし' }, { id: 'CANDIDATE', label: '購入候補' },
+var MARKS = [{ id: 'UNDECIDED', label: '印なし' }, { id: 'CANDIDATE', label: '買う予定' },
   { id: 'WATCH', label: '様子見' }, { id: 'SKIP', label: '見送り' }];
 var MARK_IDS = MARKS.map(function (m) { return m.id; });
 
@@ -148,16 +150,16 @@ var PROFIT_DETAIL_LABEL = {
   comparables_with_price_evidence: 'うち過去の取引価格を確認できた数',
   comparables_with_verified_route: 'うち購入経路を確認できた数',
   strict_completed_sales: '条件を満たす取引の件数',
-  profit_usable_comparables: '利益の試算に使える類似品の数',
-  minimum_profit_sample: '試算に必要な件数'
+  profit_usable_comparables: '正式な利益判定に使える類似品の数',
+  minimum_profit_sample: '正式な判定に必要な件数'
 };
 var PROFIT_DETAIL_ORDER = ['linked_comparables', 'comparables_with_price_evidence',
   'comparables_with_verified_route', 'strict_completed_sales',
   'profit_usable_comparables', 'minimum_profit_sample'];
 
 var PROFIT_NOTE_JA =
-  'ここでは、利益を考えるための材料がどこまで集まったかをお伝えしています。' +
-  '利益額や期待値、おすすめや点数を示すものではありません。';
+  '正式な利益判定に必要な材料（費用の裏付けを含む）がどこまで集まったかです。' +
+  '上の「利益の試算」は、この基準とは別の暫定の試算です。';
 
 /* opportunity_signals carry their own `label_ja`; this map is only a fallback
    for the closed code set, so a chip is never rendered as a raw token. */
@@ -256,7 +258,7 @@ function el(tag, className, text) {
  * or ratio with its unit (類似品4件, 1.42倍, 13日), and a short bracketed period （75〜105日）.
  * Only text nodes and nowrap spans are created; the textContent is unchanged.
  */
-var KEEP_RE = /あと\d+日|\d{4}年\d{1,2}月(?:\d{1,2}日)?|\d{1,2}月\d{1,2}日|(?:中央値|最大|上限|下限)\s?\d+(?:\.\d+)?(?:倍|%)|類似品\d+件|[+−-]?[¥￥][\d,]+(?:〜[+−-]?[¥￥][\d,]+)?|\d+(?:\.\d+)?(?:倍|件|日|%|か月|週)(?:\s*\/\s*\d+件中)?|（[^（）]{1,16}）|【[^【】]{1,12}】/g;
+var KEEP_RE = /あと\d+日|\d{4}年\d{1,2}月(?:\d{1,2}日)?|\d{1,2}月\d{1,2}日|(?:中央値|最大|上限|下限)\s?\d+(?:\.\d+)?(?:倍|%)|類似品\d+件|[+−-]?[¥￥][\d,]+(?:〜[+−-]?[¥￥][\d,]+)?|\d+(?:\.\d+)?(?:倍|件|日|%|か月|週)(?:\s*\/\s*\d+件中)?|（[^（）]{1,8}）|【[^【】]{1,12}】/g;
 function keepText(node, text) {
   var str = String(text);
   var last = 0;
@@ -287,7 +289,23 @@ function wordWrapText(node, text) {
   var parts = [];
   var it = seg.segment(str);
   var arr = Array.from ? Array.from(it) : [];
-  arr.forEach(function (x) { parts.push(x.segment); });
+  /* R24: the segmenter splits proper nouns (ガン|ダム, ハイ|キュー, 運命星|戦): pieces of the same kind
+     (katakana, kanji, Latin) that touch are joined back; a break stays where the kind changes or at a space */
+  arr.forEach(function (x) {
+    var piece = x.segment;
+    var prev = parts.length ? parts[parts.length - 1] : null;
+    if (prev !== null) {
+      var k1 = charKind(prev.charAt(prev.length - 1)), k2 = charKind(piece.charAt(0));
+      var tail = k2 === 'latin' && /^[A-Za-z0-9]{1,2}$/.test(piece) && (k1 === 'kata' || k1 === 'kanji');   /* ガンダムX */
+      var glued = k2 === 'latin' && /[A-Za-z0-9][.\-:\/]$/.test(prev);   /* Vol.3, No.1 */
+      if ((k1 === k2 && k1 !== 'space' && k1 !== 'hira') || k2 === 'mark' || tail || glued) { parts[parts.length - 1] = prev + piece; return; }
+    }
+    parts.push(piece);
+  });
+  /* a joined run that is too long for a line splits only at a real word boundary (ボリューム|ヴォルテックス) */
+  parts = parts.reduce(function (acc, pc) {
+    return acc.concat(/^[\u30a0-\u30ff\u4e00-\u9fff]{9,}$/.test(pc) ? splitNearMiddle(pc) : [pc]);
+  }, []);
   node.classList.add('wrap-words');
   parts.forEach(function (piece, i) {
     if (i > 0 && !/^[\s）】」』、。・:：,.!?！？ー]/.test(piece) && !/[（【「『\s]$/.test(parts[i - 1])) {
@@ -595,6 +613,7 @@ function evidenceBadge(p) {
   if (p.evidence_state !== 'VERIFIED' && label === '確認済み') { label = '未検証'; }
   /* R21H: shown on the detail page only, in plain words */
   if (label === '未検証') { label = '公式確認前'; }
+  label = '販売情報 ' + label;   /* R24: what is verified (not the profit estimate) */
   var badge = el('span', 'badge badge--' + variant, label);
   if (isUnverifiedRow(p)) { badge.title = '公式情報での確認がまだ済んでいない商品です'; }
   return badge;
@@ -688,10 +707,15 @@ function cmpDecision(a, b) {
     only when it closes within 3 days (and it then says 確度 低 on its face). Never an info-wait or finished item. */
 function firstLook(rows, max) {
   var act = rows.filter(function (p) { var d = decisionOf(p); return d && d.actionable && (d.tier === 'LEAD' || d.tier === 'FOLLOW'); });
-  var strong = act.filter(function (p) { return decisionOf(p).tier === 'LEAD' || confLevel(p) !== 'LOW'; }).sort(cmpDecision);
-  if (strong.length >= max) { return strong.slice(0, max); }
-  var urgent = act.filter(function (p) { return strong.indexOf(p) < 0 && decisionOf(p).urgency === 'TODAY'; }).sort(cmpDecision);
-  return strong.concat(urgent).slice(0, max);
+  /* R24: what cannot wait comes first — an item that closes within 24 hours, whatever its confidence (the card
+     says 情報の確度 on its face); then leads and items whose evidence is at least partly in place */
+  var today = act.filter(function (p) { return isClosingSoonRow(p) && p.closing_soon_band === 'WITHIN_24H'; })
+    .sort(function (a, b) { return (num(a.days_to_deadline) || 0) - (num(b.days_to_deadline) || 0) || cmpDecision(a, b); });
+  var strong = act.filter(function (p) { return today.indexOf(p) < 0 && (decisionOf(p).tier === 'LEAD' || confLevel(p) !== 'LOW'); }).sort(cmpDecision);
+  var picked = today.slice(0, max).concat(strong);
+  if (picked.length >= max) { return picked.slice(0, max); }
+  var urgent = act.filter(function (p) { return picked.indexOf(p) < 0 && decisionOf(p).urgency === 'TODAY'; }).sort(cmpDecision);
+  return picked.concat(urgent).slice(0, max);
 }
 /** 「4件中3件が定価超え・定価の1.12倍」 — only with 3 or more comparable products. */
 function similarText(p) {
@@ -721,12 +745,40 @@ function decisionFacts(p, detail) {
     dl.appendChild(r);
   }
   row('いつ', d.why_now_ja, 'dfact--when');
-  row('定価', d.price_ja);
-  row('利益', profitLine(p), 'dfact--profit');
-  if (detail) { row('類似品', similarText(p)); }   /* a card carries the 類似品 line with its 「数え方」 link instead */
-  row('動く要因', d.catalyst_ja);
+  /* the profit row on a card only when a figure was computed; 未試算 is said on the detail page */
+  var pr = profitOf(p);
+  var computed = pr && num((pr.economics || {}).net_profit_base) !== null;
+  /* the price in the same unit as the estimate (¥440／パック next to a per-BOX loss reads as an error) */
+  var price = shownText(d.price_ja);
+  var estUnit = computed ? own(UNIT_JA, (pr.market || {}).unit) : null;
+  var acq = computed ? num(pr.economics.acquisition_jpy) : null;
+  if (price !== null && estUnit && acq !== null && price.indexOf(estUnit.replace('1', '')) < 0) {
+    price += '（試算は' + estUnit + ' ' + yenPlain(acq) + '）';
+  }
+  row('定価', price);
+  if (computed) {
+    /* the economic value first, its range on a second, quieter line */
+    var e = pr.economics;
+    var pv = el('div', 'dfact dfact--profit' + (e.net_profit_base < 0 ? ' is-neg' : ''));
+    pv.appendChild(el('dt', 'dfact-lbl', '利益'));
+    var dd = el('dd', 'dfact-val');
+    var unit = own(UNIT_JA, (pr.market || {}).unit);
+    dd.appendChild(elKeep('span', 'pv-main', (own(PROFIT_SHORT_JA, pr.state) || '') + ' ' + yenSigned(e.net_profit_base) + (unit ? '（' + unit + '）' : '')));
+    var sub = [];
+    if (num(e.net_profit_low) !== null && num(e.net_profit_high) !== null) {
+      sub.push('幅 ' + yenSigned(e.net_profit_low) + '〜' + yenSigned(e.net_profit_high));
+    }
+    if ((pr.confidence || {}).label_ja) { sub.push('試算の信頼度 ' + pr.confidence.label_ja + ((pr.confidence || {}).analog_only ? '（類似品から推定）' : '')); }
+    if (sub.length) { dd.appendChild(elKeep('span', 'pv-range', sub.join('・'))); }
+    pv.appendChild(dd);
+    dl.appendChild(pv);
+  } else if (detail) {
+    row('利益', profitLine(p), 'dfact--profit');
+  }
+  if (detail) { row('類似品', similarText(p)); }
+  if (detail) { row('動く要因', d.catalyst_ja); }
   row('注意点', d.risk_ja, 'dfact--risk');
-  row('次に確認', d.next_check_ja, 'dfact--next');
+  if (detail) { row('次に確認', d.next_check_ja, 'dfact--next'); }
   if (detail) {
     var c = d.confidence || {};
     var why = [].concat(c.plus_ja || [], (c.minus_ja || []).map(function (m) { return '不足：' + m; }));
@@ -738,15 +790,18 @@ function decisionFacts(p, detail) {
   return dl.children.length ? dl : null;
 }
 /** The tier and confidence chips. */
-function decisionChips(p) {
+function decisionChips(p, onCard) {
   var d = decisionOf(p);
   if (!d) { return null; }
   var box = el('span', 'dchips');
-  box.appendChild(el('span', 'tier-chip tier--' + String(d.tier).toLowerCase(), String(d.tier_label_ja)));
+  /* a card shows the listing badge only for a lead; the plain 経過を見る adds nothing next to its status */
+  if (!onCard || d.tier === 'LEAD') {
+    box.appendChild(el('span', 'tier-chip tier--' + String(d.tier).toLowerCase(), String(d.tier_label_ja)));
+  }
   if (d.confidence) {
     var c = el('span', 'conf-chip conf--' + String(d.confidence.level).toLowerCase(), String(d.confidence.label_ja));
     var minus = (d.confidence.minus_ja || [])[0];
-    if (minus) { c.title = '確度が上がらない理由：' + minus; }
+    if (minus) { c.title = '情報の確度が上がらない理由：' + minus; }
     box.appendChild(c);
   }
   /* the date the facts were checked, next to the confidence it affects */
@@ -759,8 +814,10 @@ function decisionChips(p) {
 /* ------------------------------------------------------------ profit analysis (Profit Power / Confidence)
    Every number below is the backend's own; the page formats, never re-derives. An
    unknown value is 未算定, never 0; below 70 % coverage there is no total. Not a purchase order. */
-var PROFIT_SHORT_JA = { PROFIT_CANDIDATE: '利益検討候補', WATCH_PRICE: '売価の裏付け待ち', WATCH_SUPPLY: '供給増に注意',
-  WATCH_LIQUIDITY: '回転の裏付け待ち', INSUFFICIENT_EVIDENCE: '算定材料不足', NEGATIVE_MARGIN: '利益条件外', AVOID_RISK: 'リスク大' };
+var PROFIT_SHORT_JA = { PROFIT_CANDIDATE: '利益候補', WATCH_PRICE: '売価の裏付け待ち', WATCH_SUPPLY: '供給増に注意',
+  WATCH_LIQUIDITY: '回転の裏付け待ち', INSUFFICIENT_EVIDENCE: '未試算（材料不足）', NEGATIVE_MARGIN: '赤字見込み', AVOID_RISK: 'リスク大' };
+/** the sale unit a profit figure is per (1BOX / 1パック / 1個) */
+var UNIT_JA = { BOX: '1BOX', PACK: '1パック', CASE: '1カートン', ITEM: '1個', SET: '1セット' };
 function profitOf(p) { return (p && p.profitability && typeof p.profitability === 'object') ? p.profitability : null; }
 function yenSigned(v) {
   if (num(v) === null) { return null; }
@@ -781,26 +838,44 @@ function profitLine(p) {
      range are on the detail page */
   var label = own(PROFIT_SHORT_JA, pr.state) || String(pr.state_label_ja);
   if (num(e.net_profit_base) === null) { return label; }
-  return label + '（中心 ' + yenSigned(e.net_profit_base) + '）';
+  var unit = own(UNIT_JA, (pr.market || {}).unit);
+  var range = (num(e.net_profit_low) !== null && num(e.net_profit_high) !== null)
+    ? '・幅 ' + yenSigned(e.net_profit_low) + '〜' + yenSigned(e.net_profit_high) : '';
+  return label + '：' + yenSigned(e.net_profit_base) + (unit ? '／' + unit : '') + range;
 }
 /** 利益力 / 確度 / 算定範囲: two separate scales, never added together. */
 function profitHead(pr) {
+  /* R24: the economic value first (the base case, signed, per sale unit), then its range, then how far it can be
+     trusted. 利益力 and 算定範囲 are secondary and live in the breakdown. */
   var head = el('div', 'pa-head');
-  head.appendChild(el('span', 'pstate pstate--' + String(pr.state).toLowerCase(), String(pr.state_label_ja)));
-  var meters = el('div', 'pa-meters');
-  function meter(cls, label, value, sub) {
-    var m = el('div', 'pa-meter ' + cls);
-    m.appendChild(el('span', 'pa-meter-lbl', label));
-    m.appendChild(el('strong', 'pa-meter-val', value));
-    if (sub) { m.appendChild(el('span', 'pa-meter-sub', sub)); }
-    meters.appendChild(m);
+  var e = pr.economics || {};
+  var top = el('div', 'pa-tags');
+  var pill = el('span', 'pstate pstate--' + String(pr.state).toLowerCase(), own(PROFIT_SHORT_JA, pr.state) || String(pr.state_label_ja));
+  pill.title = String(pr.state_label_ja);
+  if (pr.state !== 'INSUFFICIENT_EVIDENCE') { top.appendChild(pill); }   /* 未試算 is the headline itself */
+  top.appendChild(el('span', 'pa-provisional', '暫定試算'));
+  head.appendChild(top);
+  var unit = own(UNIT_JA, (pr.market || {}).unit);
+  if (num(e.net_profit_base) !== null) {
+    var hero = el('div', 'pa-hero' + (e.net_profit_base < 0 ? ' is-neg' : ''));
+    hero.appendChild(el('strong', 'pa-hero-num', yenSigned(e.net_profit_base)));
+    hero.appendChild(el('span', 'pa-hero-lbl', '想定利益（中心' + (unit ? '・' + unit + 'あたり' : '') + '）'));
+    head.appendChild(hero);
+    if (num(e.net_profit_low) !== null && num(e.net_profit_high) !== null) {
+      head.appendChild(elKeep('p', 'pa-range', '幅 ' + yenSigned(e.net_profit_low) + ' 〜 ' + yenSigned(e.net_profit_high)));
+    }
+  } else {
+    var none = el('div', 'pa-hero pa-hero--none');
+    none.appendChild(el('strong', 'pa-hero-num', '未試算'));
+    var lack = (e.acquisition_basis === 'UNKNOWN' ? ['取得価格'] : []).concat(num((pr.market || {}).base) === null ? ['成約データ'] : []);
+    none.appendChild(el('span', 'pa-hero-lbl', lack.length ? '足りない材料：' + lack.join('・') : '試算に必要な材料がそろっていません'));
+    head.appendChild(none);
   }
-  var pw = pr.profit_power || {}, cf = pr.confidence || {};
-  meter('pa-meter--power', '利益力', num(pw.score) !== null ? pw.score + ' / ' + (pw.max || 100) : '算定材料不足', null);
-  meter('pa-meter--conf', '数字の確度', num(cf.score) !== null ? cf.score + ' / ' + (cf.max || 100) : '未算定',
-    cf.label_ja ? '（' + cf.label_ja + (cf.analog_only ? '・類似品のみ' : '') + '）' : null);
-  meter('pa-meter--cov', '算定範囲', Math.round((pr.data_coverage || 0) * 100) + '%', null);
-  head.appendChild(meters);
+  var cf = pr.confidence || {};
+  if (num(cf.score) !== null) {
+    head.appendChild(elKeep('p', 'pa-trust', '試算の信頼度 ' + (cf.label_ja || '') + '（' + cf.score + '/100' +
+      (cf.analog_only ? '・類似品からの推定' : '') + '）'));
+  }
   return head;
 }
 /** The full 利益分析 block for the detail page (compact: the card version on the top page). */
@@ -809,103 +884,125 @@ function profitBlock(p, compact) {
   if (!pr) { return null; }
   var e = pr.economics || {}, m = pr.market || {};
   var box = el('section', 'pbox' + (compact ? ' pbox--compact' : ''));
-  box.setAttribute('aria-label', '利益分析');
-  if (!compact) { box.appendChild(el('h2', 'pa-title', '利益分析')); }
+  box.setAttribute('aria-label', '利益の試算');
+  if (!compact) { box.appendChild(el('h2', 'pa-title', '利益の試算')); }
   box.appendChild(profitHead(pr));
-  if (num(m.base) !== null || num(e.net_profit_base) !== null) {
-    var tbl = el('table', 'pa-table');
-    var thead = el('thead');
-    var hr = el('tr');
-    ['', '弱気', '中心', '強気'].forEach(function (h) { hr.appendChild(el('th', null, h)); });
-    thead.appendChild(hr);
-    tbl.appendChild(thead);
-    var tb = el('tbody');
-    function trow(label, vals, fmt) {
-      var tr = el('tr');
-      tr.appendChild(el('th', null, label));
-      vals.forEach(function (v) { tr.appendChild(el('td', (num(v) !== null && v < 0) ? 'is-neg' : null, fmt(v) || '未算定')); });
-      tb.appendChild(tr);
-    }
-    trow('想定売価', [m.low, m.base, m.high], yenPlain);
-    trow('想定純利益', [e.net_profit_low, e.net_profit_base, e.net_profit_high], yenSigned);
-    trow('ROI', [e.roi_low, e.roi_base, e.roi_high], pctSigned);
-    tbl.appendChild(tb);
-    var wrap = el('div', 'pa-table-wrap');
-    wrap.appendChild(tbl);
-    box.appendChild(wrap);
-  }
   var facts = el('dl', 'dfacts pa-facts');
-  function fact(label, value, cls) {
+  function fact(label, value, cls, target) {
     var v = shownText(value);
     if (v === null) { return; }
     var r = el('div', 'dfact' + (cls ? ' ' + cls : ''));
     r.appendChild(el('dt', 'dfact-lbl', label));
     r.appendChild(elKeep('dd', 'dfact-val', v));
-    facts.appendChild(r);
+    (target || facts).appendChild(r);
   }
+  /* the four lines a reader needs: break-even, biggest risk, next check, and (when known) how fast it sells */
   var buf = num(e.downside_buffer_pct);
-  fact('損益分岐', num(e.break_even_jpy) !== null ? '売価 ' + yenPlain(e.break_even_jpy) + ' 以上で黒字' +
-    (buf !== null ? (buf >= 0 ? '（中心売価から' + Math.round(buf * 100) + '%下がっても黒字）' : '（中心売価が損益分岐を' + Math.round(-buf * 100) + '%下回る）') : '') : null);
-  fact('取得価格', num(e.acquisition_jpy) !== null ? yenPlain(e.acquisition_jpy) + '（' + e.acquisition_basis_ja + '）'
+  fact('取得価格', num(e.acquisition_jpy) !== null ? yenPlain(e.acquisition_jpy) + (own(UNIT_JA, m.unit) ? '（' + own(UNIT_JA, m.unit) + '）' : '') + '・' + e.acquisition_basis_ja
     : String(e.acquisition_basis_ja) + ((e.acquisition_reasons_ja || [])[0] ? '：' + e.acquisition_reasons_ja[0] : ''));
-  if (!compact) {
-    fact('売価の根拠', m.basis_ja ? m.basis_ja + (m.n_products ? '（' + m.n_products + '商品・成約' + m.n_sales + '件）' : '') : null);
-    fact('費用の仮定', num(e.fee_rate) !== null ? '販売手数料 ' + Math.round(e.fee_rate * 100) + '%・送料 ' +
-      (e.shipping_jpy ? e.shipping_jpy[0].toLocaleString('ja-JP') + '〜' + e.shipping_jpy[1].toLocaleString('ja-JP') + '円' : '未算定') +
-      (e.shipping_basis_ja ? '（' + e.shipping_basis_ja + '）' : '') + '・梱包 ' + (e.packing_jpy || 0) + '円' : null);
+  fact('売価の根拠', m.basis_ja ? m.basis_ja + (m.n_products ? '（' + m.n_products + '商品・成約' + m.n_sales + '件）' : '') : null);
+  fact('損益分岐', num(e.break_even_jpy) !== null ? '売価 ' + yenPlain(e.break_even_jpy) + ' 以上で黒字' : null);
+  if (buf !== null && buf < 0) { fact('中心売価', '損益分岐より' + Math.round(-buf * 100) + '%低い', 'dfact--risk'); }
+  else if (buf !== null) { fact('下振れ余裕', '中心売価から' + Math.round(buf * 100) + '%下がっても黒字'); }
+  /* the loss itself is already the headline; a risk line that only repeats it is left out */
+  if (!(num(e.net_profit_base) !== null && e.net_profit_base < 0 && /^中心純利益/.test(String(pr.max_risk_ja || '')))) {
+    fact('最大のリスク', pr.max_risk_ja, 'dfact--risk');
   }
-  fact('回転', pr.liquidity ? pr.liquidity.label_ja + (num(pr.liquidity.days_to_sale) !== null ? '（1個売れるまで約' + Math.round(pr.liquidity.days_to_sale) + '日）' : '') : null);
-  if (!compact) {
-    fact('供給', pr.supply ? '増えるリスク ' + pr.supply.label_ja : null);
-    fact('時期', pr.timing ? pr.timing.label_ja : null);
-    fact('期待利益', pr.expected_note_ja ? 'まだ出しません（' + pr.expected_note_ja + '）' : null);
-  }
-  fact('最大のリスク', pr.max_risk_ja, 'dfact--risk');
   fact('次に確認', pr.next_check_ja ? pr.next_check_ja + (pr.next_check_effect_ja ? ' → ' + pr.next_check_effect_ja : '') : null, 'dfact--next');
-  if (!compact) { fact('確認日', pr.checked_on ? fmtDate(pr.checked_on) : null, 'dfact--src'); }
   if (facts.children.length) { box.appendChild(facts); }
-  if (!compact) {
-    /* なぜこの判定？: the backend's own reasons, plus first, then minus; then each scale's breakdown */
-    var why = el('div', 'pa-why-box');
-    why.appendChild(el('h3', 'pa-sub', 'なぜこの判定？'));
-    var w = pr.why || {};
-    var wl = el('ul', 'pa-reasons pa-why-list');
-    (w.plus_ja || []).forEach(function (t) { wl.appendChild(el('li', 'is-plus', '＋ ' + t)); });
-    (w.minus_ja || []).forEach(function (t) { wl.appendChild(el('li', 'is-minus', '－ ' + t)); });
-    if (wl.children.length) { why.appendChild(wl); }
-    var gates = el('p', 'pa-gates');
-    var failed = (pr.hard_gates || []).filter(function (g) { return !g.passed; }).map(function (g) { return g.label_ja; });
-    gates.textContent = failed.length ? '利益検討候補になるために足りない条件：' + failed.join('／') : '利益検討候補の条件をすべて満たしています。';
-    why.appendChild(gates);
-    box.appendChild(why);
-    function breakdown(title, comps, cls) {
-      var br = el('details', 'pa-breakdown ' + cls);
-      br.appendChild(el('summary', 'pa-sub', title));
-      (comps || []).forEach(function (c) {
-        var item = el('div', 'pa-comp' + (num(c.score) === null ? ' pa-comp--unscored' : ''));
-        var h = el('div', 'pa-comp-head');
-        h.appendChild(el('span', 'pa-comp-lbl', String(c.label_ja)));
-        h.appendChild(el('span', 'pa-comp-pts', num(c.score) === null ? '未算定' : (c.score + ' / ' + c.max)));
-        item.appendChild(h);
-        var ul = el('ul', 'pa-reasons');
-        (c.plus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-plus', '＋ ' + t)); });
-        (c.minus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-minus', '－ ' + t)); });
-        if (ul.children.length) { item.appendChild(ul); }
-        br.appendChild(item);
-      });
-      return br;
+  if (compact) { return box; }
+
+  /* everything else — the table, costs, scores, reasons and gates — one tap away */
+  var more = el('details', 'pa-more');
+  more.appendChild(el('summary', 'pa-sub', '試算の内訳・前提'));
+  if (num(m.base) !== null || num(e.net_profit_base) !== null) {
+    var tbl = el('table', 'pa-table');
+    var unit = own(UNIT_JA, m.unit);
+    var cap = el('caption', 'visually-hidden', '売値と利益の試算' + (unit ? '（' + unit + 'あたり）' : ''));
+    tbl.appendChild(cap);
+    var thead = el('thead');
+    var hr = el('tr');
+    [['', null], ['弱気', 'col'], ['中心', 'col'], ['強気', 'col']].forEach(function (h) {
+      var th = el('th', null, h[0]);
+      if (h[1]) { th.setAttribute('scope', h[1]); }
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    tbl.appendChild(thead);
+    var tb = el('tbody');
+    function trow(label, vals, fmt) {
+      var tr = el('tr');
+      var th = el('th', null, label);
+      th.setAttribute('scope', 'row');
+      tr.appendChild(th);
+      vals.forEach(function (v) { tr.appendChild(el('td', (num(v) !== null && v < 0) ? 'is-neg' : null, fmt(v) || '未算定')); });
+      tb.appendChild(tr);
     }
-    box.appendChild(breakdown('利益力の内訳', (pr.profit_power || {}).components, 'pa-breakdown--power'));
-    box.appendChild(breakdown('数字の確度の内訳', (pr.confidence || {}).components, 'pa-breakdown--conf'));
-    var note = el('p', 'note-line pa-note');
-    note.appendChild(document.createTextNode('利益力（どれだけ残るか）と数字の確度（どこまで信じられるか）は別の物差しで、足し合わせません。' +
-      '想定売価は保証ではなく、成約データと手数料・送料の仮定に基づく試算です（基準は暫定・' +
-      (pr.calibration_status === 'CALIBRATION_PENDING' ? '過去実績での検証は件数不足のため未完了' : '検証状況は読み方を参照') + '）。購入の指示ではありません。'));
-    var a = el('a', null, '利益分析の読み方');
-    a.href = 'index.html#profit-faq';
-    note.appendChild(a);
-    box.appendChild(note);
+    trow('想定売価', [m.low, m.base, m.high], yenPlain);
+    trow('想定利益', [e.net_profit_low, e.net_profit_base, e.net_profit_high], yenSigned);
+    trow('ROI', [e.roi_low, e.roi_base, e.roi_high], pctSigned);
+    tbl.appendChild(tb);
+    var wrap = el('div', 'pa-table-wrap');
+    wrap.setAttribute('tabindex', '0');
+    wrap.setAttribute('role', 'region');
+    wrap.setAttribute('aria-label', '売値と利益の試算の表');
+    wrap.appendChild(tbl);
+    more.appendChild(wrap);
   }
+  var f2 = el('dl', 'dfacts pa-facts');
+  fact('費用の仮定', num(e.fee_rate) !== null ? '販売手数料 ' + Math.round(e.fee_rate * 100) + '%・送料 ' +
+    (e.shipping_jpy ? e.shipping_jpy[0].toLocaleString('ja-JP') + '〜' + e.shipping_jpy[1].toLocaleString('ja-JP') + '円' : '未算定') +
+    (e.shipping_basis_ja ? '（' + e.shipping_basis_ja + '）' : '') + '・梱包 ' + (e.packing_jpy || 0) + '円' : null, null, f2);
+  fact('回転', pr.liquidity ? pr.liquidity.label_ja + (num(pr.liquidity.days_to_sale) !== null ? '（1個売れるまで約' + Math.round(pr.liquidity.days_to_sale) + '日）' : '') : null, null, f2);
+  fact('供給', pr.supply ? '増えるリスク ' + pr.supply.label_ja : null, null, f2);
+  fact('時期', pr.timing ? pr.timing.label_ja : null, null, f2);
+  var pw = pr.profit_power || {};
+  fact('利益力', num(pw.score) !== null ? pw.score + ' / ' + (pw.max || 100) : '算定材料不足', null, f2);
+  fact('算定範囲', Math.round((pr.data_coverage || 0) * 100) + '%', null, f2);
+  fact('期待利益', pr.expected_note_ja ? 'まだ出しません（' + pr.expected_note_ja + '）' : null, null, f2);
+  fact('確認日', pr.checked_on ? fmtDate(pr.checked_on) : null, 'dfact--src', f2);
+  if (f2.children.length) { more.appendChild(f2); }
+
+  /* なぜこの判定？: the backend's own reasons, plus first, then minus */
+  var why = el('div', 'pa-why-box');
+  why.appendChild(el('h3', 'pa-sub', 'なぜこの判定？'));
+  var w = pr.why || {};
+  var wl = el('ul', 'pa-reasons pa-why-list');
+  (w.plus_ja || []).forEach(function (t) { wl.appendChild(el('li', 'is-plus', '＋ ' + t)); });
+  (w.minus_ja || []).forEach(function (t) { wl.appendChild(el('li', 'is-minus', '－ ' + t)); });
+  if (wl.children.length) { why.appendChild(wl); }
+  var gates = el('p', 'pa-gates');
+  var failed = (pr.hard_gates || []).filter(function (g) { return !g.passed; }).map(function (g) { return g.label_ja; });
+  gates.textContent = failed.length ? '利益候補になるために足りない条件：' + failed.join('／') : '利益候補の条件をすべて満たしています。';
+  why.appendChild(gates);
+  more.appendChild(why);
+  function breakdown(title, comps, cls) {
+    var br = el('details', 'pa-breakdown ' + cls);
+    br.appendChild(el('summary', 'pa-sub', title));
+    (comps || []).forEach(function (c) {
+      var item = el('div', 'pa-comp' + (num(c.score) === null ? ' pa-comp--unscored' : ''));
+      var h = el('div', 'pa-comp-head');
+      h.appendChild(el('span', 'pa-comp-lbl', String(c.label_ja)));
+      h.appendChild(el('span', 'pa-comp-pts', num(c.score) === null ? '未算定' : (c.score + ' / ' + c.max)));
+      item.appendChild(h);
+      var ul = el('ul', 'pa-reasons');
+      (c.plus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-plus', '＋ ' + t)); });
+      (c.minus_ja || []).forEach(function (t) { ul.appendChild(el('li', 'is-minus', '－ ' + t)); });
+      if (ul.children.length) { item.appendChild(ul); }
+      br.appendChild(item);
+    });
+    return br;
+  }
+  more.appendChild(breakdown('利益力の内訳', (pr.profit_power || {}).components, 'pa-breakdown--power'));
+  more.appendChild(breakdown('試算の信頼度の内訳', (pr.confidence || {}).components, 'pa-breakdown--conf'));
+  box.appendChild(more);
+  var note = el('p', 'note-line pa-note');
+  note.appendChild(document.createTextNode('成約データと手数料・送料の仮定にもとづく暫定の試算で、保証ではありません（' +
+    (pr.calibration_status === 'CALIBRATION_PENDING' ? '過去実績での検証は件数不足のため未完了' : '検証状況は読み方を参照') + '）。購入の指示ではありません。'));
+  var a = el('a', null, '利益分析の読み方');
+  a.href = 'index.html#profit-faq';
+  note.appendChild(a);
+  box.appendChild(note);
   return box;
 }
 
@@ -1822,6 +1919,22 @@ function svgEl(name, attrs) {
  * `variant` only changes the size class; the drawing is identical, because the point of the
  * tile is that the card and the detail page show the SAME one.
  */
+/** A long run of one kind splits once, at the segmenter boundary nearest its middle that leaves at least four
+    characters on each side (ボリューム|ヴォルテックス, not ボリュームヴォル|テックス); each half again if still long. */
+function splitNearMiddle(run) {
+  if (run.length < 9 || typeof Intl === 'undefined' || typeof Intl.Segmenter !== 'function') { return [run]; }
+  var cuts = [], pos = 0;
+  Array.from(new Intl.Segmenter('ja', { granularity: 'word' }).segment(run)).forEach(function (x) {
+    pos += x.segment.length;
+    /* never before a small kana or ー (ヴ|ォ, キュ|ー) */
+    if (pos >= 4 && run.length - pos >= 4 && !/[ァィゥェォャュョッヮヵヶーぁぃぅぇぉゃゅょっ]/.test(run.charAt(pos))) { cuts.push(pos); }
+  });
+  if (!cuts.length) { return [run]; }
+  var mid = run.length / 2;
+  var cut = cuts.reduce(function (best, c) { return Math.abs(c - mid) < Math.abs(best - mid) ? c : best; }, cuts[0]);
+  return splitNearMiddle(run.slice(0, cut)).concat(splitNearMiddle(run.slice(cut)));
+}
+
 /** Kind of a character for cover line breaks: a name never breaks inside a run of one kind. */
 function charKind(ch) {
   if (/\s/.test(ch)) { return 'space'; }
@@ -1891,14 +2004,14 @@ function coverTitle(text) {
   });
   var widths = pieces.map(textEm);
   function lines(size) {
-    var cap = 62 / size, n = 1, used = 0;
+    var cap = 80 / size, n = 1, used = 0;
     for (var q = 0; q < widths.length; q++) {
       var add = (used && joins[q - 1] === ' ' ? 0.3 : 0) + widths[q];
       if (used && used + add > cap) { n++; used = widths[q]; } else { used += add; }
     }
     return n;
   }
-  var size = Math.min(15, 62 / Math.max.apply(null, widths.concat([1])));
+  var size = Math.min(16, 80 / Math.max.apply(null, widths.concat([1])));
   while (size > 6 && lines(size) > 3) { size -= 0.25; }
   var node = el('span', 'thumb-title');
   node.style.setProperty('--fit', size.toFixed(2));
@@ -1920,11 +2033,12 @@ function productThumb(p, variant) {
   var hue = THUMB_HUES[idHash(p.product_id) % THUMB_HUES.length];
   var bg = svgEl('svg', { viewBox: '0 0 100 100', preserveAspectRatio: 'none', focusable: 'false',
                           role: 'presentation', 'class': 'thumb-bg' });
-  bg.appendChild(svgEl('rect', { x: 0, y: 0, width: 100, height: 100, fill: 'hsl(' + hue + ', 52%, 86%)' }));
-  bg.appendChild(svgEl('path', { d: 'M0 0 H62 L0 62 Z', fill: 'hsl(' + hue + ', 60%, 91%)' }));
-  bg.appendChild(svgEl('path', { d: 'M100 100 H58 L100 58 Z', fill: 'hsl(' + ((hue + 30) % 360) + ', 46%, 80%)' }));
-  bg.appendChild(svgEl('rect', { x: 6, y: 6, width: 88, height: 88, rx: 5, fill: 'none',
-                                 stroke: 'hsl(0, 0%, 100%)', 'stroke-opacity': '0.65', 'stroke-width': '1.2',
+  /* the tints come from the stylesheet (light and dark), keyed by the tile's hue */
+  box.style.setProperty('--tile-h', String(hue));
+  bg.appendChild(svgEl('rect', { x: 0, y: 0, width: 100, height: 100, 'class': 'tb-base' }));
+  bg.appendChild(svgEl('path', { d: 'M0 0 H62 L0 62 Z', 'class': 'tb-hi' }));
+  bg.appendChild(svgEl('path', { d: 'M100 100 H58 L100 58 Z', 'class': 'tb-lo' }));
+  bg.appendChild(svgEl('rect', { x: 6, y: 6, width: 88, height: 88, rx: 5, 'class': 'tb-frame',
                                  'vector-effect': 'non-scaling-stroke' }));
   box.appendChild(bg);
   var cat = lbl(CATEGORY_LABEL, p.category) || '';
@@ -2276,8 +2390,8 @@ function showError(message) {
 }
 
 /** Fetch + parse products.json with readable Japanese failure messages. */
-function loadProducts() {
-  return fetch(DATA_PRODUCTS, { cache: 'no-cache' })
+function loadProducts(url) {
+  return fetch(url || DATA_PRODUCTS, { cache: 'no-cache' })
     .then(function (res) {
       if (!res.ok) {
         throw new Error(res.status === 404
@@ -2338,7 +2452,7 @@ function renderHeaderMeta(doc) {
 
 
 function initIndex() {
-  var FEED_PAGE = 30;
+  var FEED_PAGE = 12;
   var LIST_PAGE = 50;
   var FEATURED_MAX = 3;
   var state = {
@@ -2351,6 +2465,7 @@ function initIndex() {
     /* feed */
     chip: 'all',
     feedShown: FEED_PAGE,
+    exploreOpen: false,
     /* screener page (1-based) */
     page: 1,
     /* card element registry so a mark change can re-sync every copy of a mark control */
@@ -2383,6 +2498,7 @@ function initIndex() {
     }
     if (filters.sec && !sectionById(filters.sec)) { filters.sec = ''; }
     var feed = sp.get('feed');
+    if (feed && own(LEGACY_CHIP, feed) !== undefined) { feed = LEGACY_CHIP[feed]; }
     if (feed && own(FEED_CHIPS, feed) !== undefined) { state.chip = feed; }
     var fromHash = chipFromHash();
     if (fromHash) { state.chip = fromHash; }
@@ -2545,7 +2661,7 @@ function initIndex() {
     var b = buySignalOf(p);
     var listP = fmtListPrice(p);
     var acq = fmtPrice(acquisitionCostOf(p));
-    if (!b && listP === null && acq === null) { return null; }
+    if (!b && listP === null && acq === null && !(state.chip === 'estimated' && profitOf(p) && num((profitOf(p).economics || {}).net_profit_base) !== null)) { return null; }
     var inf = inferenceOf(p);
     var level = inf ? inf.level : (b ? b.level : null);
     var box = el('dl', 'vstrip' + (level ? ' buy--' + level : '') + (inf ? ' is-inferred' : ''));
@@ -2561,6 +2677,15 @@ function initIndex() {
       ac.appendChild(el('dt', 'vs-lbl', '取得原価'));
       ac.appendChild(elKeep('dd', 'vs-val', acq));
       box.appendChild(ac);
+    }
+    /* the estimate is shown in the 試算済み list, which is ordered by it (other lists keep their short rows) */
+    var prE = state.chip === 'estimated' ? profitOf(p) : null;
+    if (prE && num((prE.economics || {}).net_profit_base) !== null) {
+      var pe = el('div', 'vs-cell vs-cell--profit' + (prE.economics.net_profit_base < 0 ? ' is-neg' : ''));
+      pe.appendChild(el('dt', 'vs-lbl', '試算'));
+      var u = own(UNIT_JA, (prE.market || {}).unit);
+      pe.appendChild(elKeep('dd', 'vs-val', (own(PROFIT_SHORT_JA, prE.state) || '') + ' ' + yenSigned(prE.economics.net_profit_base) + (u ? '（' + u + '）' : '')));
+      box.appendChild(pe);
     }
     if (b) {
       var bc = el('div', 'vs-cell vs-cell--buy');
@@ -2581,26 +2706,26 @@ function initIndex() {
   /* ------------------------------------------------------------ A FEATURED */
 
   function buildFeatured(p) {
-    /* R22: one decision unit per card — tier and confidence, the name, then why now / price / similar products /
-       driver / risk / next check / evidence and its date. No image box: the decision is in the words. */
+    /* R24: a card to scan, not to read — tier and status, the name, when, price, the profit state (when one was
+       computed), one risk line, one action. 次に確認・動く要因・類似品 live on the detail page. */
     var li = el('li', 'card card--featured card--decision');
     li.dataset.id = p.product_id;
     var a = el('div', 'card-main');
     var head = el('div', 'dc-head');
-    put(head, decisionChips(p));
-    /* one fact once per decision unit: the 「いつ」 row already says 発売済み / 受付開始前 / 締切 */
     var d0 = decisionOf(p);
-    if (!d0 || !shownText(d0.why_now_ja)) { put(head, statusBadge(p)); }
+    put(head, decisionChips(p, true));
+    if (!d0 || !shownText(d0.why_now_ja) || d0.tier !== 'LEAD') { put(head, statusBadge(p)); }
     a.appendChild(head);
     var name = wordWrapText(el('a', 'c-name dc-name'), isUnknown(p.product_name) ? '商品の詳細' : String(p.product_name));
     name.href = detailHref(p);
     a.appendChild(name);
-    var meta = identityMeta(p, true);
-    if (meta.length) { a.appendChild(el('div', 'c-cat', meta.join('・'))); }
     put(a, decisionFacts(p, false));
     li.appendChild(a);
-    put(li, backtestLine(p));
-    li.appendChild(cardActions(p));
+    var act = el('div', 'card-actions');
+    var go = el('a', 'card-action card-action--primary', '詳細と根拠を見る');
+    go.href = detailHref(p);
+    act.appendChild(go);
+    li.appendChild(act);
     return li;
   }
 
@@ -2630,16 +2755,24 @@ function initIndex() {
       list.appendChild(li);
     });
     list.hidden = cands.length === 0;
-    var heads = document.querySelectorAll('#today .sub-title');
-    for (var hi = 0; hi < heads.length; hi++) { heads[hi].hidden = cands.length === 0; }
     var computed = all.filter(function (p) { return profitOf(p) && num(profitOf(p).economics.net_profit_base) !== null; });
     var neg = computed.filter(function (p) { return profitOf(p).state === 'NEGATIVE_MARGIN'; }).length;
+    var rest = all.filter(function (p) { return profitOf(p) && profitOf(p).state === 'INSUFFICIENT_EVIDENCE'; }).length;
     note.textContent = '';
-    if (cands.length) {
-      keepText(note, '利益検討候補 ' + cands.length + '件（成約データ・手数料・送料から試算。購入の指示ではありません）');
-    } else {
-      keepText(note, '利益検討候補：該当なし（試算' + computed.length + '件' + (neg === computed.length ? 'は条件外' : '中' + neg + '件が条件外') + '）');
-      note.title = '試算できた商品は、販売手数料と送料を引くと利益条件を満たしません。ほかは取得価格や成約データがそろっていません。';
+    note.classList.toggle('is-none', cands.length === 0);
+    var head = el('strong', 'profit-note-head', cands.length ? '利益が見込める商品 ' + cands.length + '件' : '利益が見込める商品：いまはありません');
+    note.appendChild(head);
+    var why = [];
+    if (cands.length) { why.push('成約データ・手数料・送料からの暫定試算です。購入の指示ではありません。'); }
+    else {
+      if (computed.length) { why.push('試算できた' + computed.length + '件' + (neg === computed.length ? 'は' : 'のうち' + neg + '件は') + '手数料・送料を引くと赤字見込み'); }
+      if (rest) { why.push('ほか' + rest + '件は材料不足で未試算'); }
+    }
+    if (why.length) { note.appendChild(el('span', 'profit-note-sub', why.join('・'))); }
+    if (!cands.length && computed.length) {
+      var go = el('a', 'profit-note-go', '試算済みの' + computed.length + '件を見る（赤字幅の小さい順）');
+      go.href = '#sec-estimated';
+      note.appendChild(go);
     }
   }
 
@@ -2654,12 +2787,8 @@ function initIndex() {
     rows.forEach(function (p) { frag.appendChild(buildFeatured(p)); });
     list.appendChild(frag);
     list.dataset.count = String(rows.length);
-    var subNode = $('today-sub');
-    if (subNode) {
-      subNode.textContent = '';
-      /* the counts are said once, in the profit note under the title (one fact once) */
-    }
     $('today-empty').hidden = rows.length !== 0;
+    if ($('today-why')) { $('today-why').hidden = rows.length === 0; }
     list.hidden = rows.length === 0;
   }
 
@@ -2997,30 +3126,6 @@ function initIndex() {
     return 0;
   }
 
-  /* 買いの目安: four counts, each a filter of 全商品一覧. Glyph + word, never colour alone. */
-  function renderBuyPanel() {
-    var panel = $('buy-panel');
-    if (!panel) { return; }
-    var counts = {}, inferred = {};
-    BUY_LEVELS.forEach(function (l) { counts[l] = 0; inferred[l] = 0; });
-    state.products.forEach(function (p) {
-      var l = effectiveLevel(p);
-      if (l) { counts[l] += 1; if (inferenceOf(p)) { inferred[l] += 1; } }
-    });
-    BUY_LEVELS.forEach(function (l) {
-      var n = $('buy-n-' + l);
-      if (n) { n.textContent = String(counts[l]); }
-      var sub = $('buy-inf-' + l);
-      if (sub) {
-        sub.textContent = '';
-        if (inferred[l]) { keepText(sub, 'うち推論' + inferred[l] + '件'); }
-        sub.hidden = !inferred[l];
-      }
-      var btn = panel.querySelector('[data-buy="' + l + '"]');
-      if (btn) { btn.setAttribute('aria-pressed', filters.buy === l ? 'true' : 'false'); }
-    });
-  }
-
   /* 過去の実績: past products with a complete 1-month window, the published arithmetic,
      most above list first — the "which kinds of product left a margin" view. Collapsed. */
   function renderTrackRecord() {
@@ -3067,6 +3172,7 @@ function initIndex() {
     var pre = sectionById('sec-preorder');
     var lot = sectionById('sec-lottery');
     var values = {
+      'kpi-profit': derived(function (p) { return !!profitOf(p) && profitOf(p).state === 'PROFIT_CANDIDATE'; }),
       'kpi-total': total,
       'kpi-open': open,
       'kpi-closing': closing,
@@ -3174,48 +3280,12 @@ function initIndex() {
 
   /* 状態 quick filter (rail): one button per acceptance state that has a label, with the published
      by_status count. A tap filters 全商品一覧; the same button again clears it. */
-  function buildStatusQuick() {
-    var row = $('status-row');
-    if (!row) { return; }
-    row.textContent = '';
-    statusOptions.forEach(function (s) {
-      var n = pick(statNum('by_status', s), derived(function (p) { return p.status === s; }));
-      var b = el('button', 'qchip');
-      b.type = 'button';
-      b.dataset.status = s;
-      b.appendChild(el('span', null, statusOptionLabels[s]));
-      b.appendChild(el('span', 'qchip-n', String(n)));
-      b.setAttribute('aria-label', statusOptionLabels[s] + '（' + n + '件）で全商品一覧を絞り込む');
-      b.addEventListener('click', function () {
-        var again = filters.status === s;
-        filters.status = again ? '' : s;
-        filters.sec = '';
-        state.page = 1;
-        syncControlsFromFilters(); writeUrl(); renderList();
-        if (!again) { scrollToId('sec-all'); }
-      });
-      row.appendChild(b);
-    });
-    $('status-quick').hidden = statusOptions.length === 0;
-  }
-  function syncStatusQuick() {
-    var btns = document.querySelectorAll('#status-row .qchip');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].setAttribute('aria-pressed', String(filters.status === btns[i].dataset.status));
-    }
-  }
-
   /* ------------------------------------------------------------ 利ざや候補（参考）
      Candidates = an effective level of 買い寄り or 様子見 (evidence, or 推論 when the product's own
      evidence is short). 見送り寄り is not a candidate. Products that are close to a level but not
      there yet are listed separately with what they still need — never mixed into the order. */
   var MARGIN_LEVELS = ['LEAN_BUY', 'MIXED_SIGNALS'];
   function isMarginCandidate(p) { return MARGIN_LEVELS.indexOf(effectiveLevel(p)) !== -1; }
-  function isNearSignal(p) {
-    var b = buySignalOf(p);
-    return !!b && effectiveLevel(p) === 'NOT_ENOUGH_EVIDENCE' &&
-      (num(b.analogs_evaluable) > 0 || /BOXの公式定価/.test(String(b.inference_blocked_ja || '')));
-  }
   /* Ordering uses a ratio only when at least 3 analogs stand behind it (the reference minimum);
      a thinner ratio is still shown on the detail page with its 類似品N件, but it does not move the order. */
   function marginRatio(p) {
@@ -3232,48 +3302,6 @@ function initIndex() {
     if (rb === null && ra !== null) { return -1; }
     if (ra !== null && rb !== null && ra !== rb) { return rb - ra; }
     return cmpDeadline(a, b);
-  }
-
-  /** The chip's own headline (says plainly when nothing is 買い寄り) and the 「判定に近い商品」 list. */
-  function renderMargin() {
-    var rows = state.products.filter(inScope).filter(isMarginCandidate);
-    var lean = rows.filter(function (p) { return effectiveLevel(p) === 'LEAN_BUY'; });
-    var inferred = rows.filter(function (p) { return !!inferenceOf(p); }).length;
-    var stateNode = $('margin-state');
-    if (stateNode) {
-      var infTxt = inferred ? '（うち推論 ' + inferred + '件）' : '';
-      stateNode.textContent = '';
-      keepText(stateNode, lean.length
-        ? '「買い寄り」は ' + lean.length + '件です。目安が出ている ' + rows.length + '件' + infTxt + 'を並べています。'
-        : (rows.length
-          ? '今の時点で「買い寄り」の商品はありません。いちばん近いのは「様子見」の ' + rows.length + '件' + infTxt + 'です。'
-          : '今の時点で、目安が出ている商品はありません。目安まであと少しの商品は下のとおりです。'));
-      stateNode.classList.toggle('has-lean', lean.length > 0);
-    }
-    var near = state.products.filter(inScope).filter(isNearSignal).sort(cmpBuy);
-    var wrap = $('margin-near-wrap');
-    var list = $('margin-near');
-    if (wrap && list) {
-      list.textContent = '';
-      wrap.hidden = near.length === 0;
-      near.forEach(function (p) {
-        var li = el('li', 'near-item');
-        var a = el('a', 'near-link');
-        a.href = detailHref(p);
-        a.appendChild(wordWrapText(el('span', 'near-name'), String(p.product_name || '')));
-        var need = buyNeedText(p);
-        if (need) {
-          var np = el('span', 'near-need');
-          np.appendChild(el('span', 'near-need-lbl', 'あと必要なもの'));
-          keepText(np, need);
-          a.appendChild(np);
-        }
-        li.appendChild(a);
-        list.appendChild(li);
-      });
-    }
-    var go = $('buy-go-n');
-    if (go) { go.textContent = String(rows.length + near.length); }
   }
 
   /* ------------------------------------------------------------ 分野タブ
@@ -3294,9 +3322,8 @@ function initIndex() {
   }
 
   function buildCatTabs() {
-    var row = $('cat-tabs-row');
-    if (!row) { return; }
-    row.textContent = '';
+    var sel = $('feed-cat');
+    if (!sel) { return; }
     var counts = {};
     var cats = [];
     state.products.forEach(function (p) {
@@ -3309,61 +3336,21 @@ function initIndex() {
       var ka = order.indexOf(a), kb = order.indexOf(b);
       return (ka < 0 ? 99 : ka) - (kb < 0 ? 99 : kb);
     });
-    var tabs = [['', 'すべて', state.products.length]].concat(cats.map(function (c) {
-      return [c, catChoiceLabel(c), counts[c]];
-    }));
-    tabs.forEach(function (t) {
-      var b = el('button', 'cat-tab qchip');
-      b.type = 'button';
-      b.dataset.cat = t[0];
-      b.appendChild(el('span', 'cat-tab-lbl', t[1]));
-      b.appendChild(el('span', 'qchip-n', String(t[2])));
-      b.setAttribute('aria-label', t[1] + '（' + t[2] + '件）');
-      b.addEventListener('click', function () {
-        if (filters.cat === t[0]) { return; }
-        setCategory(t[0]);
-      });
-      row.appendChild(b);
+    while (sel.options.length > 1) { sel.remove(1); }
+    cats.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c;
+      o.textContent = catChoiceLabel(c) + '（' + counts[c] + '）';
+      sel.appendChild(o);
     });
-    var nav = $('cat-tabs');
-    if (nav) { nav.hidden = cats.length === 0; }
-    /* the navigation carries the same categories (short names), so its choices add up to the total */
-    var end = $('topnav-cats-end');
-    if (end) {
-      var old = document.querySelectorAll('.topnav-cat-item');
-      for (var i = 0; i < old.length; i++) { old[i].parentNode.removeChild(old[i]); }
-      cats.forEach(function (c) {
-        var li = el('li', 'topnav-cat-item');
-        var b = el('button', 'topnav-cat', own(NAV_CAT_LABEL, c) || catChoiceLabel(c));
-        b.type = 'button';
-        b.dataset.navCat = c;
-        b.setAttribute('aria-pressed', 'false');
-        b.setAttribute('aria-label', catChoiceLabel(c) + '（' + counts[c] + '件）');
-        b.addEventListener('click', function () {
-          setCategory(filters.cat === c ? '' : c);
-          scrollToId('feed');
-        });
-        li.appendChild(b);
-        end.parentNode.insertBefore(li, end);
-      });
-    }
+    sel.addEventListener('change', function () { setCategory(sel.value); });
   }
 
   function syncCatTabs() {
-    var btns = document.querySelectorAll('#cat-tabs-row .cat-tab');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].setAttribute('aria-pressed', String(btns[i].dataset.cat === (filters.cat || '')));
-    }
-    var navBtns = document.querySelectorAll('[data-nav-cat]');
-    for (var j = 0; j < navBtns.length; j++) {
-      navBtns[j].setAttribute('aria-pressed', String(navBtns[j].dataset.navCat === filters.cat));
-    }
-    var note = $('cat-tabs-note');
-    if (note) {
-      var label = filters.cat ? catChoiceLabel(filters.cat) : null;
-      var n = state.products.filter(inTab).length;
-      note.textContent = label ? '「' + label + '」の商品だけを表示しています（' + n + '件）。' : '';
-      note.hidden = !label;
+    var sel = $('feed-cat');
+    if (sel) {
+      sel.value = filters.cat || '';
+      if (sel.selectedIndex === -1) { sel.value = ''; }
     }
   }
 
@@ -3525,7 +3512,16 @@ function initIndex() {
       pick: function (p) { return p.is_attention === true && (!decisionOf(p) || decisionOf(p).actionable); } },
     /* Sorted by deadline like every other section — deliberately NOT by headroom, which
        would turn a reference measure into a ranking. */
-    { id: 'sec-backtest', name: '類似品の過去相場あり', sort: cmpDeadline, pick: hasEvaluableBacktest }
+    { id: 'sec-backtest', name: '類似品の過去相場あり', sort: cmpDeadline, pick: hasEvaluableBacktest },
+    /* 試算済み: every product with a computed estimate, the smallest loss / largest profit first */
+    { id: 'sec-estimated', name: '試算済み',
+      pick: function (p) { return !!profitOf(p) && num((profitOf(p).economics || {}).net_profit_base) !== null; },
+      sort: function (a, b) { return profitOf(b).economics.net_profit_base - profitOf(a).economics.net_profit_base || cmpDeadline(a, b); } },
+    /* 利益候補: the profit state the backend decided (PROFIT_CANDIDATE), strongest profit first */
+    { id: 'sec-profit', name: '利益候補', pick: function (p) { return !!profitOf(p) && profitOf(p).state === 'PROFIT_CANDIDATE'; },
+      sort: function (a, b) {
+        return ((profitOf(b).profit_power || {}).score || 0) - ((profitOf(a).profit_power || {}).score || 0) || cmpDeadline(a, b);
+      } }
   ];
   function sectionById(id) {
     for (var i = 0; i < SECTIONS.length; i++) {
@@ -3536,33 +3532,31 @@ function initIndex() {
 
   /* chip -> the section it shows; `aux` is a weaker second list under the chip (締切間近 only). */
   var FEED_CHIPS = {
-    all: { name: 'すべて', sec: null },
-    open: { name: '受付中（締切間近を含む）', sec: 'sec-open' },
+    all: { name: '掲載中', sec: null },
+    profit: { name: '利益候補', sec: 'sec-profit' },
+    estimated: { name: '試算済み', sec: 'sec-estimated' },
+    open: { name: '受付中', sec: 'sec-open' },
     closing: { name: '締切間近', sec: 'sec-closing', aux: 'sec-nearterm' },
-    preorder: { name: '受付中の予約', sec: 'sec-preorder' },
-    lottery: { name: '受付中の抽選', sec: 'sec-lottery' },
     restock: { name: '再販', sec: 'sec-restock' },
-    attention: { name: '注目候補', sec: 'sec-attention' },
-    margin: { name: '利ざや候補', sec: 'sec-margin' },
     new: { name: '新着', sec: 'sec-new' }
   };
+  /* former chips (links shared before R24) land on the nearest chip that still exists */
+  var LEGACY_CHIP = { preorder: 'open', lottery: 'open', attention: 'all', margin: 'profit', recent: 'new' };
   /* An empty chip is not hidden: it says why it is empty. */
   var FEED_EMPTY = {
     all: 'この条件に合う商品はありません。キーワードや分野を変えてみてください。',
+    profit: 'いまは利益が見込める商品はありません。試算できた商品は、手数料・送料を引くと赤字の見込みです。',
+    estimated: 'いまのところ、利益を試算できた商品はありません。',
     open: 'いまのところ、受付中と判定した商品はありません。',
     closing: 'いまのところ、締切まで7日以内で受付中と判定した商品はありません。',
-    preorder: 'いまのところ、受付中と判定した予約・受注生産の商品はありません。販売方式が予約の商品は、全商品一覧の「販売方式」で探せます。',
-    lottery: 'いまのところ、受付中と判定した抽選はありません。販売方式が抽選の商品は、全商品一覧の「販売方式」で探せます。',
     restock: 'いまのところ、再販・在庫復活と判定した商品はありません。',
-    attention: 'いまのところ、両方の条件を満たす商品はありません。',
-    margin: 'いまのところ、目安が出ている商品はありません。目安まであと少しの商品は上のとおりです。',
     new: 'いまのところ、掲載から14日以内の商品はありません。'
   };
   /* The former section ids are anchors now; each one selects its chip. */
   var ANCHOR_CHIP = {
-    feed: 'all', 'sec-closing': 'closing', 'sec-nearterm': 'closing', 'sec-open': 'open', 'sec-buyable': 'open',
-    'sec-lottery': 'lottery', 'sec-preorder': 'preorder', 'sec-restock': 'restock',
-    'sec-attention': 'attention', 'sec-margin': 'margin', 'sec-backtest': 'margin', 'sec-new': 'new'
+    feed: 'all', recent: 'new', 'sec-closing': 'closing', 'sec-nearterm': 'closing', 'sec-open': 'open', 'sec-buyable': 'open',
+    'sec-lottery': 'open', 'sec-preorder': 'open', 'sec-restock': 'restock',
+    'sec-attention': 'all', 'sec-margin': 'profit', 'sec-backtest': 'profit', 'sec-new': 'new', 'sec-profit': 'profit', 'sec-estimated': 'estimated'
   };
   function chipFromHash() {
     var id = (window.location.hash || '').slice(1);
@@ -3617,7 +3611,7 @@ function initIndex() {
     var more = $('feed-more');
     var left = rows.length - shown.length;
     more.hidden = left <= 0;
-    more.textContent = 'さらに' + Math.min(FEED_PAGE, left) + '件';
+    more.textContent = 'さらに' + Math.min(FEED_PAGE, left) + '件表示';
     var toList = $('feed-to-list');
     toList.hidden = !chip.sec || rows.length === 0;
 
@@ -3646,11 +3640,11 @@ function initIndex() {
 
   /** 「数え方」 below the feed, the same text as on every detail page. */
   function mountHowCounted() {
-    var foot = document.querySelector('#feed .feed-foot');
-    if (!foot || $('how-counted')) { return; }
+    var slot = $('how-counted-slot');
+    if (!slot || $('how-counted')) { return; }
     var first = null;
     state.products.forEach(function (p) { if (!first && hasEvaluableBacktest(p)) { first = backtestOf(p); } });
-    foot.parentNode.insertBefore(howCounted(first ? { fee_rate: first.fee_rate } : null, 'how-counted'), foot.nextSibling);
+    slot.appendChild(howCounted(first ? { fee_rate: first.fee_rate } : null, 'how-counted'));
   }
 
   function renderActiveSection() {
@@ -3762,7 +3756,21 @@ function initIndex() {
   }
 
   /* -------------------------------------------------------------- list render */
+  /** 全商品・絞り込み opens on request (or with a filter in the URL / #sec-all); the long list is built only then. */
+  function setExplore(open) {
+    state.exploreOpen = !!open;
+    var body = $('explore-body');
+    var btn = $('explore-toggle');
+    if (body) { body.hidden = !state.exploreOpen; }
+    if (btn) {
+      btn.setAttribute('aria-expanded', String(state.exploreOpen));
+      btn.textContent = state.exploreOpen ? '全商品一覧を閉じる' : '全商品一覧と詳しい絞り込みを開く';
+    }
+    if (state.exploreOpen) { renderList(); }
+  }
+
   function renderList() {
+    if (!state.exploreOpen) { renderAllCount(); syncKpiPressed(); renderMyCheck(); return; }
     var rows = sortRows(applyFilters());
     var list = $('list');
     var head = $('list-head');
@@ -3790,52 +3798,13 @@ function initIndex() {
     renderActiveSection();
     renderAdvancedState();
     syncKpiPressed();
-    syncStatusQuick();
-    renderBuyPanel();
     renderMyCheck();
-  }
-
-  /* 最近調べた商品: the items checked or observed most recently, newest first (updated_at, then
-     first_seen_at), each with its 確認状況 badge. A compact list, so a fresh addition is reachable
-     from the top of the page without paging the feed. */
-  var RECENT_MAX = 8;
-  function cmpRecent(a, b) {
-    var ua = isUnknown(a.updated_at) ? '' : String(a.updated_at);
-    var ub = isUnknown(b.updated_at) ? '' : String(b.updated_at);
-    if (ua !== ub) { return ua < ub ? 1 : -1; }
-    var fa = isUnknown(a.first_seen_at) ? '' : String(a.first_seen_at);
-    var fb = isUnknown(b.first_seen_at) ? '' : String(b.first_seen_at);
-    if (fa !== fb) { return fa < fb ? 1 : -1; }
-    return a.product_id < b.product_id ? -1 : 1;
-  }
-  function renderRecent() {
-    var list = $('recent-list');
-    if (!list) { return; }
-    list.textContent = '';
-    var rows = state.products.filter(inScope).sort(cmpRecent).slice(0, RECENT_MAX);
-    rows.forEach(function (p) {
-      var li = el('li', 'recent-item' + (isUnverifiedRow(p) ? ' is-unverified' : ''));
-      li.dataset.id = p.product_id;
-      var upd = fmtShortDay(p.updated_at, state.doc && state.doc.as_of);
-      if (upd) { li.appendChild(el('span', 'recent-day', upd)); }
-      var badges = el('span', 'recent-badges');
-      put(badges, statusBadge(p));
-      li.appendChild(badges);
-      var a = el('a', 'recent-link');
-      a.href = detailHref(p);
-      a.appendChild(wordWrapText(el('span', 'recent-name'), isUnknown(p.product_name) ? '商品の詳細' : String(p.product_name)));
-      li.appendChild(a);
-      list.appendChild(li);
-    });
-    $('recent').hidden = rows.length === 0;
   }
 
   /** Everything the category tab and the keyword narrow. */
   function renderScoped() {
     syncCatTabs();
     renderFeatured();
-    renderRecent();
-    renderMargin();
     renderFeed();
     renderSchedule();
   }
@@ -3906,7 +3875,8 @@ function initIndex() {
     filters.cat = keepCat;
     filters.q = keepQ;
     apply();
-    syncControlsFromFilters(); writeUrl(); renderList();
+    syncControlsFromFilters(); writeUrl();
+    setExplore(true);
     scrollToId('sec-all');
   }
 
@@ -3963,8 +3933,6 @@ function initIndex() {
       var chip = FEED_CHIPS[state.chip] || FEED_CHIPS.all;
       openListWith(function () {
         filters.sec = chip.sec || '';
-        /* the value chip keeps its level order in the full list (買いの目安順) */
-        if (state.chip === 'margin') { filters.sort = 'buy'; }
       });
     });
 
@@ -4007,12 +3975,16 @@ function initIndex() {
       var id = a.getAttribute('href').slice(1);
       var chip = own(ANCHOR_CHIP, id);
       if (chip !== undefined) { setChip(chip, false); }
-      if (id === 'legend') { $('legend').open = true; }
+      openForHash(id);
     });
     window.addEventListener('hashchange', function () {
       var chip = chipFromHash();
       if (chip) { setChip(chip, false); }
-      if (window.location.hash === '#legend') { $('legend').open = true; }
+      openForHash((window.location.hash || '').slice(1));
+    });
+    $('explore-toggle').addEventListener('click', function () {
+      setExplore(!state.exploreOpen);
+      if (state.exploreOpen) { writeUrl(); }
     });
     window.addEventListener('resize', function () { syncRail($('featured-list')); });
     /* a click outside an open 「印」 menu closes it */
@@ -4041,18 +4013,25 @@ function initIndex() {
     node.__cue = update;
     update();
   }
-  /* Rail modules are open on a wide screen; on a phone only the schedule starts open. */
+  /** A link to an explanation opens it: #legend, #profit-faq, #how-counted (FAQ) and #sec-all (the full list). */
+  function openForHash(id) {
+    if (id === 'sec-all') { setExplore(true); }
+    var faqIds = { legend: 'legend', 'profit-faq': 'profit-faq', 'how-counted': 'faq-how', 'faq-how': 'faq-how' };
+    var d = own(faqIds, id) !== undefined ? $(faqIds[id]) : null;
+    if (d) { d.open = true; }
+  }
+  /* The calendar is open on a wide screen (the rail); on a phone it starts closed, like the marks. */
   function openRailForWidth() {
     var wide = window.matchMedia && window.matchMedia('(min-width: 1100px)').matches;
-    ['sec-schedule', 'buy-panel', 'my-check'].forEach(function (id) {
+    ['sec-schedule', 'my-check'].forEach(function (id) {
       var d = $(id);
-      if (d) { d.open = wide || d.hasAttribute('data-open-phone'); }
+      if (d) { d.open = wide; }
     });
-    if (window.location.hash === '#legend') { $('legend').open = true; }
   }
 
   /* -------------------------------------------------------------------- boot */
-  loadProducts().then(function (doc) {
+  /* the slim home copy first; the full file when it is missing (an older build) */
+  loadProducts(DATA_HOME).catch(function () { return loadProducts(DATA_PRODUCTS); }).then(function (doc) {
     state.doc = doc;
     state.products = doc.products;
     /* A flag that is true for (almost) everything carries no information. */
@@ -4073,14 +4052,17 @@ function initIndex() {
         writeUrl();
         wireControls();
         buildCatTabs();
-        buildStatusQuick();
         openRailForWidth();
         $('loading').hidden = true;
         $('app').hidden = false;
+        $('faq').hidden = false;
+        $('site-footer').hidden = false;
         renderScoped();
         mountHowCounted();
-        renderList();
-        ['topnav-list', 'kpi-row', 'feed-chips', 'featured-list'].forEach(function (id) { wireScrollCue($(id)); });
+        var arrive = (window.location.hash || '').slice(1);
+        if (anyListFilter() || filters.sort !== 'deadline') { setExplore(true); } else { renderList(); }
+        openForHash(arrive);
+        ['topnav-list', 'feed-chips', 'featured-list'].forEach(function (id) { wireScrollCue($(id)); });
         if (!marksAvailable) {
           var note = $('my-check-note');
           if (note) { note.textContent = 'お使いのブラウザの設定により、印を保存できません。'; }
@@ -4414,8 +4396,8 @@ function initProduct() {
       String(bt.analogs_evaluable) + ' / ' + String(bt.analogs_linked) + '件');
     var ratio = backtestMedianRatio(bt);
     kpi('定価に対する倍率（中央値）', ratio === null ? null : ratio.toFixed(2) + '倍');
-    kpi('定価との差額（中央値' + (unitTxt ? '・類似品の' + unitTxt + 'あたり' : '') + '）', fmtSignedYen(bt.median_headroom_jpy));
-    kpi('定価との差額（最も低い例' + (unitTxt ? '・類似品の' + unitTxt + 'あたり' : '') + '）', fmtSignedYen(bt.worst_headroom_jpy));
+    kpi('類似品の定価との差額（中央値' + (unitTxt ? '・' + unitTxt + 'あたり' : '') + '・送料を引く前の参考値）', fmtSignedYen(bt.median_headroom_jpy));
+    kpi('類似品の定価との差額（最も低い例' + (unitTxt ? '・' + unitTxt + 'あたり' : '') + '）', fmtSignedYen(bt.worst_headroom_jpy));
     if (kpis.children.length) { head.appendChild(kpis); }
     var unitNote = shownText(bt.unit_note_ja);
     if (unitNote !== null) { head.appendChild(el('p', 'bt-unit', unitNote)); }
@@ -4644,7 +4626,7 @@ function initProduct() {
     }
     if (headInf) {
       var ib = el('div', 'detail-infer');
-      ib.appendChild(el('p', 'detail-buy-sub', '推論の根拠'));
+      ib.appendChild(el('p', 'detail-buy-sub', '推論の根拠（同じ種類の過去の商品全体から）'));
       ib.appendChild(el('p', 'detail-buy-why', String(headInf.basis_ja)));
       if (headInf.closure_ja) { ib.appendChild(el('p', 'detail-infer-line', '目安が変わる条件：' + headInf.closure_ja)); }
       ib.appendChild(el('p', 'detail-infer-line', 'これまでの成績：' + String(headInf.record_ja)));
@@ -4689,7 +4671,7 @@ function initProduct() {
     var im = productImageOf(p);
     var caption = el('figcaption', 'detail-credit');
     fig.appendChild(productMedia(p, 'hero', {
-      eager: true,
+      eager: true, artTag: true,
       onFail: function () { caption.textContent = ''; caption.hidden = true; }
     }));
     var creditText = im ? imageCreditText(im) : null;
@@ -4704,6 +4686,12 @@ function initProduct() {
     hero.appendChild(heroBody);
 
     var head = el('div', 'detail-head');
+    var thumb = productMedia(p, 'thumb', { artTag: true });
+    thumb.classList.add('detail-thumb');
+    thumb.setAttribute('aria-hidden', 'true');
+    var thumbImg = thumb.querySelector('img');
+    if (thumbImg) { thumbImg.alt = ''; }
+    head.appendChild(thumb);
     head.appendChild(wordWrapText(el('h1', 'detail-title'),
       isUnknown(p.product_name) ? '商品の詳細' : String(p.product_name)));
     var detailMeta = identityMeta(p, false);
@@ -4727,7 +4715,8 @@ function initProduct() {
       put(dbox, decisionFacts(p, true));
       heroBody.appendChild(dbox);
     }
-    var profitSection = profitBlock(p, false);   /* R22: the profit layer; placed after the price, links and marks */
+    /* R24: the profit result right under the decision (two boxes, never merged), before the conditions */
+    put(heroBody, profitBlock(p, false));
     /* R22: the unverified state is stated once, in the decision block (risk / next check), not in a warning box */
 
 
@@ -4784,7 +4773,7 @@ function initProduct() {
     var markWrap = el('div', 'detail-markbox');
     markWrap.appendChild(el('span', 'detail-mark-lbl', 'あなたの印'));
     var current = getMark(marks, p.product_id);
-    var noteEl = el('p', 'note-line', '印はお使いのブラウザにだけ保存され、外部には送信されません。');
+    var noteEl = el('p', 'note-line', 'このブラウザにだけ保存されます。');
     var box = markControl(p.product_id, current, function (markId, boxEl) {
       if (markId === 'UNDECIDED') { delete marks[p.product_id]; }
       else { marks[p.product_id] = markId; }
@@ -4795,7 +4784,6 @@ function initProduct() {
     markWrap.appendChild(box);
     markWrap.appendChild(noteEl);
     heroBody.appendChild(markWrap);
-    put(heroBody, profitSection);
     card.appendChild(hero);
 
     /* --- BELOW: 販売・応募条件 → 6つの角度 → Evidence → 類似品相場 → 価格推移 → Source → 補足 --- */
@@ -4935,6 +4923,8 @@ function initProduct() {
       document.title = String(found.product_name) + ' | Sedori Research Dashboard';
     }
     render(doc, found);
+    var foot = $('site-footer');
+    if (foot) { foot.hidden = false; }
   }).catch(function (err) {
     showError(err && err.message ? err.message : 'データを読み込めませんでした。時間をおいて再度お試しください。');
   });

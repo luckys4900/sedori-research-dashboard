@@ -45,7 +45,7 @@ jobs:
           suffixes = (".html", ".js", ".css", ".json", ".svg", ".txt", ".yml", ".yaml")
           # 公開されるファイルだけを見る。workflow 自身や README はサイトに含まれない。
           published = ["index.html", "product.html", "assets/app.js", "assets/style.css",
-                       "data/products.json", "data/stats.json", "data/metadata.json"]
+                       "data/products.json", "data/products_home.json", "data/stats.json", "data/metadata.json"]
           findings = []
           for rel in published:
               path = pathlib.Path(rel)

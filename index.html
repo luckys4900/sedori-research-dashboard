@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
-<meta name="description" content="抽選・予約・再販の受付状況や締切、発売日を、公式サイトなどの公開情報からまとめた一覧です。購入のおすすめや利益の予測は含みません。">
+<meta name="description" content="抽選・予約・再販の受付状況や締切、発売日を公式サイトなどの公開情報からまとめ、成約データにもとづく暫定の利益試算を添えた商品リサーチです。購入のおすすめではありません。">
 <title>Sedori Research Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +16,15 @@
 <body data-page="index">
 <a class="skip-link" href="#main">本文へ移動</a>
 
-<!-- Masthead: name, one line of purpose, freshness, search. Compact on purpose: the first
-     screen belongs to today's items, not to a banner. -->
+<!-- Masthead: name, search, the date the counts refer to. The first screen belongs to today's items. -->
 <header class="masthead">
   <div class="shell masthead-in">
     <div class="brand">
-      <p class="site-title"><a href="index.html">Sedori Research Dashboard</a></p>
+      <h1 class="site-title"><a href="index.html">Sedori Research Dashboard</a></h1>
       <p class="site-purpose">抽選・予約・再販の受付と締切を、公式情報から追う商品リサーチ</p>
     </div>
     <p class="site-meta">
-      <span class="site-meta-item" title="この一覧を作り直して公開した時刻です。各商品の最新の確認日とは限りません。"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
+      <span class="site-meta-item site-meta-item--gen" title="この一覧を作り直して公開した時刻です。各商品の最新の確認日とは限りません。"><span class="site-meta-lbl">更新日時</span><span id="generated-at">—</span></span>
       <span class="site-meta-item" title="受付状況や「あと◯日」の基準にした日です。"><span class="site-meta-lbl">基準日</span><span id="as-of">—</span></span>
     </p>
     <div class="masthead-search" role="search">
@@ -35,21 +34,19 @@
   </div>
 </header>
 
-<!-- Sticky navigation. In-page anchors; the old section ids select the matching feed chip. -->
+<!-- Navigation: the four places a reader goes. The former section ids still work as anchors. -->
 <nav class="topnav" aria-label="主なメニュー">
   <div class="shell">
     <ul class="topnav-list" id="topnav-list">
       <li><a href="#today">今日</a></li>
-      <li><a href="#sec-closing">締切間近</a></li>
-      <li><a href="#sec-open">受付中</a></li>
-      <li><a href="#sec-restock">再販</a></li>
-      <li><a href="#sec-attention">注目</a></li>
-      <li id="topnav-cats-end"><a href="#sec-all">全商品</a></li>
+      <li><a href="#feed">一覧</a></li>
+      <li><a href="#sec-all">全商品</a></li>
+      <li><a href="#faq">使い方</a></li>
     </ul>
   </div>
 </nav>
 
-<main class="shell" id="main">
+<main class="shell" id="main" tabindex="-1">
 
   <div class="panel panel--error" id="error-panel" role="alert" hidden>
     <h2>データを読み込めませんでした</h2>
@@ -61,91 +58,57 @@
 
   <div id="app" hidden>
 
-    <!-- Status strip: published counters (stats.json), one line. Each one selects the feed chip
-         that uses the same predicate, so the number and the list never disagree. -->
+    <!-- Summary: the three questions of the day (profit? closing? new?) and what is open. Each count selects
+         the list chip with the identical predicate, so the number and the list never disagree. -->
     <div class="strip" id="kpi-row" role="group" aria-label="基準日の件数">
-      <span class="strip-lbl">本日</span>
+      <button type="button" class="kpi kpi--profit" data-kpi="profit" data-chip="profit" aria-pressed="false"><span class="kpi-label">利益候補</span><span class="kpi-num" id="kpi-profit">—</span></button>
       <button type="button" class="kpi kpi--closing" data-kpi="closing" data-chip="closing" aria-pressed="false"><span class="kpi-label">締切間近</span><span class="kpi-num" id="kpi-closing">—</span></button>
-      <button type="button" class="kpi" data-kpi="open" data-chip="open" aria-pressed="false"><span class="kpi-label">受付中（締切間近を含む）</span><span class="kpi-num" id="kpi-open">—</span></button>
-      <button type="button" class="kpi" data-kpi="preorder" data-chip="preorder" aria-pressed="false"><span class="kpi-label">受付中の予約</span><span class="kpi-num" id="kpi-preorder">—</span></button>
-      <button type="button" class="kpi" data-kpi="lottery" data-chip="lottery" aria-pressed="false"><span class="kpi-label">受付中の抽選</span><span class="kpi-num" id="kpi-lottery">—</span></button>
-      <button type="button" class="kpi" data-kpi="restock" data-chip="restock" aria-pressed="false"><span class="kpi-label">再販</span><span class="kpi-num" id="kpi-restock">—</span></button>
+      <button type="button" class="kpi" data-kpi="open" data-chip="open" aria-pressed="false" title="締切間近を含みます"><span class="kpi-label">受付中</span><span class="kpi-num" id="kpi-open">—</span></button>
       <button type="button" class="kpi" data-kpi="new" data-chip="new" aria-pressed="false"><span class="kpi-label">新着</span><span class="kpi-num" id="kpi-new">—</span></button>
-      <button type="button" class="kpi kpi--total" data-kpi="total" aria-pressed="false"><span class="kpi-label">全商品</span><span class="kpi-num" id="kpi-total">—</span></button>
     </div>
 
     <div class="layout">
 
-      <!-- A 今日チェック: at most three FEATURED cards, closing soonest first. -->
+      <!-- 今日まず見る: the profit answer first (one line when there is none), then at most three short cards. -->
       <section class="today" id="today" aria-labelledby="today-title">
         <div class="sec-head">
           <h2 class="sec-title" id="today-title">今日まず見る</h2>
-          <span class="sec-sub" id="today-sub"></span>
         </div>
-        <h3 class="sub-title">利益検討候補</h3>
-        <p class="pa-topnote" id="profit-note"></p>
-        <ul class="profit-list" id="profit-list" hidden></ul>
-        <h3 class="sub-title">判断材料がそろった商品</h3>
+        <div class="profit-summary" id="profit-summary">
+          <p class="profit-note" id="profit-note"></p>
+          <ul class="profit-list" id="profit-list" hidden></ul>
+        </div>
+        <p class="today-why" id="today-why">24時間以内に締め切る商品と、公式情報・類似品データがそろった商品です（利益の見込みとは別の基準）。</p>
         <ul class="featured" id="featured-list"></ul>
-        <p class="sec-empty" id="today-empty" hidden>いまのところ、判断材料がそろって受付中の商品はありません。</p>
+        <p class="sec-empty" id="today-empty" hidden>いまのところ、公式情報と類似品データがそろった受付中の商品はありません。</p>
       </section>
 
-      <!-- 最近調べた商品: the most recently checked or observed items (each row keeps its 確認状況
-           badge), so a fresh addition is one scroll from the top instead of several 「さらに30件」. -->
-      <section class="recent" id="recent" aria-labelledby="recent-title">
-        <div class="sec-head">
-          <h2 class="sec-title" id="recent-title">最近調べた商品</h2>
-          <span class="sec-sub">商品ごとの更新日が新しい順</span>
-        </div>
-        <ol class="recent-list" id="recent-list"></ol>
-      </section>
-
-      <!-- B 最新の商材: one feed with chips. The old highlight sections are chips now; their ids stay
-           here as anchors so links such as #sec-closing keep working and select the chip. -->
+      <!-- 商品一覧: one list, six chips and a category select. Former section ids are anchors that select a chip. -->
       <section class="sec sec--feed" id="feed" aria-labelledby="feed-title" data-sec>
-        <span class="anchor" id="sec-closing"></span><span class="anchor" id="sec-nearterm"></span><span class="anchor" id="sec-open"></span><span class="anchor" id="sec-buyable"></span><span class="anchor" id="sec-lottery"></span><span class="anchor" id="sec-preorder"></span><span class="anchor" id="sec-restock"></span><span class="anchor" id="sec-attention"></span><span class="anchor" id="sec-margin"></span><span class="anchor" id="sec-backtest"></span><span class="anchor" id="sec-new"></span>
+        <span class="anchor" id="recent"></span><span class="anchor" id="sec-closing"></span><span class="anchor" id="sec-nearterm"></span><span class="anchor" id="sec-open"></span><span class="anchor" id="sec-buyable"></span><span class="anchor" id="sec-lottery"></span><span class="anchor" id="sec-preorder"></span><span class="anchor" id="sec-restock"></span><span class="anchor" id="sec-attention"></span><span class="anchor" id="sec-margin"></span><span class="anchor" id="sec-backtest"></span><span class="anchor" id="sec-new"></span><span class="anchor" id="sec-profit"></span><span class="anchor" id="sec-estimated"></span>
         <div class="sec-head">
-          <h2 class="sec-title" id="feed-title">最新の商材</h2>
+          <h2 class="sec-title" id="feed-title">商品一覧</h2>
           <span class="sec-count" id="feed-count" data-sec-count aria-live="polite"></span>
         </div>
-        <div class="chips-row" id="feed-chips" role="group" aria-label="表示する商品を選ぶ">
-          <button type="button" class="fchip" data-chip="all" aria-pressed="true">すべて</button>
-          <button type="button" class="fchip" data-chip="open" aria-pressed="false">受付中</button>
-          <button type="button" class="fchip" data-chip="closing" aria-pressed="false">締切間近</button>
-          <button type="button" class="fchip" data-chip="preorder" aria-pressed="false">受付中の予約</button>
-          <button type="button" class="fchip" data-chip="lottery" aria-pressed="false">受付中の抽選</button>
-          <button type="button" class="fchip" data-chip="restock" aria-pressed="false">再販</button>
-          <button type="button" class="fchip" data-chip="attention" aria-pressed="false">注目候補</button>
-          <button type="button" class="fchip" data-chip="margin" aria-pressed="false">利ざや候補</button>
-          <button type="button" class="fchip" data-chip="new" aria-pressed="false">新着</button>
+        <div class="feed-controls">
+          <div class="chips-row" id="feed-chips" role="group" aria-label="表示する商品を選ぶ">
+            <button type="button" class="fchip" data-chip="all" aria-pressed="true">すべて</button>
+            <button type="button" class="fchip" data-chip="profit" aria-pressed="false">利益候補</button>
+            <button type="button" class="fchip" data-chip="open" aria-pressed="false" title="締切間近を含みます">受付中</button>
+            <button type="button" class="fchip" data-chip="closing" aria-pressed="false" title="受付中で、締切まで7日以内">締切間近</button>
+            <button type="button" class="fchip" data-chip="restock" aria-pressed="false">再販</button>
+            <button type="button" class="fchip" data-chip="new" aria-pressed="false">新着</button>
+          </div>
+          <div class="feed-cat">
+            <label class="visually-hidden" for="feed-cat">分野</label>
+            <select id="feed-cat"><option value="">すべての分野</option></select>
+          </div>
         </div>
 
         <div class="feed-notes">
-          <p class="feed-note" data-note="all">判断材料がそろった商品、締切が近い商品、確度が高い商品の順です。受付が終わった商品・情報待ちの商品は「全商品を詳しく探す」にあります。<span class="legend-inline"><span class="tier-chip tier--lead">判断材料がそろった</span>公式で確認済み・定価と<span class="nb">類似品3件以上</span>の取引あり　<span class="conf-chip conf--medium">確度 中</span>根拠のそろい具合（利益の見込みではありません）</span></p>
-          <p class="feed-note" data-note="open" hidden>公表された受付期間をもとに、いま受付中の商品です（締切間近を含みます）。</p>
-          <p class="feed-note" data-note="closing" hidden>受付中の商品のうち、締切まで7日以内のものです。</p>
-          <p class="feed-note" data-note="preorder" hidden>販売方式が予約・受注生産で、いま受付中の商品です。</p>
-          <p class="feed-note" data-note="lottery" hidden>販売方式が抽選で、いま応募を受け付けている商品です。</p>
-          <p class="feed-note" data-note="restock" hidden>公表された情報で再販・在庫復活が分かっている商品です。</p>
-          <p class="feed-note" data-note="attention" hidden>販売方法の制限と類似品の取引記録の<strong>両方を確認できた</strong>商品です。おすすめや期待値を示すものではありません。</p>
+          <p class="feed-note" data-note="profit" hidden>暫定の試算で、この商品自身の成約が3件以上あり、手数料・送料を引いても利益が残る見込みの商品です。購入の指示ではありません。</p>
+          <p class="feed-note" data-note="estimated" hidden>利益を試算できた商品を、試算の結果が良い順（赤字幅の小さい順）に並べています。暫定の試算で、購入の指示ではありません。</p>
           <p class="feed-note" id="sec-new-note" data-note="new" hidden>掲載を始めてから14日以内の商品です。</p>
-          <div class="feed-note margin-box" data-note="margin" hidden>
-            <p class="margin-state" id="margin-state" aria-live="polite"></p>
-            <p class="margin-caveat">類似商品の発売後の取引を参考に表示しています。利益予測ではありません。</p>
-            <details class="margin-how">
-              <summary>算出方法を見る</summary>
-              <ul class="margin-keys">
-                <li><strong>並び</strong><span>買いの目安 → 似た商品の取引価格が定価の何倍だったか → 締切の近さ。順位や評価ではありません。</span></li>
-                <li><strong>倍率</strong><span>数字はすべて似た過去の商品の取引で、この商品の価格ではありません。取引価格の中央値を、その商品の定価で割ったものです（販売手数料を引く前）。</span></li>
-                <li><strong>利益ではありません</strong><span>目安の段階は販売手数料を引いた価格で比べていますが、送料などの費用は差し引いていません。定価で買えた場合の話で、抽選品は当選が前提です。</span></li>
-                <li><strong>類似品から</strong><span>この商品自身ではなく、似た種類の商品の過去の取引から出した目安です。</span></li>
-              </ul>
-            </details>
-            <div class="margin-near-wrap" id="margin-near-wrap" hidden>
-              <h3 class="sub-title">目安まであと少しの商品（あと何が必要か）</h3>
-              <ul class="margin-near" id="margin-near"></ul>
-            </div>
-          </div>
         </div>
 
         <ul class="feed-list" id="feed-list" data-sec-list></ul>
@@ -155,20 +118,20 @@
              Deliberately a weaker, separate list — never counted or styled as 締切間近. -->
         <div class="feed-aux" id="feed-aux" hidden>
           <h3 class="sub-title">期日が7日以内のその他の商品</h3>
-          <p class="feed-aux-note">期日まで7日以内ですが、<strong>受付中かどうかはまだ確認できていません</strong>。応募の前に公式ページをご確認ください。</p>
+          <p class="feed-aux-note">受付中かどうかはまだ確かめていません。応募の前に公式ページをご確認ください。</p>
           <ul class="feed-list feed-list--aux" id="feed-aux-list"></ul>
         </div>
 
         <div class="feed-foot">
-          <button type="button" class="btn" id="feed-more" hidden>さらに30件</button>
+          <button type="button" class="btn" id="feed-more" hidden>さらに表示</button>
           <button type="button" class="btn btn--quiet" id="feed-to-list" hidden>この条件で全商品一覧を開く</button>
         </div>
       </section>
 
-      <!-- Right rail (desktop) / inline modules (phone). -->
-      <aside class="rail" id="rail" aria-label="予定と絞り込み">
+      <!-- Right rail (desktop) / inline modules (phone): the calendar and the reader's own marks. -->
+      <aside class="rail" id="rail" aria-label="予定とあなたの印">
 
-        <details class="rail-mod" id="sec-schedule" data-open-phone open>
+        <details class="rail-mod" id="sec-schedule" data-open-phone>
           <summary class="rail-sum"><span class="rail-title" id="sched-title">これからの予定</span><span class="rail-aux" id="sched-count"></span></summary>
           <div class="rail-body">
             <ol class="sched-week" id="sched-week" aria-label="基準日からの7日間"></ol>
@@ -179,260 +142,224 @@
           </div>
         </details>
 
-        <!-- 買いの目安（参考）: four counts, glyph + word (never colour alone). Each filters 全商品一覧. -->
-        <details class="rail-mod" id="buy-panel">
-          <summary class="rail-sum"><span class="rail-title" id="buy-title">買いの目安（参考）</span></summary>
-          <div class="rail-body">
-            <ul class="buy-list">
-              <li><button type="button" class="buy-line" data-buy="LEAN_BUY" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">●</span><span class="buy-word">買い寄り</span><span class="buy-n" id="buy-n-LEAN_BUY">—</span><span class="buy-inf" id="buy-inf-LEAN_BUY" hidden></span></button></li>
-              <li><button type="button" class="buy-line" data-buy="MIXED_SIGNALS" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">◐</span><span class="buy-word">様子見</span><span class="buy-n" id="buy-n-MIXED_SIGNALS">—</span><span class="buy-inf" id="buy-inf-MIXED_SIGNALS" hidden></span></button></li>
-              <li><button type="button" class="buy-line" data-buy="LEAN_SKIP" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">○</span><span class="buy-word">見送り寄り</span><span class="buy-n" id="buy-n-LEAN_SKIP">—</span><span class="buy-inf" id="buy-inf-LEAN_SKIP" hidden></span></button></li>
-              <li><button type="button" class="buy-line" data-buy="NOT_ENOUGH_EVIDENCE" aria-pressed="false"><span class="buy-glyph" aria-hidden="true">－</span><span class="buy-word">目安なし</span><span class="buy-n" id="buy-n-NOT_ENOUGH_EVIDENCE">—</span></button></li>
-            </ul>
-            <p class="rail-note" id="buy-headline" aria-live="polite">類似商品の発売後取引を参考表示。利益予測ではありません。</p>
-            <a class="rail-link" id="buy-go" href="#sec-margin">利ざや候補を見る（<span id="buy-go-n">—</span>件）</a>
-          </div>
-        </details>
-
-        <!-- あなたのチェック: the reader's own marks (browser only). -->
+        <!-- あなたの印: the reader's own marks (browser only). -->
         <details class="rail-mod" id="my-check">
-          <summary class="rail-sum"><span class="rail-title" id="my-check-title">あなたのチェック</span></summary>
+          <summary class="rail-sum"><span class="rail-title" id="my-check-title">あなたの印</span></summary>
           <div class="rail-body">
             <div class="my-check-grid">
-              <button type="button" class="my-check-item" data-mark-filter="CANDIDATE"><span class="my-check-n" id="my-check-candidate">0</span><span>購入候補</span></button>
+              <button type="button" class="my-check-item" data-mark-filter="CANDIDATE"><span class="my-check-n" id="my-check-candidate">0</span><span>買う予定</span></button>
               <button type="button" class="my-check-item" data-mark-filter="WATCH"><span class="my-check-n" id="my-check-watch">0</span><span>様子見</span></button>
               <button type="button" class="my-check-item" data-mark-filter="SKIP"><span class="my-check-n" id="my-check-skip">0</span><span>見送り</span></button>
             </div>
-            <p class="rail-note" id="my-check-note">印は各商品の「印」から付けられます。お使いのブラウザにだけ保存され、外部には送信されません。</p>
-          </div>
-        </details>
-
-        <!-- 分野: buttons with aria-pressed (one at a time). A tab narrows every list on this page. -->
-        <section class="rail-mod rail-mod--plain cat-tabs" id="cat-tabs" aria-labelledby="cat-tabs-title">
-          <h2 class="rail-title" id="cat-tabs-title">分野</h2>
-          <div class="cat-tabs-row" id="cat-tabs-row"></div>
-          <p class="rail-note" id="cat-tabs-note" aria-live="polite" hidden></p>
-        </section>
-
-        <!-- 状態: one tap filters 全商品一覧 by the acceptance state. -->
-        <section class="rail-mod rail-mod--plain" id="status-quick" aria-labelledby="status-quick-title">
-          <h2 class="rail-title" id="status-quick-title">状態</h2>
-          <div class="status-row" id="status-row"></div>
-        </section>
-
-        <details class="rail-mod" id="legend">
-          <summary class="rail-sum"><span class="rail-title">使い方・表示の読み方</span></summary>
-          <div class="rail-body">
-            <ol class="howto-steps">
-              <li><strong>今日の締切を見る</strong>「締切間近」「受付中」は、公表された受付期間をもとに、いま受付中の商品です。</li>
-              <li><strong>気になる商品に印を付ける</strong>各商品の「印」から。印はこのブラウザにだけ保存されます。</li>
-              <li><strong>詳細ページで根拠を確かめる</strong>受付期間・出典・確認状況をすべて載せています。購入の判断はご自身でお願いします。</li>
-            </ol>
-            <ul class="legend-list">
-              <li><span class="legend-sample"><span class="badge badge--open">受付中</span><span class="badge badge--urgent">締切間近</span></span><span><strong>塗りつぶし</strong>は、いまの状態です。</span></li>
-              <li><span class="legend-sample"><span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span><span class="badge badge--attention">注目候補</span></span><span><strong>角型</strong>は補足の目印です。おすすめや買い時を示すものではありません。</span></li>
-              <li><span class="legend-sample"><span class="buy-glyph" aria-hidden="true">● ◐ ○ －</span></span><span><strong>買いの目安</strong>は似た商品の過去の取引からの参考で、利益ではありません。あなたの「印」とは別のものです。</span></li>
-              <li><span><strong>更新日時と基準日：</strong>更新日時はこの一覧を作り直して公開した時刻、基準日は受付状況や「あと◯日」の基準にした日です。各商品の最新の確認日とは限りません（各行の「更新」は、その商品を最後に確認・観測した日です）。</span></li>
-              <li><span><strong>確認が取れていない項目は表示していません。</strong>載っていないことは「なし」や「0」という意味ではありません。</span></li>
-            </ul>
+            <p class="rail-note" id="my-check-note">このブラウザにだけ保存されます。</p>
           </div>
         </details>
       </aside>
 
-      <!-- C 全商品を詳しく探す: the screener. Search + 4 basic filters + 詳細, dense table, 50 rows a page. -->
-      <details class="faq" id="profit-faq">
-        <summary>利益分析の読み方</summary>
-        <ul class="faq-list">
-          <li>想定売価は保証ではありません。似た商品やこの商品の<strong>成約</strong>（出品中の価格ではなく、実際に売れた価格）から幅で示しています。</li>
-          <li>想定純利益は、取得価格・販売手数料（10%）・送料・梱包費の入力と仮定に基づく試算です。分からない値を0として計算することはしません（「未算定」と表示します）。</li>
-          <li>取得価格は、確認できた購入価格か、公式の販売で定価購入できる場合の公式定価だけを使います。パックとBOXなど販売単位が違う価格は換算しません。</li>
-          <li><strong>利益力</strong>（どれだけお金が残るか）は「純利益の大きさ40・下振れへの強さ20・回転15・供給の締まり10・資金効率10・タイミング5」の算定できた部分の和です。算定範囲が70%未満のときは出しません。ROIが高くても純利益の額が小さいものは高く評価しません。</li>
-          <li><strong>数字の確度</strong>（その数字をどこまで信じられるか）は、この商品自身の成約・取得価格の確かさ・成約の件数・新しさなどから別に出します。この商品自身の成約がないうちは「低」までとし、利益検討候補にはしません。利益力と数字の確度は足し合わせません。</li>
-          <li>期待利益（売れる確率をかけた利益）は、過去実績で確率を検証できるまで算定しません。</li>
-          <li>利益検討状態は、いまの根拠から見た検討の段階で、購入の指示ではありません。根拠が更新されると判定も変わります。基準は暫定で、過去実績での検証は件数がそろうまで完了扱いにしません。</li>
-        </ul>
-      </details>
+      <!-- 全商品・絞り込み: closed until the reader opens it (or arrives with a filter / #sec-all). -->
       <section class="sec sec--all" id="sec-all" aria-labelledby="all-title">
         <div class="sec-head">
-          <h2 class="sec-title" id="all-title">全商品を詳しく探す</h2>
+          <h2 class="sec-title" id="all-title">全商品・絞り込み</h2>
           <span class="sec-count" id="all-count"></span>
         </div>
+        <button type="button" class="btn explore-toggle" id="explore-toggle" aria-expanded="false" aria-controls="explore-body">全商品一覧と詳しい絞り込みを開く</button>
 
-        <div class="active-sec" id="active-sec" hidden>
-          <span class="active-sec-label">絞り込み中:</span>
-          <span class="active-sec-name" id="active-sec-name"></span>
-          <button type="button" class="btn btn--quiet" id="active-sec-clear">この絞り込みを解除</button>
-        </div>
-
-        <form class="toolbar" id="toolbar" role="search" aria-label="商品の絞り込み">
-          <div class="tb-grid">
-            <div class="field tb-search">
-              <label class="field-label" for="f-q">キーワード</label>
-              <input type="search" id="f-q" name="q" autocomplete="off" placeholder="商品名・作品名・カテゴリなど">
-            </div>
-            <div class="field">
-              <label class="field-label" for="f-cat">カテゴリ</label>
-              <select id="f-cat"><option value="">すべて</option></select>
-            </div>
-            <div class="field">
-              <label class="field-label" for="f-mode">販売方式</label>
-              <select id="f-mode"><option value="">すべて</option></select>
-            </div>
-            <div class="field">
-              <label class="field-label" for="f-status">現在の状況</label>
-              <select id="f-status"><option value="">すべて</option></select>
-            </div>
-            <div class="field">
-              <label class="field-label" for="f-ev">確認状況</label>
-              <select id="f-ev">
-                <option value="">すべて</option>
-                <option value="VERIFIED">確認済み</option>
-                <option value="PARTIAL">一部確認</option>
-                <option value="UNVERIFIED">公式確認前</option>
-              </select>
-            </div>
+        <div class="explore-body" id="explore-body" hidden>
+          <div class="active-sec" id="active-sec" hidden>
+            <span class="active-sec-label">絞り込み中:</span>
+            <span class="active-sec-name" id="active-sec-name"></span>
+            <button type="button" class="btn btn--quiet" id="active-sec-clear">この絞り込みを解除</button>
           </div>
 
-          <details class="tb-adv" id="tb-adv">
-            <summary class="tb-adv-sum"><span>詳細な絞り込み・並び順</span><span class="tb-adv-state" id="tb-adv-state">未設定</span></summary>
+          <form class="toolbar" id="toolbar" role="search" aria-label="商品の絞り込み">
             <div class="tb-grid">
+              <div class="field tb-search">
+                <label class="field-label" for="f-q">キーワード</label>
+                <input type="search" id="f-q" name="q" autocomplete="off" placeholder="商品名・作品名・カテゴリなど">
+              </div>
               <div class="field">
-                <label class="field-label" for="f-deadline">締切</label>
-                <select id="f-deadline">
+                <label class="field-label" for="f-cat">カテゴリ</label>
+                <select id="f-cat"><option value="">すべて</option></select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="f-mode">販売方式</label>
+                <select id="f-mode"><option value="">すべて</option></select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="f-status">現在の状況</label>
+                <select id="f-status"><option value="">すべて</option></select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="f-ev">確認状況</label>
+                <select id="f-ev">
                   <option value="">すべて</option>
-                  <option value="24h">24時間以内（受付中）</option>
-                  <option value="3d">3日以内（受付中）</option>
-                  <option value="7d">7日以内（受付中）</option>
-                  <option value="near_unconfirmed">7日以内（締切間近以外）</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="f-release">発売日</label>
-                <select id="f-release">
-                  <option value="">すべて</option>
-                  <option value="upcoming">発売前</option>
-                  <option value="released">発売済み</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="f-signal">注目理由</label>
-                <select id="f-signal"><option value="">すべて</option></select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="f-profit">材料の集まり具合</label>
-                <select id="f-profit">
-                  <option value="">すべて</option>
-                  <option value="NOT_EVALUATED">未評価</option>
-                  <option value="PARTIAL">一部を確認</option>
-                  <option value="ROUTE_EVIDENCE_PARTIAL">取得経路のみ確認</option>
-                  <option value="PRICE_EVIDENCE_READY">過去の取引価格を確認</option>
-                  <option value="FORMAL_READY">必要な材料がそろった</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="f-mark">あなたの印</label>
-                <select id="f-mark">
-                  <option value="">すべて</option>
-                  <option value="UNDECIDED">印なし</option>
-                  <option value="CANDIDATE">購入候補</option>
-                  <option value="WATCH">様子見</option>
-                  <option value="SKIP">見送り</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="f-buy">買いの目安</label>
-                <select id="f-buy">
-                  <option value="">すべて</option>
-                  <option value="LEAN_BUY">買い寄り</option>
-                  <option value="MIXED_SIGNALS">様子見</option>
-                  <option value="LEAN_SKIP">見送り寄り</option>
-                  <option value="NOT_ENOUGH_EVIDENCE">目安なし</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="f-sort">並び順</label>
-                <select id="f-sort">
-                  <option value="deadline">締切が近い順</option>
-                  <option value="buy">買いの目安順</option>
-                  <option value="new">新着順</option>
-                  <option value="release">発売日順</option>
-                  <option value="price">定価が安い順</option>
-                  <option value="updated">更新順</option>
+                  <option value="VERIFIED">確認済み</option>
+                  <option value="PARTIAL">一部確認</option>
+                  <option value="UNVERIFIED">公式確認前</option>
                 </select>
               </div>
             </div>
-            <div class="tb-toggles">
-              <label class="chk"><input type="checkbox" id="f-new"><span>新着のみ</span></label>
-              <label class="chk"><input type="checkbox" id="f-restock"><span>再販情報がある商品のみ</span></label>
-              <label class="chk"><input type="checkbox" id="f-attn"><span>注目候補のみ</span></label>
-            </div>
-          </details>
 
-          <div class="tb-foot">
-            <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">該当 — 件</p>
-            <button type="button" class="btn btn--quiet" id="btn-reset">絞り込みをリセット</button>
+            <details class="tb-adv" id="tb-adv">
+              <summary class="tb-adv-sum"><span>詳細な絞り込み・並び順</span><span class="tb-adv-state" id="tb-adv-state">未設定</span></summary>
+              <div class="tb-grid">
+                <div class="field">
+                  <label class="field-label" for="f-deadline">締切</label>
+                  <select id="f-deadline">
+                    <option value="">すべて</option>
+                    <option value="24h">24時間以内（受付中）</option>
+                    <option value="3d">3日以内（受付中）</option>
+                    <option value="7d">7日以内（受付中）</option>
+                    <option value="near_unconfirmed">7日以内（締切間近以外）</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="f-release">発売日</label>
+                  <select id="f-release">
+                    <option value="">すべて</option>
+                    <option value="upcoming">発売前</option>
+                    <option value="released">発売済み</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="f-signal">注目理由</label>
+                  <select id="f-signal"><option value="">すべて</option></select>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="f-profit">材料の集まり具合</label>
+                  <select id="f-profit">
+                    <option value="">すべて</option>
+                    <option value="NOT_EVALUATED">未評価</option>
+                    <option value="PARTIAL">一部を確認</option>
+                    <option value="ROUTE_EVIDENCE_PARTIAL">取得経路のみ確認</option>
+                    <option value="PRICE_EVIDENCE_READY">過去の取引価格を確認</option>
+                    <option value="FORMAL_READY">必要な材料がそろった</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="f-mark">あなたの印</label>
+                  <select id="f-mark">
+                    <option value="">すべて</option>
+                    <option value="UNDECIDED">印なし</option>
+                    <option value="CANDIDATE">買う予定</option>
+                    <option value="WATCH">様子見</option>
+                    <option value="SKIP">見送り</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="f-buy">買いの目安（参考）</label>
+                  <select id="f-buy">
+                    <option value="">すべて</option>
+                    <option value="LEAN_BUY">買い寄り</option>
+                    <option value="MIXED_SIGNALS">様子見</option>
+                    <option value="LEAN_SKIP">見送り寄り</option>
+                    <option value="NOT_ENOUGH_EVIDENCE">目安なし</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="f-sort">並び順</label>
+                  <select id="f-sort">
+                    <option value="deadline">締切が近い順</option>
+                    <option value="buy">買いの目安順</option>
+                    <option value="new">新着順</option>
+                    <option value="release">発売日順</option>
+                    <option value="price">定価が安い順</option>
+                    <option value="updated">更新順</option>
+                  </select>
+                </div>
+              </div>
+              <div class="tb-toggles">
+                <label class="chk"><input type="checkbox" id="f-new"><span>新着のみ</span></label>
+                <label class="chk"><input type="checkbox" id="f-restock"><span>再販情報がある商品のみ</span></label>
+                <label class="chk"><input type="checkbox" id="f-attn"><span>注目理由がそろった商品のみ</span></label>
+              </div>
+            </details>
+
+            <div class="tb-foot">
+              <p class="result-count" id="result-count" aria-live="polite" aria-atomic="true">該当 — 件</p>
+              <button type="button" class="btn btn--quiet" id="btn-reset">絞り込みをリセット</button>
+            </div>
+          </form>
+
+          <!-- Column header of the desktop table. Sticky, so a column keeps its meaning while scrolling. -->
+          <div class="list-head" id="list-head" aria-hidden="true">
+            <span>商品名</span><span>状態 / 販売方式</span><span>締切</span><span>定価</span>
+            <span>発売日</span><span></span><span>目安</span>
           </div>
-        </form>
 
-        <!-- Column header of the desktop table. Sticky, so a column keeps its meaning while scrolling. -->
-        <div class="list-head" id="list-head" aria-hidden="true">
-          <span>商品名</span><span>状態 / 販売方式</span><span>締切</span><span>定価</span>
-          <span>発売日</span><span></span><span>目安</span>
+          <ul class="screener" id="list"></ul>
+
+          <p class="empty" id="list-empty" hidden>条件に合う商品が見つかりませんでした。キーワードを短くするか、「絞り込みをリセット」ですべての商品を表示できます。</p>
+
+          <nav class="pager" id="list-pager" aria-label="全商品一覧のページ" hidden>
+            <button type="button" class="btn btn--quiet" id="pager-prev">前の50件</button>
+            <span class="pager-state" id="pager-state" aria-live="polite"></span>
+            <button type="button" class="btn btn--quiet" id="pager-next">次の50件</button>
+          </nav>
+
+          <!-- 過去の実績: collapsed. Realised arithmetic of past products, not the current products' prices. -->
+          <details class="past" id="sec-track" hidden>
+            <summary class="past-sum"><span class="sec-title" id="track-title">過去の実績（発売1か月後の取引）</span><span class="sec-count" id="track-count"></span></summary>
+            <p class="note-line">発売1か月後の取引価格の実績です（取引3件以上）。販売手数料10%を引いた受取額と定価の差で、仕入れ時の送料・梱包材は含まず、利益ではありません。</p>
+            <ul class="track-list" id="track-list"></ul>
+          </details>
         </div>
-
-        <ul class="screener" id="list"></ul>
-
-        <p class="empty" id="list-empty" hidden>条件に合う商品が見つかりませんでした。キーワードを短くするか、「絞り込みをリセット」ですべての商品を表示できます。</p>
-
-        <nav class="pager" id="list-pager" aria-label="全商品一覧のページ" hidden>
-          <button type="button" class="btn btn--quiet" id="pager-prev">前の50件</button>
-          <span class="pager-state" id="pager-state" aria-live="polite"></span>
-          <button type="button" class="btn btn--quiet" id="pager-next">次の50件</button>
-        </nav>
-
-        <p class="note-line" id="list-note">一覧では購入先などを省略しています。注目理由の全文、確認状況、購入先は、商品名から開く<strong>詳細ページ</strong>にあります。</p>
       </section>
-
-      <!-- D 過去の実績: collapsed. Realised arithmetic of past products, not the current products' prices. -->
-      <details class="past" id="sec-track" hidden>
-        <summary class="past-sum"><span class="sec-title" id="track-title">過去の実績（発売1か月後の取引）</span><span class="sec-count" id="track-count"></span></summary>
-        <p class="note-line">過去に発売された商品が、発売1か月後にいくらで取引されたかの実績です（取引3件以上・期間を最後まで集計できたものだけ）。定価の何倍で売れたかの順に並べています。販売手数料10%を引いた受取額と定価の差と、公式料金表の送料の幅を示しています。仕入れ時の送料・梱包材は含まず、利益ではありません。</p>
-        <ul class="track-list" id="track-list"></ul>
-      </details>
 
     </div>
   </div>
 
-  <!-- よくある質問 / 表示の読み方: closed by default. -->
-  <details class="faq" id="faq">
-    <summary class="faq-sum"><span class="sec-title">よくある質問</span></summary>
-    <dl class="faq-list">
-      <div>
-        <dt>当選しやすさや当選確率は分かりますか？</dt>
-        <dd>当選確率は掲載していません。応募者数や当選数が公表されておらず、計算できないためです。代わりに、抽選かどうか、応募期間、当選発表日、購入・応募の上限など、公表されている情報を載せています。</dd>
-      </div>
-      <div>
-        <dt>利益の見込みは分かりますか？</dt>
-        <dd>利益額や見込み額は表示しません。「利ざや候補」は買いの目安と似た商品の倍率の順に並べた参考で、利益の順位ではありません。似た過去の商品が販売手数料を引いても定価をどれだけ上回って取引されたかを詳細ページに載せていますが、送料などは差し引いていないため利益ではありません。定価で購入できた場合の数字で、抽選品は当選が前提です。</dd>
-      </div>
-      <div>
-        <dt>「定価」は仕入れ値ですか？</dt>
-        <dd>メーカーなどが公式に発表している価格で、仕入れ値とは別のものです。「取得原価」は、購入経路ごとに金額の裏付けが取れた場合だけ表示します。</dd>
-      </div>
-      <div>
-        <dt>いつの情報ですか？</dt>
-        <dd>「更新日時」はこの一覧を作り直して公開した時刻、「基準日」は受付状況や「あと◯日」の基準にした日です。各商品の最新の確認日とは限りません。各行の「更新」は、その商品を最後に確認・観測した日です。</dd>
-      </div>
-      <div>
-        <dt>付けた印は他の人に見えますか？</dt>
-        <dd>見えません。「購入候補」「様子見」「見送り」の印はお使いのブラウザにだけ保存され、外部には送信されません。</dd>
-      </div>
-    </dl>
-  </details>
+  <!-- よくある質問: every explanation lives here once (closed by default). -->
+  <section class="faq-wrap" id="faq" aria-labelledby="faq-title" hidden>
+    <h2 class="sec-title" id="faq-title">よくある質問</h2>
 
-  <footer class="site-footer">
-    <p>公式サイトなどの公開情報をもとに作成しています。購入のおすすめ、利益の予測、点数やランキングは含みません。購入の判断はご自身でお願いいたします。</p>
-    <p>確認が取れていない項目は表示していません（0 や推測した日付で補うこともしません）。</p>
+    <details class="faq" id="legend">
+      <summary class="faq-sum">表示の読み方</summary>
+      <ul class="legend-list">
+        <li><span class="legend-sample"><span class="tier-chip tier--lead">公式・類似品データあり</span></span><span>公式情報で確認でき、定価と似た商品の成約が3件以上ある商品です。利益が出る・相場が確定したという意味ではありません。</span></li>
+        <li><span class="legend-sample"><span class="conf-chip conf--medium">情報の確度 中</span></span><span>受付・定価などの情報がどこまでそろっているかです。利益の試算の信頼度とは別のものです。</span></li>
+        <li><span class="legend-sample"><span class="badge badge--open">受付中</span><span class="badge badge--urgent">締切間近</span></span><span>塗りつぶしは、いまの状態です。</span></li>
+        <li><span class="legend-sample"><span class="buy-glyph" aria-hidden="true">● ◐ ○ －</span></span><span><strong>買いの目安（参考）</strong>は似た過去の商品の取引からの参考で、利益ではありません。定価で買えた場合の数字で、抽選品は当選が前提です。</span></li>
+        <li><span class="legend-sample"><span class="badge badge--flag">新着</span><span class="badge badge--restock">再販</span></span><span>角型は補足の目印です。</span></li>
+        <li><span><strong>更新日時と基準日：</strong>更新日時はこの一覧を作り直して公開した時刻、基準日は受付状況や「あと◯日」の基準にした日です。各行の「確認」は、その商品を最後に確認した日です。</span></li>
+        <li><span><strong>載っていない項目</strong>は、まだ確かめていない項目です。「なし」や「0」という意味ではありません。</span></li>
+      </ul>
+    </details>
+
+    <details class="faq" id="profit-faq">
+      <summary class="faq-sum">利益分析の読み方</summary>
+      <ul class="faq-list">
+        <li>利益分析は<strong>暫定の試算</strong>で、購入の指示ではありません。過去実績での検証は件数がそろうまで完了扱いにしません。</li>
+        <li>想定売価は保証ではありません。似た商品やこの商品の<strong>成約</strong>（出品中の価格ではなく、実際に売れた価格）から幅で示しています。</li>
+        <li>想定利益は、取得価格・販売手数料（10%）・送料・梱包費の仮定に基づく試算です。分からない値を0として計算することはしません（「未算定」と表示します）。</li>
+        <li>取得価格は、確認できた購入価格か、公式の販売で定価購入できる場合の公式定価だけを使います。パックとBOXなど販売単位が違う価格は換算しません。</li>
+        <li><strong>試算の信頼度</strong>は、この商品自身の成約・取得価格の確かさ・成約の件数・新しさなどから出します。この商品自身の成約がないうちは「低」までとし、利益候補にはしません。</li>
+        <li><strong>利益力</strong>は「純利益の大きさ40・下振れへの強さ20・回転15・供給の締まり10・資金効率10・タイミング5」の算定できた部分の和です。算定範囲が70%未満のときは出しません。試算の信頼度とは足し合わせません。</li>
+        <li>期待利益（売れる確率をかけた利益）は、過去実績で確率を検証できるまで算定しません。</li>
+      </ul>
+    </details>
+
+    <details class="faq" id="faq-how">
+      <summary class="faq-sum">類似品の数え方</summary>
+      <div id="how-counted-slot"></div>
+    </details>
+
+    <details class="faq">
+      <summary class="faq-sum">当選しやすさや当選確率は分かりますか？</summary>
+      <p class="faq-a">当選確率は掲載していません。応募者数や当選数が公表されておらず、計算できないためです。抽選かどうか、応募期間、当選発表日、購入・応募の上限など、公表されている情報を載せています。</p>
+    </details>
+    <details class="faq">
+      <summary class="faq-sum">「定価」は仕入れ値ですか？</summary>
+      <p class="faq-a">メーカーなどが公式に発表している価格で、仕入れ値とは別のものです。利益分析では、公式の販売で定価購入できる場合に限って定価を取得価格として使います。</p>
+    </details>
+    <details class="faq">
+      <summary class="faq-sum">付けた印は他の人に見えますか？</summary>
+      <p class="faq-a">見えません。「買う予定」「様子見」「見送り」の印はお使いのブラウザにだけ保存され、外部には送信されません。</p>
+    </details>
+  </section>
+
+  <footer class="site-footer" id="site-footer" hidden>
+    <p>公式サイトなどの公開情報をもとに作成しています。利益分析は成約データにもとづく暫定の試算で、購入のおすすめや指示ではありません。購入の判断はご自身でお願いいたします。</p>
   </footer>
 </main>
 
