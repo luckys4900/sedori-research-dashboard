@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-18",
   "by_category": {
     "BOOK_MOOK": 5,
     "CHARACTER_GOODS": 11,
@@ -54,8 +54,8 @@
     "attention": 6,
     "buyable_now": 12,
     "closing_soon": 3,
-    "closing_soon_24h": 1,
-    "closing_soon_3d": 2,
+    "closing_soon_24h": 3,
+    "closing_soon_3d": 0,
     "closing_soon_7d": 0,
     "new_items": 14,
     "open_lottery": 0,
@@ -68,6 +68,6 @@
     "verified": 36,
     "with_signal": 124
   },
-  "generated_at": "2026-10-17T23:07:50+09:00",
+  "generated_at": "2026-10-18T06:32:19+09:00",
   "schema_version": "1.1.0"
 }
