@@ -795,7 +795,7 @@ function decisionChips(p, onCard) {
   if (!d) { return null; }
   var box = el('span', 'dchips');
   /* a card shows the listing badge only for a lead; the plain 経過を見る adds nothing next to its status */
-  if (!onCard || d.tier === 'LEAD') {
+  if (!onCard || d.tier === 'LEAD' || !hasShownStatus(p)) {   /* with no status to show, the listing label stays */
     box.appendChild(el('span', 'tier-chip tier--' + String(d.tier).toLowerCase(), String(d.tier_label_ja)));
   }
   if (d.confidence) {
