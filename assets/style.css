@@ -1639,3 +1639,18 @@ details.pa-breakdown > summary, details.pa-more > summary { cursor: pointer; min
 .faq-a { font-size: var(--fs-s); line-height: 1.6; }
 .faq > summary { cursor: pointer; font-weight: 700; min-height: var(--tap); display: flex; align-items: center; }
 .faq-list { margin: 6px 0 0; padding-left: 1.2em; font-size: var(--fs-s); display: grid; gap: 4px; }
+
+/* R27: effective-margin block */
+.pa-eff { margin: 0; overflow-wrap: anywhere; }
+.pa-eff-detail { margin: .4rem 0 .8rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border); }
+.pa-eff p { margin: .1rem 0; line-height: 1.45; }
+.pa-eff-lbl { font-size: var(--fs-xs); color: var(--fg-muted); margin-right: .5rem; }
+.pa-eff-val { font-size: var(--fs-m); }
+.pa-eff--blocked_compliance, .pa-eff--negative_margin, .pa-eff--avoid_risk { color: var(--caution); }
+.pa-eff-cond { font-size: var(--fs-s); }
+.pa-eff-overlay { font-size: var(--fs-s); color: var(--caution); font-weight: 600; }
+.pa-eff-cond a { margin-left: .4rem; white-space: nowrap; }
+.pa-eff-score { font-weight: 600; }
+.pa-eff-list ul { margin: .1rem 0 .3rem 1.1rem; padding: 0; }
+.pa-eff-list li { font-size: var(--fs-s); }
+.pa-eff-note { font-size: var(--fs-xs); color: var(--fg-muted); }

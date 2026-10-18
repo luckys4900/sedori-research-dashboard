@@ -852,7 +852,9 @@ function profitHead(pr) {
   var top = el('div', 'pa-tags');
   var pill = el('span', 'pstate pstate--' + String(pr.state).toLowerCase(), own(PROFIT_SHORT_JA, pr.state) || String(pr.state_label_ja));
   pill.title = String(pr.state_label_ja);
-  if (pr.state !== 'INSUFFICIENT_EVIDENCE') { top.appendChild(pill); }   /* 未試算 is the headline itself */
+  var blockedHead = !!(pr.effective && pr.effective.state === 'BLOCKED_COMPLIANCE');
+  if (blockedHead) { top.appendChild(el('span', 'pstate pstate--blocked_compliance', '仕入れ対象外')); }
+  else if (pr.state !== 'INSUFFICIENT_EVIDENCE') { top.appendChild(pill); }   /* 未試算 is the headline itself */
   top.appendChild(el('span', 'pa-provisional', '暫定試算'));
   head.appendChild(top);
   var unit = own(UNIT_JA, (pr.market || {}).unit);
@@ -879,6 +881,62 @@ function profitHead(pr) {
   return head;
 }
 /** The full 利益分析 block for the detail page (compact: the card version on the top page). */
+/* R27: the effective-margin evaluation — its own lines, never merged with the profit power / confidence */
+function effectiveBlock(ef, compact, pr) {
+  if (!ef) { return null; }
+  var pfNext = pr && pr.next_check_ja, pfRisk = pr && pr.max_risk_ja;
+  var wrap = el('div', 'pa-eff');
+  var isBlocked = ef.state === 'BLOCKED_COMPLIANCE';
+  /* a blocked route: the head already says 仕入れ対象外 — only the seller's condition is added in view */
+  /* the state line only when it says something the PF head does not (a new state), or on a compact card */
+  if (compact || (!isBlocked && !(pr && pr.state === ef.state))) {
+    var st = el('p', 'pa-eff-state');
+    st.appendChild(el('span', 'pa-eff-lbl', '利益検討状態'));
+    st.appendChild(el('strong', 'pa-eff-val pa-eff--' + String(ef.state || '').toLowerCase(), ef.state_label_ja));
+    wrap.appendChild(st);
+  }
+  if (ef.supply_overlay_ja) { wrap.appendChild(elKeep('p', 'pa-eff-overlay', ef.supply_overlay_ja)); }
+  (ef.seller_conditions || []).slice(0, 1).forEach(function (c) {
+    var q = el('p', 'pa-eff-cond');
+    q.appendChild(el('span', 'pa-eff-lbl', c.verbatim ? '販売者の条件' : '販売者の条件（公式記載の要約）'));
+    q.appendChild(elKeep('span', null, c.verbatim ? '「' + c.quote_ja + '」' : c.quote_ja));
+    if (c.url) {
+      var a = el('a', null, '出典');
+      a.href = c.url; a.rel = 'noopener'; a.target = '_blank';
+      q.appendChild(a);
+    }
+    wrap.appendChild(q);
+  });
+  if (compact) { return wrap; }
+  /* the state stays in view; the score, reasons and next checks go into 試算の内訳・前提 (the first screen keeps the CTA) */
+  var more = el('div', 'pa-eff-detail');
+  more.appendChild(el('h3', 'pa-sub', '利益検討の内訳'));
+  var host = wrap;
+  wrap = more;
+  if (ef.reason_ja) { wrap.appendChild(elKeep('p', 'pa-eff-reason', ef.reason_ja)); }
+  var cov = Math.round((num(ef.coverage) || 0) * 100);
+  wrap.appendChild(elKeep('p', 'pa-eff-score', num(ef.score) !== null
+    ? '有効利ザヤ ' + ef.score + ' / ' + ef.max + '（算定範囲 ' + cov + '%）'
+    : '有効利ザヤは算定保留（算定範囲 ' + cov + '%・70%以上で算定）'));
+  function list(title, items, cls) {
+    if (!items || !items.length) { return; }
+    var d = el('div', 'pa-eff-list ' + cls);
+    d.appendChild(el('p', 'pa-eff-lbl', title));
+    var ul = el('ul');
+    items.forEach(function (t) { ul.appendChild(elKeep('li', null, t)); });
+    d.appendChild(ul);
+    wrap.appendChild(d);
+  }
+  list('プラス要因', ef.plus_ja, 'is-plus');
+  list('マイナス要因', (ef.minus_ja || []).filter(function (t) { return t !== pfRisk && t !== ef.supply_overlay_ja; }), 'is-minus');
+  list('次に確認', (ef.next_checks || []).filter(function (c) { return c.fact_ja !== pfNext; })
+    .map(function (c) { return c.fact_ja + (c.effect_ja ? ' → ' + c.effect_ja : ''); }), 'is-next');
+  wrap.appendChild(elKeep('p', 'pa-eff-note', (ef.score_note_ja || '') + ' ' + (ef.scope_ja || '')
+    + (ef.calibration_note_ja ? ' ' + ef.calibration_note_ja : '')));
+  host.effDetail = more;
+  return host;
+}
+
 function profitBlock(p, compact) {
   var pr = profitOf(p);
   if (!pr) { return null; }
@@ -887,6 +945,10 @@ function profitBlock(p, compact) {
   box.setAttribute('aria-label', '利益の試算');
   if (!compact) { box.appendChild(el('h2', 'pa-title', '利益の試算')); }
   box.appendChild(profitHead(pr));
+  var effBox = effectiveBlock(pr.effective, compact, pr);
+  /* a route the seller closes to resale: the PF risk / next-check lines would point at research that changes nothing */
+  var blocked = !!(pr.effective && pr.effective.state === 'BLOCKED_COMPLIANCE');
+  if (effBox) { box.appendChild(effBox); }
   var facts = el('dl', 'dfacts pa-facts');
   function fact(label, value, cls, target) {
     var v = shownText(value);
@@ -898,23 +960,26 @@ function profitBlock(p, compact) {
   }
   /* the four lines a reader needs: break-even, biggest risk, next check, and (when known) how fast it sells */
   var buf = num(e.downside_buffer_pct);
-  fact('取得価格', num(e.acquisition_jpy) !== null ? yenPlain(e.acquisition_jpy) + (own(UNIT_JA, m.unit) ? '（' + own(UNIT_JA, m.unit) + '）' : '') + '・' + e.acquisition_basis_ja
+  if (!blocked) fact('取得価格', num(e.acquisition_jpy) !== null ? yenPlain(e.acquisition_jpy) + (own(UNIT_JA, m.unit) ? '（' + own(UNIT_JA, m.unit) + '）' : '') + '・' + e.acquisition_basis_ja
     : String(e.acquisition_basis_ja) + ((e.acquisition_reasons_ja || [])[0] ? '：' + e.acquisition_reasons_ja[0] : ''));
   fact('売価の根拠', m.basis_ja ? m.basis_ja + (m.n_products ? '（' + m.n_products + '商品・成約' + m.n_sales + '件）' : '') : null);
-  fact('損益分岐', num(e.break_even_jpy) !== null ? '売価 ' + yenPlain(e.break_even_jpy) + ' 以上で黒字' : null);
+  if (!blocked) { fact('損益分岐', num(e.break_even_jpy) !== null ? '売価 ' + yenPlain(e.break_even_jpy) + ' 以上で黒字' : null); }
   if (buf !== null && buf < 0) { fact('中心売価', '損益分岐より' + Math.round(-buf * 100) + '%低い', 'dfact--risk'); }
   else if (buf !== null) { fact('下振れ余裕', '中心売価から' + Math.round(buf * 100) + '%下がっても黒字'); }
   /* the loss itself is already the headline; a risk line that only repeats it is left out */
   if (!(num(e.net_profit_base) !== null && e.net_profit_base < 0 && /^中心純利益/.test(String(pr.max_risk_ja || '')))) {
-    fact('最大のリスク', pr.max_risk_ja, 'dfact--risk');
+    if (!blocked) { fact('最大のリスク', pr.max_risk_ja, 'dfact--risk'); }
   }
-  fact('次に確認', pr.next_check_ja ? pr.next_check_ja + (pr.next_check_effect_ja ? ' → ' + pr.next_check_effect_ja : '') : null, 'dfact--next');
+  if (!blocked) {
+    fact('次に確認', pr.next_check_ja ? pr.next_check_ja + (pr.next_check_effect_ja ? ' → ' + pr.next_check_effect_ja : '') : null, 'dfact--next');
+  }
   if (facts.children.length) { box.appendChild(facts); }
   if (compact) { return box; }
 
   /* everything else — the table, costs, scores, reasons and gates — one tap away */
   var more = el('details', 'pa-more');
   more.appendChild(el('summary', 'pa-sub', '試算の内訳・前提'));
+  if (effBox && effBox.effDetail) { more.appendChild(effBox.effDetail); }
   if (num(m.base) !== null || num(e.net_profit_base) !== null) {
     var tbl = el('table', 'pa-table');
     var unit = own(UNIT_JA, m.unit);
@@ -2757,7 +2822,9 @@ function initIndex() {
     list.hidden = cands.length === 0;
     var computed = all.filter(function (p) { return profitOf(p) && num(profitOf(p).economics.net_profit_base) !== null; });
     var neg = computed.filter(function (p) { return profitOf(p).state === 'NEGATIVE_MARGIN'; }).length;
-    var rest = all.filter(function (p) { return profitOf(p) && profitOf(p).state === 'INSUFFICIENT_EVIDENCE'; }).length;
+    function isBlocked(p) { var ef = profitOf(p) && profitOf(p).effective; return !!(ef && ef.state === 'BLOCKED_COMPLIANCE'); }
+    var blockedN = all.filter(isBlocked).length;
+    var rest = all.filter(function (p) { return profitOf(p) && profitOf(p).state === 'INSUFFICIENT_EVIDENCE' && !isBlocked(p); }).length;
     note.textContent = '';
     note.classList.toggle('is-none', cands.length === 0);
     var head = el('strong', 'profit-note-head', cands.length ? '利益が見込める商品 ' + cands.length + '件' : '利益が見込める商品：いまはありません');
@@ -2767,6 +2834,7 @@ function initIndex() {
     else {
       if (computed.length) { why.push('試算できた' + computed.length + '件' + (neg === computed.length ? 'は' : 'のうち' + neg + '件は') + '手数料・送料を引くと赤字見込み'); }
       if (rest) { why.push('ほか' + rest + '件は材料不足で未試算'); }
+      if (blockedN) { why.push(blockedN + '件は販売者の条件で仕入れ対象外'); }
     }
     if (why.length) { note.appendChild(el('span', 'profit-note-sub', why.join('・'))); }
     if (!cands.length && computed.length) {
