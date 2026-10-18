@@ -9,11 +9,11 @@
     "OTHER": 0,
     "TCG": 65,
     "TOY": 9,
-    "UNKNOWN": 109
+    "UNKNOWN": 111
   },
   "by_profit_evidence": {
     "FORMAL_READY": 0,
-    "NOT_EVALUATED": 171,
+    "NOT_EVALUATED": 173,
     "PARTIAL": 19,
     "PRICE_EVIDENCE_READY": 12,
     "ROUTE_EVIDENCE_PARTIAL": 0
@@ -27,7 +27,7 @@
     "PREORDER": 15,
     "RESTOCK": 3,
     "STORE_LIMITED": 7,
-    "UNKNOWN": 106
+    "UNKNOWN": 108
   },
   "by_status": {
     "CLOSED": 37,
@@ -41,11 +41,11 @@
     "RESTOCKED": 4,
     "RESULT_PENDING": 0,
     "SHIPPING_PENDING": 2,
-    "UNKNOWN": 94
+    "UNKNOWN": 96
   },
   "by_verification": {
     "CANONICAL_PARTIAL": 65,
-    "CANONICAL_VERIFIED": 37,
+    "CANONICAL_VERIFIED": 39,
     "DISCOVERY_UNVERIFIED": 100
   },
   "counts": {
@@ -62,12 +62,12 @@
     "open_now": 9,
     "open_preorder": 0,
     "restocked": 4,
-    "total": 202,
-    "unknown_status": 94,
+    "total": 204,
+    "unknown_status": 96,
     "unverified": 100,
-    "verified": 37,
+    "verified": 39,
     "with_signal": 125
   },
-  "generated_at": "2026-10-18T14:14:35+09:00",
+  "generated_at": "2026-10-18T16:20:54+09:00",
   "schema_version": "1.1.0"
 }
