@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-18",
-  "generated_at": "2026-10-18T16:20:54+09:00",
+  "generated_at": "2026-10-18T18:52:31+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -57885,7 +57885,8 @@
           "minus_ja": [
             "定価が未確認",
             "比較できる類似品の取引がない",
-            "情報が27日前"
+            "情報が27日前",
+            "受付状況が未確認"
           ],
           "plus_ja": [
             "公式情報で確認済み"
@@ -57907,8 +57908,8 @@
           "label_ja": "販売店ページで確認",
           "market_data": false
         },
-        "tier": "ARCHIVE",
-        "tier_label_ja": "受付終了・参考",
+        "tier": "PENDING",
+        "tier_label_ja": "情報待ち",
         "urgency": "LATER",
         "why_now_ja": null
       },
@@ -58125,7 +58126,7 @@
           "n_sales": 0,
           "unit": null
         },
-        "max_risk_ja": "受付・販売が終わっている",
+        "max_risk_ja": "受付中・販売中とまだ確かめていない",
         "next_check_effect_ja": null,
         "next_check_ja": null,
         "policy_version": "PF-0.2-PROVISIONAL",
@@ -58190,7 +58191,7 @@
               "label_ja": "タイミング",
               "max": 5,
               "minus_ja": [
-                "受付・販売が終わっている"
+                "受付中・販売中とまだ確かめていない"
               ],
               "plus_ja": [],
               "score": 0.0
@@ -58206,7 +58207,7 @@
           "risk": "MEDIUM"
         },
         "timing": {
-          "label_ja": "受付終了",
+          "label_ja": "受付中と確かめていない",
           "state": "CLOSED"
         },
         "why": {
@@ -58291,10 +58292,10 @@
       "sales_end": null,
       "shipping_period": null,
       "source_references": [],
-      "status": "CLOSED",
-      "status_basis": "DERIVED_FROM_DEADLINE",
-      "status_basis_label_ja": "公表された締切日を過ぎているため",
-      "status_label_ja": "受付終了",
+      "status": "UNKNOWN",
+      "status_basis": null,
+      "status_basis_label_ja": null,
+      "status_label_ja": "受付状況は未確認",
       "status_note_ja": null,
       "updated_at": "2026-09-21",
       "verification_tier": "CANONICAL_VERIFIED"

@@ -30,7 +30,7 @@
     "UNKNOWN": 108
   },
   "by_status": {
-    "CLOSED": 37,
+    "CLOSED": 36,
     "CLOSING_SOON": 3,
     "ENDED": 7,
     "NOT_STARTED": 2,
@@ -41,7 +41,7 @@
     "RESTOCKED": 4,
     "RESULT_PENDING": 0,
     "SHIPPING_PENDING": 2,
-    "UNKNOWN": 96
+    "UNKNOWN": 97
   },
   "by_verification": {
     "CANONICAL_PARTIAL": 65,
@@ -63,11 +63,11 @@
     "open_preorder": 0,
     "restocked": 4,
     "total": 204,
-    "unknown_status": 96,
+    "unknown_status": 97,
     "unverified": 100,
     "verified": 39,
     "with_signal": 125
   },
-  "generated_at": "2026-10-18T16:20:54+09:00",
+  "generated_at": "2026-10-18T18:52:31+09:00",
   "schema_version": "1.1.0"
 }
