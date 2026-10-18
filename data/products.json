@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-18",
-  "generated_at": "2026-10-18T06:32:19+09:00",
+  "generated_at": "2026-10-18T14:14:35+09:00",
   "products": [
     {
       "acquisition_cost_jpy": null,
@@ -57845,6 +57845,459 @@
       "status_note_ja": null,
       "updated_at": "2026-09-16",
       "verification_tier": "CANONICAL_PARTIAL"
+    },
+    {
+      "acquisition_cost_jpy": null,
+      "acquisition_cost_status": "UNVERIFIED",
+      "analog_backtest": null,
+      "application_end": null,
+      "application_start": null,
+      "attention_reasons": [],
+      "buy_signal": {
+        "analogs_evaluable": 0,
+        "analogs_needed": 3,
+        "conditions_ja": [
+          "定価で買えた場合の目安です",
+          "送料などの費用はまだ差し引いておらず、利益ではありません"
+        ],
+        "inference": null,
+        "inference_blocked_ja": "この商品の種類の過去の販売結果がまだないため、推論できません。同じ種類の商品の発売1か月後の取引が3件以上そろうと推論できます。",
+        "label_ja": "判断材料不足",
+        "level": "NOT_ENOUGH_EVIDENCE",
+        "missing_ja": [
+          "比べられる類似品の取引データがまだありません"
+        ],
+        "reason_ja": "判定に必要な根拠がそろっていません"
+      },
+      "category": "UNKNOWN",
+      "category_raw": null,
+      "channel": [],
+      "closing_soon_band": null,
+      "days_to_deadline": null,
+      "deadline": null,
+      "deadline_kind": null,
+      "decision": {
+        "actionable": false,
+        "catalyst_ja": null,
+        "confidence": {
+          "label_ja": "情報の確度 低",
+          "level": "LOW",
+          "minus_ja": [
+            "定価が未確認",
+            "比較できる類似品の取引がない",
+            "情報が27日前"
+          ],
+          "plus_ja": [
+            "公式情報で確認済み"
+          ]
+        },
+        "evidence_ja": "販売店ページで確認",
+        "freshness": {
+          "band": "STALE",
+          "checked_on": "2026-09-21",
+          "days": 27,
+          "label_ja": "9/21確認（27日前）"
+        },
+        "next_check_ja": null,
+        "price_ja": null,
+        "price_unit_conflict": false,
+        "risk_ja": "情報が27日前のまま",
+        "source_quality": {
+          "class": "RETAILER_PRIMARY",
+          "label_ja": "販売店ページで確認",
+          "market_data": false
+        },
+        "tier": "ARCHIVE",
+        "tier_label_ja": "受付終了・参考",
+        "urgency": "LATER",
+        "why_now_ja": null
+      },
+      "evidence_label_ja": "確認済み",
+      "evidence_state": "VERIFIED",
+      "first_seen_at": "2026-09-21",
+      "historical_price_evidence": [],
+      "image": null,
+      "ip": null,
+      "is_attention": false,
+      "is_new": false,
+      "last_verified_at": "2026-09-21",
+      "list_price_jpy": null,
+      "list_price_label_ja": "定価",
+      "list_price_unit_ja": null,
+      "lottery_end": null,
+      "lottery_start": null,
+      "margin_yen": null,
+      "notes_ja": null,
+      "official_url": "https://www.goodsmile.com/ja/product/1137984",
+      "official_url_kind": "RETAILER",
+      "opportunity_signals": [
+        {
+          "basis_ja": "購入・応募数の上限：1人3個まで",
+          "code": "PURCHASE_LIMIT",
+          "label_ja": "購入・応募数の条件"
+        }
+      ],
+      "payment_deadline": null,
+      "pickup_period": null,
+      "product_id": "gsc-sakura-rubber",
+      "product_name": "ラバーフィギュア 木之本桜（追加生産）",
+      "profit_evidence_detail": {
+        "comparables_with_price_evidence": 0,
+        "comparables_with_verified_route": 0,
+        "linked_comparables": 0,
+        "minimum_profit_sample": 5,
+        "profit_usable_comparables": 0,
+        "strict_completed_sales": 0
+      },
+      "profit_evidence_label_ja": "利益を考える材料はまだ集めていません（未評価）",
+      "profit_evidence_status": "NOT_EVALUATED",
+      "profitability": {
+        "calibrated": false,
+        "calibration_status": "CALIBRATION_PENDING",
+        "category_ja": "フィギュア・プラモデル",
+        "checked_on": "2026-09-21",
+        "confidence": {
+          "analog_only": false,
+          "components": [
+            {
+              "key": "same_product_sales",
+              "label_ja": "同一商品の成約",
+              "max": 30,
+              "minus_ja": [
+                "成約データがない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            },
+            {
+              "key": "acquisition_certainty",
+              "label_ja": "取得価格の確かさ",
+              "max": 20,
+              "minus_ja": [
+                "取得価格の根拠がない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            },
+            {
+              "key": "sale_sample_size",
+              "label_ja": "成約の件数",
+              "max": 15,
+              "minus_ja": [
+                "成約の件数が少ない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            },
+            {
+              "key": "freshness",
+              "label_ja": "情報の新しさ",
+              "max": 10,
+              "minus_ja": [
+                "成約の日付がない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            },
+            {
+              "key": "independent_sources",
+              "label_ja": "独立した根拠の数",
+              "max": 10,
+              "minus_ja": [
+                "根拠にした商品が少ない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            },
+            {
+              "key": "unit_consistency",
+              "label_ja": "販売単位の一致",
+              "max": 5,
+              "minus_ja": [
+                "販売単位（パック／BOXなど）が一致していない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            },
+            {
+              "key": "supply_evidence",
+              "label_ja": "供給の根拠",
+              "max": 5,
+              "minus_ja": [],
+              "plus_ja": [],
+              "score": 5.0
+            },
+            {
+              "key": "liquidity_evidence",
+              "label_ja": "回転の根拠",
+              "max": 5,
+              "minus_ja": [
+                "回転はこの商品の成約頻度で確かめていない"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            }
+          ],
+          "label_ja": "低",
+          "level": "LOW",
+          "max": 100,
+          "score": 5.0
+        },
+        "data_coverage": 0.15,
+        "drivers_ja": [
+          "供給の締まり",
+          "タイミング"
+        ],
+        "economics": {
+          "acquisition_basis": "UNKNOWN",
+          "acquisition_basis_ja": "取得価格はまだ確かめていない",
+          "acquisition_jpy": null,
+          "acquisition_reasons_ja": [
+            "比較できる販売単位が決まっていない"
+          ],
+          "break_even_jpy": null,
+          "downside_buffer_pct": null,
+          "fee_rate": 0.1,
+          "net_profit_base": null,
+          "net_profit_high": null,
+          "net_profit_low": null,
+          "packing_jpy": 50,
+          "roi_base": null,
+          "roi_high": null,
+          "roi_low": null,
+          "sale_base": null,
+          "sale_high": null,
+          "sale_low": null,
+          "shipping_basis_ja": "この商品の梱包サイズと公式送料表から",
+          "shipping_jpy": [
+            750,
+            1550
+          ]
+        },
+        "expected_30d_profit": null,
+        "expected_note_ja": "売れる確率と価格の確率を過去の実績で検証できるまで",
+        "expected_realizable_profit": null,
+        "hard_gates": [
+          {
+            "label_ja": "取得価格の根拠がある",
+            "passed": false
+          },
+          {
+            "label_ja": "販売単位が一致している",
+            "passed": false
+          },
+          {
+            "label_ja": "この商品自身の成約が3件以上ある",
+            "passed": false
+          },
+          {
+            "label_ja": "受付中・販売中と確かめられる",
+            "passed": false
+          },
+          {
+            "label_ja": "算定範囲が70%以上",
+            "passed": false
+          },
+          {
+            "label_ja": "確度が60点以上",
+            "passed": false
+          },
+          {
+            "label_ja": "弱気の売価でも赤字にならない",
+            "passed": false
+          },
+          {
+            "label_ja": "供給増の未解決リスクがない",
+            "passed": true
+          }
+        ],
+        "liquidity": {
+          "days_to_sale": null,
+          "label_ja": "未算定",
+          "state": "UNKNOWN"
+        },
+        "market": {
+          "base": null,
+          "basis_ja": "成約データなし",
+          "high": null,
+          "low": null,
+          "n_products": 0,
+          "n_sales": 0,
+          "unit": null
+        },
+        "max_risk_ja": "受付・販売が終わっている",
+        "next_check_effect_ja": null,
+        "next_check_ja": null,
+        "policy_version": "PF-0.2-PROVISIONAL",
+        "profit_power": {
+          "components": [
+            {
+              "key": "absolute_net_profit",
+              "label_ja": "純利益の大きさ",
+              "max": 40,
+              "minus_ja": [
+                "取得価格または売価が未確定で純利益を計算できない"
+              ],
+              "plus_ja": [],
+              "score": null
+            },
+            {
+              "key": "downside_resilience",
+              "label_ja": "下振れへの強さ",
+              "max": 20,
+              "minus_ja": [
+                "弱気ケースか損益分岐を計算できない"
+              ],
+              "plus_ja": [],
+              "score": null
+            },
+            {
+              "key": "liquidity",
+              "label_ja": "回転",
+              "max": 15,
+              "minus_ja": [
+                "売れるまでの日数を示すデータがない",
+                "現在の出品数はまだ確かめていない"
+              ],
+              "plus_ja": [],
+              "score": null
+            },
+            {
+              "key": "supply_imbalance",
+              "label_ja": "供給の締まり",
+              "max": 10,
+              "minus_ja": [
+                "再販の有無はまだ確かめていない",
+                "売り切れまでの速さ（初回在庫の消化時間）は記録がない"
+              ],
+              "plus_ja": [
+                "購入数の制限あり"
+              ],
+              "score": 5.0
+            },
+            {
+              "key": "capital_efficiency",
+              "label_ja": "資金効率",
+              "max": 10,
+              "minus_ja": [
+                "ROI か売れるまでの日数が分からない"
+              ],
+              "plus_ja": [],
+              "score": null
+            },
+            {
+              "key": "timing",
+              "label_ja": "タイミング",
+              "max": 5,
+              "minus_ja": [
+                "受付・販売が終わっている"
+              ],
+              "plus_ja": [],
+              "score": 0.0
+            }
+          ],
+          "max": 100,
+          "score": null
+        },
+        "state": "INSUFFICIENT_EVIDENCE",
+        "state_label_ja": "算定材料不足",
+        "supply": {
+          "label_ja": "中くらい",
+          "risk": "MEDIUM"
+        },
+        "timing": {
+          "label_ja": "受付終了",
+          "state": "CLOSED"
+        },
+        "why": {
+          "minus_ja": [
+            "取得価格または売価が未確定で純利益を計算できない",
+            "弱気ケースか損益分岐を計算できない",
+            "売れるまでの日数を示すデータがない",
+            "現在の出品数はまだ確かめていない",
+            "成約データがない"
+          ],
+          "plus_ja": [
+            "購入数の制限あり"
+          ]
+        }
+      },
+      "purchase_limit": "1人3個まで",
+      "purchase_url": null,
+      "release_date": null,
+      "release_date_display": null,
+      "release_date_precision": null,
+      "research_angles": {
+        "angles": [
+          {
+            "key": "timing",
+            "known": false,
+            "label_ja": "いつ",
+            "rows": []
+          },
+          {
+            "key": "route",
+            "known": false,
+            "label_ja": "どこで",
+            "rows": []
+          },
+          {
+            "key": "supply",
+            "known": true,
+            "label_ja": "供給",
+            "rows": [
+              {
+                "label_ja": "購入上限",
+                "source_ja": "掲載データ",
+                "source_url": null,
+                "value_ja": "1人3個まで"
+              }
+            ]
+          },
+          {
+            "key": "demand",
+            "known": false,
+            "label_ja": "需要",
+            "rows": []
+          },
+          {
+            "key": "value",
+            "known": false,
+            "label_ja": "価格",
+            "rows": []
+          },
+          {
+            "key": "risk",
+            "known": false,
+            "label_ja": "リスク",
+            "rows": []
+          }
+        ],
+        "checked": 1,
+        "official_pages_checked": false,
+        "total": 6
+      },
+      "reservation_end": null,
+      "reservation_start": null,
+      "restock_status": null,
+      "result_date": null,
+      "route_evidence": {
+        "routes": [],
+        "shadow_only": true,
+        "status": "NONE"
+      },
+      "sale_mode": "UNKNOWN",
+      "sale_mode_raw": null,
+      "sales_end": null,
+      "shipping_period": null,
+      "source_references": [],
+      "status": "CLOSED",
+      "status_basis": "DERIVED_FROM_DEADLINE",
+      "status_basis_label_ja": "公表された締切日を過ぎているため",
+      "status_label_ja": "受付終了",
+      "status_note_ja": null,
+      "updated_at": "2026-09-21",
+      "verification_tier": "CANONICAL_VERIFIED"
     },
     {
       "acquisition_cost_jpy": null,
