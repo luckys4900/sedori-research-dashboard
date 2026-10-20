@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-19",
+  "as_of": "2026-10-20",
   "audit_metadata": {
     "builder": "build_dashboard.py",
     "contract": "CONTRACT.md",
@@ -23,21 +23,21 @@
       "field": "is_new",
       "first_seen_span": {
         "earliest": "2026-09-15",
-        "latest": "2026-10-17"
+        "latest": "2026-09-21"
       },
       "note": "掲載開始が2026年9月15日〜18日に集中しているため、現在はほとんどの商品が「新着」（掲載から14日以内）に当たります。"
     },
     {
       "field": "payment_deadline",
-      "note": "支払期限は「注文日から4日以内」のような書き方でしか確認できていないため、日付にはせず「未確認」としています。"
+      "note": null
     },
     {
       "field": "pickup_period",
-      "note": "受取期間を公式情報で確認できていないため、すべて「未確認」としています。0 や空欄では補いません。"
+      "note": null
     },
     {
       "field": "acquisition_cost_jpy",
-      "note": "購入経路ごとの取得価格はまだ確認できていないため、取得原価はすべて「未確認」です。定価で代用はしていません。"
+      "note": null
     },
     {
       "field": "historical_price_evidence",
@@ -45,7 +45,7 @@
     },
     {
       "field": "release_date_display",
-      "note": "発売日の欄に配送時期が書かれている商品が 1 件あります。配送時期は発売日ではないため、発売日は「未確認」と明記し、日付だけを単独では表示していません。"
+      "note": null
     },
     {
       "field": "official_url_kind",
@@ -57,26 +57,27 @@
     "inactive_product_group": 1,
     "merged_into_one_item": 2,
     "no_usable_name": 0,
+    "not_listed": 100,
     "product_group_parent": 1,
     "superseded_observation": 12
   },
-  "generated_at": "2026-10-19T06:32:19+09:00",
+  "generated_at": "2026-10-20T10:58:22+09:00",
   "policy": {
     "attention": "注目候補は条件を満たしたかどうかを示すもので、順位づけやおすすめではありません。",
     "history": "過去の取引価格は、比較のために選んだ別の商品（類似品）の取引実績です。この商品の利益ではありません。",
     "no_internal_verdict": "内部の最終判定・利益額・スコアは一切公開しません。掲載するのは事実と期日だけです。",
-    "price": "定価と取得原価は別のものです。取得原価は購入経路ごとの価格記録がある場合だけ金額を表示し、それ以外は「未確認」としています。定価を取得原価の代わりには使いません。",
+    "price": null,
     "read_only": "表示用のデータは元データから作成しており、元データを書き換えることはありません。",
     "route": "購入経路の情報は参考として表示しているだけで、利益の計算には一切使っていません。",
-    "unknown": "確認できていない値は null とし、画面では「未確認」と表示します。0・false・空文字・推測した日付では補いません。月までしか公表されていない発売日は、日付として表示しません。",
+    "unknown": null,
     "verification": "公式情報での確認が済んでいない商品は「未検証」（DISCOVERY_UNVERIFIED）として区別し、確認済みの商品と同じ見た目にはしません。"
   },
   "reconciliation": {
-    "observation_rows_excluded": 16,
+    "observation_rows_excluded": 116,
     "observation_rows_in": 116,
     "product_rows_excluded": 2,
     "product_rows_in": 106,
-    "published_total": 204
+    "published_total": 104
   },
   "schema_version": "1.1.0",
   "source_tables": [
